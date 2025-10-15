@@ -1,0 +1,58 @@
+.get-in-touch-module__NVY_Ga__section{width:100vw;height:-moz-fit-content;height:fit-content;margin-top:5rem;display:flex;flex-direction:column}
+.get-in-touch-module__NVY_Ga__content{flex-direction:column;justify-content:space-between;align-items:center;width:90%;height:100%;margin:0 auto;display:flex}
+.get-in-touch-module__NVY_Ga__info{width:100%;height:-moz-fit-content;height:fit-content;margin-bottom:5rem}
+.get-in-touch-module__NVY_Ga__info h2,.get-in-touch-module__NVY_Ga__info p{margin-top:3rem}
+.get-in-touch-module__NVY_Ga__btn{margin-top:6rem}
+.get-in-touch-module__NVY_Ga__image{width:100%;min-width:66rem;height:100%}
+.get-in-touch-module__NVY_Ga__img{object-fit:cover;-webkit-filter:grayscale(100)}
+@media screen and (min-width:911px){
+  .get-in-touch-module__NVY_Ga__section{flex-direction:row;justify-content:space-between;align-items:center}
+  .get-in-touch-module__NVY_Ga__content{width:58%;margin:0}
+  .get-in-touch-module__NVY_Ga__info{width:100%;margin-bottom:0}
+  .get-in-touch-module__NVY_Ga__image{width:42%;min-width:auto}
+}
+
+/* Button + side line (scoped to section) */
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__btn{cursor:pointer;width:-moz-fit-content;width:fit-content;position:relative}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__title{letter-spacing:.1rem;border:1px solid;font-family:trajan-pro-3,serif;font-size:2rem;font-weight:400;transition:all .3s ease-in-out}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 2rem 1.8rem 1.8rem}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 2rem}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__line{cursor:default;position:absolute;top:50%}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__lineRight{right:-3rem}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__lineLeft{left:-3rem}
+@media screen and (min-width:320px){
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 8.8rem 1.8rem 1.8rem}
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 8.8rem}
+}
+@media screen and (min-width:810px){
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 5rem 1.8rem 1.8rem}
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 5rem}
+}
+
+/* Thin line module + keyframes (scoped usage) */
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__container{position:relative;overflow:hidden}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__line{position:absolute;top:0;left:0}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__icon{color:#6c9830;font-size:3rem}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__up{animation-name:line-module__2PkNtW__upAnimation}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__down{animation-name:line-module__2PkNtW__downAnimation}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__left{animation-name:line-module__2PkNtW__leftAnimation}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__right{animation-name:line-module__2PkNtW__rightAnimation}
+.get-in-touch-module__NVY_Ga__section .line-module__2PkNtW__active{animation-duration:1.5s;animation-delay:0;-webkit-animation-delay:0;-moz-animation-delay:0;animation-iteration-count:infinite}
+@keyframes line-module__2PkNtW__upAnimation{0%{transform:translateY(100%)}to{transform:translateY(-100%)}}
+@keyframes line-module__2PkNtW__downAnimation{0%{transform:translateY(-100%)}to{transform:translateY(100%)}}
+@keyframes line-module__2PkNtW__leftAnimation{0%{transform:translate(100%)}to{transform:translate(-100%)}}
+@keyframes line-module__2PkNtW__rightAnimation{0%{transform:translate(-100%)}to{transform:translate(100%)}}
+
+/* On-screen loading animations (entry from sides/up/down) */
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__rightAnimation{opacity:.2;transform:translate(-90%)}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__rightAnimationActive{animation:forwards on-screen-loading-module__zxNEcq__rightAnimation}
+@keyframes on-screen-loading-module__zxNEcq__rightAnimation{0%{opacity:.2;transform:translate(-90%)}to{opacity:1;transform:translate(0)}}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__leftAnimation{opacity:.2;transform:translate(90%)}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__leftAnimationActive{animation:forwards on-screen-loading-module__zxNEcq__leftAnimation}
+@keyframes on-screen-loading-module__zxNEcq__leftAnimation{0%{opacity:.2;transform:translate(90%)}to{opacity:1;transform:translate(0)}}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__upAnimation{opacity:.2;transform:translateY(90%)}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__upAnimationActive{animation:forwards on-screen-loading-module__zxNEcq__upAnimation}
+@keyframes on-screen-loading-module__zxNEcq__upAnimation{0%{opacity:.2;transform:translateY(90%)}to{opacity:1;transform:translateY(0)}}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__downAnimation{opacity:.2;transform:translateY(-90%)}
+.get-in-touch-module__NVY_Ga__section .on-screen-loading-module__zxNEcq__downAnimationActive{animation:forwards on-screen-loading-module__zxNEcq__downAnimation}
+@keyframes on-screen-loading-module__zxNEcq__downAnimation{0%{opacity:.2;transform:translateY(-90%)}to{opacity:1;transform:translateY(0)}}
