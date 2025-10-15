@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Property = {
   id: number
@@ -32,18 +32,42 @@ const soldProperties: Property[] = [
 ]
 
 export default function RecentlySold() {
+  const sectionRef = useRef<HTMLDivElement | null>(null)
   const prevRef = useRef<HTMLDivElement | null>(null)
   const nextRef = useRef<HTMLDivElement | null>(null)
   const pagRef = useRef<HTMLDivElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const sliderRef = useRef<HTMLDivElement | null>(null)
   const [swiperInst, setSwiperInst] = useState<any>(null)
+  
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const ratio = entry.intersectionRatio
+          if (ratio >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('rs-active')
+          }
+          if (ratio >= 0.8 && sliderRef.current) {
+            sliderRef.current.classList.add('rs-active')
+          }
+        })
+      },
+      { threshold: [0.5, 0.8] }
+    )
+    io.observe(section)
+    return () => io.disconnect()
+  }, [])
   return (
-    <section id="recently-sold" className="section-4-module__K9P0s__section section">
+    <section id="recently-sold" ref={sectionRef} className="section-4-module__K9P0s__section section">
       <div className="section-4-module__K9P0s__inner container">
         {/* Title styled identically to Properties for sale */}
         <div className="section-4-module__K9P0s__titleContainer">
-          <h2 className="ask-us-title">Recently sold properties</h2>
+          <h2 ref={titleRef} className="ask-us-title rs-prep rs-from-up">Recently sold properties</h2>
         </div>
-        <div className="section-4-module__K9P0s__slider">
+        <div ref={sliderRef} className="section-4-module__K9P0s__slider rs-prep rs-from-right">
           <Swiper
             spaceBetween={5}
             slidesPerView={5}

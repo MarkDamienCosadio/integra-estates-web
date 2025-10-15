@@ -1,8 +1,16 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
-export default function Hero() {
+export default function Hero({ onStarted, reveal }: { onStarted?: () => void, reveal?: boolean }) {
   const v0 = useRef<HTMLVideoElement | null>(null)
   const v1 = useRef<HTMLVideoElement | null>(null)
+  const delays = useMemo(() => {
+    const j = () => +(Math.random() * 0.15).toFixed(2)
+    const h1 = 0 + j()
+    const p = h1 + 1.0 + j()   // wait 1s after h1 begins
+    const b1 = p + 0.2 + j()   // then first button shortly after p
+    const b2 = p + 0.35 + j()  // then second button
+    return { h1, p, b1, b2 }
+  }, [])
 
   useEffect(() => {
     const a = v0.current
@@ -46,14 +54,21 @@ export default function Hero() {
     // Start with first video visible
     a.classList.add('visible')
     b.classList.add('hidden')
+    // Notify when hero actually starts playing
+    const onPlaying = () => {
+      try { onStarted && onStarted() } catch {}
+      a.removeEventListener('playing', onPlaying)
+    }
+    a.addEventListener('playing', onPlaying)
     ensurePlay(a)
     a.addEventListener('ended', onEnd)
 
     return () => {
+      a.removeEventListener('playing', onPlaying)
       a.removeEventListener('ended', onEnd)
       b.removeEventListener('ended', onEnd)
     }
-  }, [])
+  }, [onStarted])
 
   return (
     <section className="hero section-1-module__KWVB3q__section">
@@ -79,15 +94,33 @@ export default function Hero() {
       </video>
       <div className="hero__overlay">
         <div className="hero-content">
-          <h1 className="hero-tag">The agent you can trust</h1>
-          <p className="hero-desc">
+          <h1
+            className={`hero-tag reveal-left reveal-prep${reveal ? ' reveal-active' : ''}`}
+            style={reveal ? { animationDelay: `${delays.h1}s` } : undefined}
+          >
+            The agent you can trust
+          </h1>
+          <p
+            className={`hero-desc reveal-right reveal-prep${reveal ? ' reveal-active' : ''}`}
+            style={reveal ? { animationDelay: `${delays.p}s` } : undefined}
+          >
             Delivering exceptional customer service, communication and results.
             <br />
             With honesty and integrity at all times.
           </p>
           <div className="hero-ctas">
-            <a className="cta" href="#valuation">Book A Valuation</a>
-            <a className="cta secondary" href="https://integra-estates.com/search" target="_blank" rel="noreferrer">
+            <a
+              className={`cta reveal-up reveal-prep${reveal ? ' reveal-active' : ''}`}
+              style={reveal ? { animationDelay: `${delays.b1}s` } : undefined}
+              href="#valuation"
+            >
+              Book A Valuation
+            </a>
+            <a
+              className={`cta secondary reveal-up reveal-prep${reveal ? ' reveal-active' : ''}`}
+              style={reveal ? { animationDelay: `${delays.b2}s` } : undefined}
+              href="https://integra-estates.com/search" target="_blank" rel="noreferrer"
+            >
               Property Search
             </a>
           </div>

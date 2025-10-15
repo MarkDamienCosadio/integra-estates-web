@@ -1,13 +1,44 @@
+import { useEffect, useRef } from 'react'
+
 export default function Services() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const gridRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const sec = sectionRef.current
+    if (!sec) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const r = entry.intersectionRatio
+          if (r >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('srv-active')
+          }
+          if (r >= 0.8 && gridRef.current) {
+            // Stagger cards: add active class with incremental delay
+            const cards = gridRef.current.querySelectorAll('.service-card')
+            cards.forEach((card, i) => {
+              (card as HTMLElement).style.animationDelay = `${i * 0.2}s`
+              card.classList.add('srv-active')
+            })
+          }
+        })
+      },
+      { threshold: [0.5, 0.8] }
+    )
+    io.observe(sec)
+    return () => io.disconnect()
+  }, [])
   return (
-    <section id="services" className="services-section section">
+    <section id="services" ref={sectionRef} className="services-section section">
       <div className="services-inner container">
         <div className="services-titleContainer">
-          <h2 className="ask-us-title">Our services</h2>
+          <h2 ref={titleRef} className="ask-us-title srv-prep srv-from-up">Our services</h2>
         </div>
-        <div className="services-grid">
+        <div ref={gridRef} className="services-grid">
           <a
-            className="service-card"
+            className="service-card srv-prep srv-from-up"
             href="https://integra-estates.com/mortgage-advice"
             target="_blank"
             rel="noopener noreferrer"
@@ -35,7 +66,7 @@ export default function Services() {
           </a>
 
           <a
-            className="service-card"
+            className="service-card srv-prep srv-from-up"
             href="https://integra-estates.com/valuation"
             target="_blank"
             rel="noopener noreferrer"
@@ -63,7 +94,7 @@ export default function Services() {
           </a>
 
           <a
-            className="service-card"
+            className="service-card srv-prep srv-from-up"
             href="https://integra-estates.com/marketing-your-property"
             target="_blank"
             rel="noopener noreferrer"

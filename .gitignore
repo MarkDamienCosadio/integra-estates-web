@@ -12,9 +12,6 @@ dist
 dist-ssr
 *.local
 
-# Ignore large background videos (kept locally, not pushed)
-public/video/background/*.mp4
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

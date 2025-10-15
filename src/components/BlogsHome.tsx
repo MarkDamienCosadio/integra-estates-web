@@ -8,32 +8,44 @@ export default function BlogsHome() {
     {
       image: 'https://storage.googleapis.com/integra-estates/Integra-estates%20Sold.jpg',
       title: 'When Is the Best Time to Sell Your Home?',
-      link: '/blogs/Best-Time-To-Sell'
+      link: '/blogs/Best-Time-To-Sell',
+      author: 'Integra Estates',
+      date: 'Sep 2024'
     },
     {
       image: 'https://storage.googleapis.com/integra-estates/Green%20energy.jpg',
       title: 'What EPC Changes Mean for Landlords – And Why South East London & Kent Sellers Should Act Now',
-      link: '/blogs/EPC-Changes'
+      link: '/blogs/EPC-Changes',
+      author: 'Integra Estates',
+      date: 'Aug 2024'
     },
     {
       image: 'https://storage.googleapis.com/integra-estates/Outdoor%20space.jpg',
       title: 'Why Outdoor Space is Key In Todays Property Market',
-      link: '/blogs/Outdoor-Space'
+      link: '/blogs/Outdoor-Space',
+      author: 'Integra Estates',
+      date: 'Jul 2024'
     },
     {
       image: 'https://storage.googleapis.com/integra-estates/5%20years%20on.jpg',
       title: 'From Lockdown to Now: How the Housing Market Has Evolved',
-      link: '/blogs/Five-years-after-Covid'
+      link: '/blogs/Five-years-after-Covid',
+      author: 'Integra Estates',
+      date: 'Jun 2024'
     },
     {
       image: 'https://storage.googleapis.com/integra-estates/Hand%20House.jpg',
       title: 'Homebuying Expectations vs. Conveyancing Realities: Why The Process Takes Time.',
-      link: '/blogs/Homebuying-Expectations'
+      link: '/blogs/Homebuying-Expectations',
+      author: 'Integra Estates',
+      date: 'May 2024'
     },
     {
       image: 'https://storage.googleapis.com/integra-estates/Traffic.jpg',
       title: 'Properties on Main Roads vs Quieter Roads: What You Need to Know',
-      link: '/blogs/main-road-properties'
+      link: '/blogs/main-road-properties',
+      author: 'Integra Estates',
+      date: 'Apr 2024'
     }
   ]
 

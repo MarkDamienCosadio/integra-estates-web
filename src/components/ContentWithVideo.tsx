@@ -1,13 +1,41 @@
+import { useEffect, useRef } from 'react'
+
 export default function ContentWithVideo() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const leftRef = useRef<HTMLDivElement | null>(null)
+  const rightRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const sec = sectionRef.current
+    if (!sec) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const r = entry.intersectionRatio
+          if (r >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('cv-active')
+          }
+          if (r >= 0.8) {
+            leftRef.current?.classList.add('cv-active')
+            rightRef.current?.classList.add('cv-active')
+          }
+        })
+      },
+      { threshold: [0.5, 0.8] }
+    )
+    io.observe(sec)
+    return () => io.disconnect()
+  }, [])
   return (
-    <section className="content-with-video-module___A_Jma__section section">
+    <section ref={sectionRef} className="content-with-video-module___A_Jma__section section">
       {/* Top-centered section title */}
       <div className="content-with-video-module___A_Jma__title">
-        <h2 className="ask-us-title">Ask Us</h2>
+        <h2 ref={titleRef} className="ask-us-title cv-prep cv-from-up">Ask Us</h2>
       </div>
       <div className="content-with-video-module___A_Jma__content">
-        <div className="section-2-module__BLO-eq__info">
-          <div className="on-screen-loading-module__zxNEcq__rightAnimation on-screen-loading-module__zxNEcq__rightAnimationActive">
+        <div ref={leftRef} className="section-2-module__BLO-eq__info cv-prep cv-from-left">
+          <div>
             <h2>How do you sell your property with minimal stress?</h2>
             <h3>It's easy when you use an estate agent you can trust.</h3>
             <p>
@@ -29,8 +57,7 @@ export default function ContentWithVideo() {
         </div>
       </div>
 
-      <div className="content-with-video-module___A_Jma__video">
-        <div className="on-screen-loading-module__zxNEcq__upAnimation on-screen-loading-module__zxNEcq__upAnimationActive">
+      <div ref={rightRef} className="content-with-video-module___A_Jma__video cv-prep cv-from-right">
           <div className="console-module__pkht5q__container">
             <video
               src="https://storage.googleapis.com/integra-estates-website/videos/why-integra-estates.mp4#t=0.001"
@@ -44,7 +71,6 @@ export default function ContentWithVideo() {
               </svg>
             </div>
           </div>
-        </div>
       </div>
     </section>
   )
