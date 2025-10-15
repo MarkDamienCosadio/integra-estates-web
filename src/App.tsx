@@ -1,7 +1,7 @@
 import './App.css'
 import Hero from './components/Hero'
 import Header from './components/Header'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ScrollHint from './components/ScrollHint'
 import Footer from './components/Footer'
 import ContentWithVideo from './components/ContentWithVideo'
@@ -21,6 +21,8 @@ import BlogsHome from './components/BlogsHome'
 import GetInTouchSection from './components/GetInTouchSection'
 
 function HomePage() {
+  const [introVisible, setIntroVisible] = useState(true)
+  const [introHiding, setIntroHiding] = useState(false)
   useEffect(() => {
     const sections = Array.from(document.querySelectorAll('.section'))
     const io = new IntersectionObserver(
@@ -37,10 +39,35 @@ function HomePage() {
     return () => io.disconnect()
   }, [])
 
+  // Fallback: if hero doesn't start within 5s, hide overlay
+  useEffect(() => {
+    if (!introVisible) return
+    const t = setTimeout(() => {
+      setIntroHiding(true)
+      setTimeout(() => setIntroVisible(false), 850)
+    }, 5000)
+    return () => clearTimeout(t)
+  }, [introVisible])
+
+  const onHeroStarted = () => {
+    if (!introVisible) return
+    // Wait 2s after hero starts playing before hiding overlay
+    setTimeout(() => {
+      setIntroHiding(true)
+      // Match CSS transition duration
+      setTimeout(() => setIntroVisible(false), 850)
+    }, 2000)
+  }
+
   return (
     <>
+      {introVisible && (
+        <div className={`intro-overlay${introHiding ? ' intro-overlay--hide' : ''}`}>
+          <img src="/svg/logo-white.svg" alt="Integra Estates" className="intro-overlay__logo" />
+        </div>
+      )}
       <ScrollHint />
-      <Hero />
+      <Hero onStarted={onHeroStarted} reveal={introHiding} />
       <ContentWithVideo />
       <PropertyForSale />
       <RecentlySold />

@@ -1,18 +1,43 @@
 
+import { useEffect, useRef } from 'react'
+
 export default function GetInTouchSection() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const leftRefs = useRef<HTMLDivElement[]>([])
+  const rightRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const sec = sectionRef.current
+    if (!sec) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const r = entry.intersectionRatio
+          if (r >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('askus-active')
+          }
+          if (r >= 0.8) {
+            leftRefs.current.forEach((el) => el.classList.add('askus-active'))
+            rightRef.current?.classList.add('askus-active')
+          }
+        })
+      },
+      { threshold: [0.5, 0.8] }
+    )
+    io.observe(sec)
+    return () => io.disconnect()
+  }, [])
   return (
-    <section className="get-in-touch-module__NVY_Ga__section section">
+    <section ref={sectionRef} className="get-in-touch-module__NVY_Ga__section section">
       <div className="get-in-touch-module__NVY_Ga__content">
         <div className="get-in-touch-module__NVY_Ga__info">
-          <div
-            className="on-screen-loading-module__zxNEcq__rightAnimation on-screen-loading-module__zxNEcq__rightAnimationActive"
-            style={{ animationDuration: '800ms', animationDelay: '0ms' }}
-          >
-            <h2>Let's Talk</h2>
+          <div>
+            <h2 ref={titleRef} className="askus-prep askus-from-up">Let's Talk</h2>
           </div>
           <div
-            className="on-screen-loading-module__zxNEcq__rightAnimation on-screen-loading-module__zxNEcq__rightAnimationActive"
-            style={{ animationDuration: '800ms', animationDelay: '0ms' }}
+            ref={(el) => { if (el) leftRefs.current[0] = el }}
+            className="askus-prep askus-from-left"
           >
             <p>
               If you want to discuss your property, plans for the future, or just want some friendly advice. There'll be no pressure,
@@ -20,8 +45,8 @@ export default function GetInTouchSection() {
             </p>
           </div>
           <div
-            className="on-screen-loading-module__zxNEcq__rightAnimation on-screen-loading-module__zxNEcq__rightAnimationActive"
-            style={{ animationDuration: '800ms', animationDelay: '0ms' }}
+            ref={(el) => { if (el) leftRefs.current[1] = el }}
+            className="askus-prep askus-from-left"
           >
             <div className="get-in-touch-module__NVY_Ga__btn">
               <div className="animated-module__Rnzt8a__btn">
@@ -44,7 +69,7 @@ export default function GetInTouchSection() {
           </div>
         </div>
       </div>
-      <div className="get-in-touch-module__NVY_Ga__image">
+      <div ref={rightRef} className="get-in-touch-module__NVY_Ga__image askus-prep askus-from-right">
         <img
           src="https://storage.googleapis.com/integra-estates-website/imagesv2/get-in-touch.png"
           alt="get in touch"

@@ -1,7 +1,35 @@
-import React, { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function HomeBuyersGuide() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const paragraphRef = useRef<HTMLParagraphElement | null>(null)
   const videoRef = useRef<HTMLVideoElement | null>(null)
+
+  useEffect(() => {
+    const sec = sectionRef.current
+    if (!sec) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const r = entry.intersectionRatio
+          if (r >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('hbg-active')
+          }
+          if (r >= 0.7) {
+            paragraphRef.current?.classList.add('hbg-active')
+            if (videoRef.current) {
+              ;(videoRef.current as HTMLElement).style.animationDelay = '1s'
+              videoRef.current.classList.add('hbg-active')
+            }
+          }
+        })
+      },
+      { threshold: [0.5, 0.7] }
+    )
+    io.observe(sec)
+    return () => io.disconnect()
+  }, [])
 
   const sectionStyle: React.CSSProperties = {
     padding: '80px 0',
@@ -22,14 +50,14 @@ export default function HomeBuyersGuide() {
       {/* Title outside the section to match site headings */}
       <div className="section-4-module__KR0FYq__inner container">
         <div className="section-4-module__KR0FYq__titleContainer">
-          <h2 className="ask-us-title" style={{ marginTop: '4rem' }}>Home Buyers' Guide</h2>
+          <h2 ref={titleRef} className="ask-us-title hbg-prep hbg-from-up" style={{ marginTop: '4rem' }}>Home Buyers' Guide</h2>
         </div>
       </div>
 
-      <section className="section" style={sectionStyle}>
+      <section ref={sectionRef} className="section" style={sectionStyle}>
       <div className="container home-buyers-grid">
         <div>
-          <p style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+          <p ref={paragraphRef} className="hbg-prep hbg-from-left" style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
             Whether you are a first-time buyer or a seasoned homeowner needing an update,
             our comprehensive guide is an essential resource for navigating the complex
             real estate market. It demystifies the entire transaction with a clear, step-by-step
@@ -40,6 +68,7 @@ export default function HomeBuyersGuide() {
         <div>
           <video
             ref={videoRef}
+            className="hbg-prep hbg-from-up"
             src="https://storage.googleapis.com/integra-estates-website/videos/home-buyers-guide.mp4#t=0.001"
             style={videoStyle}
             controls

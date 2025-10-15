@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type Property = {
   id: number
@@ -50,18 +50,42 @@ const properties: Property[] = [
 ]
 
 export default function PropertyForSale() {
+  const sectionRef = useRef<HTMLDivElement | null>(null)
   const prevRef = useRef<HTMLDivElement | null>(null)
   const nextRef = useRef<HTMLDivElement | null>(null)
   const pagRef = useRef<HTMLDivElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const sliderRef = useRef<HTMLDivElement | null>(null)
   const [swiperInst, setSwiperInst] = useState<any>(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const ratio = entry.intersectionRatio
+          if (ratio >= 0.5 && titleRef.current) {
+            titleRef.current.classList.add('pfs-active')
+          }
+          if (ratio >= 0.8 && sliderRef.current) {
+            sliderRef.current.classList.add('pfs-active')
+          }
+        })
+      },
+      { threshold: [0.5, 0.8] }
+    )
+    io.observe(section)
+    return () => io.disconnect()
+  }, [])
   return (
-    <section id="property-for-sale" className="section-4-module__K9P0s__section section">
+    <section id="property-for-sale" ref={sectionRef} className="section-4-module__K9P0s__section section">
       <div className="section-4-module__K9P0s__inner container">
         {/* Top-centered section title matching ContentWithVideo */}
         <div className="section-4-module__K9P0s__titleContainer">
-          <h2 className="ask-us-title">Properties for sale</h2>
+          <h2 ref={titleRef} className="ask-us-title pfs-prep pfs-from-up">Properties for sale</h2>
         </div>
-        <div className="section-4-module__K9P0s__slider">
+        <div ref={sliderRef} className="section-4-module__K9P0s__slider pfs-prep pfs-from-right">
           <Swiper
             spaceBetween={5}
             slidesPerView={5}
