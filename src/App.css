@@ -81,6 +81,13 @@ h2, h3, h4 {
   color: var(--accent);
 }
 
+/* Make all h2 headings bigger and match the section title type style */
+h2 {
+  font-size: 2rem; /* larger default size */
+  font-weight: 400; /* align with section titles */
+  letter-spacing: 0.12rem; /* match section title tracking */
+}
+
 /* Ensure Ask Us title uses the same typeface as h1 */
 .ask-us-title {
   font-family: trajan-pro-3, serif;
@@ -448,6 +455,8 @@ html, body { height: 100%; }
   transform: translateY(-50%) rotate(90deg);
   transform-origin: right center;
   color: var(--scroll-text); /* icons + text use currentColor */
+  transition: opacity 300ms ease, filter 300ms ease; /* smooth in/out */
+  will-change: opacity;
 }
 
 .scroll-module__YhOxhG__icon {
@@ -462,9 +471,26 @@ html, body { height: 100%; }
   pointer-events: none;
 }
 
+/* Mobile-only visibility classes controlled by component */
+.scroll-module__YhOxhG__widget.is-hidden { opacity: 0; filter: blur(0.5px); pointer-events: none; }
+.scroll-module__YhOxhG__widget.is-visible { opacity: 1; filter: none; pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-module__YhOxhG__widget { transition: none; }
+}
+
 .scroll-module__YhOxhG__text {
   margin: 0 1rem;
   letter-spacing: 0.1rem;
+}
+
+/* Smaller ScrollHint on mobile while keeping auto-hide behavior */
+@media (max-width: 768px) {
+  .scroll-module__YhOxhG__widget { right: 1rem; top: 68%; }
+  .scroll-module__YhOxhG__icon { font-size: 1.25rem; }
+  .scroll-module__YhOxhG__text { font-size: 0.9rem; margin: 0 0.5rem; letter-spacing: 0.08rem; }
+  .scroll-module__YhOxhG__widget .line-module__2PkNtW__container { width: 6rem; height: 2px; }
+  .scroll-module__YhOxhG__widget .line-module__2PkNtW__line { width: 6rem; height: 2px; }
 }
 
 .line-module__2PkNtW__container {
@@ -671,7 +697,7 @@ html, body { height: 100%; }
 .footer-module__0XHgsa__footer {
   background: #0f0f0f;
   color: #fff;
-  margin-top: 3rem;
+  margin-top: 0; /* remove gap so it touches preceding section */
 }
 
 /* Contact widget: fixed lower-right (mirrors base site) */
@@ -768,15 +794,23 @@ html, body { height: 100%; }
 
 .footer-module__0XHgsa__footer h6 {
   margin: 0 0 0.75rem 0;
-  font-size: 0.95rem;
+  font-size: 1.2rem;
+  font-weight: 400; /* reduce thickness */
   letter-spacing: 0.02em;
   color: rgba(255,255,255,0.9);
 }
 .footer-module__0XHgsa__footer a {
   color: rgba(255,255,255,0.9);
   text-decoration: none;
+  transition: color 0.2s ease;
 }
-.footer-module__0XHgsa__footer a:hover { color: #fff; }
+.footer-module__0XHgsa__footer a:hover { color: var(--accent); }
+
+/* Important Links: increase line height for better readability */
+.important-links-module__aDn7ca__important a {
+  display: block;
+  line-height: 1.75;
+}
 
 .contact-us-module__ancMUG__contactsLinks,
 .quick-links-module__uq8DAq__quickLinks,

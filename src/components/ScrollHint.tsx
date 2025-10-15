@@ -1,8 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export default function ScrollHint() {
   // Detect whether the hero section is currently in the viewport
   const [inHeroView, setInHeroView] = useState(true)
+  // Mobile detection and scroll activity state for mobile-only visibility
+  const [isMobile, setIsMobile] = useState<boolean>(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)').matches : false
+  )
+  const [scrollActive, setScrollActive] = useState(false)
+  const hideTimerRef = useRef<number | null>(null)
 
   useEffect(() => {
     const hero = document.querySelector('.hero') as HTMLElement | null
@@ -24,6 +30,68 @@ export default function ScrollHint() {
     return () => io.disconnect()
   }, [])
 
+  // Watch viewport width for mobile/non-mobile changes
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    const updateIsMobile = () => setIsMobile(mq.matches)
+    updateIsMobile()
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
+    if (typeof mq.addEventListener === 'function') {
+      mq.addEventListener('change', onChange)
+    } else {
+      // Safari < 14 fallback
+      // @ts-ignore
+      mq.addListener(onChange)
+    }
+    return () => {
+      if (typeof mq.removeEventListener === 'function') {
+        mq.removeEventListener('change', onChange)
+      } else {
+        // @ts-ignore
+        mq.removeListener(onChange)
+      }
+    }
+  }, [])
+
+  // Mobile-only: show widget while scrolling, hide shortly after scroll stops
+  useEffect(() => {
+    const triggerVisible = () => {
+      if (!isMobile) return
+      setScrollActive(true)
+      if (hideTimerRef.current) {
+        window.clearTimeout(hideTimerRef.current)
+        hideTimerRef.current = null
+      }
+      hideTimerRef.current = window.setTimeout(() => {
+        setScrollActive(false)
+      }, 2000)
+    }
+    const onScroll = () => triggerVisible()
+    const onTouchMove = () => triggerVisible()
+    const onTouchStart = () => triggerVisible()
+    const onWheel = () => triggerVisible()
+    
+    window.addEventListener('scroll', onScroll, { passive: true })
+    document.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('touchmove', onTouchMove, { passive: true })
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('wheel', onWheel, { passive: true })
+    const mainEl = document.querySelector('main')
+    if (mainEl) mainEl.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      document.removeEventListener('scroll', onScroll)
+      window.removeEventListener('touchmove', onTouchMove)
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('wheel', onWheel)
+      if (mainEl) mainEl.removeEventListener('scroll', onScroll)
+      if (hideTimerRef.current) {
+        window.clearTimeout(hideTimerRef.current)
+        hideTimerRef.current = null
+      }
+    }
+  }, [isMobile])
+
   // When hero is in view: only display the right arrow animation
   // When other sections are in view: display both right and left
   const leftIconClass = `scroll-module__YhOxhG__icon${inHeroView ? ' scroll-module__YhOxhG__iconHidden' : ''}`
@@ -43,10 +111,14 @@ export default function ScrollHint() {
   const onLeftClick = () => scrollByAmount(-100)
   const onRightClick = () => scrollByAmount(100)
 
+  const baseWidgetClass = 'scroll-module__YhOxhG__widget scroll-module__YhOxhG__fixed'
+  const visibilityClass = isMobile ? (scrollActive ? ' is-visible' : ' is-hidden') : ' is-visible'
+
   return (
     <div
-      className="scroll-module__YhOxhG__widget scroll-module__YhOxhG__fixed"
+      className={`${baseWidgetClass}${visibilityClass}`}
       aria-label="Scroll"
+      aria-hidden={isMobile && !scrollActive}
     >
       {/* Left arrow: hidden and no animation when hero is in view */}
       <svg
