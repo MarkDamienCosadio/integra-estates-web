@@ -1,31 +1,45 @@
 .get-in-touch-module__NVY_Ga__section{width:100vw;height:-moz-fit-content;height:fit-content;margin-top:5rem;display:flex;flex-direction:column}
-.get-in-touch-module__NVY_Ga__content{flex-direction:column;justify-content:space-between;align-items:center;width:90%;height:100%;margin:0 auto;display:flex}
-.get-in-touch-module__NVY_Ga__info{width:100%;height:-moz-fit-content;height:fit-content;margin-bottom:5rem}
+.get-in-touch-module__NVY_Ga__content{flex-direction:column;justify-content:space-between;align-items:center;width:90%;height:100%;margin:0 auto;display:flex;gap:1.25rem}
+.get-in-touch-module__NVY_Ga__info{width:70%;height:-moz-fit-content;height:fit-content;margin-bottom:5rem;margin-left:0}
 .get-in-touch-module__NVY_Ga__info h2,.get-in-touch-module__NVY_Ga__info p{margin-top:3rem}
-.get-in-touch-module__NVY_Ga__btn{margin-top:6rem}
-.get-in-touch-module__NVY_Ga__image{width:100%;min-width:66rem;height:100%}
-.get-in-touch-module__NVY_Ga__img{object-fit:cover;-webkit-filter:grayscale(100)}
+.get-in-touch-module__NVY_Ga__info h2{font-size:clamp(1.5rem,2.5vw,2rem)}
+.get-in-touch-module__NVY_Ga__info p{font-size:clamp(1rem,1.8vw,1.2rem);line-height:1.75}
+.get-in-touch-module__NVY_Ga__btn{margin-top:1rem}
+.get-in-touch-module__NVY_Ga__image{width:100%;min-width:0;height:auto;line-height:0}
+.get-in-touch-module__NVY_Ga__img{object-fit:cover;-webkit-filter:grayscale(100);filter:grayscale(100%);display:block;margin:0;width:100%!important;height:auto!important}
 @media screen and (min-width:911px){
   .get-in-touch-module__NVY_Ga__section{flex-direction:row;justify-content:space-between;align-items:center}
   .get-in-touch-module__NVY_Ga__content{width:58%;margin:0}
-  .get-in-touch-module__NVY_Ga__info{width:100%;margin-bottom:0}
+  .get-in-touch-module__NVY_Ga__info{width:70%;margin-bottom:0}
   .get-in-touch-module__NVY_Ga__image{width:42%;min-width:auto}
+}
+
+/* Responsive adjustments for small and medium screens */
+@media screen and (max-width:480px){
+  .get-in-touch-module__NVY_Ga__info{width:90%;margin-bottom:2rem}
+  .get-in-touch-module__NVY_Ga__info h2,.get-in-touch-module__NVY_Ga__info p{margin-top:2rem}
+  .get-in-touch-module__NVY_Ga__btn{margin-top:.75rem}
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__title{font-size:clamp(16px,4vw,20px);padding:8px 12px}
+}
+
+@media screen and (min-width:481px) and (max-width:910px){
+  .get-in-touch-module__NVY_Ga__info{width:80%}
 }
 
 /* Button + side line (scoped to section) */
 .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__btn{cursor:pointer;width:-moz-fit-content;width:fit-content;position:relative}
-.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__title{letter-spacing:.1rem;border:1px solid;font-family:trajan-pro-3,serif;font-size:2rem;font-weight:400;transition:all .3s ease-in-out}
-.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 2rem 1.8rem 1.8rem}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__title{letter-spacing:.1rem;border:1px solid;font-family:trajan-pro-3,serif;font-size:20px;font-weight:400;transition:all .3s ease-in-out;padding:10px 14px;border-radius:4px}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:10px 14px}
 .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 2rem}
-.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__line{cursor:default;position:absolute;top:50%}
+.get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__line{display:none}
 .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__lineRight{right:-3rem}
 .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__lineLeft{left:-3rem}
 @media screen and (min-width:320px){
-  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 8.8rem 1.8rem 1.8rem}
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:10px 14px}
   .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 8.8rem}
 }
 @media screen and (min-width:810px){
-  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:1.8rem 5rem 1.8rem 1.8rem}
+  .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleRight{padding:10px 14px}
   .get-in-touch-module__NVY_Ga__section .animated-module__Rnzt8a__titleLeft{padding:1.8rem 1.8rem 1.8rem 5rem}
 }
 
