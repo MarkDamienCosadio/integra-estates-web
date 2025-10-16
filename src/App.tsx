@@ -1,7 +1,7 @@
 import './App.css'
 import Hero from './components/Hero'
 import Header from './components/Header'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import ScrollHint from './components/ScrollHint'
 import Footer from './components/Footer'
 import ContentWithVideo from './components/ContentWithVideo'
@@ -19,25 +19,14 @@ import BestTimeToSell from './components/BlogPages/BestTimeToSell'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BlogsHome from './components/BlogsHome'
 import GetInTouchSection from './components/GetInTouchSection'
+import AnimatedSection from './components/AnimatedSection'
+// Temporarily disabled Framer Motion
+// import { motion as m, AnimatePresence } from 'framer-motion'
 
 function HomePage() {
   const [introVisible, setIntroVisible] = useState(true)
   const [introHiding, setIntroHiding] = useState(false)
-  useEffect(() => {
-    const sections = Array.from(document.querySelectorAll('.section'))
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view')
-          }
-        })
-      },
-      { threshold: 0.15 }
-    )
-    sections.forEach((el) => io.observe(el))
-    return () => io.disconnect()
-  }, [])
+  const [introComplete, setIntroComplete] = useState(false)
 
   // Fallback: if hero doesn't start within 5s, hide overlay
   useEffect(() => {
@@ -55,30 +44,62 @@ function HomePage() {
     setTimeout(() => {
       setIntroHiding(true)
       // Match CSS transition duration
-      setTimeout(() => setIntroVisible(false), 850)
+      setTimeout(() => {
+        setIntroVisible(false)
+        setIntroComplete(true)
+        // Notify Hero that intro animation is completely finished
+        onIntroComplete()
+      }, 850)
     }, 2000)
+  }
+
+  const onIntroComplete = () => {
+    // This will be called when intro animation is completely finished
+    console.log('Intro animation completely finished')
   }
 
   return (
     <>
       {introVisible && (
         <div className={`intro-overlay${introHiding ? ' intro-overlay--hide' : ''}`}>
-          <img src="/svg/logo-white.svg" alt="Integra Estates" className="intro-overlay__logo" />
+          <img src="/svg/logo-black-white.svg" alt="Integra Estates" className="intro-overlay__logo" />
         </div>
       )}
       <ScrollHint />
-      <Hero onStarted={onHeroStarted} reveal={introHiding} />
-      <ContentWithVideo />
-      <PropertyForSale />
-      <RecentlySold />
-      <Services />
-      <MarketingWithUs />
-      <HomeBuyersGuide />
-      <MortgageAdvice />
-      <GoogleReviews />
-      <MeetTheTeam />
-      <BlogsHome />
-      <GetInTouchSection />
+      <Hero onStarted={onHeroStarted} introComplete={introComplete} reveal={introHiding} />
+      <AnimatedSection>
+        <ContentWithVideo />
+      </AnimatedSection>
+      <AnimatedSection>
+        <PropertyForSale />
+      </AnimatedSection>
+      <AnimatedSection>
+        <RecentlySold />
+      </AnimatedSection>
+      <AnimatedSection>
+        <Services />
+      </AnimatedSection>
+      <AnimatedSection>
+        <MarketingWithUs />
+      </AnimatedSection>
+      <AnimatedSection>
+        <HomeBuyersGuide />
+      </AnimatedSection>
+      <AnimatedSection>
+        <MortgageAdvice />
+      </AnimatedSection>
+      <AnimatedSection>
+        <GoogleReviews />
+      </AnimatedSection>
+      <AnimatedSection>
+        <MeetTheTeam />
+      </AnimatedSection>
+      <AnimatedSection>
+        <BlogsHome />
+      </AnimatedSection>
+      <AnimatedSection>
+        <GetInTouchSection />
+      </AnimatedSection>
     </>
   )
 }

@@ -1,49 +1,85 @@
-import { useEffect, useRef } from 'react'
+// @ts-ignore
+import { motion } from 'framer-motion'
 
 export default function ContentWithVideo() {
-  const sectionRef = useRef<HTMLElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const leftRef = useRef<HTMLDivElement | null>(null)
-  const rightRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const sec = sectionRef.current
-    if (!sec) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const r = entry.intersectionRatio
-          if (r >= 0.5 && titleRef.current) {
-            titleRef.current.classList.add('cv-active')
-          }
-          if (r >= 0.8) {
-            leftRef.current?.classList.add('cv-active')
-            rightRef.current?.classList.add('cv-active')
-          }
-        })
-      },
-      { threshold: [0.5, 0.8] }
-    )
-    io.observe(sec)
-    return () => io.disconnect()
-  }, [])
   return (
-    <section ref={sectionRef} className="content-with-video-module___A_Jma__section section">
-      {/* Top-centered section title */}
-      <div className="content-with-video-module___A_Jma__title">
-        <h2 ref={titleRef} className="ask-us-title cv-prep cv-from-up">Ask Us</h2>
-      </div>
+    <section className="content-with-video-module___A_Jma__section section">
+      {/* Top-centered section title - slides from right at 50% viewport */}
+      <motion.div 
+        className="content-with-video-module___A_Jma__title"
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.25, 0.46, 0.45, 0.94]
+        }}
+      >
+        <h2 className="ask-us-title">Ask Us</h2>
+      </motion.div>
+      
       <div className="content-with-video-module___A_Jma__content">
-        <div ref={leftRef} className="section-2-module__BLO-eq__info cv-prep cv-from-left">
+        <motion.div 
+          className="section-2-module__BLO-eq__info"
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ 
+            duration: 0.8, 
+            delay: 0.2,
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
+        >
           <div>
-            <h2>How do you sell your property with minimal stress?</h2>
-            <h3>It's easy when you use an estate agent you can trust.</h3>
-            <p>
+            <motion.h2
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.4,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
+              How do you sell your property with minimal stress?
+            </motion.h2>
+            <motion.h3
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.6,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
+              It's easy when you use an estate agent you can trust.
+            </motion.h3>
+            <motion.p
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
               Our business is built on honesty and integrity. This is intrinsic in everything we do, we treat everyone
               individually, offering a bespoke service and advice to all our clients. We believe in putting you first,
               treating your sale or purchase as if it was our very own property.
-            </p>
-            <div className="animated-module__Rnzt8a__btn">
+            </motion.p>
+            <motion.div 
+              className="animated-module__Rnzt8a__btn"
+              initial={{ opacity: 0, x: -100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 1.0,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
+            >
               <div className="animated-module__Rnzt8a__title animated-module__Rnzt8a__titleRight" style={{ borderColor: 'grey', color: 'white' }}>
                 Find out more
               </div>
@@ -52,12 +88,22 @@ export default function ContentWithVideo() {
                   <div className="line-module__2PkNtW__line line-module__2PkNtW__right" style={{ backgroundColor: '#6c9830', height: '2px', width: '6rem' }}></div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div ref={rightRef} className="content-with-video-module___A_Jma__video cv-prep cv-from-right">
+      <motion.div 
+        className="content-with-video-module___A_Jma__video"
+        initial={{ opacity: 0, x: -100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.3 }}
+        transition={{ 
+          duration: 0.8, 
+          delay: 1.2,
+          ease: [0.25, 0.46, 0.45, 0.94]
+        }}
+      >
           <div className="console-module__pkht5q__container">
             <video
               src="https://storage.googleapis.com/integra-estates-website/videos/why-integra-estates.mp4#t=0.001"
@@ -71,7 +117,7 @@ export default function ContentWithVideo() {
               </svg>
             </div>
           </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

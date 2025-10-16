@@ -7,8 +7,7 @@
   text-align: initial;
 }
 
-/* Set main background explicitly as requested */
-#root > main { background-color: rgb(13, 13, 15); }
+/* Main background removed as requested */
 
 .logo {
   height: 5em;
@@ -32,179 +31,15 @@
   }
 }
 
-/* Modern Animation System - Fast, Sleek, Mobile-Friendly */
-
-/* Hero zoom-in animations */
-@keyframes hero-zoom-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes hero-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(150px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Base section reveal system */
-.section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.section.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Element reveal animations - staggered and smooth */
-.reveal-prep {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Hero elements should be visible by default */
-.hero .reveal-prep,
-.hero .reveal-from-up,
-.hero .reveal-from-left,
-.hero .reveal-from-right {
-  opacity: 1;
-  transform: translate(0);
-}
-
-/* New hero animation classes */
-.hero-zoom-prep {
-  opacity: 0;
-  transform: scale(0.8);
-  animation: hero-zoom-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.hero-slide-prep {
-  opacity: 0;
-  transform: translateY(150px);
-  animation: hero-slide-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-/* Temporary fix: Make old animation elements visible by default for debugging */
-.askus-prep, .cv-prep, .pfs-prep, .rs-prep, .srv-prep, .mw-prep, .mt-prep, .hbg-prep,
-.askus-from-up, .cv-from-up, .pfs-from-up, .rs-from-up, .srv-from-up, .mw-from-up, .mt-from-up, .hbg-from-up,
-.askus-from-left, .cv-from-left, .hbg-from-left,
-.askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
-  opacity: 1 !important;
-  transform: translate(0) !important;
-}
-
-.reveal-from-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal-from-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal-from-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.reveal-active {
-  opacity: 1;
-  transform: translate(0);
-}
-
-/* Staggered animations for multiple elements */
-.reveal-stagger-1 { transition-delay: 0.1s; }
-.reveal-stagger-2 { transition-delay: 0.2s; }
-.reveal-stagger-3 { transition-delay: 0.3s; }
-.reveal-stagger-4 { transition-delay: 0.4s; }
-
-/* Mobile-optimized animations - reduced motion but still smooth */
-@media screen and (max-width: 768px) {
-  .section {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-  }
-  
-  .reveal-prep,
-  .reveal-from-up,
-  .reveal-from-left,
-  .reveal-from-right {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  }
-  
-  .reveal-from-left { transform: translateX(-20px); }
-  .reveal-from-right { transform: translateX(20px); }
-  
-  .reveal-stagger-1 { transition-delay: 0.05s; }
-  .reveal-stagger-2 { transition-delay: 0.1s; }
-  .reveal-stagger-3 { transition-delay: 0.15s; }
-  .reveal-stagger-4 { transition-delay: 0.2s; }
-}
-
-/* Performance optimizations */
-.section,
-.reveal-prep,
-.reveal-from-up,
-.reveal-from-left,
-.reveal-from-right,
-.google-review-card,
-.blogs-home-card,
-.service-card {
-  will-change: transform, opacity;
-  backface-visibility: hidden;
-  transform-style: preserve-3d;
-}
-
-/* Smooth scrolling for better UX */
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Respect user's motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  .section,
-  .reveal-prep,
-  .reveal-from-up,
-  .reveal-from-left,
-  .reveal-from-right,
-  .askus-prep, .cv-prep, .pfs-prep, .rs-prep, .srv-prep, .mw-prep, .mt-prep, .hbg-prep,
-  .askus-from-up, .cv-from-up, .pfs-from-up, .rs-from-up, .srv-from-up, .mw-from-up, .mt-from-up, .hbg-from-up,
-  .askus-from-left, .cv-from-left, .hbg-from-left,
-  .askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
+/* Hero Framer Motion initial states */
+.hero-content .hero-tag,
+.hero-content .hero-desc {
+  opacity: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -232,7 +67,6 @@ html {
 }
 
 body {
-  background-color: var(--bg);
   color: var(--text);
   margin: 0;
   font-family: hypatia-sans-pro, sans-serif;
@@ -484,14 +318,13 @@ h2 {
   border-radius: 0.75rem;
   padding: 1rem;
   text-align: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.section { opacity: 0; transform: translateY(8px); }
-.section.in-view { animation: fadeIn 600ms ease both; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .footer {
@@ -581,11 +414,51 @@ html, body { height: 100%; }
 }
 .hero-tag {
   font-size: 3.51rem; /* +30% increase */
-  line-height: .75;
+  line-height: 1.1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   margin: 0 0 0.75rem 0;
   font-family: trajan-pro-3, serif;
+}
+
+.trust-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.trust-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #5b8129, #466320);
+  border-radius: 2px;
+  animation: underline-expand 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes underline-expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Mobile styles for hero-tag */
+@media screen and (max-width: 768px) {
+  .hero-tag {
+    font-size: 2.5rem;
+    text-align: left;
+    line-height: 1.2;
+  }
+  
+  .hero-desc {
+    text-align: left;
+    font-size: 1rem;
+  }
 }
 .hero-desc {
   font-family: trajan-pro-3, serif;
@@ -608,7 +481,7 @@ html, body { height: 100%; }
   background: linear-gradient(90deg, #5b8129, #466320);
   color: #fff;
   border: none;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  /* transition: transform 200ms ease, box-shadow 200ms ease; - disabled for Framer Motion */
   will-change: transform;
 }
 .cta.secondary {
@@ -647,7 +520,7 @@ html, body { height: 100%; }
   transform: scale(1.12);
 }
 .intro-overlay__logo {
-  width: clamp(140px, 22vw, 280px);
+  width: clamp(200px, 35vw, 400px);
   height: auto;
   display: block;
   filter: drop-shadow(0 12px 24px rgba(0,0,0,0.35));
@@ -657,10 +530,6 @@ html, body { height: 100%; }
 /* On outro, zoom the logo to 300% */
 .intro-overlay--hide .intro-overlay__logo {
   transform: scale(3);
-}
-@media (prefers-reduced-motion: reduce) {
-  .intro-overlay { transition: opacity 1ms linear, transform 1ms linear; }
-  .intro-overlay__logo { transition: transform 1ms linear; }
 }
 
 .scroll-module__YhOxhG__widget {
@@ -1098,7 +967,6 @@ html, body { height: 100%; }
   display: flex;
   flex-direction: column;
   /* Base site uses a deep charcoal background behind this section */
-  background-color: #1b1b1b;
 }
 .content-with-video-module___A_Jma__title {
   width: 100%;
@@ -1244,7 +1112,6 @@ html, body { height: 100%; }
   width: 100%;
   box-sizing: border-box; /* include padding to avoid horizontal scroll */
   padding: 8rem 10%;
-  background-color: var(--bg);
 }
 .section-3-module__tXTAnG__inner { max-width: 1200px; margin: 0 auto; }
 .section-3-module__tXTAnG__title { text-align: left; margin: 0 0 2rem 0; }
@@ -1271,7 +1138,7 @@ html, body { height: 100%; }
   .section-3-module__tXTAnG__right { width: 40%; }
 }
 /* Section 4 — Property for sale */
-.section-4-module__K9P0s__section { width: 100%; padding: 4rem 0; background-color: var(--bg); }
+.section-4-module__K9P0s__section { width: 100%; padding: 4rem 0; }
 .section-4-module__K9P0s__inner { max-width: none; width: 100%; margin: 0; padding: 0; }
 .section-4-module__K9P0s__title { margin: 0 0 0.75rem 0; color: var(--accent); font-family: trajan-pro-3, serif; font-size: 30px; font-weight: 400; letter-spacing: 0.1rem; }
 .section-4-module__K9P0s__subtitle { margin: 0 0 2rem 0; color: var(--muted); font-size: 1.125rem; }
@@ -1494,7 +1361,6 @@ html, body { height: 100%; }
 /* Services section: three-column cards */
 .services-section {
   padding: 80px 0;
-  background-color: var(--bg);
 }
 
 /* Service cards reveal animations */
@@ -1517,10 +1383,6 @@ html, body { height: 100%; }
   }
 }
 
-.service-card.reveal-active {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Staggered service card animations */
 .service-card:nth-child(1) { transition-delay: 0.1s; }
@@ -2534,205 +2396,111 @@ html, body { height: 100%; }
 }
 
 /* Slide-in animations for next/prev */
+/* Smooth blog carousel animations */
 @keyframes blogs-slide-next {
-  from {
-    transform: translateX(24px);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(24px); opacity: 0.8; }
+  to { transform: translateX(0); opacity: 1; }
 }
+
 @keyframes blogs-slide-prev {
-  from {
-    transform: translateX(-24px);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(-24px); opacity: 0.8; }
+  to { transform: translateX(0); opacity: 1; }
 }
+
 .blogs-home-row.is-animating-next {
-  animation: blogs-slide-next 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: blogs-slide-next 400ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-/* Get In Touch styles are now in public/styles/get-in-touch.css */
 .blogs-home-row.is-animating-prev {
-  animation: blogs-slide-prev 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: blogs-slide-prev 400ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .blogs-home-row {
-    scroll-behavior: auto;
-  }
-  .blogs-home-card,
-  .blogs-home-btn,
-  .blogs-home-progress__bar {
-    transition: none;
-  }
-  .blogs-home-row.is-animating-next,
-  .blogs-home-row.is-animating-prev {
-    animation: none;
-  }
-}
-
-/* Legacy animation class mappings - now using modern system */
-.askus-prep, .cv-prep, .pfs-prep, .rs-prep, .srv-prep, .mw-prep, .mt-prep, .hbg-prep {
+/* Unified animation classes */
+.animate-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.askus-from-up, .cv-from-up, .pfs-from-up, .rs-from-up, .srv-from-up, .mw-from-up, .mt-from-up, .hbg-from-up {
+.animate-in-up {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.askus-from-left, .cv-from-left, .hbg-from-left {
+.animate-in-left {
   opacity: 0;
   transform: translateX(-40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
+.animate-in-right {
   opacity: 0;
   transform: translateX(40px);
-  transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-              transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.askus-active, .cv-active, .pfs-active, .rs-active, .srv-active, .mw-active, .mt-active, .hbg-active {
+.animate-active {
   opacity: 1;
   transform: translate(0);
 }
 
-/* Card hover animations - modern and fast */
+
+/* Card hover effects */
 .google-review-card,
 .blogs-home-card,
-.service-card {
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.service-card,
+.property-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .google-review-card:hover,
 .blogs-home-card:hover,
-.service-card:hover {
-  transform: translateY(-4px) scale(1.02);
+.service-card:hover,
+.property-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
-/* Button animations - quick and responsive */
-.cta,
+/* Button interactions */
 .reviews-read-more,
 .blogs-home-btn,
-.service-card .animated-module__Rnzt8a__btn {
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+button {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.cta:hover,
+.cta:hover {
+  /* transform: translateY(-2px); - disabled for Framer Motion */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
 .reviews-read-more:hover,
 .blogs-home-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Swiper navigation animations */
-.google-reviews .section-8-module__F4CToW__swiperBtn,
-.blogs-home-btn {
-  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              background-color 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.google-reviews .section-8-module__F4CToW__swiperBtn:hover,
-.blogs-home-btn:hover {
-  transform: scale(1.05);
-}
-
-/* Mobile optimizations for animations */
+/* Mobile optimizations */
 @media screen and (max-width: 768px) {
-  /* Ensure hero elements are visible on mobile */
-  .hero .reveal-prep,
-  .hero .reveal-from-up,
-  .hero .reveal-from-left,
-  .hero .reveal-from-right {
-    opacity: 1 !important;
-    transform: translate(0) !important;
-  }
-  
-  /* Ensure old animation elements are visible on mobile */
-  .askus-prep, .cv-prep, .pfs-prep, .rs-prep, .srv-prep, .mw-prep, .mt-prep, .hbg-prep,
-  .askus-from-up, .cv-from-up, .pfs-from-up, .rs-from-up, .srv-from-up, .mw-from-up, .mt-from-up, .hbg-from-up,
-  .askus-from-left, .cv-from-left, .hbg-from-left,
-  .askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
-    opacity: 1 !important;
-    transform: translate(0) !important;
-  }
-  
-  /* Hero text line height for mobile */
-  .hero .hero-tag {
-    line-height: 1.2;
-  }
-  
-  .hero .hero-desc {
-    line-height: 1.4;
-  }
-  
-  /* Ensure service cards are visible on mobile */
-  .services-section .service-card {
-    animation: none;
-  }
-  
-  .services-section .service-card.reveal-active {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-  .askus-prep, .cv-prep, .pfs-prep, .rs-prep, .srv-prep, .mw-prep, .mt-prep, .hbg-prep,
-  .askus-from-up, .cv-from-up, .pfs-from-up, .rs-from-up, .srv-from-up, .mw-from-up, .mt-from-up, .hbg-from-up,
-  .askus-from-left, .cv-from-left, .hbg-from-left,
-  .askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
-    opacity: 0;
+  .animate-in,
+  .animate-in-up,
+  .animate-in-left,
+  .animate-in-right {
     transform: translateY(20px);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   }
-  
-  .askus-from-left, .cv-from-left, .hbg-from-left {
-    transform: translateX(-20px);
-  }
-  
-  .askus-from-right, .cv-from-right, .pfs-from-right, .rs-from-right, .mw-from-right, .mt-from-right {
-    transform: translateX(20px);
-  }
-  
-  /* Service cards mobile animations */
-  .service-card {
-    opacity: 0;
-    transform: translateY(150px);
-    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.2s, 
-                transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  
-  .service-card.reveal-active {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .service-card:nth-child(1) { transition-delay: 0.1s; }
-  .service-card:nth-child(2) { transition-delay: 0.3s; }
-  .service-card:nth-child(3) { transition-delay: 0.5s; }
   
   .google-review-card:hover,
   .blogs-home-card:hover,
-  .service-card:hover {
-    transform: translateY(-2px) scale(1.01);
-  }
-  
-  .cta:hover,
-  .reviews-read-more:hover,
-  .blogs-home-btn:hover {
-    transform: translateY(-1px);
+  .service-card:hover,
+  .property-card:hover {
+    transform: translateY(-3px);
   }
 }
 

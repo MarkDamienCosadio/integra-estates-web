@@ -1,44 +1,11 @@
-import { useEffect, useRef } from 'react'
-
 export default function Services() {
-  const sectionRef = useRef<HTMLElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const gridRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const sec = sectionRef.current
-    if (!sec) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const r = entry.intersectionRatio
-          if (r >= 0.3 && titleRef.current) {
-            titleRef.current.classList.add('srv-active')
-          }
-          if (r >= 0.5 && gridRef.current) {
-            // Add reveal-active class to cards for staggered animation
-            const cards = gridRef.current.querySelectorAll('.service-card')
-            cards.forEach((card, i) => {
-              const delays = [100, 300, 500] // 100ms, 300ms, 500ms delays
-              setTimeout(() => {
-                card.classList.add('reveal-active')
-              }, delays[i] || 100) // Use specific delays or fallback to 100ms
-            })
-          }
-        })
-      },
-      { threshold: [0.3, 0.5] }
-    )
-    io.observe(sec)
-    return () => io.disconnect()
-  }, [])
   return (
-    <section id="services" ref={sectionRef} className="services-section section">
+    <section id="services" className="services-section section">
       <div className="services-inner container">
         <div className="services-titleContainer">
-          <h2 ref={titleRef} className="ask-us-title srv-prep srv-from-up">Our services</h2>
+          <h2 className="ask-us-title">Our services</h2>
         </div>
-        <div ref={gridRef} className="services-grid">
+        <div className="services-grid">
           <a
             className="service-card"
             href="https://integra-estates.com/mortgage-advice"

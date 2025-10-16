@@ -1,16 +1,11 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+// @ts-ignore
+import { motion } from 'framer-motion'
 
-export default function Hero({ onStarted, reveal }: { onStarted?: () => void, reveal?: boolean }) {
+export default function Hero({ onStarted, introComplete }: { onStarted?: () => void; introComplete?: boolean }) {
   const v0 = useRef<HTMLVideoElement | null>(null)
   const v1 = useRef<HTMLVideoElement | null>(null)
-  const delays = useMemo(() => {
-    const j = () => +(Math.random() * 0.15).toFixed(2)
-    const h1 = 0.5 + j()        // start 0.5s after intro logo
-    const p = h1 + 0.3 + j()    // paragraph starts shortly after h1
-    const b1 = p + 0.4 + j()   // first button after paragraph
-    const b2 = p + 0.6 + j()   // second button with delay
-    return { h1, p, b1, b2 }
-  }, [])
+  const [animationsReady, setAnimationsReady] = useState(false)
 
   useEffect(() => {
     const a = v0.current
@@ -54,21 +49,26 @@ export default function Hero({ onStarted, reveal }: { onStarted?: () => void, re
     // Start with first video visible
     a.classList.add('visible')
     b.classList.add('hidden')
-    // Notify when hero actually starts playing
-    const onPlaying = () => {
-      try { onStarted && onStarted() } catch {}
-      a.removeEventListener('playing', onPlaying)
-    }
-    a.addEventListener('playing', onPlaying)
-    ensurePlay(a)
-    a.addEventListener('ended', onEnd)
+    
+        ensurePlay(a)
+        a.addEventListener('ended', onEnd)
 
-    return () => {
-      a.removeEventListener('playing', onPlaying)
-      a.removeEventListener('ended', onEnd)
-      b.removeEventListener('ended', onEnd)
+        // Notify parent that hero has started
+        try { onStarted && onStarted() } catch {}
+
+        return () => {
+          a.removeEventListener('ended', onEnd)
+          b.removeEventListener('ended', onEnd)
+        }
+  }, [])
+
+  // Start animations when intro animation is completely finished
+  useEffect(() => {
+    if (introComplete) {
+      console.log('Intro animation finished, starting hero animations')
+      setAnimationsReady(true)
     }
-  }, [onStarted])
+  }, [introComplete])
 
   return (
     <section className="hero section-1-module__KWVB3q__section">
@@ -94,35 +94,63 @@ export default function Hero({ onStarted, reveal }: { onStarted?: () => void, re
       </video>
       <div className="hero__overlay">
         <div className="hero-content">
-          <h1
-            className={`hero-tag hero-zoom-prep${reveal ? ' hero-zoom-prep' : ''}`}
-            style={reveal ? { animationDelay: `${delays.h1}s` } : undefined}
+          {(() => { console.log('Hero render - animationsReady:', animationsReady); return null; })()}
+          <motion.h1 
+            className="hero-tag"
+            initial={{ opacity: 0, x: -100 }}
+            animate={animationsReady ? { opacity: 1, x: 0 } : {}}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
           >
             The agent you can trust
-          </h1>
-          <p
-            className={`hero-desc hero-zoom-prep${reveal ? ' hero-zoom-prep' : ''}`}
-            style={reveal ? { animationDelay: `${delays.p}s` } : undefined}
+          </motion.h1>
+          <motion.p 
+            className="hero-desc"
+            initial={{ opacity: 0, x: 100 }}
+            animate={animationsReady ? { opacity: 1, x: 0 } : {}}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.3,
+              ease: [0.25, 0.46, 0.45, 0.94]
+            }}
           >
             Delivering exceptional customer service, communication and results.
             <br />
             With honesty and integrity at all times.
-          </p>
+          </motion.p>
           <div className="hero-ctas">
-            <a
-              className={`cta hero-slide-prep${reveal ? ' hero-slide-prep' : ''}`}
-              style={reveal ? { animationDelay: `${delays.b1}s` } : undefined}
+            {(() => { console.log('Button render - animationsReady:', animationsReady); return null; })()}
+            <motion.a 
+              className="cta" 
               href="#valuation"
+              initial={{ opacity: 0, y: 50 }}
+              animate={animationsReady ? { opacity: 1, y: 0 } : {}}
+              transition={{ 
+                duration: 0.8, 
+                delay: 1.0,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
             >
               Book A Valuation
-            </a>
-            <a
-              className={`cta secondary hero-slide-prep${reveal ? ' hero-slide-prep' : ''}`}
-              style={reveal ? { animationDelay: `${delays.b2}s` } : undefined}
-              href="https://integra-estates.com/search" target="_blank" rel="noreferrer"
+            </motion.a>
+            <motion.a 
+              className="cta secondary" 
+              href="https://integra-estates.com/search" 
+              target="_blank" 
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 50 }}
+              animate={animationsReady ? { opacity: 1, y: 0 } : {}}
+              transition={{ 
+                duration: 0.8, 
+                delay: 1.2,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
             >
               Property Search
-            </a>
+            </motion.a>
           </div>
         </div>
       </div>
