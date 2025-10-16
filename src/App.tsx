@@ -47,16 +47,10 @@ function HomePage() {
       setTimeout(() => {
         setIntroVisible(false)
         setIntroComplete(true)
-        // Notify Hero that intro animation is completely finished
-        onIntroComplete()
       }, 850)
     }, 2000)
   }
 
-  const onIntroComplete = () => {
-    // This will be called when intro animation is completely finished
-    console.log('Intro animation completely finished')
-  }
 
   return (
     <>
@@ -66,7 +60,7 @@ function HomePage() {
         </div>
       )}
       <ScrollHint />
-      <Hero onStarted={onHeroStarted} introComplete={introComplete} reveal={introHiding} />
+      <Hero onStarted={onHeroStarted} introComplete={introComplete} />
       <AnimatedSection>
         <ContentWithVideo />
       </AnimatedSection>
