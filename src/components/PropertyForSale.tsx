@@ -88,7 +88,7 @@ export default function PropertyForSale() {
           className="section-4-module__K9P0s__titleContainer"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: false, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ 
             duration: 0.8, 
             ease: [0.25, 0.46, 0.45, 0.94]
