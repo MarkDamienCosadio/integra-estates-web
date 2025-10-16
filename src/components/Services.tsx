@@ -12,20 +12,22 @@ export default function Services() {
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.5 && titleRef.current) {
+          if (r >= 0.3 && titleRef.current) {
             titleRef.current.classList.add('srv-active')
           }
-          if (r >= 0.8 && gridRef.current) {
-            // Stagger cards: add active class with incremental delay
+          if (r >= 0.5 && gridRef.current) {
+            // Add reveal-active class to cards for staggered animation
             const cards = gridRef.current.querySelectorAll('.service-card')
             cards.forEach((card, i) => {
-              (card as HTMLElement).style.animationDelay = `${i * 0.2}s`
-              card.classList.add('srv-active')
+              const delays = [100, 300, 500] // 100ms, 300ms, 500ms delays
+              setTimeout(() => {
+                card.classList.add('reveal-active')
+              }, delays[i] || 100) // Use specific delays or fallback to 100ms
             })
           }
         })
       },
-      { threshold: [0.5, 0.8] }
+      { threshold: [0.3, 0.5] }
     )
     io.observe(sec)
     return () => io.disconnect()
@@ -38,7 +40,7 @@ export default function Services() {
         </div>
         <div ref={gridRef} className="services-grid">
           <a
-            className="service-card srv-prep srv-from-up"
+            className="service-card"
             href="https://integra-estates.com/mortgage-advice"
             target="_blank"
             rel="noopener noreferrer"
@@ -66,7 +68,7 @@ export default function Services() {
           </a>
 
           <a
-            className="service-card srv-prep srv-from-up"
+            className="service-card"
             href="https://integra-estates.com/valuation"
             target="_blank"
             rel="noopener noreferrer"
@@ -94,7 +96,7 @@ export default function Services() {
           </a>
 
           <a
-            className="service-card srv-prep srv-from-up"
+            className="service-card"
             href="https://integra-estates.com/marketing-your-property"
             target="_blank"
             rel="noopener noreferrer"
