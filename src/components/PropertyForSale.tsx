@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import { useEffect, useRef, useState } from 'react'
+// @ts-ignore
+import { motion } from 'framer-motion'
 
 type Property = {
   id: number
@@ -81,10 +83,19 @@ export default function PropertyForSale() {
   return (
     <section id="property-for-sale" ref={sectionRef} className="section-4-module__K9P0s__section section">
       <div className="section-4-module__K9P0s__inner container">
-        {/* Top-centered section title matching ContentWithVideo */}
-        <div className="section-4-module__K9P0s__titleContainer">
-          <h2 ref={titleRef} className="ask-us-title pfs-prep pfs-from-up">Properties for sale</h2>
-        </div>
+        {/* Top-centered section title - slides from right at 50% viewport */}
+        <motion.div 
+          className="section-4-module__K9P0s__titleContainer"
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ 
+            duration: 0.8, 
+            ease: [0.25, 0.46, 0.45, 0.94]
+          }}
+        >
+          <h2 className="ask-us-title">Properties for sale</h2>
+        </motion.div>
         <div ref={sliderRef} className="section-4-module__K9P0s__slider pfs-prep pfs-from-right">
           <Swiper
             spaceBetween={5}
