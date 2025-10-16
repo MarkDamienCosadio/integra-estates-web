@@ -1247,16 +1247,7 @@ html, body { height: 100%; }
 /* Clone of homepage section: section-4-module__KR0FYq__section */
 .section-4-module__KR0FYq__section {
   padding: 80px 0;
-  /* Use the marketing image as a full-section background with a subtle dark overlay */
-  background:
-    linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), /* ~70% brightness overall */
-    linear-gradient(to right,
-      rgba(27,27,27,0) 0%,
-      rgba(27,27,27,0.12) 45%,
-      rgba(27,27,27,0.5) 75%,
-      rgba(27,27,27,0.72) 100%
-    ),
-    url('/images/marketing-with-us.jpg') right center / 110% no-repeat;
+  background: #2c2c2c;
   position: relative; /* allow absolute-positioned title overlay */
 }
 .section-4-module__KR0FYq__inner {
@@ -2124,7 +2115,7 @@ html, body { height: 100%; }
 }
 
 .lets-talk-section {
-  background: #f5f5f5;
+  background: #2c2c2c;
   padding: 4rem 2rem;
   text-align: center;
   margin-top: 3rem;
@@ -2229,6 +2220,7 @@ html, body { height: 100%; }
 /* Ensure the section allows overflow for scaled cards */
 .section {
   overflow: visible;
+  background-color: #2c2c2c;
 }
 
 .blogs-home-row {
