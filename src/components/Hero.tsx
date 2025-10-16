@@ -5,10 +5,10 @@ export default function Hero({ onStarted, reveal }: { onStarted?: () => void, re
   const v1 = useRef<HTMLVideoElement | null>(null)
   const delays = useMemo(() => {
     const j = () => +(Math.random() * 0.15).toFixed(2)
-    const h1 = 0 + j()
-    const p = h1 + 1.0 + j()   // wait 1s after h1 begins
-    const b1 = p + 0.2 + j()   // then first button shortly after p
-    const b2 = p + 0.35 + j()  // then second button
+    const h1 = 0.5 + j()        // start 0.5s after intro logo
+    const p = h1 + 0.3 + j()    // paragraph starts shortly after h1
+    const b1 = p + 0.4 + j()   // first button after paragraph
+    const b2 = p + 0.6 + j()   // second button with delay
     return { h1, p, b1, b2 }
   }, [])
 
@@ -95,13 +95,13 @@ export default function Hero({ onStarted, reveal }: { onStarted?: () => void, re
       <div className="hero__overlay">
         <div className="hero-content">
           <h1
-            className={`hero-tag reveal-left reveal-prep${reveal ? ' reveal-active' : ''}`}
+            className={`hero-tag hero-zoom-prep${reveal ? ' hero-zoom-prep' : ''}`}
             style={reveal ? { animationDelay: `${delays.h1}s` } : undefined}
           >
             The agent you can trust
           </h1>
           <p
-            className={`hero-desc reveal-right reveal-prep${reveal ? ' reveal-active' : ''}`}
+            className={`hero-desc hero-zoom-prep${reveal ? ' hero-zoom-prep' : ''}`}
             style={reveal ? { animationDelay: `${delays.p}s` } : undefined}
           >
             Delivering exceptional customer service, communication and results.
@@ -110,14 +110,14 @@ export default function Hero({ onStarted, reveal }: { onStarted?: () => void, re
           </p>
           <div className="hero-ctas">
             <a
-              className={`cta reveal-up reveal-prep${reveal ? ' reveal-active' : ''}`}
+              className={`cta hero-slide-prep${reveal ? ' hero-slide-prep' : ''}`}
               style={reveal ? { animationDelay: `${delays.b1}s` } : undefined}
               href="#valuation"
             >
               Book A Valuation
             </a>
             <a
-              className={`cta secondary reveal-up reveal-prep${reveal ? ' reveal-active' : ''}`}
+              className={`cta secondary hero-slide-prep${reveal ? ' hero-slide-prep' : ''}`}
               style={reveal ? { animationDelay: `${delays.b2}s` } : undefined}
               href="https://integra-estates.com/search" target="_blank" rel="noreferrer"
             >
