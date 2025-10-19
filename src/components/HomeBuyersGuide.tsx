@@ -33,7 +33,7 @@ export default function HomeBuyersGuide() {
 
   const sectionStyle: React.CSSProperties = {
     padding: '80px 0',
-    background: '#0d0d0f',
+    background: '#141414',
   }
   // grid styles moved to CSS class .home-buyers-grid for responsiveness
   const videoStyle: React.CSSProperties = {

@@ -95,8 +95,8 @@ export default function ContentWithVideo() {
 
       <motion.div 
         className="content-with-video-module___A_Jma__video"
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ 
           duration: 0.8, 
@@ -104,19 +104,19 @@ export default function ContentWithVideo() {
           ease: [0.25, 0.46, 0.45, 0.94]
         }}
       >
-          <div className="console-module__pkht5q__container">
-            <video
-              src="https://storage.googleapis.com/integra-estates-website/videos/why-integra-estates.mp4#t=0.001"
-              className="console-module__pkht5q__video"
-              controls
-            />
-            <div className="console-module__pkht5q__playBtn" aria-hidden="true">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path fill="none" d="M0 0h24v24H0z"></path>
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5l7-4.5-7-4.5v9z"></path>
-              </svg>
-            </div>
+        <div className="console-module__pkht5q__container">
+          <video
+            src="https://storage.googleapis.com/integra-estates-website/videos/why-integra-estates.mp4#t=0.001"
+            className="console-module__pkht5q__video"
+            controls
+          />
+          <div className="console-module__pkht5q__playBtn" aria-hidden="true">
+            <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+              <path fill="none" d="M0 0h24v24H0z"></path>
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2.5-3.5l7-4.5-7-4.5v9z"></path>
+            </svg>
           </div>
+        </div>
       </motion.div>
     </section>
   )

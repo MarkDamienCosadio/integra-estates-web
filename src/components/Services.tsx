@@ -1,11 +1,60 @@
+import { useEffect, useRef } from 'react'
+
 export default function Services() {
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const gridRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const titleEl = titleRef.current
+    const gridEl = gridRef.current
+
+    const titleObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && titleEl) {
+            titleEl.classList.add('services-active')
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+
+    const gridObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && gridEl) {
+            gridEl.classList.add('services-active')
+            
+            // Add staggered animation to each card
+            const cards = gridEl.querySelectorAll('.service-card')
+            cards.forEach((card, index) => {
+              const delays = [400, 800, 1000] // Card 1: 400ms, Card 2: 800ms, Card 3: 1000ms
+              setTimeout(() => {
+                card.classList.add('services-active')
+              }, delays[index] || 1000) // Use defined delays or fallback to 1000ms
+            })
+          }
+        })
+      },
+      { threshold: 0.25 }
+    )
+
+    if (titleEl) titleObserver.observe(titleEl)
+    if (gridEl) gridObserver.observe(gridEl)
+
+    return () => {
+      titleObserver.disconnect()
+      gridObserver.disconnect()
+    }
+  }, [])
   return (
-    <section id="services" className="services-section section">
+    <section id="services" ref={sectionRef} className="services-section section">
       <div className="services-inner container">
         <div className="services-titleContainer">
-          <h2 className="ask-us-title">Our services</h2>
+          <h2 ref={titleRef} className="ask-us-title services-prep services-from-right">Our services</h2>
         </div>
-        <div className="services-grid">
+        <div ref={gridRef} className="services-grid">
           <a
             className="service-card"
             href="https://integra-estates.com/mortgage-advice"

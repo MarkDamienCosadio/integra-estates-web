@@ -65,7 +65,7 @@ export default function RecentlySold() {
       <div className="section-4-module__K9P0s__inner container">
         {/* Title styled identically to Properties for sale */}
         <div className="section-4-module__K9P0s__titleContainer">
-          <h2 ref={titleRef} className="ask-us-title rs-prep rs-from-up">Recently sold properties</h2>
+          <h2 ref={titleRef} className="ask-us-title rs-prep rs-from-left">Recently sold properties</h2>
         </div>
         <div ref={sliderRef} className="section-4-module__K9P0s__slider rs-prep rs-from-right">
           <Swiper
