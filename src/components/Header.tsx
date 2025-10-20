@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function Header() {
   const [solid, setSolid] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
     const header = document.querySelector('.main-header-module__hE-5va__top') as HTMLElement | null
@@ -96,7 +98,26 @@ export default function Header() {
         </Link>
       </div>
       <div className="nav-module__v4Ym_W__nav">
-        <button className="nav-module__XP3B7G__navButton" aria-label="Open navigation">
+        <button
+          ref={buttonRef}
+          className={`nav-module__XP3B7G__navButton${navOpen ? ' nav-button--active' : ''}`}
+          aria-label="Open navigation"
+          aria-pressed={navOpen}
+          onClick={(e) => {
+            const btn = buttonRef.current
+            if (!btn) return
+            const rect = btn.getBoundingClientRect()
+            const x = e.clientX - rect.left
+            const y = e.clientY - rect.top
+            const size = Math.max(rect.width, rect.height) * 1.8
+            btn.style.setProperty('--ripple-x', `${x}px`)
+            btn.style.setProperty('--ripple-y', `${y}px`)
+            btn.style.setProperty('--ripple-size', `${size}px`)
+            btn.classList.add('nav-button--pulse')
+            setTimeout(() => btn.classList.remove('nav-button--pulse'), 500)
+            setNavOpen((prev) => !prev)
+          }}
+        >
           <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
             <svg
               stroke="currentColor"

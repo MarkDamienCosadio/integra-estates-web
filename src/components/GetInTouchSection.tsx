@@ -18,8 +18,16 @@ export default function GetInTouchSection() {
             titleRef.current.classList.add('askus-active')
           }
           if (r >= 0.8) {
-            leftRefs.current.forEach((el) => el.classList.add('askus-active'))
-            rightRef.current?.classList.add('askus-active')
+            // Staggered animation for left elements
+            leftRefs.current.forEach((el, index) => {
+              setTimeout(() => {
+                el.classList.add('askus-active')
+              }, index * 200) // 200ms delay between each element
+            })
+            // Right element with delay after left elements
+            setTimeout(() => {
+              rightRef.current?.classList.add('askus-active')
+            }, leftRefs.current.length * 200 + 200)
           }
         })
       },

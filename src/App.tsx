@@ -11,7 +11,8 @@ import MarketingWithUs from './components/MarketingWithUs'
 import Services from './components/Services'
 import HomeBuyersGuide from './components/HomeBuyersGuide'
 import MortgageAdvice from './components/MortgageAdvice'
-import GoogleReviews from './components/GoogleReviews'
+import ClientsSay from './components/ClientsSay'
+// import GoogleReviews from './components/GoogleReviews'
 import MeetTheTeam from './components/MeetTheTeam'
 // import Blogs from './components/Blogs'
 import BlogPost from './components/BlogPost'
@@ -83,8 +84,11 @@ function HomePage() {
         <MortgageAdvice />
       </AnimatedSection>
       <AnimatedSection>
-        <GoogleReviews />
+        <ClientsSay />
       </AnimatedSection>
+      {/* <AnimatedSection>
+        <GoogleReviews />
+      </AnimatedSection> */}
       <AnimatedSection>
         <MeetTheTeam />
       </AnimatedSection>

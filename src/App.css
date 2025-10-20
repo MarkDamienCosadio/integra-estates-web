@@ -164,6 +164,154 @@ h2 {
   .home-buyers-grid { grid-template-columns: 1fr; }
 }
 
+/* Remove top space from Home Buyers Guide section */
+.section:has(.home-buyers-grid) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Add top space to Expert Mortgage Advice title */
+.section-4-module__KR0FYq__inner:has(.ask-us-title.ma-prep) {
+  padding-top: 5rem;
+  margin-top: 5rem;
+}
+
+/* Remove top space from Mortgage Advice section */
+#mortgage-advice.mortgage-advice-section.section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Add top space to Meet the Team title */
+.section-4-module__KR0FYq__inner:has(.ask-us-title.mt-prep) {
+  padding-top: 3rem;
+  margin-top: 3rem;
+}
+
+/* Remove top space from Meet the Team section */
+#meet-the-team.meet-the-team-section.section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Remove bottom space from Get In Touch section */
+.get-in-touch-module__NVY_Ga__section.section {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+  position: relative;
+}
+
+/* Add green line at bottom of Get In Touch section */
+.get-in-touch-module__NVY_Ga__section.section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, 
+    var(--accent) 0%, 
+    #7aa63a 50%, 
+    var(--accent) 100%);
+  z-index: 1;
+}
+
+/* Add bottom padding to Get In Touch image */
+.get-in-touch-module__NVY_Ga__img {
+  padding-bottom: 2px;
+}
+
+/* Position footer logo in bottom right corner */
+.footer-module__0XHgsa__container {
+  position: relative;
+}
+
+.footer-module__0XHgsa__logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.footer-module__0XHgsa__logo img {
+  height: 60px;
+  width: auto;
+}
+
+/* Video hover effects */
+video {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+video:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(108, 152, 48, 0.3);
+  filter: brightness(1.05);
+}
+
+/* Specific video hover effects */
+.console-module__pkht5q__video:hover {
+  transform: scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(108, 152, 48, 0.3);
+  filter: brightness(1.05);
+}
+
+.hero__video:hover {
+  transform: scale(1.01);
+  filter: brightness(1.1);
+}
+
+/* Home Buyers Guide video hover */
+.hbg-prep.hbg-from-right:hover {
+  transform: scale(1.02) translateX(0);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 2px rgba(108, 152, 48, 0.3);
+}
+
+/* Let's Talk section animations */
+.askus-prep {
+  will-change: opacity, transform;
+}
+
+.askus-prep.askus-from-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.askus-prep.askus-from-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.askus-prep.askus-from-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.askus-prep.askus-active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .askus-prep.askus-from-up,
+  .askus-prep.askus-from-left,
+  .askus-prep.askus-from-right {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
 /* Mortgage Advice description responsiveness */
 .mortgage-desc { width: 60%; }
 @media (max-width: 768px) {
@@ -176,61 +324,7 @@ h2 {
   .background-image-with-ani-btn-module__KzAnOq__info { padding: 48px 1rem; }
 }
 
-/* Google Reviews (isolated styles) */
-.google-reviews .reviews-layout {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-template-rows: auto auto auto auto;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-.google-reviews .reviews-title { grid-column: 1 / -1; grid-row: 1; text-align: center; justify-self: center; }
-.google-reviews .reviews-controls {
-  grid-column: 1 / -1; grid-row: 4;
-  display: flex; align-items: center; justify-content: center;
-  gap: 0.75rem; margin-top: 0.5rem;
-}
-.google-reviews .reviews-aside {
-  grid-column: 1 / -1; grid-row: 2;
-  align-self: center; justify-self: center;
-  margin-left: 0; width: 180px;
-  margin-inline: auto; /* keep margin-top from being reset */
-  transform: none; /* remove any transform on the aside container */
-}
-.google-reviews .reviews-swiper-wrap {
-  grid-column: 1 / -1; grid-row: 3;
-  max-width: 1100px; margin: 0 auto;
-  overflow: visible;
-  padding: 60px 0 20px 0;
-}
-
-/* Tablet collapse to single column */
-@media (max-width: 900px) {
-  .google-reviews .reviews-layout { grid-template-columns: 1fr; }
-  .google-reviews .reviews-title,
-  .google-reviews .reviews-controls,
-  .google-reviews .reviews-aside,
-  .google-reviews .reviews-swiper-wrap { grid-column: 1; }
-  .google-reviews .reviews-aside { width: 140px; margin-left: 0; margin-inline: auto; }
-  .google-reviews .reviews-controls { gap: 0.5rem; }
-}
-
-/* Mobile: center everything and stabilize slider height */
-@media (max-width: 640px) {
-  .google-reviews .reviews-swiper-wrap { 
-    max-width: 100%; 
-    width: 100%; 
-    overflow: visible;
-    padding: 15px 0;
-  }
-  .google-reviews .reviews-title { text-align: center; }
-  .google-reviews .reviews-aside { justify-self: center; margin: 0 auto; transform: scale(0.9); }
-  .google-reviews .reviews-swiper { 
-    min-height: 240px; 
-    overflow: visible;
-  }
-}
+/* Google Reviews styles removed */
 
 .hero-intg {
   position: relative;
@@ -1295,6 +1389,7 @@ html, body { height: 100%; }
   padding: 0 0 40px 0;
   background-color: #141414;
   position: relative;
+  margin-top: 0;
 }
 
 /* Marketing With Us animations */
@@ -1335,6 +1430,7 @@ html, body { height: 100%; }
   margin: 0 6rem;
   padding: 0 1rem;
   margin-top: 0;
+  padding-top: 0;
 }
 
 .marketing-with-us-content {
@@ -1345,6 +1441,7 @@ html, body { height: 100%; }
   min-height: 400px;
   margin-top: 0;
   padding-top: 0;
+  margin-bottom: 0;
 }
 
 .marketing-with-us-image-column {
@@ -1390,6 +1487,335 @@ html, body { height: 100%; }
 
 .marketing-with-us-article p:first-child {
   margin-top: 0;
+}
+
+/* Meet The Team — mirror Marketing With Us layout */
+.meet-the-team-section {
+  padding: 0 0 40px 0;
+  background-color: #141414;
+  position: relative;
+}
+
+.meet-the-team-container {
+  max-width: 100%;
+  margin: 0 6rem;
+  padding: 0 1rem;
+  margin-top: 0;
+}
+
+.meet-the-team-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+  min-height: 400px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.meet-the-team-image-column {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s ease-out;
+}
+
+.meet-the-team-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.meet-the-team-text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 1rem 0;
+}
+
+.meet-the-team-article {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 0.8s ease-out;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.meet-the-team-article p {
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+  line-height: 1.2;
+  font-size: 1.2rem;
+}
+
+.meet-the-team-article p:first-child {
+  margin-top: 0;
+}
+
+/* Title/columns active states */
+.ask-us-title.mt-prep {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease-out;
+}
+.ask-us-title.mt-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.meet-the-team-image-column.mt-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.meet-the-team-article.mt-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.meet-the-team-article .animated-module__Rnzt8a__btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.meet-the-team-article .animated-module__Rnzt8a__btn.mt-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Paragraph prep/activation (mirrors MW) */
+.mt-prep.mt-from-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s ease-out;
+}
+.mt-prep.mt-from-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 0.8s ease-out;
+}
+.mt-prep.mt-from-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease-out;
+}
+.mt-prep.mt-active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+/* Mobile responsive design */
+@media (max-width: 1024px) {
+  .meet-the-team-content {
+    gap: 2rem;
+  }
+  
+  .meet-the-team-container {
+    padding: 0 0.75rem;
+    margin: 0 0.375rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .meet-the-team-section {
+    padding: 0 0 30px 0;
+    position: relative;
+  }
+  
+  .meet-the-team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/meet-the-team.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.3);
+    z-index: 1;
+  }
+  
+  .meet-the-team-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+  
+  .meet-the-team-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+  }
+  
+  .meet-the-team-image-column {
+    display: none; /* Hide image column on mobile since we use background */
+  }
+  
+  .meet-the-team-text-column {
+    padding: 0 0 1rem 0;
+    text-align: center;
+  }
+  
+  .meet-the-team-article {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .meet-the-team-article p {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .meet-the-team-section {
+    padding: 0 0 20px 0;
+  }
+  
+  .meet-the-team-container {
+    padding: 0 0.25rem;
+    margin: 0 0.125rem;
+  }
+  
+  .meet-the-team-article {
+    padding: 1.5rem;
+  }
+  
+  .meet-the-team-article p {
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+}
+
+/* Mortgage Advice — mirror Marketing With Us layout, but image on right */
+.mortgage-advice-section {
+  padding: 0 0 40px 0;
+  background-color: #141414;
+  position: relative;
+}
+
+.mortgage-advice-container {
+  max-width: 100%;
+  margin: 0 6rem;
+  padding: 0 1rem;
+  margin-top: 0;
+}
+
+.mortgage-advice-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* article left, image right */
+  gap: 2rem;
+  align-items: center;
+  min-height: 400px;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.mortgage-image-column {
+  position: relative;
+  height: 100%;
+  min-height: 300px;
+  opacity: 0;
+  transform: translateX(60px); /* slide in from right */
+  transition: all 0.8s ease-out;
+}
+
+.mortgage-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.mortgage-text-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0 1rem 0;
+}
+
+.mortgage-article {
+  color: #ffffff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateX(-60px); /* slide in from left */
+  transition: all 0.8s ease-out;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.mortgage-article p {
+  margin-bottom: 0.8rem;
+  margin-top: 0;
+  line-height: 1.2;
+  font-size: 1.2rem;
+}
+
+.ask-us-title.ma-prep {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.8s ease-out;
+}
+.ask-us-title.ma-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mortgage-image-column.ma-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mortgage-article.ma-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.mortgage-article .animated-module__Rnzt8a__btn {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+.mortgage-article .animated-module__Rnzt8a__btn.ma-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mortgage Advice paragraph directional prep (mirror MW patterns) */
+.ma-prep.ma-from-left { opacity: 0; transform: translateX(-60px); transition: all 0.8s ease-out; }
+.ma-prep.ma-from-right { opacity: 0; transform: translateX(60px); transition: all 0.8s ease-out; }
+.ma-prep.ma-from-up { opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
+.ma-prep.ma-active { opacity: 1; transform: translate(0); }
+
+/* Responsive: reuse Marketing With Us mobile behavior */
+@media (max-width: 1024px) {
+  .mortgage-advice-container { padding: 0 0.75rem; margin: 0 0.375rem; }
+}
+
+@media (max-width: 768px) {
+  .mortgage-advice-section { padding: 0 0 30px 0; position: relative; }
+  .mortgage-advice-container { position: relative; z-index: 2; padding: 0 0.5rem; margin: 0 0.25rem; }
+  .mortgage-advice-content { grid-template-columns: 1fr; gap: 0; min-height: auto; }
+  .mortgage-image-column { display: none; }
+  .mortgage-text-column { padding: 0 0 1rem 0; text-align: center; }
+  .mortgage-article { background: rgba(20, 20, 20, 0.8); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px); }
+  .mortgage-article p { font-size: 1.1rem; line-height: 1.2; margin-bottom: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .mortgage-advice-section { padding: 0 0 20px 0; }
+  .mortgage-advice-container { padding: 0 0.25rem; margin: 0 0.125rem; }
+  .mortgage-article { padding: 1.5rem; }
+  .mortgage-article p { font-size: 1rem; line-height: 1.2; margin-bottom: 0.6rem; }
 }
 
 /* Mobile responsive design */
@@ -1484,7 +1910,7 @@ html, body { height: 100%; }
 .section-4-module__KR0FYq__inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 0 0 10%;
+  padding: 0 10%;
   background-color: #141414;
 }
 .section-4-module__KR0FYq__titleContainer {
@@ -1732,544 +2158,32 @@ html, body { height: 100%; }
   visibility: visible;
   transition: opacity 0.3s ease;
 }
-/* GoogleReviews: center and scale aside logo block */
-.google-reviews .reviews-aside {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Ensure Swiper container allows overflow for scaled cards */
-.google-reviews .reviews-swiper {
-  overflow: visible;
-}
-
-.google-reviews .reviews-aside .section-8-module__F4CToW__google {
-  transform: scale(5);
-  transform-origin: center;
-  text-align: center;
-}
-
-/* Remove top margin from aside paragraph */
-.google-reviews .reviews-aside .section-8-module__F4CToW__logoReviews {
-  margin-top: 0.5rem; /* place directly below scaled logo */
-  font-size: 70%;
-}
-
-/* Increase Google logo image size by 30% */
-/* Scale container instead of image to avoid compounding */
-.google-reviews .reviews-aside .section-8-module__F4CToW__googleLogo img {
-  transform: none;
-  transform-origin: center;
-}
-
-/* Increase the specific aside/div/div (googleLogo) by 200% => 3x */
-.google-reviews .reviews-aside .section-8-module__F4CToW__googleLogo {
-  transform: scale(2);
-  transform-origin: center;
-}
+/* Google Reviews styles removed */
 
 /* GoogleReviews: mobile responsiveness */
-@media (max-width: 900px) {
-  .google-reviews .reviews-layout { grid-template-columns: 1fr; }
-  .google-reviews .reviews-title,
-  .google-reviews .reviews-controls,
-  .google-reviews .reviews-aside,
-  .google-reviews .reviews-swiper-wrap { grid-column: 1; }
-  .google-reviews .reviews-aside { margin: 0 auto; justify-content: center; }
-  .google-reviews .reviews-controls { gap: 0.5rem; }
-}
-@media (max-width: 640px) {
-  .google-reviews .reviews-title { text-align: center; }
-  .google-reviews .reviews-title .ask-us-title { margin: 1rem auto 1rem; }
-  .google-reviews .reviews-swiper-wrap { max-width: 100%; width: 100%; }
-  .google-reviews .reviews-swiper { min-height: 240px; }
-  .google-reviews .reviews-aside { margin: 0 auto; }
-  .google-reviews .reviews-aside .section-8-module__F4CToW__google { transform: scale(0.6); }
-}
+/* Google Reviews styles removed */
 
-/* GoogleReviews: card layout and modal styles */
-.google-reviews .reviews-swiper-wrap { margin-top: 3rem; }
-.google-review-card {
-  background: linear-gradient(135deg, 
-    rgba(255,255,255,0.1) 0%, 
-    rgba(255,255,255,0.05) 100%);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  box-shadow: 
-    0 8px 32px rgba(0,0,0,0.3),
-    inset 0 1px 0 rgba(255,255,255,0.2);
-  padding: 1.5rem;
-  margin: 8px;
-  position: relative;
-  color: #eaeaea;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-align: left;
-  align-items: flex-start;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-  overflow: hidden;
-  min-height: 280px;
-  transform: scale(1.05);
-}
-.google-review-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    var(--accent) 0%, 
-    #7aa63a 50%, 
-    var(--accent) 100%);
-}
-.google-review-card:hover,
-.google-review-card:focus-within {
-  transform: translateY(-8px) scale(1.08);
-  box-shadow: 
-    0 20px 40px rgba(0,0,0,0.4),
-    inset 0 1px 0 rgba(255,255,255,0.3);
-  border-color: rgba(108, 152, 48, 0.3);
-  background: linear-gradient(135deg, 
-    rgba(255,255,255,0.15) 0%, 
-    rgba(255,255,255,0.08) 100%);
-}
-.google-review-logo { position: absolute; top: 12px; right: 12px; height: 24px; }
-.google-review-name { 
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #fff;
-  margin: 0 0 0.5rem 0;
-  letter-spacing: 0.02em;
-}
-.google-review-stars { height: 18px; display: block; margin: 0.25rem 0 0.75rem; }
-.google-review-meta { 
-  display: flex; 
-  align-items: center; 
-  gap: 0.5rem; 
-  margin: 0.6rem 0 1rem;
-  padding: 0.5rem 0.75rem;
-  background: rgba(255,255,255,0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-.google-review-meta .google-review-stars { margin: 0; }
-.google-review-logo-inline { height: 18px; display: block; }
-.google-review-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.9);
-  margin: 0.75rem 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.reviews-read-more {
-  align-self: flex-start;
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  border-radius: 25px;
-  border: 2px solid var(--accent);
-  background: rgba(108, 152, 48, 0.1);
-  color: var(--accent);
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.reviews-read-more::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--accent);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-.reviews-read-more:hover {
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(108, 152, 48, 0.4);
-}
-.reviews-read-more:hover::before {
-  left: 0;
-}
-.reviews-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  display: grid;
-  place-items: center;
-  z-index: 1000;
-  padding: 1rem;
-}
-.reviews-modal {
-  background: #121215;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  border-radius: 12px;
-  width: min(720px, 96vw);
-  max-height: 80vh;
-  overflow: auto;
-  color: #eaeaea;
-  padding: 1.25rem;
-  position: relative;
-}
-.reviews-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #22c55e;
-  cursor: pointer;
-}
-@media (max-width: 640px) {
-  .google-review-card { padding: 0.75rem; }
-  .reviews-read-more { font-size: 0.9rem; }
-}
+/* Google Reviews styles removed */
 
 /* GoogleReviews: comprehensive responsiveness */
-@media (max-width: 1024px) {
-  .google-reviews .container { padding-left: 1rem; padding-right: 1rem; }
-  .google-reviews .reviews-controls { flex-wrap: wrap; gap: 0.5rem; }
-  .google-reviews .reviews-swiper { overflow: visible; }
-}
+/* Google Reviews styles removed */
 
-@media (max-width: 900px) {
-  .google-review-card { gap: 0.45rem; }
-  .google-review-name { font-size: 1.05rem; }
-  .google-review-text { font-size: 0.975rem; }
-}
+/* Google Reviews styles removed */
 
-@media (max-width: 640px) {
-  .google-review-card { gap: 0.4rem; }
-  .google-review-name { font-size: 1rem; }
-  .google-review-meta { gap: 0.3rem; }
-  .google-review-stars, .google-review-logo-inline { height: 16px; }
-  .google-reviews .reviews-controls { flex-wrap: wrap; }
-}
+/* Google Reviews styles removed */
 
-@media (max-width: 480px) {
-  .google-review-card { padding: 0.7rem; gap: 0.35rem; }
-  .google-review-name { font-size: 0.95rem; }
-  .google-review-text { font-size: 0.95rem; line-height: 1.55; }
-  .google-review-stars, .google-review-logo-inline { height: 14px; }
-  .google-reviews .swiper-pagination-bullets .swiper-pagination-bullet { width: 6px; height: 6px; }
-}
+/* Google Reviews styles removed */
 
-/* Normalize aside logo scale across breakpoints */
-.google-reviews .reviews-aside .section-8-module__F4CToW__google { transform: scale(1.6); transform-origin: center; }
-@media (max-width: 900px) {
-  .google-reviews .reviews-aside .section-8-module__F4CToW__google { transform: scale(1.4); }
-}
-@media (max-width: 640px) {
-  .google-reviews .reviews-aside .section-8-module__F4CToW__google { transform: scale(1.2); }
-}
+/* Google Reviews styles removed */
 
 /* Accessibility: reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .google-review-card { transition: none; }
-}
-/* Space above the GoogleReviews aside */
-.google-reviews .reviews-aside { margin-top: 3rem; }
-
-/* Google Reviews Mobile Fixes */
-.google-reviews {
-  width: 100%;
-  overflow: hidden;
-}
-
-.google-reviews .reviews-layout {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.google-reviews .reviews-title {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-/* Use global .ask-us-title sizing and underline; center via .reviews-title */
-
-.google-reviews .reviews-aside {
-  order: 2;
-  margin: 1rem auto 0;
-  text-align: center;
-  width: 140px;
-}
-
-.google-reviews .reviews-aside .section-8-module__F4CToW__google {
-  transform: scale(2);
-  transform-origin: center;
-  margin: 0 auto;
-}
-
-.google-reviews .reviews-swiper-wrap {
-  order: 3;
-  width: 100%;
-  max-width: 100%;
-  margin: 1rem 0 0;
-}
-
-.google-reviews .reviews-controls {
-  order: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-  width: 100%;
-}
-
-/* GoogleReviews: decorate custom arrow buttons and make them accent green */
-.google-reviews .section-8-module__F4CToW__swiperBtn {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  display: grid;
-  place-items: center;
-  color: var(--accent); /* matches .google-review-name color via h3 global */
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease, border-color 160ms ease, color 160ms ease;
-}
-.google-reviews #swiper-prev-reviews .section-8-module__F4CToW__swiperBtn svg,
-.google-reviews #swiper-next-reviews .section-8-module__F4CToW__swiperBtn svg {
-  display: block;
-}
-.google-reviews .section-8-module__F4CToW__swiperBtn:hover {
-  transform: translateY(-1px) scale(1.06);
-  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.28);
-  background: rgba(34, 197, 94, 0.18);
-  border-color: rgba(34, 197, 94, 0.5);
-}
-.google-reviews .section-8-module__F4CToW__swiperBtn:focus-visible {
-  outline: 2px solid rgba(34, 197, 94, 0.6);
-  outline-offset: 2px;
-}
+/* Google Reviews styles removed */
 
 /* Mobile-specific styles */
-@media (max-width: 800px) {
-  .google-reviews .container {
-    padding: 1.5rem 1rem;
-  }
-  
-  /* BlogsHome mobile styles */
-  .blogs-home-card {
-    padding: 1.25rem;
-    margin: 8px;
-    min-height: 280px;
-    transform: scale(1.05);
-  }
-  
-  .blogs-home-title {
-    font-size: 1.05rem;
-    margin: 0.6rem 0 0.4rem 0;
-  }
-  
-  .blogs-home-row {
-    padding: 60px 10px 35px 10px;
-    overflow: visible;
-  }
-  
-  .blogs-home-row .swiper-wrapper,
-  .blogs-home-row .swiper-slide {
-    overflow: visible;
-  }
-  
-  /* Mobile-specific padding for the Swiper element */
-  #root > main > section:nth-child(16) > div > div.swiper.swiper-initialized.swiper-horizontal.blogs-home-row {
-    padding-top: 60px !important;
-  }
-  
-  .google-reviews .reviews-layout {
-    gap: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  /* Title uses global styles; no mobile-specific overrides */
-  
-  .google-reviews .reviews-aside {
-    width: 120px;
-    margin: 0.5rem auto;
-  }
-  
-  .google-reviews .reviews-aside .section-8-module__F4CToW__google {
-    transform: scale(1.8);
-  }
-  
-  .google-reviews .reviews-aside .section-8-module__F4CToW__logoReviews {
-    font-size: 0.35rem;
-  }
-  
-  .google-reviews .reviews-swiper-wrap {
-    margin: 0.5rem 0;
-    overflow: visible;
-    padding: 50px 0 20px 0;
-  }
-  
-  .google-reviews .reviews-swiper {
-    min-height: 320px;
-    padding: 0.5rem 0 1rem;
-    overflow: visible;
-  }
-  
-  .google-review-card {
-    padding: 1.25rem;
-    margin: 6px;
-    gap: 0.5rem;
-    min-height: 280px;
-    transform: scale(1.05);
-  }
-  
-  .google-review-name {
-    font-size: 1.05rem;
-    margin: 0 0 0.6rem 0;
-  }
-  
-  .google-review-meta {
-    margin: 0.5rem 0 0.8rem;
-    gap: 0.4rem;
-    padding: 0.4rem 0.6rem;
-  }
-  
-  .google-review-stars,
-  .google-review-logo-inline {
-    height: 18px;
-  }
-  
-  .google-review-text {
-    font-size: 0.9rem;
-    line-height: 1.65;
-    margin: 0.8rem 0 1rem;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-  }
-  
-  .reviews-read-more {
-    padding: 0.7rem 1.4rem;
-    font-size: 0.85rem;
-    margin-top: auto;
-  }
-  
-  .google-reviews .reviews-controls {
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1rem;
-  }
-  
-  /* Swiper navigation buttons */
-  .google-reviews .swiper-button-prev,
-  .google-reviews .swiper-button-next {
-    width: 44px;
-    height: 44px;
-  }
-  /* Match custom controls to mobile sizing */
-  .google-reviews .section-8-module__F4CToW__swiperBtn {
-    width: 44px;
-    height: 44px;
-    background: rgba(108, 152, 48, 0.15);
-    border: 2px solid rgba(108, 152, 48, 0.4);
-    border-radius: 50%;
-  }
-  
-  /* Pagination dots */
-  .google-reviews .swiper-pagination-bullet {
-    width: 6px;
-    height: 6px;
-  }
-}
+/* Google Reviews styles removed */
 
 /* Extra small mobile devices */
-@media (max-width: 480px) {
-  /* Title uses global styles; no extra overrides on XS */
-  
-  .google-reviews .reviews-aside {
-    width: 100px;
-  }
-  
-  .google-reviews .reviews-aside .section-8-module__F4CToW__google {
-    transform: scale(1.6);
-  }
-  
-  .google-review-card {
-    padding: 1rem;
-    margin: 4px;
-    min-height: 260px;
-    transform: scale(1.05);
-  }
-  
-  .google-review-name {
-    font-size: 1rem;
-  }
-  
-  .google-review-text {
-    font-size: 0.875rem;
-    line-height: 1.6;
-    -webkit-line-clamp: 4;
-    line-clamp: 4;
-  }
-  
-  .google-reviews .reviews-controls {
-    gap: 0.5rem;
-  }
-  
-  .reviews-modal {
-    width: 95vw;
-    padding: 1rem;
-  }
-  
-  .reviews-read-more {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
-  }
-  
-  /* BlogsHome extra small mobile styles */
-  .blogs-home-card {
-    padding: 1rem;
-    margin: 6px;
-    min-height: 260px;
-    transform: scale(1.05);
-  }
-  
-  .blogs-home-title {
-    font-size: 1rem;
-  }
-  
-  .blogs-home-row {
-    padding: 50px 8px 30px 8px;
-  }
-  
-  .blogs-home-row .swiper-wrapper,
-  .blogs-home-row .swiper-slide {
-    overflow: visible;
-  }
-  
-  /* Extra small mobile padding for the Swiper element */
-  #root > main > section:nth-child(16) > div > div.swiper.swiper-initialized.swiper-horizontal.blogs-home-row {
-    padding-top: 50px !important;
-  }
-}
+/* Google Reviews styles removed */
 
 /* Blog posts styles */
 .blogs-main-title {
@@ -2421,6 +2335,160 @@ html, body { height: 100%; }
 .ask-us-title:hover {
   color: var(--accent);
 }
+/* ClientsSay reviews grid */
+.clients-say-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+@media (max-width: 1200px) {
+  .clients-say-grid { grid-template-columns: repeat(3, minmax(240px, 1fr)); }
+}
+@media (max-width: 900px) {
+  .clients-say-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+}
+@media (max-width: 640px) {
+  .clients-say-grid { grid-template-columns: 1fr; }
+}
+
+/* Review card (modern style + hover) */
+.review-module__9BlZDW__review {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 16px;
+  padding: 16px;
+  color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.28);
+  min-height: 260px;
+  opacity: 0;
+  transform: translateX(60px);
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+.review-module__9BlZDW__review:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.36);
+  border-color: rgba(108,152,48,0.35);
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.review-module__9BlZDW__topLine {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.review-module__9BlZDW__name {
+  margin: 0;
+  font-family: trajan-pro-3, serif;
+  font-weight: 400;
+  letter-spacing: 0.06rem;
+  color: #fff;
+}
+.review-module__9BlZDW__googleIcon {
+  width: 24px;
+  height: 24px;
+}
+.review-module__9BlZDW__stars {
+  height: 18px;
+  display: inline-block;
+  text-align: left; /* ensure left alignment within card */
+}
+.review-module__9BlZDW__stars img {
+  height: 18px;
+  width: auto;
+  display: block; /* prevent centering via inline baseline */
+}
+.review-module__9BlZDW__text {
+  margin: 0.25rem 0 0.5rem 0;
+  line-height: 1.4;
+  color: rgba(255,255,255,0.9);
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  line-clamp: 10;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.review-module__9BlZDW__btn {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  background: rgba(108,152,48,0.1);
+  color: var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  margin-top: auto; /* pin to bottom of the card */
+  user-select: none;           /* prevent accidental text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.review-module__9BlZDW__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(108,152,48,0.35);
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Prevent selection on slider arrow buttons */
+.property-slide-swiper-module__ZWA3Ca__swiperBtn {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Clients modal */
+.clients-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.clients-modal {
+  background: #121215;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 12px;
+  width: min(720px, 96vw);
+  max-height: 80vh;
+  overflow: auto;
+  color: #eaeaea;
+  padding: 1.25rem;
+  position: relative;
+}
+.clients-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  color: #22c55e;
+  cursor: pointer;
+}
 
 .blogs-article {
   color: #fff;
@@ -2457,7 +2525,7 @@ html, body { height: 100%; }
 
  /* Title underline and sizing controlled by global .ask-us-title */
 
-/* BlogsHome styles */
+/* BlogsHome styles - Updated to match Google Reviews structure */
 .blogs-home-container {
   width: 70%;
   margin: 0 auto;
@@ -2469,6 +2537,14 @@ html, body { height: 100%; }
 .section {
   overflow: visible;
   background-color: #141414;
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+}
+
+/* Remove top padding from Marketing With Us section specifically */
+#marketing-with-us.marketing-with-us-section.section {
+  padding-top: 0;
+  margin-top: 0;
 }
 
 .blogs-home-row {
@@ -2523,8 +2599,11 @@ html, body { height: 100%; }
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
   overflow: hidden;
-  min-height: 280px;
+  min-height: 320px; /* Bigger cards */
   transform: scale(1.05);
+  opacity: 0;
+  transform: translateX(60px) scale(1.05);
+  animation: slideInFromRight 0.8s ease-out forwards;
 }
 .blogs-home-card::before {
   content: '';
@@ -2687,6 +2766,39 @@ html, body { height: 100%; }
 .animate-active {
   opacity: 1;
   transform: translate(0);
+}
+
+
+/* Home Buyers' Guide directional reveal animations */
+.hbg-prep { will-change: opacity, transform; }
+.hbg-prep.hbg-from-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.hbg-prep.hbg-from-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.hbg-prep.hbg-from-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.hbg-prep.hbg-active {
+  opacity: 1;
+  transform: translate(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hbg-prep.hbg-from-up,
+  .hbg-prep.hbg-from-left,
+  .hbg-prep.hbg-from-right {
+    transition: none;
+    transform: none;
+    opacity: 1;
+  }
 }
 
 

@@ -1,9 +1,27 @@
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 
 export default function BlogsHome() {
+  const titleRef = useRef<HTMLHeadingElement | null>(null)
+
+  useEffect(() => {
+    const el = titleRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          el.classList.add('animate-active')
+        })
+      },
+      { threshold: 0.8 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   const featuredBlogs = [
     {
       image: 'https://storage.googleapis.com/integra-estates/Integra-estates%20Sold.jpg',
@@ -58,25 +76,34 @@ export default function BlogsHome() {
 
   return (
     <section className="section" aria-label="Blogs">
-      <div className="blogs-home-container">
-        <div style={{ textAlign: 'center' }}>
-          <h2 className="ask-us-title">Blogs</h2>
+      <div className="section-4-module__KR0FYq__inner container">
+        <div className="section-4-module__KR0FYq__titleContainer">
+          <h2 ref={titleRef} className="ask-us-title animate-in-up">Blogs</h2>
         </div>
+      </div>
+      <div
+        className="section-4-module__K9P0s__slider rs-prep rs-from-right rs-active"
+        style={{
+          marginTop: '1.5rem',
+          width: 'calc(100vw - 6rem)',
+          marginLeft: 'calc(50% - 50vw + 3rem)',
+          marginRight: 'calc(50% - 50vw + 3rem)'
+        }}
+      >
         <Swiper
-          className="blogs-home-row"
-          spaceBetween={16}
-          slidesPerView={CARDS_PER_VIEW}
-          breakpoints={{
-            0: { slidesPerView: 1, spaceBetween: 8 },
-            640: { slidesPerView: 2, spaceBetween: 12 },
-            900: { slidesPerView: 3, spaceBetween: 16 },
-            1200: { slidesPerView: CARDS_PER_VIEW, spaceBetween: 16 },
-          }}
+          spaceBetween={8}
+          slidesPerView={5}
           loop={true}
-          loopAdditionalSlides={featuredBlogs.length}
+          loopAdditionalSlides={50}
           loopPreventsSliding={false}
           slidesPerGroup={1}
-          speed={450}
+          rewind={true}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            560: { slidesPerView: 2 },
+            900: { slidesPerView: 3 },
+            1200: { slidesPerView: 5 },
+          }}
           onSwiper={setSwiperInst}
         >
           {renderedBlogs.map((blog, idx) => (
@@ -99,25 +126,18 @@ export default function BlogsHome() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="blogs-home-arrows" aria-label="Slide controls">
-          <button
-            className="blogs-home-btn"
-            aria-label="Previous"
-            onClick={() => swiperInst?.slidePrev()}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-          <button
-            className="blogs-home-btn"
-            aria-label="Next"
-            onClick={() => swiperInst?.slideNext()}
-          >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M9 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+        <div className="property-slide-swiper-module__ZWA3Ca__swiperControls">
+          <div onClick={() => swiperInst?.slidePrev()}>
+            <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path></svg>
+            </div>
+          </div>
+          <div className="property-slide-swiper-module__ZWA3Ca__swiperPagination" style={{ width: '120px' }}></div>
+          <div onClick={() => swiperInst?.slideNext()}>
+            <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -103,7 +103,14 @@ export default function Services() {
               <li>Accompanied viewings by experienced staff</li>
               <li>Over two decades of combined local housing market experience</li>
             </ul>
-            <div className="animated-module__Rnzt8a__btn">
+            <div
+              className="animated-module__Rnzt8a__btn"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.dispatchEvent(new CustomEvent('openValuationModal'));
+              }}
+            >
               <div className="animated-module__Rnzt8a__title">Request A Valuation</div>
               <div className="animated-module__Rnzt8a__line">
                 <span className="animated-module__Rnzt8a__lineBar" />

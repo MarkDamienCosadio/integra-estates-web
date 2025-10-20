@@ -83,3 +83,63 @@ button:focus-visible {
 }
 
 /* (Removed Google Reviews specific styles) */
+
+/* Nav button click animation and style (inspired by Integra Estates site) */
+.nav-module__XP3B7G__navButton {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.nav-module__XP3B7G__navButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.nav-module__XP3B7G__navButton:active {
+  transform: scale(0.98);
+}
+.nav-module__XP3B7G__navButton.nav-button--active {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.35), 0 8px 24px rgba(59, 130, 246, 0.25);
+}
+.nav-module__XP3B7G__navButton::after {
+  content: "";
+  position: absolute;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  pointer-events: none;
+}
+.nav-module__XP3B7G__navButton.nav-button--pulse::after {
+  animation: navRipple 500ms ease-out forwards;
+}
+@keyframes navRipple {
+  0% { width: 0; height: 0; opacity: 0.5; }
+  100% { width: var(--ripple-size, 180px); height: var(--ripple-size, 180px); opacity: 0; }
+}
+.nav-module__XP3B7G__navButton .alt-icon-module__X-Do-a__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 200ms ease;
+}
+.nav-module__XP3B7G__navButton.nav-button--pulse .alt-icon-module__X-Do-a__icon {
+  animation: navIconPop 250ms ease-out;
+}
+@keyframes navIconPop {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+.nav-module__XP3B7G__navButton.nav-button--active .alt-icon-module__X-Do-a__icon {
+  transform: rotate(90deg);
+}

@@ -68,7 +68,7 @@ export default function HomeBuyersGuide() {
         <div>
           <video
             ref={videoRef}
-            className="hbg-prep hbg-from-up"
+            className="hbg-prep hbg-from-right"
             src="https://storage.googleapis.com/integra-estates-website/videos/home-buyers-guide.mp4#t=0.001"
             style={videoStyle}
             controls

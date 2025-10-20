@@ -104,8 +104,7 @@ export default function Footer() {
       </div>
 
       <div className="signature-module__lFk4IG__signature">
-        <p>Integra-Estates © Copyright 2023</p>
-        <a id="the-weboratory-link" href="https://theweboratory.co.uk/">Website Designed and Built By: The Weboratory</a>
+        <p>Integra-Estates © Copyright 2025</p>
       </div>
     </footer>
   )
