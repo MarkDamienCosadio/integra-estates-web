@@ -1008,26 +1008,29 @@ html, body { height: 100%; }
 }
 
 .nav-close-btn {
-  position: absolute;
-  top: 2rem;
+  position: fixed;
+  top: 1rem;
   right: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  width: clamp(1.6rem, 4vw, 3rem);
+  height: clamp(1.6rem, 4vw, 3rem);
+  border-radius: 0.5rem;
+  background: #6c9830;
+  border: none;
+  color: #000;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 10001;
+  transform: none !important;
+  animation: none !important;
 }
 
 .nav-close-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.1);
+  background: #5b8129;
+  color: #000;
+  transform: none !important;
 }
 
 /* Override nav button styles when used as close button - match original nav button exactly */

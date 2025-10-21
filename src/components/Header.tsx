@@ -7,9 +7,11 @@ export default function Header() {
   const [showOverlay, setShowOverlay] = useState(false)
   const [overlayPhase, setOverlayPhase] = useState<'expanding' | 'covering' | 'revealing' | 'exiting' | 'hidden'>('hidden')
   const [isClosing, setIsClosing] = useState(false)
+  const [isOpening, setIsOpening] = useState(false)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
 
   const closeNav = () => {
+    console.log('CLOSE NAV CALLED')
     if (isClosing) return // Prevent multiple close animations
     
     setIsClosing(true)
@@ -23,11 +25,21 @@ export default function Header() {
       setNavOpen(false)
     }, 400) // Hide nav menu when overlay covers the page (halfway through animation)
     
-    // Wait for exit animation to complete, then hide overlay
+    // Wait for exit animation to complete, then hide overlay and reset all states
     setTimeout(() => {
       setShowOverlay(false)
       setOverlayPhase('hidden')
       setIsClosing(false)
+      setIsOpening(false) // Reset opening state
+      
+      // Reset nav button state for next opening animation
+      if (buttonRef.current) {
+        buttonRef.current.classList.remove('nav-button--pulse')
+        // Reset any inline styles that might have been set
+        buttonRef.current.style.removeProperty('--ripple-x')
+        buttonRef.current.style.removeProperty('--ripple-y')
+        buttonRef.current.style.removeProperty('--ripple-size')
+      }
     }, 800) // Match CSS animation duration
   }
 
@@ -123,68 +135,100 @@ export default function Header() {
         </Link>
       </div>
       <div className="nav-module__v4Ym_W__nav">
-        <button
-          ref={buttonRef}
-          className={`nav-module__XP3B7G__navButton${navOpen ? ' nav-button--active' : ''}`}
-          aria-label="Open navigation"
-          aria-pressed={navOpen}
-          onClick={(e) => {
-            const btn = buttonRef.current
-            if (!btn) return
-            const rect = btn.getBoundingClientRect()
-            const x = e.clientX - rect.left
-            const y = e.clientY - rect.top
-            const size = Math.max(rect.width, rect.height) * 1.8
-            btn.style.setProperty('--ripple-x', `${x}px`)
-            btn.style.setProperty('--ripple-y', `${y}px`)
-            btn.style.setProperty('--ripple-size', `${size}px`)
-            btn.classList.add('nav-button--pulse')
-            setTimeout(() => btn.classList.remove('nav-button--pulse'), 500)
-            
-            // Start the green overlay animation sequence
-            if (overlayPhase !== 'hidden') return // Prevent multiple clicks during animation
-            
-            setShowOverlay(true)
-            setOverlayPhase('expanding')
-            
-            // Wait for expansion to complete
-            setTimeout(() => {
-              setOverlayPhase('covering')
-
-              // Wait for covering to complete, then show nav menu immediately
+        {!navOpen ? (
+          <button
+            ref={buttonRef}
+            className="nav-module__XP3B7G__navButton"
+            aria-label="Open navigation"
+            onClick={(e) => {
+              console.log('NAV BUTTON CLICKED - Opening nav menu')
+              // Prevent multiple clicks during animation
+              if (overlayPhase !== 'hidden' || isOpening || isClosing) {
+                console.log('Animation blocked')
+                return
+              }
+              
+              const btn = buttonRef.current
+              if (!btn) return
+              const rect = btn.getBoundingClientRect()
+              const x = e.clientX - rect.left
+              const y = e.clientY - rect.top
+              const size = Math.max(rect.width, rect.height) * 1.8
+              btn.style.setProperty('--ripple-x', `${x}px`)
+              btn.style.setProperty('--ripple-y', `${y}px`)
+              btn.style.setProperty('--ripple-size', `${size}px`)
+              btn.classList.add('nav-button--pulse')
+              setTimeout(() => btn.classList.remove('nav-button--pulse'), 500)
+              
+              // Start the green overlay animation sequence
+              setIsOpening(true)
+              setShowOverlay(true)
+              setOverlayPhase('expanding')
+              
+              // Wait for expansion to complete
               setTimeout(() => {
-                setNavOpen(true)
-                
-                // Start the reveal animation (overlay slides left to right) immediately
-                setOverlayPhase('revealing')
+                setOverlayPhase('covering')
 
-                // Wait for reveal to complete, then hide overlay
+                // Wait for covering to complete, then show nav menu immediately
                 setTimeout(() => {
-                  setShowOverlay(false)
-                  setOverlayPhase('hidden')
-                }, 800) // Match CSS animation duration
-              }, 200) // Wait for covering to complete
-            }, 600) // Match CSS expansion duration
-          }}
-        >
-          <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
-            <svg
-              stroke="currentColor"
-              fill="currentColor"
-              strokeWidth="0"
-              viewBox="0 0 24 24"
-              height="1em"
-              width="1em"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                clipRule="evenodd"
-              ></path>
-            </svg>
-          </span>
-        </button>
+                  setNavOpen(true)
+                  
+                  // Start the reveal animation (overlay slides left to right) immediately
+                  setOverlayPhase('revealing')
+
+                  // Wait for reveal to complete, then hide overlay
+                  setTimeout(() => {
+                    setShowOverlay(false)
+                    setIsOpening(false)
+                  }, 800) // Match CSS animation duration
+                }, 200) // Wait for covering to complete
+              }, 600) // Match CSS expansion duration
+            }}
+          >
+            <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        ) : (
+          <button
+            ref={buttonRef}
+            className="nav-module__XP3B7G__navButton nav-close-btn"
+            aria-label="Close navigation"
+            onClick={closeNav}
+          >
+            <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 24 24"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                  clipRule="evenodd"
+                ></path>
+              </svg>
+            </span>
+          </button>
+        )}
       </div>
 
       {/* Green Overlay Animation */}
@@ -198,32 +242,6 @@ export default function Header() {
       {navOpen && (
         <div className={`nav-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeNav}>
           <div className="nav-menu-container" onClick={(e) => e.stopPropagation()}>
-            {/* Navigation Button */}
-            <button
-              ref={buttonRef}
-              className={`nav-module__XP3B7G__navButton nav-close-btn${navOpen ? ' nav-button--active' : ''}`}
-              aria-label="Close navigation"
-              aria-pressed={navOpen}
-              onClick={closeNav}
-            >
-              <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
-                <svg
-                  stroke="currentColor"
-                  fill="currentColor"
-                  strokeWidth="0"
-                  viewBox="0 0 24 24"
-                  height="1em"
-                  width="1em"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </span>
-            </button>
 
             <div className="nav-menu-content">
               {/* Left Column - Navigation Links */}
