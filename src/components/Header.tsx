@@ -4,7 +4,32 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   const [solid, setSolid] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
+  const [overlayPhase, setOverlayPhase] = useState<'expanding' | 'covering' | 'revealing' | 'exiting' | 'hidden'>('hidden')
+  const [isClosing, setIsClosing] = useState(false)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  const closeNav = () => {
+    if (isClosing) return // Prevent multiple close animations
+    
+    setIsClosing(true)
+    
+    // Start the green overlay exit animation (right to left)
+    setShowOverlay(true)
+    setOverlayPhase('exiting')
+    
+    // Immediately hide nav menu when green overlay covers the page
+    setTimeout(() => {
+      setNavOpen(false)
+    }, 400) // Hide nav menu when overlay covers the page (halfway through animation)
+    
+    // Wait for exit animation to complete, then hide overlay
+    setTimeout(() => {
+      setShowOverlay(false)
+      setOverlayPhase('hidden')
+      setIsClosing(false)
+    }, 800) // Match CSS animation duration
+  }
 
   useEffect(() => {
     const header = document.querySelector('.main-header-module__hE-5va__top') as HTMLElement | null
@@ -115,7 +140,31 @@ export default function Header() {
             btn.style.setProperty('--ripple-size', `${size}px`)
             btn.classList.add('nav-button--pulse')
             setTimeout(() => btn.classList.remove('nav-button--pulse'), 500)
-            setNavOpen((prev) => !prev)
+            
+            // Start the green overlay animation sequence
+            if (overlayPhase !== 'hidden') return // Prevent multiple clicks during animation
+            
+            setShowOverlay(true)
+            setOverlayPhase('expanding')
+            
+            // Wait for expansion to complete
+            setTimeout(() => {
+              setOverlayPhase('covering')
+
+              // Wait for covering to complete, then show nav menu immediately
+              setTimeout(() => {
+                setNavOpen(true)
+                
+                // Start the reveal animation (overlay slides left to right) immediately
+                setOverlayPhase('revealing')
+
+                // Wait for reveal to complete, then hide overlay
+                setTimeout(() => {
+                  setShowOverlay(false)
+                  setOverlayPhase('hidden')
+                }, 800) // Match CSS animation duration
+              }, 200) // Wait for covering to complete
+            }, 600) // Match CSS expansion duration
           }}
         >
           <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
@@ -137,6 +186,145 @@ export default function Header() {
           </span>
         </button>
       </div>
+
+      {/* Green Overlay Animation */}
+      {showOverlay && (
+        <div 
+          className={`nav-green-overlay nav-green-overlay--${overlayPhase}`}
+        ></div>
+      )}
+
+      {/* Navigation Menu */}
+      {navOpen && (
+        <div className={`nav-menu-overlay ${isClosing ? 'closing' : ''}`} onClick={closeNav}>
+          <div className="nav-menu-container" onClick={(e) => e.stopPropagation()}>
+            {/* Navigation Button */}
+            <button
+              ref={buttonRef}
+              className={`nav-module__XP3B7G__navButton nav-close-btn${navOpen ? ' nav-button--active' : ''}`}
+              aria-label="Close navigation"
+              aria-pressed={navOpen}
+              onClick={closeNav}
+            >
+              <span className="alt-icon-module__X-Do-a__icon alt-icon-module__X-Do-a__enterDone" aria-hidden="true">
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 24 24"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+
+            <div className="nav-menu-content">
+              {/* Left Column - Navigation Links */}
+              <div className="nav-left-column">
+                <nav className="nav-links">
+                  <Link to="/" className="nav-link" onClick={closeNav}>
+                    Home
+                  </Link>
+                  <a href="https://integra-estates.com/search" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                    Property Search
+                  </a>
+                  <Link to="/mortgage-advice" className="nav-link" onClick={closeNav}>
+                    Mortgage Advice
+                  </Link>
+                  <Link to="/marketing-your-property" className="nav-link" onClick={closeNav}>
+                    Marketing Your Property
+                  </Link>
+                  <a href="https://integra-estates.com/360-tours" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                    360 Virtual Tours
+                  </a>
+                  <a href="https://integra-estates.com/virtual-staging" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                    Virtual Staging
+                  </a>
+                  <a href="https://integra-estates.com/probate-properties" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                    Probate Properties
+                  </a>
+                  <Link to="/why-integra-estates" className="nav-link" onClick={closeNav}>
+                    Why Integra-Estates?
+                  </Link>
+                  <Link to="/meet-the-team" className="nav-link" onClick={closeNav}>
+                    Meet the Team
+                  </Link>
+                  <a href="https://integra-estates.com/community-engagement" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                    Community Engagement
+                  </a>
+                </nav>
+                
+                {/* Partner Logos */}
+                <div className="nav-partner-logos">
+                  <div className="nav-partner-logo">
+                    <img src="/svg/rightmove-white.svg" alt="Rightmove" />
+                  </div>
+                  <div className="nav-partner-logo">
+                    <img src="/svg/zoopla-white.svg" alt="Zoopla" />
+                  </div>
+                  <div className="nav-partner-logo">
+                    <img src="/svg/prime-location-white.svg" alt="PrimeLocation.com" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Branding */}
+              <div className="nav-right-column">
+                <div className="nav-logo">
+                  <img src="/svg/logo-colour.svg" alt="INTEGRA - ESTATES" />
+                </div>
+
+                <div className="nav-contact-section">
+                  <h3 className="nav-contact-title">Contact Us</h3>
+                  <div className="nav-contact-info">
+                    <div className="nav-contact-item">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                      </svg>
+                      <span>0203 870 00 00</span>
+                    </div>
+                    <div className="nav-contact-item">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                      </svg>
+                      <span>hello@integra-estates.com</span>
+                    </div>
+                  </div>
+
+                  <div className="nav-social-section">
+                    <h4 className="nav-social-title">Follow Us</h4>
+                    <div className="nav-social-icons">
+                      <a href="https://www.facebook.com/integraestates" target="_blank" rel="noreferrer" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor">
+                          <path fillRule="evenodd" d="M480 257.35c0-123.7-100.3-224-224-224s-224 100.3-224 224c0 111.8 81.9 204.47 189 221.29V322.12h-56.89v-64.77H221V208c0-56.13 33.45-87.16 84.61-87.16 24.51 0 50.15 4.38 50.15 4.38v55.13H327.5c-27.81 0-36.51 17.26-36.51 35v42h62.12l-9.92 64.77H291v156.54c107.1-16.81 189-109.48 189-221.31z"></path>
+                        </svg>
+                      </a>
+                      <a href="https://twitter.com/IntegraEstates" target="_blank" rel="noreferrer" aria-label="Twitter">
+                        <svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor">
+                          <path d="M496 109.5a201.8 201.8 0 01-56.55 15.3 97.51 97.51 0 0043.33-53.6 197.74 197.74 0 01-62.56 23.5A99.14 99.14 0 00348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.21 93.21 0 002.54 22.1 280.7 280.7 0 01-203-101.3A95.69 95.69 0 0036 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0135.22 199v1.2c0 47 34 86.1 79 95a100.76 100.76 0 01-25.94 3.4 94.38 94.38 0 01-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.59 199.59 0 0139.5 405.6a203 203 0 01-23.5-1.4A278.68 278.68 0 00166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.48 198.48 0 00496 109.5z"></path>
+                        </svg>
+                      </a>
+                      <a href="https://www.instagram.com/integraestates/?hl=en" target="_blank" rel="noreferrer" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 512 512" fill="currentColor">
+                          <path d="M349.33 69.33a93.62 93.62 0 0193.34 93.34v186.66a93.62 93.62 0 01-93.34 93.34H162.67a93.62 93.62 0 01-93.34-93.34V162.67a93.62 93.62 0 0193.34-93.34h186.66m0-37.33H162.67C90.8 32 32 90.8 32 162.67v186.66C32 421.2 90.8 480 162.67 480h186.66C421.2 480 480 421.2 480 349.33V162.67C480 90.8 421.2 32 349.33 32z"></path>
+                          <path d="M377.33 162.67a28 28 0 1128-28 27.94 27.94 0 01-28 28zM256 181.33A74.67 74.67 0 11181.33 256 74.75 74.75 0 01256 181.33m0-37.33a112 112 0 10112 112 112 112 0 00-112-112z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
