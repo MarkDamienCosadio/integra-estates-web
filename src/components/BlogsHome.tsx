@@ -16,7 +16,7 @@ export default function BlogsHome() {
           el.classList.add('animate-active')
         })
       },
-      { threshold: 0.8 }
+      { threshold: 0.4 }
     )
     io.observe(el)
     return () => io.disconnect()

@@ -1093,8 +1093,18 @@ html, body { height: 100%; }
   top: 0;
   right: 0;
   width: 2px;
-  height: 100%;
+  height: 0%;
   background: linear-gradient(180deg, transparent, #6c9830, transparent);
+  animation: greenLineReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+}
+
+@keyframes greenLineReveal {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
 }
 
 .nav-links {
@@ -1110,9 +1120,11 @@ html, body { height: 100%; }
   text-decoration: none;
   padding: 1rem 0;
   position: relative;
-  transition: all 0.3s ease;
   letter-spacing: 0.1rem;
   line-height: 0;
+  transform: translateX(-100vw);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-link::after {
@@ -1129,11 +1141,58 @@ html, body { height: 100%; }
 .nav-link:hover {
   color: #6c9830;
   transform: translateX(10px);
+  transition: all 0.3s ease;
 }
 
 .nav-link:hover::after {
   width: 100%;
 }
+
+/* Nav Link Animation States */
+.nav-link--hidden {
+  transform: translateX(-100vw) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.nav-link--animate {
+  visibility: visible !important;
+  animation: navLinkSlideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.nav-right--animate {
+  visibility: visible !important;
+  animation: navRightSlideIn 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes navLinkSlideIn {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes navRightSlideIn {
+  0% {
+    transform: translateX(-10vw);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 
 .nav-right-column {
   flex: 0 0 30%;
@@ -1148,15 +1207,21 @@ html, body { height: 100%; }
 
 .nav-logo {
   margin-bottom: 3rem;
+  transform: translateX(-10vw);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-logo img {
-  height: 120px;
+  height: 10rem;
   width: auto;
 }
 
 .nav-contact-section {
   width: 100%;
+  transform: translateX(-10vw);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-contact-title {
@@ -1200,6 +1265,9 @@ html, body { height: 100%; }
 
 .nav-social-section {
   width: 100%;
+  transform: translateX(-10vw);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-social-title {
@@ -1262,11 +1330,14 @@ html, body { height: 100%; }
   gap: 0.5rem;
   color: #fff;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transform: translateX(-100vw);
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-partner-logo:hover {
   transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 .nav-partner-logo img {
@@ -1276,6 +1347,215 @@ html, body { height: 100%; }
   object-fit: contain;
   filter: brightness(0) invert(1);
   transition: all 0.3s ease;
+}
+
+/* Mobile styles for partner logos */
+@media (max-width: 430px) {
+  .nav-partner-logos {
+    justify-content: flex-end !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: flex-end !important;
+    padding-top: 7rem !important;
+  }
+  
+  .nav-partner-logo img {
+    height: 40px;
+    max-height: 40px;
+  }
+  
+  .nav-module__XP3B7G__navButton {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  
+  .nav-left-column {
+    padding-top: 5rem !important;
+    padding-left: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .nav-logo img {
+    height: 8rem !important;
+  }
+  
+  .nav-menu-overlay {
+    overflow-y: auto;
+  }
+  
+  .nav-left-column::after {
+    display: none !important;
+  }
+  
+  .nav-left-column {
+    border-right: none !important;
+  }
+  
+  .nav-link {
+    font-size: 1.4rem !important;
+  }
+  
+  .nav-logo {
+    margin-bottom: 3rem !important;
+  }
+  
+  .nav-contact-section {
+    margin-bottom: 3rem !important;
+  }
+  
+  .nav-social-section {
+    margin-bottom: 1rem !important;
+  }
+  
+  .nav-right-column {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Property cards mobile spacing */
+  .property-card-module__K9P0s__card {
+    margin-bottom: 2rem !important;
+  }
+  
+  .property-card-module__K9P0s__body {
+    padding: 1.5rem 1.25rem !important;
+    gap: 1rem !important;
+  }
+  
+  /* Ask Us section mobile spacing */
+  .content-with-video-module___A_Jma__section {
+    padding: 2rem !important;
+  }
+  
+  /* Make video appear with content in mobile view */
+  .content-with-video-module___A_Jma__content {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+  
+  /* Remove top padding from Recently sold properties section */
+  #recently-sold.section-4-module__K9P0s__section {
+    padding-top: 0 !important;
+  }
+  
+  /* Remove top padding from Services section */
+  #services.services-section {
+    padding-top: 0 !important;
+  }
+  
+  /* Remove top padding from Home Buyers Guide section */
+  .section-4-module__KR0FYq__inner:has(.hbg-prep) {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  /* Remove top margin from Home Buyers Guide title */
+  .section-4-module__KR0FYq__inner:has(.hbg-prep) h2 {
+    margin-top: 0 !important;
+  }
+  
+  /* Remove top margin and padding from Expert Mortgage Advice section */
+  .section-4-module__KR0FYq__inner:has(.ma-prep) {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section-4-module__KR0FYq__inner:has(.ma-prep) h2 {
+    margin-top: 0 !important;
+  }
+  
+  /* Remove top padding from What our clients say section */
+  .section:has(.animate-in-up) {
+    padding-top: 0 !important;
+  }
+  
+  /* Remove top margin from What our clients say title container */
+  .section-4-module__KR0FYq__titleContainer {
+    margin-top: 0 !important;
+  }
+  
+  /* Remove inline top margin from What our clients say title container */
+  .section-4-module__KR0FYq__titleContainer[style*="margin-top: 2rem"] {
+    margin-top: 0 !important;
+  }
+  
+  /* Remove top margin from What our clients say h2 title */
+  .ask-us-title.animate-in-up {
+    margin-top: 0 !important;
+  }
+  
+  /* Center all section titles */
+  .ask-us-title {
+    text-align: center !important;
+  }
+  
+  /* Remove all top space from Meet the team section */
+  .meet-the-team-section {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section-4-module__KR0FYq__inner:has(.mt-prep) {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .section-4-module__KR0FYq__inner:has(.mt-prep) h2 {
+    margin-top: 0 !important;
+  }
+  
+  /* Remove all top space from Let's Talk section */
+  .get-in-touch-module__NVY_Ga__section {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .get-in-touch-module__NVY_Ga__section h2 {
+    margin-top: 0 !important;
+  }
+  
+  /* Force hide marketing image in mobile view - most aggressive approach */
+  .marketing-with-us-image-column,
+  .marketing-with-us-image-column.mw-active,
+  .marketing-with-us-image-column * {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Hide background images too */
+  .marketing-with-us-section::before {
+    display: none !important;
+    background-image: none !important;
+  }
+  
+  .section-4-module__KR0FYq__section {
+    background: none !important;
+    background-image: none !important;
+  }
+  
+  /* Hide meet the team image in mobile view */
+  .meet-the-team-image-column,
+  .meet-the-team-image-column.mt-active,
+  .meet-the-team-image-column * {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Hide meet the team background image too */
+  .meet-the-team-section::before {
+    display: none !important;
+    background-image: none !important;
+  }
+  
 }
 
 .nav-partner-logo:hover img {
@@ -1367,9 +1647,10 @@ html, body { height: 100%; }
   }
   
   .nav-partner-logos {
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    gap: 1rem;
     padding: 1.5rem 0;
+    flex-wrap: wrap;
   }
 }
 
@@ -1404,7 +1685,7 @@ html, body { height: 100%; }
   }
   
   .nav-partner-logos {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     padding: 1rem 0;
   }
@@ -1772,8 +2053,13 @@ html, body { height: 100%; }
   .section-3-module__tXTAnG__left { width: 60%; }
   .section-3-module__tXTAnG__right { width: 40%; }
 }
+/* General section spacing - exclude content-with-video sections */
+.section:not(.content-with-video-module___A_Jma__section) {
+  padding: 6rem 0;
+}
+
 /* Section 4 — Property for sale */
-.section-4-module__K9P0s__section { width: 100%; padding: 4rem 0; }
+.section-4-module__K9P0s__section { width: 100%; padding: 6rem 0; }
 .section-4-module__K9P0s__inner { max-width: none; width: 100%; margin: 0; padding: 0; }
 .section-4-module__K9P0s__title { margin: 0 0 0.75rem 0; color: var(--accent); font-family: trajan-pro-3, serif; font-size: 30px; font-weight: 400; letter-spacing: 0.1rem; }
 .section-4-module__K9P0s__subtitle { margin: 0 0 2rem 0; color: var(--muted); font-size: 1.125rem; }
@@ -1926,7 +2212,7 @@ html, body { height: 100%; }
 
 /* Marketing With Us - New 2-column layout */
 .marketing-with-us-section {
-  padding: 0 0 40px 0;
+  padding: 6rem 0;
   background-color: #141414;
   position: relative;
   margin-top: 0;
@@ -1937,6 +2223,31 @@ html, body { height: 100%; }
   opacity: 0;
   transform: translateY(60px);
   transition: all 0.8s ease-out;
+}
+
+.mw-prep {
+  opacity: 1;
+  transition: all 0.8s ease-out;
+}
+
+.mw-from-up {
+  transform: translateY(60px);
+}
+
+.mw-from-right {
+  transform: translateX(60px);
+  opacity: 0;
+  transition: all 0.8s ease-out;
+}
+
+.mw-from-right.mw-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mw-active {
+  opacity: 1 !important;
+  transform: translateX(0) translateY(0) !important;
 }
 
 .ask-us-title.mw-active {
@@ -1955,8 +2266,8 @@ html, body { height: 100%; }
 }
 
 .marketing-with-us-article .animated-module__Rnzt8a__btn {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.6s ease-out;
 }
 
@@ -2011,8 +2322,8 @@ html, body { height: 100%; }
 .marketing-with-us-article {
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-  opacity: 0;
-  transform: translateX(60px);
+  opacity: 1;
+  transform: translateX(0);
   transition: all 0.8s ease-out;
   margin-top: 0;
   padding-top: 0;
@@ -2031,7 +2342,7 @@ html, body { height: 100%; }
 
 /* Meet The Team — mirror Marketing With Us layout */
 .meet-the-team-section {
-  padding: 0 0 40px 0;
+  padding: 6rem 0;
   background-color: #141414;
   position: relative;
 }
@@ -2239,7 +2550,7 @@ html, body { height: 100%; }
 
 /* Mortgage Advice — mirror Marketing With Us layout, but image on right */
 .mortgage-advice-section {
-  padding: 0 0 40px 0;
+  padding: 6rem 0;
   background-color: #141414;
   position: relative;
 }
@@ -2265,8 +2576,8 @@ html, body { height: 100%; }
   position: relative;
   height: 100%;
   min-height: 300px;
-  opacity: 0;
-  transform: translateX(60px); /* slide in from right */
+  opacity: 1;
+  transform: translateX(0);
   transition: all 0.8s ease-out;
 }
 
@@ -2288,8 +2599,8 @@ html, body { height: 100%; }
 .mortgage-article {
   color: #ffffff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
-  opacity: 0;
-  transform: translateX(-60px); /* slide in from left */
+  opacity: 1;
+  transform: translateX(0);
   transition: all 0.8s ease-out;
   margin-top: 0;
   padding-top: 0;
@@ -2321,8 +2632,8 @@ html, body { height: 100%; }
   transform: translateX(0);
 }
 .mortgage-article .animated-module__Rnzt8a__btn {
-  opacity: 0;
-  transform: translateY(20px);
+  opacity: 1;
+  transform: translateY(0);
   transition: all 0.6s ease-out;
 }
 .mortgage-article .animated-module__Rnzt8a__btn.ma-active {
@@ -2331,9 +2642,9 @@ html, body { height: 100%; }
 }
 
 /* Mortgage Advice paragraph directional prep (mirror MW patterns) */
-.ma-prep.ma-from-left { opacity: 0; transform: translateX(-60px); transition: all 0.8s ease-out; }
-.ma-prep.ma-from-right { opacity: 0; transform: translateX(60px); transition: all 0.8s ease-out; }
-.ma-prep.ma-from-up { opacity: 0; transform: translateY(60px); transition: all 0.8s ease-out; }
+.ma-prep.ma-from-left { opacity: 1; transform: translateX(0); transition: all 0.8s ease-out; }
+.ma-prep.ma-from-right { opacity: 1; transform: translateX(0); transition: all 0.8s ease-out; }
+.ma-prep.ma-from-up { opacity: 1; transform: translateY(0); transition: all 0.8s ease-out; }
 .ma-prep.ma-active { opacity: 1; transform: translate(0); }
 
 /* Responsive: reuse Marketing With Us mobile behavior */
@@ -2405,7 +2716,11 @@ html, body { height: 100%; }
   }
   
   .marketing-with-us-image-column {
-    display: none; /* Hide image column on mobile since we use background */
+    display: none !important; /* Hide image column on mobile since we use background */
+  }
+  
+  .marketing-with-us-image-column.mw-active {
+    display: none !important; /* Ensure active state is also hidden */
   }
   
   .marketing-with-us-text-column {
@@ -2549,7 +2864,7 @@ html, body { height: 100%; }
 
 /* Services section: three-column cards */
 .services-section {
-  padding: 80px 0;
+  padding: 6rem 0;
   background-color: #141414;
 }
 
@@ -3090,7 +3405,7 @@ html, body { height: 100%; }
 .blogs-home-row {
   /* Swiper container: let Swiper handle layout */
   display: block;
-  padding: 80px 15px 40px 15px;
+  padding: 6rem 15px;
   overflow: visible;
   will-change: transform;
   transform: translateZ(0);

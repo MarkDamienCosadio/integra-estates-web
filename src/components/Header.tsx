@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import ScrollHint from './ScrollHint'
 
 export default function Header() {
   const [solid, setSolid] = useState(false)
@@ -8,6 +9,7 @@ export default function Header() {
   const [overlayPhase, setOverlayPhase] = useState<'expanding' | 'covering' | 'revealing' | 'exiting' | 'hidden'>('hidden')
   const [isClosing, setIsClosing] = useState(false)
   const [isOpening, setIsOpening] = useState(false)
+  const [navLinksVisible, setNavLinksVisible] = useState(false)
   const buttonRef = useRef<HTMLButtonElement | null>(null)
 
   const closeNav = () => {
@@ -23,6 +25,7 @@ export default function Header() {
     // Immediately hide nav menu when green overlay covers the page
     setTimeout(() => {
       setNavOpen(false)
+      setNavLinksVisible(false) // Reset nav links animation
     }, 400) // Hide nav menu when overlay covers the page (halfway through animation)
     
     // Wait for exit animation to complete, then hide overlay and reset all states
@@ -176,6 +179,11 @@ export default function Header() {
                   // Start the reveal animation (overlay slides left to right) immediately
                   setOverlayPhase('revealing')
 
+                  // Trigger nav links animation when green overlay starts sliding right
+                  setTimeout(() => {
+                    setNavLinksVisible(true)
+                  }, 0) // Start nav links animation immediately when overlay starts sliding
+
                   // Wait for reveal to complete, then hide overlay
                   setTimeout(() => {
                     setShowOverlay(false)
@@ -247,59 +255,59 @@ export default function Header() {
               {/* Left Column - Navigation Links */}
               <div className="nav-left-column">
                 <nav className="nav-links">
-                  <Link to="/" className="nav-link" onClick={closeNav}>
+                  <Link to="/" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.1s' }} onClick={closeNav}>
                     Home
                   </Link>
-                  <a href="https://integra-estates.com/search" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <a href="https://integra-estates.com/search" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.2s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     Property Search
                   </a>
-                  <Link to="/mortgage-advice" className="nav-link" onClick={closeNav}>
+                  <Link to="/mortgage-advice" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.3s' }} onClick={closeNav}>
                     Mortgage Advice
                   </Link>
-                  <Link to="/marketing-your-property" className="nav-link" onClick={closeNav}>
+                  <Link to="/marketing-your-property" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.4s' }} onClick={closeNav}>
                     Marketing Your Property
                   </Link>
-                  <a href="https://integra-estates.com/360-tours" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <a href="https://integra-estates.com/360-tours" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.5s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     360 Virtual Tours
                   </a>
-                  <a href="https://integra-estates.com/virtual-staging" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <a href="https://integra-estates.com/virtual-staging" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.6s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     Virtual Staging
                   </a>
-                  <a href="https://integra-estates.com/probate-properties" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <a href="https://integra-estates.com/probate-properties" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.7s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     Probate Properties
                   </a>
-                  <Link to="/why-integra-estates" className="nav-link" onClick={closeNav}>
+                  <Link to="/why-integra-estates" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.8s' }} onClick={closeNav}>
                     Why Integra-Estates?
                   </Link>
-                  <Link to="/meet-the-team" className="nav-link" onClick={closeNav}>
+                  <Link to="/meet-the-team" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.9s' }} onClick={closeNav}>
                     Meet the Team
                   </Link>
-                  <a href="https://integra-estates.com/community-engagement" className="nav-link" target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <a href="https://integra-estates.com/community-engagement" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.0s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     Community Engagement
                   </a>
                 </nav>
                 
                 {/* Partner Logos */}
                 <div className="nav-partner-logos">
-                  <div className="nav-partner-logo">
-                    <img src="/svg/rightmove-white.svg" alt="Rightmove" />
+                  <div className={`nav-partner-logo ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.1s' }}>
+                    <img src="/svg/prime-location-white.svg" alt="PrimeLocation.com" />
                   </div>
-                  <div className="nav-partner-logo">
+                  <div className={`nav-partner-logo ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.3s' }}>
                     <img src="/svg/zoopla-white.svg" alt="Zoopla" />
                   </div>
-                  <div className="nav-partner-logo">
-                    <img src="/svg/prime-location-white.svg" alt="PrimeLocation.com" />
+                  <div className={`nav-partner-logo ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.5s' }}>
+                    <img src="/svg/rightmove-white.svg" alt="Rightmove" />
                   </div>
                 </div>
               </div>
 
               {/* Right Column - Branding */}
               <div className="nav-right-column">
-                <div className="nav-logo">
+                <div className={`nav-logo ${navLinksVisible ? 'nav-right--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.5s' }}>
                   <img src="/svg/logo-colour.svg" alt="INTEGRA - ESTATES" />
                 </div>
 
-                <div className="nav-contact-section">
+                <div className={`nav-contact-section ${navLinksVisible ? 'nav-right--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.6s' }}>
                   <h3 className="nav-contact-title">Contact Us</h3>
                   <div className="nav-contact-info">
                     <div className="nav-contact-item">
@@ -316,7 +324,7 @@ export default function Header() {
                     </div>
                   </div>
 
-                  <div className="nav-social-section">
+                  <div className={`nav-social-section ${navLinksVisible ? 'nav-right--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.7s' }}>
                     <h4 className="nav-social-title">Follow Us</h4>
                     <div className="nav-social-icons">
                       <a href="https://www.facebook.com/integraestates" target="_blank" rel="noreferrer" aria-label="Facebook">
@@ -343,6 +351,9 @@ export default function Header() {
           </div>
         </div>
       )}
+      
+      {/* ScrollHint widget in nav menu */}
+      {navOpen && <ScrollHint />}
     </div>
   )
 }

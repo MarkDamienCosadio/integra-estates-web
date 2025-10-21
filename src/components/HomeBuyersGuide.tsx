@@ -13,7 +13,7 @@ export default function HomeBuyersGuide() {
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.5 && titleRef.current) {
+          if (r >= 0.4 && titleRef.current) {
             titleRef.current.classList.add('hbg-active')
           }
           if (r >= 0.7) {
@@ -25,7 +25,7 @@ export default function HomeBuyersGuide() {
           }
         })
       },
-      { threshold: [0.5, 0.7] }
+      { threshold: [0.4, 0.7] }
     )
     io.observe(sec)
     return () => io.disconnect()

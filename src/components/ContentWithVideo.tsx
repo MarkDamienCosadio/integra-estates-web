@@ -9,7 +9,7 @@ export default function ContentWithVideo() {
         className="content-with-video-module___A_Jma__title"
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ 
           duration: 0.8, 
           ease: [0.25, 0.46, 0.45, 0.94]
@@ -23,7 +23,7 @@ export default function ContentWithVideo() {
           className="section-2-module__BLO-eq__info"
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ 
             duration: 0.8, 
             delay: 0.2,
@@ -34,7 +34,7 @@ export default function ContentWithVideo() {
             <motion.h2
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ 
                 duration: 0.8, 
                 delay: 0.4,
@@ -46,7 +46,7 @@ export default function ContentWithVideo() {
             <motion.h3
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ 
                 duration: 0.8, 
                 delay: 0.6,
@@ -58,7 +58,7 @@ export default function ContentWithVideo() {
             <motion.p
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ 
                 duration: 0.8, 
                 delay: 0.8,
@@ -73,7 +73,7 @@ export default function ContentWithVideo() {
               className="animated-module__Rnzt8a__btn"
               initial={{ opacity: 0, x: -100 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.4 }}
               transition={{ 
                 duration: 0.8, 
                 delay: 1.0,
@@ -97,7 +97,7 @@ export default function ContentWithVideo() {
         className="content-with-video-module___A_Jma__video"
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ 
           duration: 0.8, 
           delay: 1.2,

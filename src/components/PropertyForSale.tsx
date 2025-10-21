@@ -75,7 +75,7 @@ export default function PropertyForSale() {
           }
         })
       },
-      { threshold: [0.5, 0.8] }
+      { threshold: [0.4, 0.8] }
     )
     io.observe(section)
     return () => io.disconnect()
@@ -88,7 +88,7 @@ export default function PropertyForSale() {
           className="section-4-module__K9P0s__titleContainer"
           initial={{ opacity: 0, x: 100 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.4 }}
           transition={{ 
             duration: 0.8, 
             ease: [0.25, 0.46, 0.45, 0.94]

@@ -13,7 +13,7 @@ export default function MeetTheTeam() {
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.5 && titleRef.current) {
+          if (r >= 0.4 && titleRef.current) {
             titleRef.current.classList.add('mt-active')
           }
           if (r >= 0.6 && imageColumnRef.current) {
@@ -37,7 +37,7 @@ export default function MeetTheTeam() {
           }
         })
       },
-      { threshold: [0.5, 0.6, 0.8] }
+      { threshold: [0.4, 0.6, 0.8] }
     )
     io.observe(sec)
     return () => io.disconnect()

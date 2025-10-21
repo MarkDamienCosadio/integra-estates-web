@@ -26,7 +26,7 @@ export default function ClientsSay() {
           }
         })
       },
-      { threshold: 0.8 }
+      { threshold: 0.4 }
     )
     io.observe(el)
     if (logo) io.observe(logo)
@@ -38,7 +38,7 @@ export default function ClientsSay() {
     <section className="section">
       <div className="section-4-module__KR0FYq__inner container">
         <div className="section-4-module__KR0FYq__titleContainer" style={{ marginTop: '2rem' }}>
-          <h2 ref={titleRef} className="ask-us-title animate-in-up">What our clients say</h2>
+          <h2 ref={titleRef} className="ask-us-title animate-in-up">What Our Clients Say</h2>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <img
@@ -48,7 +48,7 @@ export default function ClientsSay() {
             alt="Google rating"
             style={{ height: '90px' }}
           />
-          <p className="ask-us-title" style={{ fontSize: '1.25rem', borderBottom: 'none', margin: '0.5rem 0 0 0' }}>Excellent</p>
+          <p className="ask-us-title" style={{ fontSize: '1.25rem', borderBottom: 'none', margin: '1.5rem 0 0 0' }}>Excellent</p>
         </div>
 
         {/* Reviews slider (single row with arrows) */}

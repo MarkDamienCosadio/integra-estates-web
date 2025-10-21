@@ -14,7 +14,7 @@ export default function GetInTouchSection() {
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.5 && titleRef.current) {
+          if (r >= 0.4 && titleRef.current) {
             titleRef.current.classList.add('askus-active')
           }
           if (r >= 0.8) {
@@ -31,7 +31,7 @@ export default function GetInTouchSection() {
           }
         })
       },
-      { threshold: [0.5, 0.8] }
+      { threshold: [0.4, 0.8] }
     )
     io.observe(sec)
     return () => io.disconnect()

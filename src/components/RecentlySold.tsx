@@ -55,7 +55,7 @@ export default function RecentlySold() {
           }
         })
       },
-      { threshold: [0.5, 0.8] }
+      { threshold: [0.4, 0.8] }
     )
     io.observe(section)
     return () => io.disconnect()

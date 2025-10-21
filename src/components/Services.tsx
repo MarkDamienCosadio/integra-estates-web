@@ -17,7 +17,7 @@ export default function Services() {
           }
         })
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     )
 
     const gridObserver = new IntersectionObserver(
@@ -37,7 +37,7 @@ export default function Services() {
           }
         })
       },
-      { threshold: 0.25 }
+      { threshold: 0.4 }
     )
 
     if (titleEl) titleObserver.observe(titleEl)
