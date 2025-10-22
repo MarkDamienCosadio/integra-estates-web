@@ -1,129 +1,166 @@
-import { useEffect, useRef } from 'react'
+import AnimatedSection from './AnimatedSection'
+import ScrollHint from './ScrollHint'
+import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
+
+type ValueSlide = {
+  title: string
+  text: string
+  image: string
+  alt: string
+}
 
 export default function WhyIntegraEstates() {
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const valuesSlides: ValueSlide[] = [
+    {
+      title: 'Complete Honesty and Integrity',
+      text:
+        "At Integra-Estates, our commitment to honesty and integrity is at the heart of everything we do. We're not your typical estate agency, our exceptional customer care and friendly approach set us apart from the rest. You can trust us to guide you through the process with ease and ensure you're always in good hands.",
+      image: '/images/honesty-integrity-value.jpg',
+      alt: 'Complete Honesty and Integrity',
+    },
+    {
+      title: "We don't just sell homes, we build stronger communities",
+      text:
+        "At Integra-Estates, we're not just about selling properties, we're about making a positive impact on people's lives. We believe in giving back to our community and helping those in need. That's why we're committed to supporting local charities and individuals through our fundraising campaigns. From supporting the NHS to helping those less fortunate, we believe in our social responsibilities to make the world a better place. We don't just sell homes, we build stronger communities.",
+      image: '/images/community-value.jpg',
+      alt: "We don't just sell homes, we build stronger communities",
+    },
+    {
+      title: 'We are human with a straight forward approach',
+      text:
+        "At Integra-Estates, we understand that your home is more than just a property, it's a place filled with memories and strong emotions. That's why we're obsessed with providing a service that treats your home as if it was one of our own. - we're human with our approach being honest with a focused on building lasting relationships based on trust and compassion. Our mission is to support you every step of the way and ensure that your biggest financial asset and emotional journey is in the best possible hands.",
+      image: '/images/human-value.jpg',
+      alt: 'We are human with a straight forward approach',
+    },
+  ]
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-in')
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
+  // Build an infinite loop by cloning ends: [last, ...slides, first]
+  const slidesWithClones: ValueSlide[] = [
+    valuesSlides[valuesSlides.length - 1],
+    ...valuesSlides,
+    valuesSlides[0],
+  ]
+  const total = slidesWithClones.length
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+  // Start at the first real slide (index 1)
+  const [index, setIndex] = useState(1)
+  const [disableTransition, setDisableTransition] = useState(false)
+
+  const prev = () => setIndex((i) => i - 1)
+  const next = () => setIndex((i) => i + 1)
+
+  // After each transition, if we landed on a clone, jump to the real slide without animation
+  const handleTransitionEnd = () => {
+    if (index === total - 1) {
+      // Moved onto the appended first-clone, jump to first real slide
+      setDisableTransition(true)
+      setIndex(1)
+      // Re-enable transition on next tick
+      setTimeout(() => setDisableTransition(false), 0)
+    } else if (index === 0) {
+      // Moved onto the prepended last-clone, jump to last real slide
+      setDisableTransition(true)
+      setIndex(valuesSlides.length)
+      setTimeout(() => setDisableTransition(false), 0)
     }
+  }
 
-    return () => observer.disconnect()
-  }, [])
+  // Ensure index stays within safe bounds if slides array ever changes
+  useEffect(() => {
+    if (index < 0) setIndex(0)
+    if (index > total - 1) setIndex(total - 1)
+  }, [index, total])
+
+  const slideWidthPct = 100 / total
+  const trackStyle: CSSProperties = {
+    width: `${total * 100}%`,
+    transform: `translateX(-${index * slideWidthPct}%)`,
+    transition: disableTransition ? 'none' : 'transform 450ms ease',
+  }
 
   return (
-    <section ref={sectionRef} className="why-integra-section">
-      <div className="why-integra-container">
-        <div className="why-integra-content">
-          <div className="why-integra-text">
-            <h2 className="why-integra-title">
-              Why Choose Integra Estates?
-            </h2>
-            <p className="why-integra-subtitle">
-              We're not just another estate agency. We're your trusted partners in property, 
-              committed to delivering exceptional results through innovation, expertise, and genuine care.
-            </p>
-            
-            <div className="why-integra-features">
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Proven Track Record</h3>
-                  <p>With years of experience in the property market, we've successfully helped thousands of clients buy, sell, and rent properties across London and beyond.</p>
-                </div>
-              </div>
-
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Cutting-Edge Technology</h3>
-                  <p>We leverage the latest technology including 360° virtual tours, virtual staging, and advanced marketing tools to showcase your property in the best possible light.</p>
-                </div>
-              </div>
-
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 7H16c-.8 0-1.54.37-2.01.99L12 10l-1.99-2.01A2.5 2.5 0 0 0 8 7H5.46c-.8 0-1.54.37-2.01.99L1 8.5V22h2v-6h2.5l2.5 2.5V22h2v-4h2v4h2v-4h2v4h2z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Personalised Service</h3>
-                  <p>Every client is unique, and so is our approach. We take the time to understand your specific needs and tailor our services accordingly.</p>
-                </div>
-              </div>
-
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Transparent Communication</h3>
-                  <p>We believe in keeping you informed every step of the way. No hidden fees, no surprises - just honest, clear communication throughout your property journey.</p>
-                </div>
-              </div>
-
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Local Expertise</h3>
-                  <p>Our deep knowledge of local markets, trends, and regulations ensures you get the most accurate advice and best possible outcomes for your property needs.</p>
-                </div>
-              </div>
-
-              <div className="why-integra-feature">
-                <div className="feature-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                  </svg>
-                </div>
-                <div className="feature-content">
-                  <h3>Community Focus</h3>
-                  <p>We're not just about property transactions - we're committed to building stronger communities and supporting local initiatives that matter to our clients.</p>
-                </div>
-              </div>
+    <>
+      <section className="why-integra-hero hero">
+        <div className="why-integra-hero__bg" aria-hidden="true" />
+        <div className="why-integra-hero__overlay" aria-hidden="true" />
+        <AnimatedSection className="why-integra-hero__content" threshold={0}>
+          <h1 className="hero-tag animate-in-up" data-animate-delay="0">Why Integra-Estates</h1>
+        </AnimatedSection>
+      </section>
+      
+      <AnimatedSection>
+        <section className="why-integra-article">
+          <div className="why-integra-article__container">
+            <div className="why-integra-article__content animate-in-up" data-animate-delay="0">
+              <h2>Selling with Integra-Estates</h2>
             </div>
+          </div>
+        </section>
+      </AnimatedSection>
 
-            <div className="why-integra-cta">
-              <h3>Ready to Experience the Integra Difference?</h3>
-              <p>Get in touch with our team today and discover how we can help you achieve your property goals.</p>
-              <div className="why-integra-buttons">
-                <a href="tel:02038700000" className="cta-button cta-button--primary">
-                  Call Us: 0203 870 00 00
-                </a>
-                <a href="mailto:hello@integra-estates.com" className="cta-button cta-button--secondary">
-                  Email Us
-                </a>
+      {/* Bottom article with provided copy */}
+      <AnimatedSection>
+        <section className="sell-article">
+          <div className="sell-article__container">
+            <article className="sell-article__content">
+              <p>
+                Selling a home is a significant milestone in a homeowner's life. It is crucial to have a marketing partner that can help make the process smooth, efficient and successful. Integra-estates is the ideal choice to market your home. We challenge the stereotype of estate agents by embodying Integrity, honesty, professionalism and offer clear communication whilst achieving exceptional results.
+              </p>
+              <p>
+                Our approach is straightforward: we provide a personalised and tailored estate agency service that covers both sales and lettings in South East London and Kent. We offer a blend of traditional methods, competitive pricing, outstanding customer service and top- tier marketing strategies to ensure an unparalleled level of service.
+              </p>
+            </article>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Values section with two-column slider */}
+      <AnimatedSection>
+        <section className="values">
+          <div className="values__container">
+            <h2 className="values__title">Values</h2>
+
+            <div className="values-slider">
+              <div className="values-slider__viewport">
+                {/* Track spans all slides, including clones; translate by one full slide fraction per index */}
+                <div className="values-slider__track" style={trackStyle} onTransitionEnd={handleTransitionEnd}>
+                  {slidesWithClones.map((s, i) => (
+                    <div className="values-slide" key={i} style={{ flex: `0 0 ${slideWidthPct}%` }}>
+                      <div className="values-slide__content">
+                        <article>
+                          <h3 className="values-slide__heading">{s.title}</h3>
+                          <p>{s.text}</p>
+                        </article>
+                      </div>
+                      <div className="values-slide__image">
+                        <img src={s.image} alt={s.alt} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom controls */}
+              <div className="values-slider__controls">
+                <button aria-label="Previous" className="values-slider__nav values-slider__nav--prev" onClick={prev}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                  </svg>
+                </button>
+                <button aria-label="Next" className="values-slider__nav values-slider__nav--next" onClick={next}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      </AnimatedSection>
+
+      {/* ScrollHint widget for this page */}
+      <ScrollHint />
+    </>
   )
 }

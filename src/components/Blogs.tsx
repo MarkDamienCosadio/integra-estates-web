@@ -62,13 +62,13 @@ export default function Blogs() {
       >
         <div className="container" style={{ padding: 0, maxWidth: 'none', marginLeft: 'auto', marginRight: '10rem', width: '70%' }}>
           <article className="blogs-article">
-            <p style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+            <p style={{ marginBottom: '1rem' }}>
               Stay informed with our latest insights into the property market. Our blog covers everything
               from market trends and investment strategies to home improvement tips and local area guides.
               Whether you're buying, selling, or just interested in property, our expert articles will
               keep you up-to-date with valuable information and advice.
             </p>
-            <p style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
+            <p style={{ marginBottom: '1rem' }}>
               Check back regularly for new content and expert perspectives on the ever-changing
               property landscape. We're committed to sharing our knowledge to help you make informed
               decisions about your property journey.
