@@ -21,6 +21,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import BlogsHome from './components/BlogsHome'
 import GetInTouchSection from './components/GetInTouchSection'
 import AnimatedSection from './components/AnimatedSection'
+import WhyIntegraEstates from './components/WhyIntegraEstates'
 // Temporarily disabled Framer Motion
 // import { motion as m, AnimatePresence } from 'framer-motion'
 
@@ -111,6 +112,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/blog-posts" element={<BlogPost />} />
           <Route path="/blogs/Best-Time-To-Sell" element={<BestTimeToSell />} />
+          <Route path="/why-integra-estates" element={<WhyIntegraEstates />} />
         </Routes>
         <Footer />
       </main>

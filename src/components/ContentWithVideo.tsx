@@ -1,5 +1,6 @@
 // @ts-ignore
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export default function ContentWithVideo() {
   return (
@@ -80,14 +81,16 @@ export default function ContentWithVideo() {
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
             >
-              <div className="animated-module__Rnzt8a__title animated-module__Rnzt8a__titleRight" style={{ borderColor: 'grey', color: 'white' }}>
-                Find out more
-              </div>
-              <div className="animated-module__Rnzt8a__line animated-module__Rnzt8a__lineRight">
-                <div className="line-module__2PkNtW__container" style={{ height: '2px', width: '6rem' }}>
-                  <div className="line-module__2PkNtW__line line-module__2PkNtW__right" style={{ backgroundColor: '#6c9830', height: '2px', width: '6rem' }}></div>
+              <Link to="/why-integra-estates" style={{ textDecoration: 'none' }}>
+                <div className="animated-module__Rnzt8a__title animated-module__Rnzt8a__titleRight" style={{ borderColor: 'grey', color: 'white' }}>
+                  Find out more
                 </div>
-              </div>
+                <div className="animated-module__Rnzt8a__line animated-module__Rnzt8a__lineRight">
+                  <div className="line-module__2PkNtW__container" style={{ height: '2px', width: '6rem' }}>
+                    <div className="line-module__2PkNtW__line line-module__2PkNtW__right" style={{ backgroundColor: '#6c9830', height: '2px', width: '6rem' }}></div>
+                  </div>
+                </div>
+              </Link>
             </motion.div>
           </div>
         </motion.div>
