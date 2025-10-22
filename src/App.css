@@ -105,10 +105,12 @@ h2 {
   font-size: 2rem; /* bigger title */
   font-weight: 400;
   letter-spacing: 0.12rem;
-  margin: 2rem 0 2rem 0; /* add space above title */
-  display: inline-block; /* shrink underline to text width */
+  margin: 2rem auto; /* center horizontally */
+  display: block; /* allows margin auto centering */
+  width: fit-content; /* shrink underline to text width */
   padding-bottom: 0.25rem; /* small space before underline */
   border-bottom: 2px solid var(--accent); /* green underline */
+  text-align: center;
 }
 
 .container {
@@ -170,6 +172,29 @@ h2 {
   margin-top: 0 !important;
 }
 
+/* Remove top space from Clear Communication section */
+.clear-communication.section { padding-top: 0 !important; margin-top: 0 !important; }
+/* Remove heading/container extra spacing within Clear Communication */
+.clear-communication.section .ask-us-title { margin-top: 0 !important; }
+.clear-communication.section .container { padding-top: 0 !important; }
+
+/* Remove top space from Exceptional Service section */
+.exceptional-service.section { padding-top: 0 !important; margin-top: 0 !important; }
+/* Remove heading/container extra spacing within Exceptional Service */
+.exceptional-service.section .ask-us-title { margin-top: 0 !important; }
+.exceptional-service.section .container { padding-top: 0 !important; }
+
+/* Remove top space from No Highstreet section */
+.no-highstreet.section { padding-top: 0 !important; margin-top: 0 !important; }
+.no-highstreet.section .ask-us-title { margin-top: 0 !important; }
+.no-highstreet.section .container { padding-top: 0 !important; }
+
+/* Reviews: force single-column layout in slider */
+.take-it-from-them.section { padding-top: 0 !important; margin-top: 0 !important; }
+.take-it-from-them .values__container { padding-top: 0 !important; }
+.take-it-from-them .values-slide { grid-template-columns: minmax(0, 1fr); grid-template-rows: 1fr; }
+.take-it-from-them .values-slide__content { grid-column: 1 / -1; }
+
 /* Add top space to Expert Mortgage Advice title */
 .section-4-module__KR0FYq__inner:has(.ask-us-title.ma-prep) {
   padding-top: 5rem;
@@ -194,8 +219,10 @@ h2 {
   margin-top: 0 !important;
 }
 
-/* Remove bottom space from Get In Touch section */
+/* Remove top and bottom space from Get In Touch section */
 .get-in-touch-module__NVY_Ga__section.section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
   position: relative;
