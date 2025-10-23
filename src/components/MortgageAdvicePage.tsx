@@ -1,5 +1,6 @@
 import ScrollHint from './ScrollHint'
 import AnimatedSection from './AnimatedSection'
+import GetInTouchSection from './GetInTouchSection'
 
 export default function MortgageAdvicePage() {
   return (
@@ -378,6 +379,9 @@ export default function MortgageAdvicePage() {
           </div>
         </div>
       </section>
+
+      {/* Get In Touch section */}
+      <GetInTouchSection />
 
       {/* ScrollHint widget for mortgage page */}
       <ScrollHint />
