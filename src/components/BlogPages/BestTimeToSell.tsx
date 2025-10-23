@@ -99,9 +99,22 @@ const BestTimeToSell: React.FC = () => {
               <p className="request-val-module__cmarCG__tagLine">
                 Get in touch with Integra-Estates today for a free valuation and personalised strategy to sell your home at the right time, for the right price.
               </p>
-              <Link to="/contact" className="request-val-module__cmarCG__btn">
+              <button
+                type="button"
+                className="request-val-module__cmarCG__btn"
+                aria-label="Open free valuation modal"
+                onClick={() => {
+                  window.dispatchEvent(new Event('openValuationModal'))
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    window.dispatchEvent(new Event('openValuationModal'))
+                  }
+                }}
+              >
                 Get a Free Valuation
-              </Link>
+              </button>
             </div>
 
             {/* Related Blog Posts */}

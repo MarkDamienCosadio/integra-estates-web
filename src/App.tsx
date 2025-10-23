@@ -22,6 +22,9 @@ import BlogsHome from './components/BlogsHome'
 import GetInTouchSection from './components/GetInTouchSection'
 import AnimatedSection from './components/AnimatedSection'
 import WhyIntegraEstates from './components/WhyIntegraEstates'
+import MortgageAdvicePage from './components/MortgageAdvicePage'
+import ValuationModal from './components/ValuationModal'
+
 // Temporarily disabled Framer Motion
 // import { motion as m, AnimatePresence } from 'framer-motion'
 
@@ -29,16 +32,6 @@ function HomePage() {
   const [introVisible, setIntroVisible] = useState(true)
   const [introHiding, setIntroHiding] = useState(false)
   const [introComplete, setIntroComplete] = useState(false)
-
-  // Fallback: if hero doesn't start within 5s, hide overlay
-  useEffect(() => {
-    if (!introVisible) return
-    const t = setTimeout(() => {
-      setIntroHiding(true)
-      setTimeout(() => setIntroVisible(false), 850)
-    }, 5000)
-    return () => clearTimeout(t)
-  }, [introVisible])
 
   const onHeroStarted = () => {
     if (!introVisible) return
@@ -110,9 +103,9 @@ function ScrollToTop() {
 
     const doScroll = () => {
       // Target multiple potential scroll containers
-      try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }) } catch {}
-      try { document.documentElement.scrollTop = 0 } catch {}
-      try { document.body.scrollTop = 0 } catch {}
+      try { window.scrollTo({ top: 0, left: 0, behavior: 'auto' }) } catch { void 0 }
+      try { document.documentElement.scrollTop = 0 } catch { void 0 }
+      try { document.body.scrollTop = 0 } catch { void 0 }
       if (mainEl) {
         try { mainEl.scrollTo({ top: 0, left: 0, behavior: 'auto' }) } catch { mainEl.scrollTop = 0 }
       }
@@ -135,10 +128,17 @@ function ScrollToTop() {
 function App() {
   // Disable browser scroll restoration to avoid persisted positions on navigation
   useEffect(() => {
-    try { if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual' } catch {}
+    try { if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual' } catch { void 0 }
     return () => {
-      try { if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'auto' } catch {}
+      try { if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'auto' } catch { void 0 }
     }
+  }, [])
+
+  const [isValuationOpen, setIsValuationOpen] = useState(false)
+  useEffect(() => {
+    const onOpen = () => setIsValuationOpen(true)
+    window.addEventListener('openValuationModal', onOpen as EventListener)
+    return () => window.removeEventListener('openValuationModal', onOpen as EventListener)
   }, [])
 
   return (
@@ -151,7 +151,10 @@ function App() {
           <Route path="/blog-posts" element={<BlogPost />} />
           <Route path="/blogs/Best-Time-To-Sell" element={<BestTimeToSell />} />
           <Route path="/why-integra-estates" element={<WhyIntegraEstates />} />
+          <Route path="/mortgage-advice" element={<MortgageAdvicePage />} />
         </Routes>
+
+        <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
         <Footer />
       </main>
     </Router>

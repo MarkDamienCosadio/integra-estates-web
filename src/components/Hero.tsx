@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-// @ts-ignore
+// @ts-expect-error: framer-motion ESM types mismatch with tsconfig
 import { motion } from 'framer-motion'
 
 export default function Hero({ onStarted, introComplete }: { onStarted?: () => void; introComplete?: boolean }) {
@@ -19,7 +19,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
       el.playsInline = true
       el.setAttribute('playsinline', '')
       el.preload = 'auto'
-      try { el.currentTime = 0 } catch {}
+      try { el.currentTime = 0 } catch { void 0 }
       if (el.readyState < 2) el.load()
     }
 
@@ -30,11 +30,11 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
     let next = b
 
     const ensurePlay = (el: HTMLVideoElement) => {
-      el.play().catch(() => {})
+      el.play().catch(() => void 0)
     }
 
     const onEnd = () => {
-      try { next.currentTime = 0 } catch {}
+      try { next.currentTime = 0 } catch { void 0 }
       ensurePlay(next)
       current.classList.remove('visible')
       current.classList.add('hidden')
@@ -55,13 +55,13 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
         a.addEventListener('ended', onEnd)
 
         // Notify parent that hero has started
-        try { onStarted && onStarted() } catch {}
+        try { if (onStarted) { onStarted() } } catch { void 0 }
 
         return () => {
           a.removeEventListener('ended', onEnd)
           b.removeEventListener('ended', onEnd)
         }
-  }, [])
+  }, [onStarted])
 
   // Start animations when intro animation is completely finished
   useEffect(() => {
@@ -104,7 +104,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
       </video>
       <div className="hero__overlay">
         <div className="hero-content">
-          {(() => { console.log('Hero render - animationsReady:', animationsReady); return null; })()}
+          {/* animationsReady debug removed */}
           <motion.h1 
             className="hero-tag"
             initial={{ opacity: 0, x: -100 }}
@@ -132,7 +132,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
             With honesty and integrity at all times.
           </motion.p>
           <div className="hero-ctas">
-            {(() => { console.log('Button render - animationsReady:', animationsReady); return null; })()}
+            {/* button animationsReady debug removed */}
             <motion.a 
               className="cta" 
               href="#valuation"

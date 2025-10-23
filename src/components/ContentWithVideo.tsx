@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error: framer-motion ESM types mismatch with tsconfig
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 

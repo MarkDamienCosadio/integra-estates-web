@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
+import type { Swiper as SwiperType } from 'swiper'
 import { useEffect, useRef, useState } from 'react'
-// @ts-ignore
+// @ts-expect-error: framer-motion ESM types mismatch with tsconfig
 import { motion } from 'framer-motion'
 
 type Property = {
@@ -53,12 +54,12 @@ const properties: Property[] = [
 
 export default function PropertyForSale() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
-  const prevRef = useRef<HTMLDivElement | null>(null)
-  const nextRef = useRef<HTMLDivElement | null>(null)
+  const prevRef = useRef<HTMLButtonElement | null>(null)
+  const nextRef = useRef<HTMLButtonElement | null>(null)
   const pagRef = useRef<HTMLDivElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const sliderRef = useRef<HTMLDivElement | null>(null)
-  const [swiperInst, setSwiperInst] = useState<any>(null)
+  const [swiperInst, setSwiperInst] = useState<SwiperType | null>(null)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -150,7 +151,31 @@ export default function PropertyForSale() {
                     <div className="property-card-module__K9P0s__line">{p.address1}</div>
                     <div className="property-card-module__K9P0s__line">{p.address2}</div>
                     <div className="property-card-module__K9P0s__cta">
-                      <a className="btn btn--accent" href={p.url || '#'} aria-label={`View details for ${p.title}`}>View details</a>
+                      {p.url ? (
+                        p.url.startsWith('http') ? (
+                          <a
+                            className="btn btn--accent"
+                            href={p.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View details for ${p.title}`}
+                          >
+                            View details
+                          </a>
+                        ) : (
+                          <a
+                            className="btn btn--accent"
+                            href={p.url}
+                            aria-label={`View details for ${p.title}`}
+                          >
+                            View details
+                          </a>
+                        )
+                      ) : (
+                        <button type="button" className="btn btn--accent" disabled aria-disabled="true">
+                          View details
+                        </button>
+                      )}
                     </div>
                   </div>
                 </article>
@@ -159,21 +184,17 @@ export default function PropertyForSale() {
           </Swiper>
           {/* Custom controls below the cards */}
           <div className="property-slide-swiper-module__ZWA3Ca__swiperControls">
-            <div id="swiper-prev" ref={prevRef} onClick={() => swiperInst?.slidePrev()}>
-              <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
-                </svg>
-              </div>
-            </div>
-            <div id="swiper-pagination" ref={pagRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination"></div>
-            <div id="swiper-next" ref={nextRef} onClick={() => swiperInst?.slideNext()}>
-              <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
-                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-                </svg>
-              </div>
-            </div>
+            <button type="button" id="swiper-prev" ref={prevRef} onClick={() => swiperInst?.slidePrev()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
+              </svg>
+            </button>
+            <div id="swiper-pagination" ref={pagRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination" aria-live="polite"></div>
+            <button type="button" id="swiper-next" ref={nextRef} onClick={() => swiperInst?.slideNext()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
+              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
+              </svg>
+            </button>
           </div>
         </div>
       </div>

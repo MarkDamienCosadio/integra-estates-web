@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Services() {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -31,7 +32,7 @@ export default function Services() {
             cards.forEach((card, index) => {
               const delays = [400, 800, 1000] // Card 1: 400ms, Card 2: 800ms, Card 3: 1000ms
               setTimeout(() => {
-                card.classList.add('services-active')
+                (card as HTMLElement).classList.add('services-active')
               }, delays[index] || 1000) // Use defined delays or fallback to 1000ms
             })
           }
@@ -55,11 +56,10 @@ export default function Services() {
           <h2 ref={titleRef} className="ask-us-title services-prep services-from-right">Our services</h2>
         </div>
         <div ref={gridRef} className="services-grid">
-          <a
+          <Link
             className="service-card"
-            href="https://integra-estates.com/mortgage-advice"
-            target="_blank"
-            rel="noopener noreferrer"
+            to="/mortgage-advice"
+            aria-label="Mortgage Advice"
           >
             <img
               className="service-card-img"
@@ -81,13 +81,21 @@ export default function Services() {
                 <span className="animated-module__Rnzt8a__lineBar" />
               </div>
             </div>
-          </a>
+          </Link>
 
-          <a
+          <button
+            type="button"
             className="service-card"
-            href="https://integra-estates.com/valuation"
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-label="Request a valuation"
+            onClick={() => {
+              window.dispatchEvent(new Event('openValuationModal'))
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                window.dispatchEvent(new Event('openValuationModal'))
+              }
+            }}
           >
             <img
               className="service-card-img"
@@ -105,24 +113,20 @@ export default function Services() {
             </ul>
             <div
               className="animated-module__Rnzt8a__btn"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.dispatchEvent(new CustomEvent('openValuationModal'));
-              }}
             >
               <div className="animated-module__Rnzt8a__title">Request A Valuation</div>
               <div className="animated-module__Rnzt8a__line">
                 <span className="animated-module__Rnzt8a__lineBar" />
               </div>
             </div>
-          </a>
+          </button>
 
           <a
             className="service-card"
             href="https://integra-estates.com/marketing-your-property"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Advanced Marketing"
           >
             <img
               className="service-card-img"

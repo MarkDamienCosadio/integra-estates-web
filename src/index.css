@@ -31,12 +31,15 @@ body {
   /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
+  background-color: #141414;
 }
 
 /* Prevent horizontal overflow/site-wide sideways scrolling */
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  /* No reserved gutter; allow native scrollbar behavior */
+  scrollbar-gutter: auto;
 }
 
 h1 {

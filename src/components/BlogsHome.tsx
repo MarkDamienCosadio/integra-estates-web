@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useRef, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
+import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 
 export default function BlogsHome() {
@@ -67,7 +68,7 @@ export default function BlogsHome() {
     }
   ]
 
-  const [swiperInst, setSwiperInst] = useState<any>(null)
+  const [swiperInst, setSwiperInst] = useState<SwiperType | null>(null)
   const CARDS_PER_VIEW = 4
   // Ensure enough slides for robust looping across breakpoints
   const minSlides = CARDS_PER_VIEW * 3

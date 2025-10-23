@@ -40,14 +40,12 @@ export default function ScrollHint() {
       mq.addEventListener('change', onChange)
     } else {
       // Safari < 14 fallback
-      // @ts-ignore
       mq.addListener(onChange)
     }
     return () => {
       if (typeof mq.removeEventListener === 'function') {
         mq.removeEventListener('change', onChange)
       } else {
-        // @ts-ignore
         mq.removeListener(onChange)
       }
     }

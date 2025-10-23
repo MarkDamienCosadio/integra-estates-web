@@ -503,6 +503,48 @@ html, body { height: 100%; }
     linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.12) 100%);
 }
 
+/* Stronger overlay for Mortgage Advice hero to improve legibility */
+.mortgage-advice-hero .hero__overlay {
+  background: none;
+}
+.mortgage-advice-hero::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.60) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.08) 100%);
+}
+/* Mortgage Advice: keep background video fixed to viewport */
+.mortgage-advice-hero .hero__video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: paint;
+  clip-path: inset(0);
+  z-index: 1; /* under overlay/content */
+}
+/* Ensure Mortgage Advice headings are visible and above overlay */
+.mortgage-advice-hero { display: grid; place-items: center; }
+.mortgage-advice-hero .hero-content { position: relative; z-index: 3; text-align: center; }
+.mortgage-advice-hero .hero-content .hero-tag,
+.mortgage-advice-hero .hero-content .hero-desc {
+  opacity: 1 !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: trajan-pro-3, serif;
+  font-weight: 300; /* slimmer, lighter subtitle */
+  letter-spacing: 0.03em; /* slightly tighter tracking for elegance */
+}
+
 .hero-spacer {
   height: 100vh;
 }
@@ -947,50 +989,36 @@ html, body { height: 100%; }
 
 @keyframes greenOverlayExpand {
   0% {
-    width: 0;
-    height: 0;
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(0);
   }
   100% {
-    width: 100vw;
-    height: 100vh;
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
   }
 }
 
 @keyframes greenOverlayCover {
   0% {
-    width: 100vw;
-    height: 100vh;
+    transform: translate(0, 0);
   }
   100% {
-    width: 100vw;
-    height: 100vh;
+    transform: translate(0, 0);
   }
 }
 
 @keyframes greenOverlayReveal {
   0% {
-    width: 100vw;
-    height: 100vh;
     transform: translate(0, 0);
   }
   100% {
-    width: 100vw;
-    height: 100vh;
     transform: translate(100vw, 0);
   }
 }
 
 @keyframes greenOverlayExit {
   0% {
-    width: 100vw;
-    height: 100vh;
     transform: translate(100vw, 0);
   }
   100% {
-    width: 100vw;
-    height: 100vh;
     transform: translate(-100vw, 0);
   }
 }
@@ -1018,18 +1046,14 @@ html, body { height: 100%; }
 /* Navigation Menu Styles */
 .nav-menu-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: rgba(20, 20, 20, 1);
   z-index: 10000;
 }
 
 .nav-menu-container {
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   display: flex;
   flex-direction: column;
 }
@@ -2790,6 +2814,7 @@ html, body { height: 100%; }
   padding: 6rem 0;
   background-color: #141414;
   position: relative;
+  z-index: 3; /* ensure solid section sits above fixed hero overlay */
 }
 
 .mortgage-advice-container {
@@ -3101,7 +3126,7 @@ html, body { height: 100%; }
 
 /* Services section: three-column cards */
 .services-section {
-  padding: 6rem 0;
+  padding: 0 0 6rem;
   background-color: #141414;
 }
 
