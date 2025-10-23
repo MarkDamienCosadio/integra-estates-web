@@ -1536,8 +1536,8 @@ html, body { height: 100%; }
     margin-top: 0 !important;
   }
   
-  /* Center all section titles */
-  .ask-us-title {
+  /* Center all section titles except re-mortgage and moving-home */
+  .ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title) {
     text-align: center !important;
   }
   
@@ -4026,4 +4026,1123 @@ button {
     line-height: 1.3 !important;
     text-align: left !important;
   }
+}
+
+/* Mortgage card wrapper for primary callout */
+.mortgage-card {
+  background: rgba(20, 20, 20, 0.85);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(108, 152, 48, 0.25);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Tighten inner spacing for title and article inside the card */
+.mortgage-card .ask-us-title {
+  margin-bottom: 0.5rem;
+}
+.mortgage-card .mortgage-article {
+  padding-top: 0;
+  text-align: center !important;
+}
+.mortgage-card .mortgage-article p {
+  text-align: center !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mortgage-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+}
+
+/* Center the mortgage services article even outside the card */
+.mortgage-advice-section .mortgage-article {
+  text-align: center !important;
+}
+.mortgage-advice-section .mortgage-article p {
+  text-align: center !important;
+}
+
+/* Override centering for first-time-purchase section */
+#first-time-purchase .ask-us-title {
+  text-align: left !important;
+  margin: 0 0 3rem 0 !important;
+  width: fit-content !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  color: #ffffff !important;
+  font-size: rem !important;
+  font-family: trajan-pro-3, serif !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.12rem !important;
+  line-height: 1.1 !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+#first-time-purchase .mortgage-article {
+  text-align: left !important;
+  margin-top: 0 !important;
+}
+#first-time-purchase .mortgage-article p {
+  text-align: left !important;
+}
+#first-time-purchase h3 {
+  text-align: left !important;
+  color: #ffffff !important;
+  font-size: 1.5rem !important;
+  font-weight: 300 !important;
+  margin: 2rem 0 1.5rem 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+#first-time-purchase > .mortgage-advice-container {
+  padding-left: 10rem !important;
+  padding-right: 10rem !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+/* Remove top spacing for the first-time-purchase section and right column */
+#first-time-purchase { padding-top: 0 !important; }
+#first-time-purchase .mortgage-advice-content { padding-top: 0 !important; margin-top: 0 !important; }
+#first-time-purchase .animate-in-right { padding-top: 0 !important; margin-top: 0 !important; }
+
+/* Additional overrides to ensure no top space on first-time-purchase section */
+#first-time-purchase.section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Ensure the section itself has no top spacing */
+#first-time-purchase {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Override mortgage-advice-section padding for first-time-purchase */
+#first-time-purchase.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Most specific override for first-time-purchase section */
+section#first-time-purchase.mortgage-advice-section.section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 0 6rem 0 !important;
+}
+
+/* Nuclear option - override everything for first-time-purchase */
+#first-time-purchase,
+#first-time-purchase.section,
+#first-time-purchase.mortgage-advice-section,
+section#first-time-purchase,
+section#first-time-purchase.section,
+section#first-time-purchase.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 0 6rem 0 !important;
+}
+
+/* Override the animation transform that's causing the 60px translation */
+#first-time-purchase .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+}
+
+#first-time-purchase .ask-us-title {
+  transform: translateY(0) !important;
+}
+
+/* Proper spacing for first-time purchase content */
+#first-time-purchase .animate-in-right {
+  padding: 2rem 0;
+}
+
+#first-time-purchase h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+}
+
+#first-time-purchase h3 {
+  margin: 0.5rem 0 2rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+}
+
+#first-time-purchase .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#first-time-purchase .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+}
+
+#first-time-purchase .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+/* CTA buttons spacing */
+#first-time-purchase .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#first-time-purchase .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Re-Mortgage section styling - same as first-time-purchase */
+#re-mortgage h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: right !important;
+}
+
+/* More specific overrides for h2 title alignment */
+#re-mortgage h2.ask-us-title {
+  text-align: right !important;
+}
+
+#re-mortgage h2.ask-us-title.ma-prep {
+  text-align: right !important;
+}
+
+#re-mortgage .ask-us-title {
+  text-align: right !important;
+}
+
+/* Override any parent container centering */
+#re-mortgage .animate-in-left {
+  text-align: right !important;
+}
+
+#re-mortgage .animate-in-left > * {
+  text-align: right !important;
+}
+
+/* Force right alignment on the container */
+#re-mortgage .animate-in-left[style*="text-align"] {
+  text-align: right !important;
+}
+
+/* Override any inline styles that might be centering the content */
+#re-mortgage .animate-in-left[style*="textAlign"] {
+  text-align: right !important;
+}
+
+/* Nuclear option - override everything for the container */
+#re-mortgage .animate-in-left {
+  text-align: right !important;
+  justify-content: flex-end !important;
+  align-items: flex-end !important;
+}
+
+/* Override the global ask-us-title centering rule */
+#re-mortgage .ask-us-title {
+  text-align: right !important;
+}
+
+/* Most specific override to counter the global centering rule */
+section#re-mortgage .ask-us-title {
+  text-align: right !important;
+}
+
+section#re-mortgage h2.ask-us-title {
+  text-align: right !important;
+}
+
+/* Override the global ask-us-title centering rule with maximum specificity */
+#re-mortgage h2.ask-us-title.ma-prep {
+  text-align: right !important;
+}
+
+/* Target the exact element structure */
+#re-mortgage .animate-in-left h2.ask-us-title {
+  text-align: right !important;
+}
+
+/* Force override with inline style specificity */
+#re-mortgage h2[class*="ask-us-title"] {
+  text-align: right !important;
+}
+
+/* Custom class for remortgage title */
+.remortgage-title {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: right !important;
+  font-family: trajan-pro-3, serif !important;
+  letter-spacing: 0.1rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  padding-bottom: 0.25rem !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Remove all top space from re-mortgage section content */
+#re-mortgage .animate-in-left {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#re-mortgage .animate-in-left.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#re-mortgage .remortgage-title {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#re-mortgage h3 {
+  margin-top: 0.5rem !important;
+}
+
+#re-mortgage h3 {
+  margin: 0.5rem 0 2rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  text-align: right !important;
+}
+
+#re-mortgage .animate-in-left {
+  padding: 2rem 0;
+}
+
+#re-mortgage .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#re-mortgage .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+  text-align: right !important;
+}
+
+#re-mortgage .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+#re-mortgage .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#re-mortgage .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Right-align the CTA buttons container */
+#re-mortgage .mortgage-article > div[style*="display: flex"] {
+  justify-content: flex-end !important;
+}
+
+#re-mortgage .mortgage-article div[style*="justify-content: flex-start"] {
+  justify-content: flex-end !important;
+}
+
+/* Moving Home section styling - same as first-time-purchase */
+#moving-home h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: left !important;
+}
+
+/* Override any centering for moving-home section */
+#moving-home .ask-us-title {
+  text-align: left !important;
+}
+
+#moving-home h2.ask-us-title {
+  text-align: left !important;
+}
+
+#moving-home h2.ask-us-title.ma-prep {
+  text-align: left !important;
+}
+
+/* Force left alignment for moving-home section */
+#moving-home .animate-in-right {
+  text-align: left !important;
+}
+
+#moving-home .animate-in-right > * {
+  text-align: left !important;
+}
+
+#moving-home .animate-in-right[style*="text-align"] {
+  text-align: left !important;
+}
+
+/* Override any inline styles that might be centering the content */
+#moving-home .animate-in-right[style*="textAlign"] {
+  text-align: left !important;
+}
+
+/* Nuclear option - override everything for the container */
+#moving-home .animate-in-right {
+  text-align: left !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+}
+
+/* Most specific override to counter any global centering rules */
+section#moving-home .ask-us-title {
+  text-align: left !important;
+}
+
+section#moving-home h2.ask-us-title {
+  text-align: left !important;
+}
+
+/* Nuclear option - maximum specificity override for moving-home title */
+#moving-home h2.ask-us-title.ma-prep {
+  text-align: left !important;
+}
+
+/* Target the exact container structure */
+#moving-home .animate-in-right h2.ask-us-title.ma-prep {
+  text-align: left !important;
+}
+
+/* Override any possible centering with maximum specificity */
+section#moving-home .animate-in-right h2.ask-us-title.ma-prep {
+  text-align: left !important;
+}
+
+/* Force left alignment on the exact element structure */
+#moving-home .animate-in-right[style*="textAlign"] h2.ask-us-title.ma-prep {
+  text-align: left !important;
+}
+
+/* Custom class for moving-home title - completely separate from ask-us-title */
+.moving-home-title {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: left !important;
+  font-family: trajan-pro-3, serif !important;
+  letter-spacing: 0.1rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  padding-bottom: 0.25rem !important;
+  width: fit-content !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Override animation transform for moving-home-title */
+.moving-home-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.moving-home-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Buy To Let section styling - same as re-mortgage */
+#buy-to-let h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: right !important; /* Right-aligned */
+}
+
+#buy-to-let h3 {
+  margin: 0.5rem 0 2rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  text-align: right !important; /* Right-aligned */
+}
+
+#buy-to-let .animate-in-left {
+  padding: 2rem 0;
+  text-align: right !important; /* Right-aligned container */
+  justify-content: flex-end !important; /* Flexbox alignment */
+  align-items: flex-end !important; /* Flexbox alignment */
+  padding-top: 0 !important; /* Removed top space */
+  margin-top: 0 !important; /* Removed top space */
+}
+
+#buy-to-let .animate-in-left.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#buy-to-let .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#buy-to-let .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+  text-align: right !important; /* Right-aligned */
+}
+
+#buy-to-let .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+#buy-to-let .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#buy-to-let .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Override animation transform for buy-to-let section */
+#buy-to-let .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#buy-to-let .ask-us-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Additional overrides to ensure buy-to-let title is visible */
+#buy-to-let h2.ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#buy-to-let h2 {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Ensure buy-to-let section is visible and has proper spacing */
+#buy-to-let {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#buy-to-let.mortgage-advice-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Apply same padding overrides as re-mortgage section */
+#buy-to-let,
+#buy-to-let.section,
+#buy-to-let.mortgage-advice-section,
+section#buy-to-let,
+section#buy-to-let.section,
+section#buy-to-let.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
+}
+
+/* Right-align the CTA buttons container */
+#buy-to-let .mortgage-article > div[style*="display: flex"] {
+  justify-content: flex-end !important;
+}
+
+#buy-to-let .mortgage-article div[style*="justify-content: flex-start"] {
+  justify-content: flex-end !important;
+}
+
+/* Custom class for buy-to-let title */
+.buy-to-let-title {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: right !important;
+  font-family: trajan-pro-3, serif !important;
+  letter-spacing: 0.1rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  padding-bottom: 0.25rem !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Override the global ask-us-title centering rule for buy-to-let */
+.ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title):not(#buy-to-let .ask-us-title) {
+  text-align: center !important;
+}
+
+/* Image positioning for buy-to-let */
+#buy-to-let img {
+  object-position: 65% center;
+}
+
+/* New Build Homes section styling - same as moving-home */
+#new-build-homes h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: left !important;
+}
+
+#new-build-homes h3 {
+  margin: 0.5rem 0 2rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+}
+
+#new-build-homes .animate-in-right {
+  padding: 2rem 0;
+  text-align: left !important;
+  justify-content: flex-start !important;
+  align-items: flex-start !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#new-build-homes .animate-in-right.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#new-build-homes .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#new-build-homes .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+  text-align: left !important;
+}
+
+#new-build-homes .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+#new-build-homes .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#new-build-homes .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Override animation transform for new-build-homes section */
+#new-build-homes .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#new-build-homes .ask-us-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#new-build-homes h2.ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#new-build-homes h2 {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Ensure new-build-homes section is visible and has proper spacing */
+#new-build-homes {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#new-build-homes.mortgage-advice-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Apply same padding overrides as moving-home section */
+#new-build-homes,
+#new-build-homes.section,
+#new-build-homes.mortgage-advice-section,
+section#new-build-homes,
+section#new-build-homes.section,
+section#new-build-homes.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
+}
+
+/* Custom class for new-build-homes title */
+.new-build-homes-title {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 0.5rem !important;
+  text-align: left !important;
+  font-family: trajan-pro-3, serif !important;
+  letter-spacing: 0.1rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  padding-bottom: 0.25rem !important;
+  width: fit-content !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* Override the global ask-us-title centering rule for new-build-homes */
+.ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title):not(#buy-to-let .ask-us-title):not(#new-build-homes .ask-us-title) {
+  text-align: center !important;
+}
+
+/* Image positioning for new-build-homes */
+#new-build-homes img {
+  object-position: 65% center;
+}
+
+/* Ready to Find a Mortgage section styling - centered layout */
+#ready-to-find-mortgage h2 {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 2rem !important;
+  text-align: center !important;
+}
+
+#ready-to-find-mortgage .animate-in-up {
+  padding: 2rem 0;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#ready-to-find-mortgage .animate-in-up.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#ready-to-find-mortgage .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#ready-to-find-mortgage .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+  text-align: center !important;
+}
+
+#ready-to-find-mortgage .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+#ready-to-find-mortgage .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#ready-to-find-mortgage .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Override animation transform for ready-to-find-mortgage section */
+#ready-to-find-mortgage .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#ready-to-find-mortgage .ask-us-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#ready-to-find-mortgage h2.ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#ready-to-find-mortgage h2 {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Ensure ready-to-find-mortgage section is visible and has proper spacing */
+#ready-to-find-mortgage {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#ready-to-find-mortgage.mortgage-advice-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Apply same padding overrides as other sections */
+#ready-to-find-mortgage,
+#ready-to-find-mortgage.section,
+#ready-to-find-mortgage.mortgage-advice-section,
+section#ready-to-find-mortgage,
+section#ready-to-find-mortgage.section,
+section#ready-to-find-mortgage.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
+}
+
+/* Custom class for ready-to-find-mortgage title */
+.ready-to-find-mortgage-title {
+  font-size: 2.5rem !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  margin-bottom: 2rem !important;
+  text-align: center !important;
+  font-family: trajan-pro-3, serif !important;
+  letter-spacing: 0.1rem !important;
+  border-bottom: 2px solid var(--accent) !important;
+  padding-bottom: 0.25rem !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Override the global ask-us-title centering rule for ready-to-find-mortgage */
+.ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title):not(#buy-to-let .ask-us-title):not(#new-build-homes .ask-us-title):not(#ready-to-find-mortgage .ask-us-title) {
+  text-align: center !important;
+}
+
+/* LC Mortgage section styling - banner and legal information */
+#lc-mortgage .animate-in-up {
+  padding: 2rem 0;
+  text-align: center !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#lc-mortgage .animate-in-up.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#lc-mortgage .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#lc-mortgage .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.2rem !important;
+  text-align: center !important;
+  color: #ffffff !important;
+}
+
+#lc-mortgage .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+/* Ensure lc-mortgage section is visible and has proper spacing */
+#lc-mortgage {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#lc-mortgage.mortgage-advice-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Apply same padding overrides as other sections */
+#lc-mortgage,
+#lc-mortgage.section,
+#lc-mortgage.mortgage-advice-section,
+section#lc-mortgage,
+section#lc-mortgage.section,
+section#lc-mortgage.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
+}
+
+#moving-home h3 {
+  margin: 0.5rem 0 2rem 0 !important;
+  font-size: 2rem !important;
+  font-weight: 300 !important;
+  color: #ffffff !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+}
+
+#moving-home .animate-in-right {
+  padding: 2rem 0;
+}
+
+#moving-home .mortgage-article {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#moving-home .mortgage-article p {
+  margin-bottom: 1.5rem !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
+  text-align: left !important;
+}
+
+#moving-home .mortgage-article p:last-of-type {
+  margin-bottom: 2rem !important;
+}
+
+#moving-home .cta {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+#moving-home .cta:hover {
+  background: #5a7a28;
+  transform: translateY(-2px);
+}
+
+/* Remove all top space from moving-home section content */
+#moving-home .animate-in-right {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#moving-home .animate-in-right.animate-active {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+#moving-home h2 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Adjust image positioning to show right area but not edge */
+#moving-home img {
+  object-position: 65% center;
+}
+
+#re-mortgage img {
+  object-position: 65% center;
+}
+
+#first-time-purchase img {
+  object-position: 75% center;
+}
+
+/* Override animation transform for moving-home section */
+#moving-home .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#moving-home .ask-us-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#moving-home h2.ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#moving-home h2 {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Apply same padding overrides as first-time-purchase section */
+#moving-home,
+#moving-home.section,
+#moving-home.mortgage-advice-section,
+section#moving-home,
+section#moving-home.section,
+section#moving-home.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
+}
+
+/* Override animation transform for re-mortgage section */
+#re-mortgage .ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+#re-mortgage .ask-us-title {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Additional overrides to ensure re-mortgage title is visible */
+#re-mortgage h2.ask-us-title.ma-prep {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#re-mortgage h2 {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Ensure re-mortgage section is visible and has proper spacing */
+#re-mortgage {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#re-mortgage.mortgage-advice-section {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Apply same padding overrides as first-time-purchase section */
+#re-mortgage,
+#re-mortgage.section,
+#re-mortgage.mortgage-advice-section,
+section#re-mortgage,
+section#re-mortgage.section,
+section#re-mortgage.mortgage-advice-section {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  padding: 0 10rem 6rem 10rem !important;
 }
