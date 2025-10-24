@@ -24,6 +24,7 @@ import GetInTouchSection from './components/GetInTouchSection'
 import AnimatedSection from './components/AnimatedSection'
 import WhyIntegraEstates from './components/WhyIntegraEstates'
 import MortgageAdvicePage from './components/MortgageAdvicePage'
+import MarketingYourProperty from './components/MarketingYourProperty'
 import ValuationModal from './components/ValuationModal'
 
 // Temporarily disabled Framer Motion
@@ -183,6 +184,7 @@ function App() {
           <Route path="/blogs/Best-Time-To-Sell" element={<BestTimeToSell />} />
           <Route path="/why-integra-estates" element={<WhyIntegraEstates />} />
           <Route path="/mortgage-advice" element={<MortgageAdvicePage />} />
+          <Route path="/marketing-your-property" element={<MarketingYourProperty />} />
           <Route path="/meet-the-team" element={<MeetTheTeamPage />} />
         </Routes>
 

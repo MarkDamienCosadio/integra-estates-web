@@ -3916,8 +3916,8 @@ html, body { height: 100%; }
 .animate-in-up {
   opacity: 0;
   transform: translateY(80px);
-  transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .animate-in-left {
@@ -4016,7 +4016,7 @@ button {
   .animate-in-left,
   .animate-in-right {
     transform: translateY(20px);
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
   .google-review-card:hover,
@@ -5522,4 +5522,258 @@ section#re-mortgage.mortgage-advice-section {
   padding-top: 0 !important;
   margin-top: 0 !important;
   padding: 0 10rem 6rem 10rem !important;
+}
+
+/* Marketing Your Property Page Styles */
+.marketing-your-property-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+}
+
+.marketing-your-property-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  display: grid;
+  place-items: center;
+}
+
+.marketing-your-property-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  contain: paint;
+  clip-path: inset(0);
+  z-index: 1;
+}
+
+.marketing-your-property-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.60) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.08) 100%);
+}
+
+.marketing-your-property-hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 1200px;
+  padding: 0 2rem;
+}
+
+.marketing-your-property-title {
+  font-size: 4rem;
+  font-weight: 400;
+  font-family: trajan-pro-3, serif;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.marketing-your-property-subtitle {
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  color: #ffffff !important;
+}
+
+/* Advanced Marketing Techniques Intro Section */
+.marketing-your-property-intro {
+  background: #141414;
+  padding: 6rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.marketing-your-property-intro-title {
+  font-size: 3rem;
+  font-weight: 400;
+  font-family: trajan-pro-3, serif;
+  letter-spacing: 0.1rem;
+  margin-bottom: 3rem;
+  color: var(--accent);
+  text-align: center;
+}
+
+.marketing-your-property-intro-article {
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #e0e0e0;
+  line-height: 1.8;
+}
+
+.marketing-your-property-intro-article p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.marketing-your-property-intro-article p:last-child {
+  margin-bottom: 0;
+}
+
+/* Explore Advanced Marketing Section */
+.explore-advanced-marketing {
+  background: #141414;
+  padding: 6rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.explore-advanced-marketing-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.explore-advanced-marketing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.explore-marketing-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-marketing-btn:hover {
+  background: rgba(108, 152, 48, 0.1);
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.explore-marketing-btn-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(108, 152, 48, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.explore-marketing-btn:hover .explore-marketing-btn-icon {
+  background: var(--accent);
+  transform: scale(1.1);
+}
+
+.explore-marketing-btn-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+  font-family: trajan-pro-3, serif;
+  letter-spacing: 0.05rem;
+}
+
+.marketing-your-property-content {
+  background: #141414;
+  padding: 6rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.marketing-your-property-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.marketing-your-property-section {
+  margin-bottom: 4rem;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.marketing-your-property-section-title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-family: trajan-pro-3, serif;
+  letter-spacing: 0.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+}
+
+.marketing-your-property-text {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .marketing-your-property-title {
+    font-size: 2.5rem;
+  }
+  
+  .marketing-your-property-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .marketing-your-property-intro-title {
+    font-size: 2.5rem;
+  }
+  
+  .marketing-your-property-intro-article p {
+    font-size: 1.1rem;
+  }
+  
+  .explore-advanced-marketing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .explore-marketing-btn {
+    padding: 1.5rem;
+  }
+  
+  .explore-marketing-btn-text {
+    font-size: 1.1rem;
+  }
+  
+  .marketing-your-property-section {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .marketing-your-property-section-title {
+    font-size: 2rem;
+  }
+  
+  .marketing-your-property-text {
+    font-size: 1.1rem;
+  }
 }

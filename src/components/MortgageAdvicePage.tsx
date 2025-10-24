@@ -113,7 +113,7 @@ export default function MortgageAdvicePage() {
             {/* Left column: image */}
             <AnimatedSection>
               <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/first-time-buyers.jpg" alt="First-time buyers" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                <img src="/images/first-time-buyers.jpg" alt="First-time buyers" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </AnimatedSection>
             {/* Right column: title, subtitle, article and buttons */}
@@ -198,7 +198,7 @@ export default function MortgageAdvicePage() {
             {/* Right column: image */}
             <AnimatedSection>
               <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/remortgage.jpg" alt="Re-mortgage" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                <img src="/images/remortgage.jpg" alt="Re-mortgage" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </AnimatedSection>
           </div>
@@ -212,7 +212,7 @@ export default function MortgageAdvicePage() {
             {/* Left column: image */}
             <AnimatedSection>
               <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/moving-home.jpg" alt="Moving Home" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                <img src="/images/moving-home.jpg" alt="Moving Home" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </AnimatedSection>
             {/* Right column: title, subtitle, article and buttons */}
@@ -284,7 +284,7 @@ export default function MortgageAdvicePage() {
             {/* Right column: image */}
             <AnimatedSection>
               <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/buy-to-let.jpg" alt="Buy To Let" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                <img src="/images/buy-to-let.jpg" alt="Buy To Let" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </AnimatedSection>
           </div>
@@ -298,7 +298,7 @@ export default function MortgageAdvicePage() {
             {/* Left column: image */}
             <AnimatedSection>
               <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/new-home.jpg" alt="New Build Homes" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                <img src="/images/new-home.jpg" alt="New Build Homes" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </AnimatedSection>
             {/* Right column: title, subtitle, article and buttons */}

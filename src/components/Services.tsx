@@ -77,12 +77,10 @@ export default function Services() {
             </div>
           </button>
 
-          <a
+          <Link
             className="service-card animate-in-up"
             data-animate-delay="1000"
-            href="https://integra-estates.com/marketing-your-property"
-            target="_blank"
-            rel="noopener noreferrer"
+            to="/marketing-your-property"
             aria-label="Advanced Marketing"
           >
             <img
@@ -105,7 +103,7 @@ export default function Services() {
                 <span className="animated-module__Rnzt8a__lineBar" />
               </div>
             </div>
-          </a>
+          </Link>
           </div>
         </AnimatedSection>
       </div>
