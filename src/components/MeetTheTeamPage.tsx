@@ -3,9 +3,25 @@ import GetInTouchSection from './GetInTouchSection'
 import AnimatedSection from './AnimatedSection'
 import { useState } from 'react'
 
+interface TeamMember {
+  id: string
+  firstName: string
+  lastName: string
+  position: string
+  image: string
+  info: string
+}
+
+interface ModalPosition {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+
 export default function MeetTheTeamPage() {
-  const [selectedMember, setSelectedMember] = useState(null)
-  const [modalPosition, setModalPosition] = useState({ x: 0, y: 0, width: 0, height: 0 })
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
+  const [modalPosition, setModalPosition] = useState<ModalPosition>({ x: 0, y: 0, width: 0, height: 0 })
   const [isClosing, setIsClosing] = useState(false)
 
   const teamMembers = [
@@ -65,7 +81,7 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
     }
   ]
 
-  const handleCardClick = (member, event) => {
+  const handleCardClick = (member: TeamMember, event: React.MouseEvent<HTMLDivElement>) => {
     const card = event.currentTarget
     const rect = card.getBoundingClientRect()
     
@@ -154,7 +170,7 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
               '--initial-y': `${modalPosition.y}px`,
               '--initial-width': `${modalPosition.width}px`,
               '--initial-height': `${modalPosition.height}px`
-            }}
+            } as React.CSSProperties}
           >
             <div className="team-modal-content">
               <img src={selectedMember.image} alt={`${selectedMember.firstName} ${selectedMember.lastName}`} className="team-modal-image" />
