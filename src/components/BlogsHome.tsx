@@ -6,6 +6,7 @@ import 'swiper/css'
 
 export default function BlogsHome() {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
+  const dotsRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     const el = titleRef.current
@@ -69,6 +70,32 @@ export default function BlogsHome() {
   ]
 
   const [swiperInst, setSwiperInst] = useState<SwiperType | null>(null)
+
+  const handlePrevClick = () => {
+    swiperInst?.slidePrev()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-right')
+      dotsRef.current.classList.add('slider-dots-slide-left')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-left')
+        }
+      }, 400)
+    }
+  }
+
+  const handleNextClick = () => {
+    swiperInst?.slideNext()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-left')
+      dotsRef.current.classList.add('slider-dots-slide-right')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-right')
+        }
+      }, 400)
+    }
+  }
   const CARDS_PER_VIEW = 4
   // Ensure enough slides for robust looping across breakpoints
   const minSlides = CARDS_PER_VIEW * 3
@@ -128,15 +155,19 @@ export default function BlogsHome() {
           ))}
         </Swiper>
         <div className="property-slide-swiper-module__ZWA3Ca__swiperControls">
-          <div onClick={() => swiperInst?.slidePrev()}>
+          <div onClick={handlePrevClick}>
             <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path></svg>
+              ←
             </div>
           </div>
-          <div className="property-slide-swiper-module__ZWA3Ca__swiperPagination" style={{ width: '120px' }}></div>
-          <div onClick={() => swiperInst?.slideNext()}>
+          <div ref={dotsRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination">
+            <span className="slider-dot"></span>
+            <span className="slider-dot"></span>
+            <span className="slider-dot"></span>
+          </div>
+          <div onClick={handleNextClick}>
             <div className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+              →
             </div>
           </div>
         </div>

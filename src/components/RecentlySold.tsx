@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import type { Swiper as SwiperType } from 'swiper'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
+import AnimatedSection from './AnimatedSection'
 
 type Property = {
   id: number
@@ -33,42 +34,46 @@ const soldProperties: Property[] = [
 ]
 
 export default function RecentlySold() {
-  const sectionRef = useRef<HTMLDivElement | null>(null)
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
-  const pagRef = useRef<HTMLDivElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const sliderRef = useRef<HTMLDivElement | null>(null)
+  const dotsRef = useRef<HTMLDivElement | null>(null)
   const [swiperInst, setSwiperInst] = useState<SwiperType | null>(null)
-  
-  useEffect(() => {
-    const section = sectionRef.current
-    if (!section) return
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const ratio = entry.intersectionRatio
-          if (ratio >= 0.5 && titleRef.current) {
-            titleRef.current.classList.add('rs-active')
-          }
-          if (ratio >= 0.8 && sliderRef.current) {
-            sliderRef.current.classList.add('rs-active')
-          }
-        })
-      },
-      { threshold: [0.4, 0.8] }
-    )
-    io.observe(section)
-    return () => io.disconnect()
-  }, [])
+
+  const handlePrevClick = () => {
+    swiperInst?.slidePrev()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-right')
+      dotsRef.current.classList.add('slider-dots-slide-left')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-left')
+        }
+      }, 400)
+    }
+  }
+
+  const handleNextClick = () => {
+    swiperInst?.slideNext()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-left')
+      dotsRef.current.classList.add('slider-dots-slide-right')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-right')
+        }
+      }, 400)
+    }
+  }
   return (
-    <section id="recently-sold" ref={sectionRef} className="section-4-module__K9P0s__section section">
+    <section id="recently-sold" className="section-4-module__K9P0s__section section">
       <div className="section-4-module__K9P0s__inner container">
-        {/* Title styled identically to Properties for sale */}
-        <div className="section-4-module__K9P0s__titleContainer">
-          <h2 ref={titleRef} className="ask-us-title rs-prep rs-from-left">Recently sold properties</h2>
-        </div>
-        <div ref={sliderRef} className="section-4-module__K9P0s__slider rs-prep rs-from-right">
+        <AnimatedSection threshold={0.5}>
+          {/* Title slides up from below */}
+          <div className="section-4-module__K9P0s__titleContainer">
+            <h2 className="ask-us-title animate-in-up">Recently sold properties</h2>
+          </div>
+          {/* Slider slides up from below with stagger delay */}
+          <div className="section-4-module__K9P0s__slider animate-in-up" data-animate-delay="200">
           <Swiper
             spaceBetween={5}
             slidesPerView={5}
@@ -123,19 +128,20 @@ export default function RecentlySold() {
           </Swiper>
           {/* Custom controls below the cards */}
           <div className="property-slide-swiper-module__ZWA3Ca__swiperControls">
-            <button type="button" id="swiper-prev" ref={prevRef} onClick={() => swiperInst?.slidePrev()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
-              </svg>
+            <button type="button" ref={prevRef} onClick={handlePrevClick} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
+              ←
             </button>
-            <div id="swiper-pagination" ref={pagRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination" aria-live="polite"></div>
-            <button type="button" id="swiper-next" ref={nextRef} onClick={() => swiperInst?.slideNext()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-              </svg>
+            <div ref={dotsRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination">
+              <span className="slider-dot"></span>
+              <span className="slider-dot"></span>
+              <span className="slider-dot"></span>
+            </div>
+            <button type="button" ref={nextRef} onClick={handleNextClick} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
+              →
             </button>
           </div>
-        </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )

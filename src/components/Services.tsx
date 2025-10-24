@@ -1,63 +1,18 @@
-import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import AnimatedSection from './AnimatedSection'
 
 export default function Services() {
-  const sectionRef = useRef<HTMLElement | null>(null)
-  const titleRef = useRef<HTMLHeadingElement | null>(null)
-  const gridRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    const titleEl = titleRef.current
-    const gridEl = gridRef.current
-
-    const titleObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && titleEl) {
-            titleEl.classList.add('services-active')
-          }
-        })
-      },
-      { threshold: 0.4 }
-    )
-
-    const gridObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && gridEl) {
-            gridEl.classList.add('services-active')
-            
-            // Add staggered animation to each card
-            const cards = gridEl.querySelectorAll('.service-card')
-            cards.forEach((card, index) => {
-              const delays = [400, 800, 1000] // Card 1: 400ms, Card 2: 800ms, Card 3: 1000ms
-              setTimeout(() => {
-                (card as HTMLElement).classList.add('services-active')
-              }, delays[index] || 1000) // Use defined delays or fallback to 1000ms
-            })
-          }
-        })
-      },
-      { threshold: 0.4 }
-    )
-
-    if (titleEl) titleObserver.observe(titleEl)
-    if (gridEl) gridObserver.observe(gridEl)
-
-    return () => {
-      titleObserver.disconnect()
-      gridObserver.disconnect()
-    }
-  }, [])
   return (
-    <section id="services" ref={sectionRef} className="services-section section">
+    <section id="services" className="services-section section">
       <div className="services-inner container">
-        <div className="services-titleContainer">
-          <h2 ref={titleRef} className="ask-us-title services-prep services-from-right">Our services</h2>
-        </div>
-        <div ref={gridRef} className="services-grid">
+        <AnimatedSection threshold={0.5}>
+          <div className="services-titleContainer">
+            <h2 className="ask-us-title animate-in-up">Our services</h2>
+          </div>
+          <div className="services-grid">
           <Link
-            className="service-card"
+            className="service-card animate-in-up"
+            data-animate-delay="400"
             to="/mortgage-advice"
             aria-label="Mortgage Advice"
           >
@@ -85,7 +40,8 @@ export default function Services() {
 
           <button
             type="button"
-            className="service-card"
+            className="service-card animate-in-up"
+            data-animate-delay="800"
             aria-label="Request a valuation"
             onClick={() => {
               window.dispatchEvent(new Event('openValuationModal'))
@@ -122,7 +78,8 @@ export default function Services() {
           </button>
 
           <a
-            className="service-card"
+            className="service-card animate-in-up"
+            data-animate-delay="1000"
             href="https://integra-estates.com/marketing-your-property"
             target="_blank"
             rel="noopener noreferrer"
@@ -149,7 +106,8 @@ export default function Services() {
               </div>
             </div>
           </a>
-        </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   )

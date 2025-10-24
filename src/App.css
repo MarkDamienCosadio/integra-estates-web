@@ -531,6 +531,48 @@ html, body { height: 100%; }
   clip-path: inset(0);
   z-index: 1; /* under overlay/content */
 }
+
+/* Meet The Team page: fixed background video */
+.meet-the-team-hero::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.60) 100%);
+}
+
+.meet-the-team-hero .hero__video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.meet-the-team-hero {
+  display: grid;
+  place-items: center;
+}
+
+.meet-the-team-hero .hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+.meet-the-team-hero .hero-content .hero-tag {
+  opacity: 1 !important;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: trajan-pro-3, serif;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
 /* Ensure Mortgage Advice headings are visible and above overlay */
 .mortgage-advice-hero { display: grid; place-items: center; }
 .mortgage-advice-hero .hero-content { position: relative; z-index: 3; text-align: center; }
@@ -957,12 +999,13 @@ html, body { height: 100%; }
   position: fixed;
   top: 0;
   right: 0;
-  width: 0;
-  height: 0;
+  width: 100vw;
+  height: 100vh;
   background: linear-gradient(135deg, #6c9830 0%, #5b8129 50%, #466320 100%);
   z-index: 10001;
   pointer-events: none;
   transform-origin: top right;
+  transform: scale(0);
 }
 
 .nav-green-overlay--expanding {
@@ -972,6 +1015,7 @@ html, body { height: 100%; }
 .nav-green-overlay--covering {
   width: 100vw;
   height: 100vh;
+  transform: scale(1);
   animation: greenOverlayCover 0.2s ease-out forwards;
 }
 
@@ -989,10 +1033,12 @@ html, body { height: 100%; }
 
 @keyframes greenOverlayExpand {
   0% {
-    transform: translate(0, 0) scale(0);
+    transform: scale(0);
+    opacity: 1;
   }
   100% {
-    transform: translate(0, 0) scale(1);
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -2128,27 +2174,7 @@ html, body { height: 100%; }
   transform: translateX(0);
 }
 
-/* Intro animation: slide from left for Recently Sold title */
-.section-4-module__K9P0s__titleContainer .rs-prep.rs-from-left {
-  opacity: 0;
-  transform: translateX(-100px);
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s;
-}
-.section-4-module__K9P0s__titleContainer .rs-prep.rs-from-left.rs-active {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Intro animation: slide from right for Recently Sold Swiper wrapper */
-.section-4-module__K9P0s__slider.rs-prep.rs-from-right .swiper-wrapper {
-  opacity: 0;
-  transform: translateX(100px);
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s;
-}
-.section-4-module__K9P0s__slider.rs-prep.rs-from-right.rs-active .swiper-wrapper {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* Recently Sold animations now use standard animate-in-up classes */
 
 .section-4-module__K9P0s__slider .swiper-button-prev,
 .section-4-module__K9P0s__slider .swiper-button-next { color: var(--accent); }
@@ -2175,18 +2201,75 @@ html, body { height: 100%; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--accent);
-  border-radius: 8px;
-  color: var(--accent);
+  width: 80px;
+  height: 80px;
+  border: none;
+  background: transparent;
+  color: #6c9830;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 32px;
+  font-weight: bold;
+  font-family: monospace;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-.property-slide-swiper-module__ZWA3Ca__swiperBtn:hover { color: #7aa63a; border-color: #7aa63a; }
-.property-slide-swiper-module__ZWA3Ca__swiperPagination { width: 120px; }
-.property-slide-swiper-module__ZWA3Ca__swiperPagination { display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-.property-slide-swiper-module__ZWA3Ca__swiperPagination .swiper-pagination-bullet { width: 8px; height: 8px; border-radius: 50%; background: rgba(108,152,48,0.5); }
-.property-slide-swiper-module__ZWA3Ca__swiperPagination .swiper-pagination-bullet.swiper-pagination-bullet-active { background: var(--accent); }
+.property-slide-swiper-module__ZWA3Ca__swiperBtn:hover { 
+  color: #7aa63a; 
+  transform: scale(1.05);
+}
+.property-slide-swiper-module__ZWA3Ca__swiperBtn:focus {
+  outline: none;
+  background: transparent;
+}
+.property-slide-swiper-module__ZWA3Ca__swiperBtn:active {
+  background: transparent;
+  outline: none;
+}
+.property-slide-swiper-module__ZWA3Ca__swiperPagination { 
+  width: 120px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0.5rem; 
+}
+
+/* Green dots styling */
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #6c9830;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Animation keyframes for dots sliding */
+@keyframes slideDotsLeft {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(-8px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes slideDotsRight {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+.slider-dots-slide-left {
+  animation: slideDotsLeft 0.4s ease-in-out;
+}
+
+.slider-dots-slide-right {
+  animation: slideDotsRight 0.4s ease-in-out;
+}
 .property-card-module__K9P0s__card { background-color: #141414; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 28px rgba(0,0,0,0.32); display: flex; flex-direction: column; width: 100%; position: relative; transition: transform 250ms ease; will-change: transform; transform-origin: center; }
 .property-card-module__K9P0s__card:hover { transform: scale(1.04); z-index: 2; }
 .property-card-module__K9P0s__media { position: relative; overflow: hidden; }
@@ -2619,7 +2702,7 @@ html, body { height: 100%; }
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  align-items: center;
+  align-items: stretch;
   min-height: 400px;
   margin-top: 0;
   padding-top: 0;
@@ -2632,6 +2715,8 @@ html, body { height: 100%; }
   opacity: 0;
   transform: translateX(-60px);
   transition: all 0.8s ease-out;
+  display: flex;
+  flex-direction: column;
 }
 
 .meet-the-team-image {
@@ -2640,6 +2725,7 @@ html, body { height: 100%; }
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  flex: 1;
 }
 
 .meet-the-team-text-column {
@@ -3130,44 +3216,12 @@ html, body { height: 100%; }
   background-color: #141414;
 }
 
-/* Service cards reveal animations - hidden by default */
-.services-grid .service-card {
-  opacity: 0;
-  transform: translateY(60px);
-  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), 
-              transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
+/* Service cards now use standard animate-in-up classes */
+/* Removed old custom animation CSS - now handled by AnimatedSection */
 
-/* Active state for service cards */
-.services-grid .service-card.services-active {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Fallback animation removed - now handled by AnimatedSection */
 
-/* Fallback for service cards - show after 2 seconds if no JS */
-.services-section .service-card {
-  animation: service-card-fallback 0.1s ease-out 2s forwards;
-}
-/* Disable fallback once grid is active to prevent conflicts */
-.services-grid.services-active .service-card { animation: none; }
-
-@keyframes service-card-fallback {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Intro animation: slide from right for Services title */
-.services-titleContainer .services-prep.services-from-right {
-  opacity: 0;
-  transform: translateX(100px);
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s;
-}
-.services-titleContainer .services-prep.services-from-right.services-active {
-  opacity: 1;
-  transform: translateX(0);
-}
+/* Services title now uses standard animate-in-up classes */
 
 
 .services-inner {
@@ -3854,30 +3908,30 @@ html, body { height: 100%; }
 /* Unified animation classes */
 .animate-in {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(70px);
+  transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .animate-in-up {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(80px);
+  transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .animate-in-left {
   opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(-80px);
+  transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .animate-in-right {
   opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(80px);
+  transition: opacity 0.45s cubic-bezier(0.25, 0.1, 0.25, 1), 
+              transform 0.45s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .animate-active {
@@ -4067,6 +4121,14 @@ button {
 }
 .mortgage-advice-section .mortgage-article p {
   text-align: center !important;
+}
+
+/* Override centering for MortgageAdvice component - force right alignment */
+#mortgage-advice .mortgage-article {
+  text-align: right !important;
+}
+#mortgage-advice .mortgage-article p {
+  text-align: right !important;
 }
 
 /* Override centering for first-time-purchase section */
@@ -4992,7 +5054,307 @@ section#lc-mortgage.mortgage-advice-section {
 .get-in-touch-module__NVY_Ga__section {
   position: relative !important;
   z-index: 10 !important;
-  background-color: rgba(20, 20, 20, 0.95) !important;
+  background-color: rgba(20, 20, 20, 1) !important;
+}
+
+/* Team Section Styling */
+.team-section {
+  background-color: #141414 !important;
+  padding: 4rem 0 !important;
+  overflow: visible !important;
+}
+
+.team-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.team-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-family: trajan-pro-3, serif;
+  color: var(--text);
+  margin-bottom: 3rem;
+  letter-spacing: 0.1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.team-member {
+  text-align: center;
+  background: #e0e0e0 !important;
+  border-radius: 12px;
+  border: 3px solid #6c9830;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.team-section .team-member {
+  background: #e0e0e0 !important;
+}
+
+.team-info {
+  background-color: #141414;
+  padding: 1rem 0.5rem;
+  margin-top: 0;
+  border-radius: 0 0 8px 8px;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+  border-color: #5b8129;
+  box-shadow: 0 8px 25px rgba(108, 152, 48, 0.3);
+}
+
+.team-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.team-name {
+  font-size: 1.25rem;
+  font-family: trajan-pro-3, serif;
+  color: white !important;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05rem;
+}
+
+.team-role {
+  color: #6c9830;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Team Modal Styles */
+.team-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.team-modal-overlay.closing {
+  animation: modalFadeOut 0.3s ease-in forwards;
+}
+
+.team-modal {
+  background: #141414;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  animation: modalExpand 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: var(--initial-x) var(--initial-y);
+}
+
+.team-modal.closing {
+  animation: modalCollapse 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.team-modal-content {
+  padding: 3rem;
+  position: relative;
+  color: white;
+  overflow: visible;
+}
+
+.team-modal-image {
+  float: left;
+  width: 300px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  border: 3px solid #6c9830;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  shape-outside: margin-box;
+  clear: left;
+}
+
+.team-modal-name {
+  font-family: trajan-pro-3, serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin: 0 0 0.5rem 0;
+}
+
+.team-modal-name span {
+  display: block;
+}
+
+.team-modal-position {
+  font-size: 1.3rem;
+  color: #6c9830;
+  font-weight: 500;
+  margin: 0 0 1.5rem 0;
+}
+
+.team-modal-article {
+  overflow: visible;
+}
+
+.team-modal-article p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: white;
+  margin: 0 0 1.5rem 0;
+  text-align: left;
+  text-indent: 0;
+  text-wrap: wrap;
+}
+
+.team-modal-article::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.team-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  color: #6c9830;
+  border: 2px solid #6c9830;
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10001;
+}
+
+.team-modal-close:hover {
+  background: #6c9830;
+  color: white;
+  transform: scale(1.1);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalExpand {
+  0% {
+    transform: scale(0.1) translate(var(--initial-x), var(--initial-y));
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes modalFadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes modalCollapse {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.1) translate(var(--initial-x), var(--initial-y));
+    opacity: 0;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .team-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .team-image {
+    height: 150px;
+  }
+
+  .team-modal-content {
+    padding: 2rem;
+  }
+
+  .team-modal-image {
+    float: none;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto 1.5rem auto;
+  }
+
+  .team-modal-name {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .team-modal-position {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .team-container {
+    padding: 0 1rem;
+  }
+
+  .team-modal-overlay {
+    padding: 1rem;
+  }
+
+  .team-modal-content {
+    padding: 1rem;
+  }
 }
 
 #moving-home h3 {

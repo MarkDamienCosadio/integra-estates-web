@@ -1,8 +1,19 @@
 import ScrollHint from './ScrollHint'
 import AnimatedSection from './AnimatedSection'
 import GetInTouchSection from './GetInTouchSection'
+import { useState } from 'react'
 
 export default function MortgageAdvicePage() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const openModal = () => {
+    console.log('Opening modal...')
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
   return (
     <>
       <section className="mortgage-advice-hero hero">
@@ -25,68 +36,74 @@ export default function MortgageAdvicePage() {
 
       {/* New column section with matching h2 title */}
       <section className="mortgage-advice-section section">
-        <div className="mortgage-advice-container">
-          <div className="mortgage-advice-content" style={{ rowGap: 0 }}>
-            <div className="mortgage-card" style={{ gridColumn: '1 / -1' }}>
-              {/* Centered, full-width title across the grid */}
-              <h2 className="ask-us-title" style={{ textAlign: 'center', margin: '0 auto', paddingBottom: 0 }}>
-                Get Expert Mortgage Help Today
-              </h2>
+        <AnimatedSection>
+          <div className="mortgage-advice-container">
+            <div className="mortgage-advice-content" style={{ rowGap: 0 }}>
+              <div className="mortgage-card animate-in-up" style={{ gridColumn: '1 / -1' }}>
+                {/* Centered, full-width title across the grid */}
+                <h2 className="ask-us-title animate-in-up" data-animate-delay="200" style={{ textAlign: 'center', margin: '0 auto', paddingBottom: 0 }}>
+                  Get Expert Mortgage Help Today
+                </h2>
 
-              {/* Centered article content */}
-              <article
-                className="mortgage-article"
-                style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px' }}
-                aria-label="Expert mortgage help information"
-              >
-                <p style={{ fontSize: '1.25rem', lineHeight: 1.7 }}>
-                  Over 2 million people have trusted L&amp;C Mortgages - the UK's No.1 fee-free broker - with access to exclusive deals from across the market, expert advice 7 days a week.
-                </p>
-                <p style={{ fontSize: '1.25rem', lineHeight: 1.7 }}>
-                  Tel: <a href="tel:08009234018" aria-label="Call L and C Mortgages">0800 923 4018</a>
-                </p>
-              </article>
+                {/* Centered article content */}
+                <article
+                  className="mortgage-article animate-in-up"
+                  data-animate-delay="400"
+                  style={{ textAlign: 'center', margin: '0 auto', maxWidth: '900px' }}
+                  aria-label="Expert mortgage help information"
+                >
+                  <p style={{ fontSize: '1.25rem', lineHeight: 1.7 }}>
+                    Over 2 million people have trusted L&amp;C Mortgages - the UK's No.1 fee-free broker - with access to exclusive deals from across the market, expert advice 7 days a week.
+                  </p>
+                  <p style={{ fontSize: '1.25rem', lineHeight: 1.7 }}>
+                    Tel: <a href="tel:08009234018" aria-label="Call L and C Mortgages">0800 923 4018</a>
+                  </p>
+                </article>
+              </div>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* Mortgage Services section */}
       <section id="mortgage-services" className="mortgage-advice-section section">
-        <div className="mortgage-advice-container">
-          <div className="mortgage-advice-content" style={{ rowGap: 0 }}>
-            <h2 className="ask-us-title" style={{ gridColumn: '1 / -1', textAlign: 'center', margin: '0 auto' }}>
-              Expert Mortgage Advice, When You Need It Most
-            </h2>
-            <h3 style={{ gridColumn: '1 / -1', textAlign: 'center', margin: '0.5rem auto 0' }}>
-              In partnership with L&amp;C - the UK's Largest fee-free mortgage broker
-            </h3>
-            <article
-              className="mortgage-article"
-              style={{ gridColumn: '1 / -1', margin: '1rem auto 0', maxWidth: '1000px' }}
-              aria-label="Mortgage services partnership details"
-            >
-              <p>
-                At Integra Estates, we believe that exceptional estate agency is about more than just property, it’s about people. As an agency you can trust, we’re proud to partner with a company that shares our core values of honesty, reliability and outstanding customer care.
-              </p>
-              <p>
-                That’s why we’ve chosen to work alongside L&amp;C Mortgages, the UK’s largest fee-free mortgage broker. In our view, they are truly the best at what they do.
-              </p>
-              <p>
-                More than two million people have turned to L&amp;C for expert mortgage advice. Their approachable and knowledgeable advisers are available seven days a week, ready to guide you through the entire mortgage process with no fees to pay. Whether you’re a first-time buyer, moving home or refinancing, L&amp;C search across the entire mortgage market, including exclusive products not available elsewhere, to ensure you receive the very best deal.
-              </p>
-              <p>
-                We understand how crucial it is to be in the strongest possible position when making an offer on a home. That’s why we encourage our clients to speak with L&amp;C early on, helping them feel prepared and financially confident when the right property comes along.
-              </p>
-              <p>
-                We don’t believe in recommending just anyone. We only align ourselves with companies we trust wholeheartedly. L&amp;C’s exceptional reputation, unparalleled market access and unwavering commitment to customer service perfectly reflect the high standards we uphold at Integra Estates.
-              </p>
-              <p>
-                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" aria-label="Call L and C Mortgages">0800 923 4018</a> to speak to a mortgage expert.
-              </p>
-            </article>
+        <AnimatedSection>
+          <div className="mortgage-advice-container">
+            <div className="mortgage-advice-content" style={{ rowGap: 0 }}>
+              <h2 className="ask-us-title animate-in-up" style={{ gridColumn: '1 / -1', textAlign: 'center', margin: '0 auto' }}>
+                Expert Mortgage Advice, When You Need It Most
+              </h2>
+              <h3 className="animate-in-up" data-animate-delay="200" style={{ gridColumn: '1 / -1', textAlign: 'center', margin: '0.5rem auto 0' }}>
+                In partnership with L&amp;C - the UK's Largest fee-free mortgage broker
+              </h3>
+              <article
+                className="mortgage-article animate-in-up"
+                data-animate-delay="400"
+                style={{ gridColumn: '1 / -1', margin: '1rem auto 0', maxWidth: '1000px' }}
+                aria-label="Mortgage services partnership details"
+              >
+                <p>
+                  At Integra Estates, we believe that exceptional estate agency is about more than just property, it's about people. As an agency you can trust, we're proud to partner with a company that shares our core values of honesty, reliability and outstanding customer care.
+                </p>
+                <p>
+                  That's why we've chosen to work alongside L&amp;C Mortgages, the UK's largest fee-free mortgage broker. In our view, they are truly the best at what they do.
+                </p>
+                <p>
+                  More than two million people have turned to L&amp;C for expert mortgage advice. Their approachable and knowledgeable advisers are available seven days a week, ready to guide you through the entire mortgage process with no fees to pay. Whether you're a first-time buyer, moving home or refinancing, L&amp;C search across the entire mortgage market, including exclusive products not available elsewhere, to ensure you receive the very best deal.
+                </p>
+                <p>
+                  We understand how crucial it is to be in the strongest possible position when making an offer on a home. That's why we encourage our clients to speak with L&amp;C early on, helping them feel prepared and financially confident when the right property comes along.
+                </p>
+                <p>
+                  We don't believe in recommending just anyone. We only align ourselves with companies we trust wholeheartedly. L&amp;C's exceptional reputation, unparalleled market access and unwavering commitment to customer service perfectly reflect the high standards we uphold at Integra Estates.
+                </p>
+                <p>
+                  Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" aria-label="Call L and C Mortgages">0800 923 4018</a> to speak to a mortgage expert.
+                </p>
+              </article>
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </section>
 
       {/* First time purchase section */}
@@ -133,7 +150,7 @@ export default function MortgageAdvicePage() {
                     With Integra Estates and L&amp;C by your side, you can feel confident, informed and well supported, from your very first viewing right through to the moment you collect your keys.
                   </p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-start' }}>
-                    <a href="#" className="cta" aria-label="Why a Mortgage in Principle Should Be Your First Step?">Why a Mortgage in Principle Should Be Your First Step?</a>
+                    <a href="#" className="cta" aria-label="Why a Mortgage in Principle Should Be Your First Step?" onClick={(e) => { e.preventDefault(); openModal(); }}>Why a Mortgage in Principle Should Be Your First Step?</a>
                     <a href="#" className="cta" aria-label="Which first time buyer mortgage is right for me?">Which first time buyer mortgage is right for me?</a>
                     <a href="#" className="cta" aria-label="Click here for Free Mortgage Advice">Click here for Free Mortgage Advice</a>
                   </div>
@@ -385,6 +402,74 @@ export default function MortgageAdvicePage() {
 
       {/* ScrollHint widget for mortgage page */}
       <ScrollHint />
+
+      {/* First-time-purchase Modal */}
+      {isModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                Why a Mortgage in Principle Should Be Your First Step?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                Before you start booking viewings or making offers, there's one essential document that can make all the difference: a Mortgage in Principle (MIP).
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+                We always encourage buyers — especially first-time purchasers — to secure a Mortgage in Principle early in their property journey. It's a simple document that confirms, based on initial information, how much you're likely to be able to borrow. It gives both you and sellers peace of mind that you're financially aware of things like borrowing ability and ready to move forward.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+                In today's competitive market, most estate agents — including us — will ask to see a Mortgage in Principle before progressing an offer. It shows you're a serious buyer with the means to proceed, which can put you ahead of others when a sought-after property hits the market.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+                This is where L&C Mortgages truly shine. As the UK's largest fee-free mortgage broker, they can often provide a Mortgage in Principle within just a few hours. No credit checks are carried out at this stage, so it won't affect your credit score, and their friendly, expert advisers will guide you through the process with ease.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                Getting your MIP early not only strengthens your position as a buyer but also helps you understand what you can realistically afford — saving you time, disappointment, and unnecessary stress later on.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+                If you're thinking of buying, speak to L&C Mortgages first. They're available seven days a week, ready to answer your questions, offer honest advice, and help you take that all-important first step with confidence.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }

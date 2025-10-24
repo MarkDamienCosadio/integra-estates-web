@@ -56,10 +56,36 @@ export default function PropertyForSale() {
   const sectionRef = useRef<HTMLDivElement | null>(null)
   const prevRef = useRef<HTMLButtonElement | null>(null)
   const nextRef = useRef<HTMLButtonElement | null>(null)
-  const pagRef = useRef<HTMLDivElement | null>(null)
+  const dotsRef = useRef<HTMLDivElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const sliderRef = useRef<HTMLDivElement | null>(null)
   const [swiperInst, setSwiperInst] = useState<SwiperType | null>(null)
+
+  const handlePrevClick = () => {
+    swiperInst?.slidePrev()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-right')
+      dotsRef.current.classList.add('slider-dots-slide-left')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-left')
+        }
+      }, 400)
+    }
+  }
+
+  const handleNextClick = () => {
+    swiperInst?.slideNext()
+    if (dotsRef.current) {
+      dotsRef.current.classList.remove('slider-dots-slide-left')
+      dotsRef.current.classList.add('slider-dots-slide-right')
+      setTimeout(() => {
+        if (dotsRef.current) {
+          dotsRef.current.classList.remove('slider-dots-slide-right')
+        }
+      }, 400)
+    }
+  }
 
   useEffect(() => {
     const section = sectionRef.current
@@ -184,16 +210,16 @@ export default function PropertyForSale() {
           </Swiper>
           {/* Custom controls below the cards */}
           <div className="property-slide-swiper-module__ZWA3Ca__swiperControls">
-            <button type="button" id="swiper-prev" ref={prevRef} onClick={() => swiperInst?.slidePrev()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clipRule="evenodd"></path>
-              </svg>
+            <button type="button" ref={prevRef} onClick={handlePrevClick} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Previous">
+              ←
             </button>
-            <div id="swiper-pagination" ref={pagRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination" aria-live="polite"></div>
-            <button type="button" id="swiper-next" ref={nextRef} onClick={() => swiperInst?.slideNext()} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
-              <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 20 20" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-              </svg>
+            <div ref={dotsRef} className="property-slide-swiper-module__ZWA3Ca__swiperPagination">
+              <span className="slider-dot"></span>
+              <span className="slider-dot"></span>
+              <span className="slider-dot"></span>
+            </div>
+            <button type="button" ref={nextRef} onClick={handleNextClick} className="property-slide-swiper-module__ZWA3Ca__swiperBtn" aria-label="Next">
+              →
             </button>
           </div>
         </div>

@@ -14,6 +14,7 @@ import MortgageAdvice from './components/MortgageAdvice'
 import ClientsSay from './components/ClientsSay'
 // import GoogleReviews from './components/GoogleReviews'
 import MeetTheTeam from './components/MeetTheTeam'
+import MeetTheTeamPage from './components/MeetTheTeamPage'
 // import Blogs from './components/Blogs'
 import BlogPost from './components/BlogPost'
 import BestTimeToSell from './components/BlogPages/BestTimeToSell'
@@ -29,9 +30,39 @@ import ValuationModal from './components/ValuationModal'
 // import { motion as m, AnimatePresence } from 'framer-motion'
 
 function HomePage() {
-  const [introVisible, setIntroVisible] = useState(true)
+  const [introVisible, setIntroVisible] = useState(() => {
+    // Check if this is a page refresh (not navigation)
+    const isPageRefresh = performance.navigation?.type === 1 || 
+                          (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming)?.type === 'reload'
+    
+    // Show intro on page refresh or if not seen in this session
+    const hasSeenIntro = sessionStorage.getItem('introShown')
+    const shouldShow = isPageRefresh || hasSeenIntro !== 'true'
+    
+    console.log('Intro check:', { 
+      isPageRefresh, 
+      hasSeenIntro, 
+      shouldShow,
+      navType: performance.navigation?.type,
+      navTiming: (performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming)?.type
+    })
+    
+    return shouldShow
+  })
   const [introHiding, setIntroHiding] = useState(false)
-  const [introComplete, setIntroComplete] = useState(false)
+  const [introComplete, setIntroComplete] = useState(() => {
+    // If intro is not visible, mark as complete immediately
+    return sessionStorage.getItem('introShown') === 'true'
+  })
+
+  // Mark intro as shown in sessionStorage when it displays
+  useEffect(() => {
+    console.log('Intro visibility changed:', introVisible)
+    if (introVisible) {
+      sessionStorage.setItem('introShown', 'true')
+      console.log('Marked intro as shown in sessionStorage')
+    }
+  }, [introVisible])
 
   const onHeroStarted = () => {
     if (!introVisible) return
@@ -152,6 +183,7 @@ function App() {
           <Route path="/blogs/Best-Time-To-Sell" element={<BestTimeToSell />} />
           <Route path="/why-integra-estates" element={<WhyIntegraEstates />} />
           <Route path="/mortgage-advice" element={<MortgageAdvicePage />} />
+          <Route path="/meet-the-team" element={<MeetTheTeamPage />} />
         </Routes>
 
         <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />

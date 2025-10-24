@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function MeetTheTeam() {
   const sectionRef = useRef<HTMLElement | null>(null)
@@ -75,12 +76,12 @@ export default function MeetTheTeam() {
                 <p className="mt-prep mt-from-right" style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
                   Our team is not just professional — we are approachable, compassionate, and genuinely invested in ensuring you have a positive and rewarding experience with us. Find out more and meet the people who make Integra Estates what it is.
                 </p>
-                <div className="animated-module__Rnzt8a__btn" onClick={() => (window.location.href = 'https://integra-estates.com/meet-the-team')}>
+                <Link to="/meet-the-team" className="animated-module__Rnzt8a__btn">
                   <div className="animated-module__Rnzt8a__title">Find out more...</div>
                   <div className="animated-module__Rnzt8a__line">
                     <span className="animated-module__Rnzt8a__lineBar" />
                   </div>
-                </div>
+                </Link>
               </article>
             </div>
           </div>
