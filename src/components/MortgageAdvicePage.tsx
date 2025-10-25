@@ -5,6 +5,14 @@ import { useState } from 'react'
 
 export default function MortgageAdvicePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isFirstTimeBuyerModalOpen, setIsFirstTimeBuyerModalOpen] = useState(false)
+  const [isRemortgageProcessModalOpen, setIsRemortgageProcessModalOpen] = useState(false)
+  const [isWhyRemortgageModalOpen, setIsWhyRemortgageModalOpen] = useState(false)
+  const [isPortingMortgageModalOpen, setIsPortingMortgageModalOpen] = useState(false)
+  const [isBuyToLetModalOpen, setIsBuyToLetModalOpen] = useState(false)
+  const [isBuyToLetRemortgageModalOpen, setIsBuyToLetRemortgageModalOpen] = useState(false)
+  const [isNewBuildModalOpen, setIsNewBuildModalOpen] = useState(false)
+  const [isBuyToLetInterestOnlyModalOpen, setIsBuyToLetInterestOnlyModalOpen] = useState(false)
 
   const openModal = () => {
     console.log('Opening modal...')
@@ -13,6 +21,78 @@ export default function MortgageAdvicePage() {
 
   const closeModal = () => {
     setIsModalOpen(false)
+  }
+
+  const openFirstTimeBuyerModal = () => {
+    console.log('Opening first time buyer modal...')
+    setIsFirstTimeBuyerModalOpen(true)
+  }
+
+  const closeFirstTimeBuyerModal = () => {
+    setIsFirstTimeBuyerModalOpen(false)
+  }
+
+  const openRemortgageProcessModal = () => {
+    console.log('Opening remortgage process modal...')
+    setIsRemortgageProcessModalOpen(true)
+  }
+
+  const closeRemortgageProcessModal = () => {
+    setIsRemortgageProcessModalOpen(false)
+  }
+
+  const openWhyRemortgageModal = () => {
+    console.log('Opening why remortgage modal...')
+    setIsWhyRemortgageModalOpen(true)
+  }
+
+  const closeWhyRemortgageModal = () => {
+    setIsWhyRemortgageModalOpen(false)
+  }
+
+  const openPortingMortgageModal = () => {
+    console.log('Opening porting mortgage modal...')
+    setIsPortingMortgageModalOpen(true)
+  }
+
+  const closePortingMortgageModal = () => {
+    setIsPortingMortgageModalOpen(false)
+  }
+
+  const openBuyToLetModal = () => {
+    console.log('Opening buy to let modal...')
+    setIsBuyToLetModalOpen(true)
+  }
+
+  const closeBuyToLetModal = () => {
+    setIsBuyToLetModalOpen(false)
+  }
+
+  const openBuyToLetRemortgageModal = () => {
+    console.log('Opening buy to let remortgage modal...')
+    setIsBuyToLetRemortgageModalOpen(true)
+  }
+
+  const closeBuyToLetRemortgageModal = () => {
+    setIsBuyToLetRemortgageModalOpen(false)
+  }
+
+  const openNewBuildModal = () => {
+    console.log('Opening new build modal...')
+    setIsNewBuildModalOpen(true)
+  }
+
+  const closeNewBuildModal = () => {
+    setIsNewBuildModalOpen(false)
+  }
+
+  const openBuyToLetInterestOnlyModal = () => {
+    console.log('Opening buy to let interest only modal...')
+    setIsBuyToLetInterestOnlyModalOpen(true)
+  }
+
+  const closeBuyToLetInterestOnlyModal = () => {
+    setIsBuyToLetInterestOnlyModalOpen(false)
   }
   return (
     <>
@@ -151,8 +231,8 @@ export default function MortgageAdvicePage() {
                   </p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-start' }}>
                     <a href="#" className="cta" aria-label="Why a Mortgage in Principle Should Be Your First Step?" onClick={(e) => { e.preventDefault(); openModal(); }}>Why a Mortgage in Principle Should Be Your First Step?</a>
-                    <a href="#" className="cta" aria-label="Which first time buyer mortgage is right for me?">Which first time buyer mortgage is right for me?</a>
-                    <a href="#" className="cta" aria-label="Click here for Free Mortgage Advice">Click here for Free Mortgage Advice</a>
+                    <a href="#" className="cta" aria-label="Which first time buyer mortgage is right for me?" onClick={(e) => { e.preventDefault(); openFirstTimeBuyerModal(); }}>Which first time buyer mortgage is right for me?</a>
+                    <a href="https://www.landc.co.uk/destination/estate-agents/integra-estates" className="cta" aria-label="Click here for Free Mortgage Advice" target="_blank" rel="noopener noreferrer">Click here for Free Mortgage Advice</a>
                   </div>
                 </article>
               </div>
@@ -188,9 +268,9 @@ export default function MortgageAdvicePage() {
                   <p>At Integra Estates, we only recommend services we would genuinely use ourselves. L&C shares our core values of honesty, transparency and client care, which is exactly why we trust them to help our clients make sound financial decisions.</p>
                   <p>So, whether you're remortgaging to save money, restructure your finances or release funds, let L&C take care of the hard work and help you move forward with confidence.</p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-start' }}>
-                    <a href="#" className="cta" aria-label="Why remortgage?">Why remortgage?</a>
-                    <a href="#" className="cta" aria-label="Which remortgage is right for me?">Which remortgage is right for me?</a>
-                    <a href="#" className="cta" aria-label="Click here for Free Remortgage Advice">Click here for Free Remortgage Advice</a>
+                    <a href="#" className="cta" aria-label="What Is the Remortgage Process?" onClick={(e) => { e.preventDefault(); openRemortgageProcessModal(); }}>What Is the Remortgage Process?</a>
+                    <a href="#" className="cta" aria-label="Why do people remortgage?" onClick={(e) => { e.preventDefault(); openWhyRemortgageModal(); }}>Why do people remortgage?</a>
+                    <a href="https://www.landc.co.uk/destination/estate-agents/integra-estates" className="cta" aria-label="Click here for Free Remortgage Advice" target="_blank" rel="noopener noreferrer">Click here for Free Remortgage Advice</a>
                   </div>
                 </article>
               </div>
@@ -237,9 +317,8 @@ export default function MortgageAdvicePage() {
                   <p>That's where London and Country Mortgages (L&C) can help. As the UK's largest fee-free mortgage broker, L&C provides a completely impartial service, offering access to more lenders and products than any other broker, including some exclusive deals you won't find on the high street.</p>
                   <p>Whether you are looking to port your current mortgage or explore options for a brand new one, L&C's expert advisers are on hand to guide you every step of the way. With a short, no-obligation phone call, they will take the time to understand your circumstances and help you find the best path forward, potentially saving you thousands over the life of your mortgage.</p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-start' }}>
-                    <a href="#" className="cta" aria-label="Why move your mortgage?">Why move your mortgage?</a>
-                    <a href="#" className="cta" aria-label="Which moving mortgage is right for me?">Which moving mortgage is right for me?</a>
-                    <a href="#" className="cta" aria-label="Click here for Free Moving Mortgage Advice">Click here for Free Moving Mortgage Advice</a>
+                    <a href="#" className="cta" aria-label="What Does Porting My Mortgage Mean?" onClick={(e) => { e.preventDefault(); openPortingMortgageModal(); }}>What Does Porting My Mortgage Mean?</a>
+                    <a href="https://www.landc.co.uk/destination/estate-agents/integra-estates" className="cta" aria-label="Click here for Free Moving Mortgage Advice" target="_blank" rel="noopener noreferrer">Click here for Free Moving Mortgage Advice</a>
                   </div>
                 </article>
               </div>
@@ -274,9 +353,9 @@ export default function MortgageAdvicePage() {
                   <p>Buy to let mortgages often come with added layers of complexity, but with L&C, the process is made simple and efficient. From your initial enquiry to completion, their team takes care of the detail, allowing you to focus on what really matters, securing the right property and making a smart investment.</p>
                   <p>If you're considering a buy to let mortgage or want to review your current deal, speak with L&C today and benefit from expert guidance and honest advice trusted by landlords nationwide.</p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-end' }}>
-                    <a href="#" className="cta" aria-label="Why buy to let?">Why buy to let?</a>
-                    <a href="#" className="cta" aria-label="Which buy to let mortgage is right for me?">Which buy to let mortgage is right for me?</a>
-                    <a href="#" className="cta" aria-label="Click here for Free Buy to Let Mortgage Advice">Click here for Free Buy to Let Mortgage Advice</a>
+                    <a href="#" className="cta" aria-label="What is a Buy to let mortgage?" onClick={(e) => { e.preventDefault(); openBuyToLetModal(); }}>What is a Buy to let mortgage?</a>
+                    <a href="#" className="cta" aria-label="Buy To Let remortgage" onClick={(e) => { e.preventDefault(); openBuyToLetRemortgageModal(); }}>Buy To Let remortgage</a>
+                    <a href="https://www.landc.co.uk/destination/estate-agents/integra-estates" className="cta" aria-label="Click here for Free Buy to Let Mortgage Advice" target="_blank" rel="noopener noreferrer">Click here for Free Buy to Let Mortgage Advice</a>
                   </div>
                 </article>
               </div>
@@ -323,9 +402,9 @@ export default function MortgageAdvicePage() {
                   <p>Buy to let mortgages often come with added layers of complexity, but with L&C, the process is made simple and efficient. From your initial enquiry to completion, their team takes care of the detail, allowing you to focus on what really matters, securing the right property and making a smart investment.</p>
                   <p>If you're considering a buy to let mortgage or want to review your current deal, speak with L&C today and benefit from expert guidance and honest advice trusted by landlords nationwide.</p>
                   <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '0.75rem', justifyContent: 'flex-start' }}>
-                    <a href="#" className="cta" aria-label="Why new build homes?">Why new build homes?</a>
-                    <a href="#" className="cta" aria-label="Which new build mortgage is right for me?">Which new build mortgage is right for me?</a>
-                    <a href="#" className="cta" aria-label="Click here for Free New Build Mortgage Advice">Click here for Free New Build Mortgage Advice</a>
+                    <a href="#" className="cta" aria-label="What is a new build mortgage?" onClick={(e) => { e.preventDefault(); openNewBuildModal(); }}>What is a new build mortgage?</a>
+                    <a href="#" className="cta" aria-label="What is a buy to let interest only mortgage?" onClick={(e) => { e.preventDefault(); openBuyToLetInterestOnlyModal(); }}>What is a buy to let interest only mortgage?</a>
+                    <a href="https://www.landc.co.uk/destination/estate-agents/integra-estates" className="cta" aria-label="Click here for Free New Build Mortgage Advice" target="_blank" rel="noopener noreferrer">Click here for Free New Build Mortgage Advice</a>
                   </div>
                 </article>
               </div>
@@ -428,40 +507,969 @@ export default function MortgageAdvicePage() {
               <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
                 Why a Mortgage in Principle Should Be Your First Step?
               </h2>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
-                <br />
-              </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 Before you start booking viewings or making offers, there's one essential document that can make all the difference: a Mortgage in Principle (MIP).
               </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 <br />
                 We always encourage buyers — especially first-time purchasers — to secure a Mortgage in Principle early in their property journey. It's a simple document that confirms, based on initial information, how much you're likely to be able to borrow. It gives both you and sellers peace of mind that you're financially aware of things like borrowing ability and ready to move forward.
               </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 <br />
                 In today's competitive market, most estate agents — including us — will ask to see a Mortgage in Principle before progressing an offer. It shows you're a serious buyer with the means to proceed, which can put you ahead of others when a sought-after property hits the market.
               </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 <br />
                 This is where L&C Mortgages truly shine. As the UK's largest fee-free mortgage broker, they can often provide a Mortgage in Principle within just a few hours. No credit checks are carried out at this stage, so it won't affect your credit score, and their friendly, expert advisers will guide you through the process with ease.
               </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
-                <br />
-              </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 Getting your MIP early not only strengthens your position as a buyer but also helps you understand what you can realistically afford — saving you time, disappointment, and unnecessary stress later on.
               </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
-                <br />
-              </p>
-              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '1rem', lineHeight: 1.6, color: 'white' }}>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
                 If you're thinking of buying, speak to L&C Mortgages first. They're available seven days a week, ready to answer your questions, offer honest advice, and help you take that all-important first step with confidence.
               </p>
             </div>
             <div style={{ padding: '0 3rem 3rem 3rem' }}>
               <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
                 Start your journey online using the link below or call L&C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* First-time-buyer Modal */}
+      {isFirstTimeBuyerModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeFirstTimeBuyerModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeFirstTimeBuyerModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                Which first time buyer mortgage is right for me?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Taking your first step onto the property ladder is an exciting moment — but with so many mortgage types available, it can be difficult to know where to start. At Integra-Estates, we're the agent you can trust, and we know how important it is to have the right guidance from the beginning. That's why we proudly recommend L&amp;C Mortgages, the UK's largest fee-free mortgage broker.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                L&amp;C's friendly, well-informed advisers are true specialists when it comes to first-time buyers. They'll take the time to understand your situation, explain your options in plain English, and help you find the mortgage that best suits your needs — all at no cost to you.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Here are some of the most common mortgage types they can help you explore:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Fixed Rate Mortgages – Ideal for budgeting with confidence, fixed rate deals lock in your interest rate for a set period (usually 2 to 10 years), so your monthly payments stay the same.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Tracker Mortgages – These follow the Bank of England base rate, meaning your repayments could rise or fall depending on the wider economy. They can offer flexibility but may involve more risk.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Shared Ownership Mortgages – A popular option for first-time buyers with smaller deposits. This allows you to purchase a share of a property (usually 25% to 75%) and pay rent on the remaining share, typically owned by a housing association.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Shared Equity Mortgages – These are designed to help you buy with a smaller deposit. A loan (often government-backed) covers part of the property price, reducing your mortgage requirement and making homeownership more achievable.</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                L&amp;C also offer expert advice on all first-time buyer schemes, ensuring you're aware of any opportunities that may help you buy sooner or stretch your budget further.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Before you start viewing properties, we strongly recommend securing a Mortgage in Principle through L&amp;C. It's a quick and simple process, doesn't affect your credit score, and shows sellers you're a serious buyer. In fact, most estate agents — ourselves included — will ask to see this document before accepting an offer.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                With Integra-Estates and L&amp;C by your side, you'll have a team dedicated to helping you feel informed, prepared, and confident throughout your property journey.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Remortgage Process Modal */}
+      {isRemortgageProcessModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeRemortgageProcessModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeRemortgageProcessModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                What Is the Remortgage Process?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Remortgaging is often quicker and simpler than buying a home, but it still benefits from forward planning and expert guidance. Whether you're looking to secure a better rate, borrow more, or release equity, it's important to approach your remortgage at the right time — and with the right support.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <br />
+                We recommend speaking to the experts at L&amp;C Mortgages, the UK's largest fee-free mortgage broker. Their advisers are here to guide you every step of the way, making the process clear, stress-free, and tailored to your needs.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Here's a simplified overview of how the remortgage process typically works:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>1. Plan Ahead</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Start looking at your options 4 to 6 months before your current deal ends. This gives you time to review your goals — whether it's saving money, switching terms, or borrowing more.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>2. Check Your Options</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                L&amp;C will compare what your current lender offers versus what's available across the whole market — often including exclusive deals you won't find elsewhere.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>3. Choose the Right Deal</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Their advisers will help you understand which mortgage is best for you — from fixed rates to flexible products — taking into account fees, affordability, and long-term value.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>4. Submit Your Application</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Once you're ready, L&amp;C will prepare and submit your application, help gather documents, and liaise with the lender on your behalf — making the process as smooth as possible.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>5. Assessment and Offer</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                The lender will carry out affordability checks and a property valuation. Once approved, they'll issue your mortgage offer — and L&amp;C will keep you updated every step of the way.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}><strong>6. Legal Work and Completion</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                A conveyancer will handle the legal side, repaying your old mortgage and transferring funds. If you're releasing equity, this will be paid to you on completion.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                From start to finish, L&amp;C handle the heavy lifting, guiding you through each stage with clarity and care. With access to a wide range of lenders, friendly experts available 7 days a week, and no broker fees to pay, you're in safe hands.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If your mortgage deal is coming to an end — or you're just ready for a change — let Integra-Estates and L&amp;C help you take control of your mortgage with confidence.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Why Remortgage Modal */}
+      {isWhyRemortgageModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeWhyRemortgageModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeWhyRemortgageModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                Why Do People Remortgage?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                When it comes to making your mortgage work better for you, remortgaging can be a smart move. Whether it's about saving money, borrowing more, or restructuring your finances, the reasons to explore a new deal are wide-ranging — and our trusted partner L&amp;C Mortgages is here to guide you through it all.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                More and more homeowners are choosing to switch from their existing lender when better deals become available — and with L&amp;C's fee-free advice, wide market access, and expert support, it's never been easier to take control.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Here are some of the most common reasons people choose to re-mortgage:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>1. <strong>Your current deal is ending</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                When your fixed term ends, you'll likely move onto your lender's Standard Variable Rate (SVR), which is often higher. Remortgaging before this happens can help you avoid unnecessary costs and secure a better rate.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>2. <strong>Your property value has increased</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If your home has risen in value or you've paid down a good portion of your mortgage, your Loan-to-Value (LTV) will have improved — making you eligible for better deals. L&amp;C can help you access exclusive rates based on your current equity.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>3. <strong>You want to borrow more</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Need funds for home improvements, renovations, or even a deposit on another property? Remortgaging can allow you to release equity and raise the capital you need — all through a structured and affordable plan.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>4. <strong>You're consolidating debt</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Remortgaging to pay off higher-interest loans or credit cards can simplify your finances and reduce your monthly outgoings. L&amp;C will help you understand if this is the right decision and ensure it's both manageable and sustainable.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>5. <strong>You're planning a Buy to Let or second home</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If you're considering investing in a rental property or purchasing a second home, remortgaging your current property could help free up the deposit. L&amp;C's experts can walk you through the affordability and risks involved.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>6. <strong>You're separating or divorcing</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                In difficult personal situations, remortgaging can support a clean financial break — whether it's buying out a partner or transferring the mortgage into a single name. L&amp;C will handle the process with care and clarity.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>7. <strong>You want more flexibility</strong></span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If your current deal doesn't allow for overpayments or lacks flexibility, switching to a more suitable mortgage product could give you greater control over how and when you pay.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Whatever your reason for remortgaging, L&amp;C Mortgages is ideally placed to help. With thousands of deals from across the market, advisers available 7 days a week, and no broker fees to pay, you can be sure you're getting the right advice — tailored to your personal goals.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Porting Mortgage Modal */}
+      {isPortingMortgageModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closePortingMortgageModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closePortingMortgageModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                What Does Porting My Mortgage Mean?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If you're planning a move and already have a mortgage in place, you may have come across the term "porting your mortgage." But what does it actually mean – and is it the right option for you?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Porting your mortgage means transferring your current mortgage deal – including the interest rate and terms – from your existing property to a new one. While this can seem like a straightforward solution, it's not always the most cost-effective or flexible option, which is why it's important to seek expert advice before making a decision.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Why do some people choose to port their mortgage?</strong>
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You're on a great rate: If you locked in a low interest rate, porting allows you to keep that deal in place.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Avoid early repayment charges: Transferring your mortgage can help you sidestep costly fees for ending your current deal early.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>It feels familiar: Remaining with your existing lender can sometimes feel simpler than starting from scratch.</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>But porting isn't always the best fit...</strong>
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You need to borrow more: If you're moving to a larger property or need extra funds for renovations, your lender may not offer competitive terms on the additional borrowing.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Changes in your circumstances: A change in income, job status, or credit score since you first took out the mortgage could affect your lender's decision.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>It may still involve a full application: Despite being a transfer, porting often means reapplying and meeting current affordability criteria, which can slow things down.</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Why we recommend L&amp;C – London &amp; Country Mortgages
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                At Integra-Estates – the agent you can trust – we're proud to work alongside L&amp;C, the UK's largest fee-free mortgage broker. Their team of friendly, qualified advisers provide impartial guidance and search the entire market, including access to exclusive deals you won't find on the high street.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                They can help you determine whether porting is genuinely the best move or whether securing a new mortgage could offer better long-term value. And with no fees for their advice, you've got nothing to lose by having a quick chat.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Buy To Let Modal */}
+      {isBuyToLetModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeBuyToLetModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeBuyToLetModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                What is a Buy to let mortgage?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Thinking about becoming a landlord or investing in property? If so, you'll likely need a buy-to-let (BTL) mortgage – a specialist type of loan designed specifically for people purchasing a property to rent out, rather than live in themselves.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                While buy-to-let mortgages share some similarities with traditional residential mortgages, there are some key differences you'll need to be aware of – and getting the right advice at the start can make a world of difference to your long-term return on investment.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                How is a buy-to-let mortgage different from a standard one?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>There are a few important distinctions:</strong>
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Intended use: A residential mortgage is for a property you plan to live in. A buy-to-let mortgage is for a property you intend to rent out.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Deposit requirements: Buy-to-let mortgages typically require a larger deposit – often at least 20–25%.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Interest rates and fees: Rates for BTL mortgages are generally higher, and fees can be steeper than for standard mortgages.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Affordability checks: Instead of assessing just your income, lenders also look at the property's rental income potential, usually requiring the expected rent to cover 125–145% of the mortgage payments.</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Interest-only options: Many BTL mortgages are interest-only, meaning you pay just the interest each month and repay the capital at the end of the term – ideal for investors looking to maximise monthly cash flow.</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Why getting the right mortgage matters</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Choosing the right buy-to-let mortgage isn't just about securing the lowest rate. It's about aligning the mortgage structure with your investment goals, rental strategy, and long-term plans.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                For instance, some landlords prefer the flexibility of fixed-term products, while others benefit from tracker rates depending on market conditions. Others may need to borrow via a limited company structure for tax reasons. A one-size-fits-all approach simply doesn't work in buy-to-let – which is why independent, expert advice is essential.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Our trusted partner: L&amp;C – London &amp; Country Mortgages
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                At Integra-Estates – the agent you can trust – we're proud to partner with L&amp;C, the UK's largest fee-free mortgage broker. Whether you're a first-time landlord or growing your portfolio, their expert advisers can compare hundreds of buy-to-let products from over 90 lenders to find the right deal for you.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                L&amp;C also have access to exclusive offers that you won't find elsewhere – and their service is completely free of charge. They'll take the time to understand your plans and help you navigate what can be a complex market with confidence and clarity.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Buy To Let Remortgage Modal */}
+      {isBuyToLetRemortgageModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeBuyToLetRemortgageModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeBuyToLetRemortgageModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                Buy To Let remortgage
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If you own a rental property, a buy-to-let remortgage could be a smart way to cut costs, release equity, or fund future investments. Whether you're looking to secure a better rate, raise capital for property improvements, or expand your portfolio, reviewing your current mortgage deal could make a significant difference to your long-term returns.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                What is a buy-to-let remortgage?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                A buy-to-let remortgage involves switching your current mortgage deal on a rental property to a new one – either with your existing lender or a new one entirely. This can help you reduce monthly repayments, free up equity, or access more competitive interest rates.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Common reasons landlords remortgage include:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Securing a better deal to maximise profit</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Releasing equity for property renovations or deposits on new purchases</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Changing from residential to buy-to-let when deciding to rent out a former home</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>When should you consider remortgaging?</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                It's wise to start looking around six months before your current deal ends to avoid slipping onto a more expensive standard variable rate. But you don't have to wait – if interest rates drop or your property has risen in value, you might qualify for a better deal even sooner (just be mindful of any early repayment charges).
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Why expert advice matters</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Buy-to-let mortgages work differently from standard ones. Lenders assess affordability based on expected rental income, usually requiring it to cover 125%–145% of your monthly repayments. Your own income and tax position may also be considered, especially if you're a higher-rate taxpayer or borrowing via a limited company.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                With so many lenders offering different criteria and rates, professional guidance can save you time and money – and help you avoid common pitfalls.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Why we recommend L&amp;C – London &amp; Country Mortgages</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                At Integra-Estates – the agent you can trust – we've partnered with L&amp;C, the UK's No.1 fee-free mortgage broker. Their team of specialist advisers can compare buy-to-let remortgage deals from over 90 lenders, including exclusive rates not available elsewhere.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Whether you're a first-time landlord or a seasoned investor, L&amp;C's service is completely free, and they'll support you from initial comparison through to completion.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Ready to review your buy-to-let mortgage?</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Remortgaging could help you unlock better value, grow your portfolio, or simply give peace of mind. At Integra-Estates – the agent you can trust – we're here to guide you every step of the way.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* New Build Modal */}
+      {isNewBuildModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeNewBuildModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeNewBuildModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                What is a new build mortgage?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Buying a new build home — especially one that's never been lived in — is an exciting step. Whether you're buying off-plan (before it's built) or moving into a freshly completed home, the mortgage process can differ slightly from buying an older property.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                At Integra-Estates, we're the agent you can trust, and we've partnered with L&amp;C Mortgages, the UK's largest fee-free mortgage broker, to ensure you get the guidance and support you need when buying a new build.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                How Do New Build Mortgages Work?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                A new build mortgage works much like a standard mortgage, but lenders often apply different rules. For example:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You may need a larger deposit — often 10–15%, especially for new build flats</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Mortgage offers need to be valid longer — often up to 6 or 9 months if buying off-plan</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Builder incentives (e.g. free appliances or legal fee contributions) can impact how lenders value the property</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>If there are build delays, your mortgage offer may expire, meaning you'll need a new one</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                This is where L&amp;C's expertise becomes essential. Their experienced team knows which lenders are more flexible with new builds, and they'll find the best deal based on your circumstances, timeline, and deposit.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Why Buy a New Build Home?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Pros:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Energy efficient, modern construction</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>10-year structural warranty</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Personalise fittings and finishes</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>No upward chain — faster and simpler buying process</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Things to Consider:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Prices may be higher than older homes</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Reservation fees are usually non-refundable</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Delays in build completion can affect your move-in date</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Ready to Get Started?
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If you're buying a new build home — especially off-plan — speak to L&amp;C early. With Integra-Estates and L&amp;C by your side, you'll have a knowledgeable team making sure everything runs smoothly, from viewing to handing over the keys.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
+              </p>
+              <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
+                <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Buy To Let Interest Only Modal */}
+      {isBuyToLetInterestOnlyModalOpen && (
+        <div className="index-module__fAGA4q__modal" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'rgba(0, 0, 0, 0.8)', zIndex: 10000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem' }} onClick={closeBuyToLetInterestOnlyModal}>
+          <div style={{ backgroundColor: '#141414', borderRadius: '12px', maxWidth: '800px', width: '100%', maxHeight: '90vh', overflow: 'auto', position: 'relative' }} onClick={(e) => e.stopPropagation()}>
+            <div className="index-module__fAGA4q__topLine" style={{ position: 'absolute', top: '1rem', right: '1rem', zIndex: 10001 }}>
+              <svg 
+                stroke="currentColor" 
+                fill="currentColor" 
+                strokeWidth="0" 
+                viewBox="0 0 24 24" 
+                className="index-module__fAGA4q__closeBtn" 
+                height="1em" 
+                width="1em" 
+                xmlns="http://www.w3.org/2000/svg"
+                onClick={closeBuyToLetInterestOnlyModal}
+                style={{ cursor: 'pointer', color: '#6c9830' }}
+              >
+                <path fill="none" d="M0 0h24v24H0z"></path>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+              </svg>
+            </div>
+            <div className="index-module__fAGA4q__modalContent" style={{ padding: '3rem', paddingTop: '4rem' }}>
+              <h2 className="text-image-and-links-module__UZn4Va__modalHeading" style={{ textAlign: 'left', fontSize: '2rem', marginBottom: '1.5rem', color: '#6c9830' }}>
+                What is a buy to let interest only mortgage?
+              </h2>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>What Is a Buy-to-Let Interest-Only Mortgage?</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                If you're looking to invest in property, a buy-to-let interest-only mortgage is one of the most popular options for landlords — especially those focused on generating rental income.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                At Integra-Estates, we're the agent you can trust, and when it comes to financing your investment, we've partnered with L&amp;C Mortgages, the UK's largest fee-free mortgage broker, to ensure you get honest, expert advice tailored to your goals.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>How Does It Work?</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                With an interest-only mortgage, you only pay the interest on the loan each month — not the loan itself. This keeps your monthly repayments much lower than a typical repayment mortgage, which can boost your rental profit margins.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                However, at the end of the mortgage term, you'll still owe the full original loan amount — so you'll need a plan in place to repay it. Most landlords either sell the property or remortgage to repay the balance.
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Why Landlords Choose Interest-Only</strong>
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Lower monthly repayments – maximising rental income</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Cash flow flexibility – useful for maintaining or expanding portfolios</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Tax benefits – landlords may be able to offset mortgage interest against rental income (seek independent tax advice)</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Capital appreciation strategy – investors may rely on rising property values over time</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                <strong>Things to Consider</strong>
+              </p>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                While interest-only mortgages offer short-term advantages, they also carry long-term risks:
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You don't build equity in the property during the mortgage term</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You'll need a clear repayment strategy — sale, savings, or refinancing</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>Some lenders have stricter criteria, especially for first-time landlords</span>
+                </li>
+                <li className="text-image-and-links-module__UZn4Va__modalText" style={{ listStyleType: 'none', display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', marginTop: '16px', marginBottom: '16px' }}>
+                  <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" style={{ color: 'rgb(108, 152, 48)', height: '2.8rem', width: '2.8rem', minHeight: '2.8rem', minWidth: '2.8rem', fontSize: '2.8rem', marginRight: '1rem' }}>
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"></path>
+                  </svg>
+                  <span style={{ color: 'white', lineHeight: 1.6 }}>You'll usually need a higher deposit — often 25% or more</span>
+                </li>
+              </ul>
+              <p className="text-image-and-links-module__UZn4Va__modalText" style={{ marginBottom: '0.5rem', lineHeight: 1.6, color: 'white' }}>
+                Whether you're purchasing your first investment or remortgaging to grow your portfolio, L&amp;C Mortgages are here to help. With clear, trustworthy advice and access to thousands of mortgage deals, your investment is in safe hands.
+              </p>
+            </div>
+            <div style={{ padding: '0 3rem 3rem 3rem' }}>
+              <p className="index-module__fAGA4q__footerText" style={{ marginBottom: '1.5rem', textAlign: 'center', color: 'white' }}>
+                Start your journey online using the link below or call L&amp;C today on <a href="tel:08009234018" target="_blank" className="index-module__fAGA4q__link" style={{ color: '#6c9830', fontWeight: 'bold' }}><strong>0800 923 4018</strong></a> to speak to a mortgage expert
               </p>
               <a href="https://www.landc.co.uk/destination/partners/how-much-will-it-cost-calculator-integra-estates" target="_blank" style={{ display: 'block', textAlign: 'center' }}>
                 <img className="index-module__fAGA4q__img" alt="l&c banner" src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/l%26c%20banner-1.png" style={{ maxWidth: '100%', height: 'auto', borderRadius: '8px' }} />
