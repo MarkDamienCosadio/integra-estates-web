@@ -153,6 +153,75 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
         </AnimatedSection>
       </section>
 
+       {/* Team Information Section */}
+       <section className="team-info-section section" style={{ backgroundColor: '#141414', padding: '4rem 0', minHeight: '400px', position: 'relative', zIndex: 10 }}>
+         <AnimatedSection>
+           <div className="team-info-container" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+             <h2 className="team-info-title animate-in-up" style={{ color: '#fff', fontSize: '2.5rem', textAlign: 'center', marginBottom: '3rem' }}>Get To Know Your Partners</h2>
+             <div className="team-info-cards" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+               {teamMembers.map((member, index) => (
+                 <div 
+                   key={`info-${member.id}`}
+                   className="team-info-card animate-in-up" 
+                   data-animate-delay={`${(index + 1) * 200}`}
+                   style={{ 
+                     backgroundColor: '#fff', 
+                     border: '2px solid #6c9830', 
+                     borderRadius: '12px', 
+                     padding: '2rem', 
+                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                     transition: 'all 0.3s ease'
+                   }}
+                 >
+                   <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem', gap: '1.5rem' }}>
+                     <img 
+                       src={member.id === 'claudia' ? '/images/claudia-sqr.jpg' : member.id === 'tom' ? '/images/tom-sqr.jpg' : member.id === 'jenna' ? '/images/jenna_sqr.jpg' : member.id === 'michael' ? '/images/michael_sqr.jpg' : member.image} 
+                       alt={`${member.firstName} ${member.lastName} - ${member.position}`} 
+                       style={{ 
+                         width: '80px', 
+                         height: '80px', 
+                         borderRadius: '50%', 
+                         objectFit: 'cover',
+                         border: '2px solid #6c9830'
+                       }} 
+                     />
+                     <div>
+                       <h3 style={{ 
+                         fontSize: '1.8rem', 
+                         fontFamily: 'trajan-pro-3, serif', 
+                         color: '#333', 
+                         margin: '0 0 0.5rem 0', 
+                         fontWeight: 'bold', 
+                         textTransform: 'uppercase', 
+                         lineHeight: '1.2' 
+                       }}>
+                         {member.firstName} {member.lastName}
+                       </h3>
+                       <p style={{ 
+                         color: '#6c9830', 
+                         fontSize: '1.2rem', 
+                         margin: '0', 
+                         fontWeight: '500' 
+                       }}>
+                         {member.position}
+                       </p>
+                     </div>
+                   </div>
+                   <div style={{ 
+                     color: '#333', 
+                     lineHeight: '1.6', 
+                     fontSize: '1rem',
+                     whiteSpace: 'pre-line'
+                   }}>
+                     {member.info}
+                   </div>
+                 </div>
+               ))}
+             </div>
+           </div>
+         </AnimatedSection>
+       </section>
+
       <div style={{ position: 'relative', zIndex: 10 }}>
         <GetInTouchSection />
       </div>
@@ -180,9 +249,9 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
                 <span>{selectedMember.lastName}</span>
               </h2>
               <h3 className="team-modal-position">{selectedMember.position}</h3>
-              <div className="team-modal-article">
-                <p>{selectedMember.info}</p>
-              </div>
+               <div className="team-modal-article">
+                 <p>{selectedMember.id === 'tom' ? 'Thomas founded Integra-estates to fill a gap he saw in the property market, where many companies prioritized quick profits over personalized service. His vision was built on exceptional customer service and unwavering honesty. He believes property transactions are significant, often stressful, life events, not just financial ones. This led to his "putting you first" approach, ensuring clients feel supported and guided. To combat the industry\'s reputation for deception, Thomas mandated that all employees act with transparency and integrity. This commitment to ethical, client-focused service has been critical to the company\'s success, earning Integra-estates a strong reputation that attracts client referrals and top industry talent.' : selectedMember.id === 'jenna' ? 'Jenna is a new and valuable asset to Integra-Estates, bringing contagious energy and a genuine passion for the property industry. She is highly focused on delivering results while providing exceptional customer care, understanding that buying or selling a home is a significant decision for her clients. Jenna takes the time to listen carefully to their needs, working tirelessly to ensure the transaction is as smooth and stress-free as possible. Her dedication to honesty and integrity, which are critical in the industry, has already earned her the respect and trust of both colleagues and clients.' : selectedMember.id === 'michael' ? 'Michael is the Senior Sales Director at Integra-Estates, highly respected for his wealth of experience and unwavering dedication to putting the customer first. His career began uniquely when he was tasked with building an estate agency from scratch for a legal firm, giving him deep insight into operations and client service. This successful venture, a testament to his strategic ability, led to him winning the prestigious "Estate Agent of the Year 2021" award and being runner-up in 2022. At Integra-Estates, Michael is known for making the often-stressful process of buying or selling property as smooth as possible by carefully listening to each client\'s needs. This client-centric focus has been critical to his success, building trust and loyalty that results in repeat business and referrals.' : selectedMember.id === 'claudia' ? 'Claudia is Integra-Estates\' office manager and an integral part of the team, bringing a wealth of knowledge and experience to her role. Her expertise is unparalleled in ensuring property transactions go smoothly, demonstrating an incredible ability to navigate even the most challenging property chains efficiently. Over the years, she has built extensive working relationships, reflecting her commitment to getting the job done. Claudia\'s focus on achieving positive results, her dedication to exceptional customer service, and her skill in deal progression make her an indispensable, professional, and highly valued member of the Integra-Estates team.' : selectedMember.info}</p>
+               </div>
               
               <button className="team-modal-close" onClick={closeModal}>×</button>
             </div>
