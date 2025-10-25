@@ -6,7 +6,8 @@ import { Camera, Box, Palette, Video, Globe, FileText } from 'lucide-react'
 
 export default function MarketingYourProperty() {
   const navigate = useNavigate()
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const heroVideoRef = useRef<HTMLVideoElement>(null)
+  const promoVideoRef = useRef<HTMLVideoElement>(null)
   const [currentSlide, setCurrentSlide] = useState(0)
   const [translateX, setTranslateX] = useState(0)
   const [animatingButton, setAnimatingButton] = useState<string | null>(null)
@@ -33,7 +34,7 @@ export default function MarketingYourProperty() {
   const dotsToShow = 3 // Show only 3 dots
 
   useEffect(() => {
-    const video = videoRef.current
+    const video = heroVideoRef.current
     if (video) {
       video.play().catch(console.error)
     }
@@ -155,35 +156,35 @@ export default function MarketingYourProperty() {
   }
 
   const handlePlayButtonClick = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play()
+    if (promoVideoRef.current) {
+      if (promoVideoRef.current.paused) {
+        promoVideoRef.current.play()
       } else {
-        videoRef.current.pause()
+        promoVideoRef.current.pause()
       }
     }
   }
 
   const handleVideoTimeUpdate = () => {
-    if (videoRef.current) {
-      const progress = (videoRef.current.currentTime / videoRef.current.duration) * 100
+    if (promoVideoRef.current) {
+      const progress = (promoVideoRef.current.currentTime / promoVideoRef.current.duration) * 100
       setVideoProgress(progress)
     }
   }
 
   const handleVideoLoadedMetadata = () => {
-    if (videoRef.current) {
-      setVideoDuration(videoRef.current.duration)
+    if (promoVideoRef.current) {
+      setVideoDuration(promoVideoRef.current.duration)
     }
   }
 
   const handleSeekClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (videoRef.current) {
+    if (promoVideoRef.current) {
       const rect = e.currentTarget.getBoundingClientRect()
       const clickX = e.clientX - rect.left
       const percentage = clickX / rect.width
       const newTime = percentage * videoDuration
-      videoRef.current.currentTime = newTime
+      promoVideoRef.current.currentTime = newTime
       setVideoProgress(percentage * 100)
     }
   }
@@ -286,7 +287,7 @@ export default function MarketingYourProperty() {
       {/* Video Background */}
       <div className="marketing-your-property-hero">
         <video
-          ref={videoRef}
+          ref={heroVideoRef}
           className="marketing-your-property-video"
           autoPlay
           muted
@@ -661,7 +662,7 @@ export default function MarketingYourProperty() {
                 onMouseLeave={() => setShowControls(false)}
               >
                 <video 
-                  ref={videoRef}
+                  ref={promoVideoRef}
                   src="https://storage.googleapis.com/integra-estates-website/videos/marketing-promo.mp4#t=0.001" 
                   className="console-module__pkht5q__video"
                   style={{
@@ -764,23 +765,29 @@ export default function MarketingYourProperty() {
                         style={{
                           width: `${videoProgress}%`,
                           height: '100%',
-                          backgroundColor: '#fff',
-                          borderRadius: '3px',
-                          transition: 'width 0.1s ease'
+                          backgroundColor: '#6c9830',
+                          borderRadius: '3px'
                         }}
                       />
                     </div>
-                    
-                    {/* Time Display */}
-                    <div style={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
-                      alignItems: 'center',
-                      color: 'white',
-                      fontSize: '14px'
-                    }}>
-                      <span>{formatTime(videoRef.current?.currentTime || 0)}</span>
-                      <span>{formatTime(videoDuration)}</span>
+                    {/* Time and duration */}
+                    <div style={{ display: 'flex', alignItems: 'center', color: '#fff' }}>
+                      <span>{formatTime(promoVideoRef.current?.currentTime || 0)}</span>
+                      <span style={{ margin: '0 8px' }}>/</span>
+                      <span>{formatTime(videoDuration || 0)}</span>
+                    </div>
+                    {/* Play/Pause Button */}
+                    <div style={{ marginTop: '10px', display: 'flex', gap: '10px' }}>
+                      <button 
+                        className="animated-module__Rnzt8a__btn"
+                        onClick={handlePlayButtonClick}
+                        style={{ cursor: 'pointer' }}
+                      >
+                        <div className="animated-module__Rnzt8a__title">{showPlayOverlay ? 'Play' : 'Pause'}</div>
+                        <div className="animated-module__Rnzt8a__line">
+                          <span className="animated-module__Rnzt8a__lineBar" />
+                        </div>
+                      </button>
                     </div>
                   </div>
                 )}
@@ -904,11 +911,13 @@ export default function MarketingYourProperty() {
             </div>
           </AnimatedSection>
 
-          {/* Get In Touch Section */}
-          <GetInTouchSection />
+          {/* Get In Touch Section moved below to match homepage full-width */}
         </div>
       </div>
       </div>
+      <AnimatedSection>
+        <GetInTouchSection />
+      </AnimatedSection>
     </>
   )
 }
