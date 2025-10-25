@@ -1,6 +1,8 @@
 import AnimatedSection from './AnimatedSection'
+import { useNavigate } from 'react-router-dom'
 
 export default function MortgageAdvice() {
+  const navigate = useNavigate()
 
   return (
     <>
@@ -34,7 +36,7 @@ export default function MortgageAdvice() {
                   <p className="animate-in-up" data-animate-delay="500" style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
                     With expert, fee-free advice you can trust, you'll feel supported and confident every step of the way.
                   </p>
-                  <div className="animated-module__Rnzt8a__btn animate-in-up" data-animate-delay="600">
+                  <div className="animated-module__Rnzt8a__btn animate-in-up" data-animate-delay="600" onClick={() => navigate('/mortgage-advice')} style={{ cursor: 'pointer' }}>
                     <div className="animated-module__Rnzt8a__title">Find out more...</div>
                     <div className="animated-module__Rnzt8a__line">
                       <span className="animated-module__Rnzt8a__lineBar" />

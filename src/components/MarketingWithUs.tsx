@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function MarketingWithUs() {
+  const navigate = useNavigate()
   const sectionRef = useRef<HTMLElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const imageColumnRef = useRef<HTMLDivElement | null>(null)
@@ -78,7 +80,7 @@ export default function MarketingWithUs() {
                 <p className="mw-prep mw-from-right" style={{ fontSize: '1.5rem', lineHeight: 1.7, marginBottom: '1rem' }}>
                   Discover how our personalised approach and dedication to exceptional service can make a real difference.
                 </p>
-                <div className="animated-module__Rnzt8a__btn">
+                <div className="animated-module__Rnzt8a__btn" onClick={() => navigate('/marketing-your-property')} style={{ cursor: 'pointer' }}>
                   <div className="animated-module__Rnzt8a__title">Find out more</div>
                   <div className="animated-module__Rnzt8a__line">
                     <span className="animated-module__Rnzt8a__lineBar" />
