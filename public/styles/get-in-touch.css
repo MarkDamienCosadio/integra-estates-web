@@ -113,3 +113,16 @@
     transform: translateX(15px);
   }
 }
+.get-in-touch-module__NVY_Ga__img {
+  transition: transform 400ms ease, filter 400ms ease, opacity 400ms ease;
+  transform: translateX(30px) scale(0.98);
+  opacity: 0;
+}
+.get-in-touch-module__NVY_Ga__img.animated-sync-active {
+  transform: translateX(0) scale(1);
+  opacity: 1;
+}
+.get-in-touch-module__NVY_Ga__img.animated-sync-hover {
+  transform: translateX(0) scale(1.03);
+  filter: saturate(1.08) brightness(1.05);
+}

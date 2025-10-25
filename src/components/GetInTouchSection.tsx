@@ -6,6 +6,7 @@ export default function GetInTouchSection() {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const leftRefs = useRef<HTMLDivElement[]>([])
   const rightRef = useRef<HTMLDivElement | null>(null)
+  const imageRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
     const sec = sectionRef.current
@@ -16,13 +17,15 @@ export default function GetInTouchSection() {
           const r = entry.intersectionRatio
           if (r >= 0.4 && titleRef.current) {
             titleRef.current.classList.add('askus-active')
+            // Sync image entrance with CTA title
+            imageRef.current?.classList.add('animated-sync-active')
           }
           if (r >= 0.8) {
             // Staggered animation for left elements
             leftRefs.current.forEach((el, index) => {
               setTimeout(() => {
                 el.classList.add('askus-active')
-              }, index * 200) // 200ms delay between each element
+              }, index * 200)
             })
             // Right element with delay after left elements
             setTimeout(() => {
@@ -61,6 +64,8 @@ export default function GetInTouchSection() {
                 <div
                   className="animated-module__Rnzt8a__title animated-module__Rnzt8a__titleRight"
                   style={{ borderColor: 'grey', color: 'white' }}
+                  onMouseEnter={() => imageRef.current?.classList.add('animated-sync-hover')}
+                  onMouseLeave={() => imageRef.current?.classList.remove('animated-sync-hover')}
                 >
                   Get In Touch
                 </div>
@@ -79,6 +84,7 @@ export default function GetInTouchSection() {
       </div>
       <div ref={rightRef} className="get-in-touch-module__NVY_Ga__image askus-prep askus-from-right">
         <img
+          ref={imageRef}
           src="https://storage.googleapis.com/integra-estates-website/imagesv2/get-in-touch.png"
           alt="get in touch"
           style={{ width: '100%', height: '100%' }}

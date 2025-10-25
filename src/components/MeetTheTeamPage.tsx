@@ -1,7 +1,7 @@
 import ScrollHint from './ScrollHint'
 import GetInTouchSection from './GetInTouchSection'
 import AnimatedSection from './AnimatedSection'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface TeamMember {
   id: string
@@ -23,6 +23,47 @@ export default function MeetTheTeamPage() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
   const [modalPosition, setModalPosition] = useState<ModalPosition>({ x: 0, y: 0, width: 0, height: 0 })
   const [isClosing, setIsClosing] = useState(false)
+
+  // Reveal info cards smoothly with stagger
+  useEffect(() => {
+    const cards = document.querySelectorAll<HTMLElement>('.team-info-card')
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement
+            const delayAttr = el.getAttribute('data-animate-delay') || '0'
+            const delayMs = parseInt(delayAttr, 10) || 0
+            el.style.transitionDelay = `${delayMs}ms`
+            el.classList.add('visible')
+            io.unobserve(el)
+          }
+        })
+      },
+      { threshold: 0.2 }
+    )
+    cards.forEach((c) => io.observe(c))
+    return () => io.disconnect()
+  }, [])
+
+  // Animate section title earlier, when 30% visible
+  useEffect(() => {
+    const titleEl = document.querySelector<HTMLElement>('.team-info-title')
+    if (!titleEl) return
+    const ioTitle = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            titleEl.classList.add('animate-active')
+            ioTitle.unobserve(titleEl)
+          }
+        })
+      },
+      { threshold: 0.3 }
+    )
+    ioTitle.observe(titleEl)
+    return () => ioTitle.disconnect()
+  }, [])
 
   const teamMembers = [
     {
@@ -105,6 +146,23 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
 
   return (
     <>
+      <style>{`
+        .team-info-card {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms ease, border-color 300ms ease;
+          will-change: transform, opacity;
+        }
+        .team-info-card.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .team-info-card:hover {
+          transform: translateY(0) scale(1.01);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+          border-color: #6c9830;
+        }
+      `}</style>
       <section className="meet-the-team-hero hero">
         <video
           className="hero__video visible"
@@ -135,7 +193,7 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
                   key={member.id}
                   className="team-member animate-in-up" 
                   data-animate-delay={`${(index + 1) * 200}`}
-                  style={{ textAlign: 'center', borderRadius: '8px', transition: 'all 0.3s ease', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)', cursor: 'pointer' }}
+                  style={{ textAlign: 'center', borderRadius: '8px', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)', cursor: 'pointer' }}
                   onClick={(e) => handleCardClick(member, e)}
                 >
                   <img src={member.image} alt={`${member.firstName} ${member.lastName} - ${member.position}`} className="team-image" />
@@ -169,8 +227,7 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
                      border: '2px solid #6c9830', 
                      borderRadius: '12px', 
                      padding: '2rem', 
-                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-                     transition: 'all 0.3s ease'
+                     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)'
                    }}
                  >
                    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1.5rem', gap: '1.5rem' }}>
@@ -261,3 +318,34 @@ Claudia's expertise in deal progression is a valuable asset to Integra-estates. 
     </>
   )
 }
+
+<style>{`
+  /* Title entrance animation */
+  .team-info-title.animate-in-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, opacity;
+  }
+  .team-info-title.animate-in-up.animate-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Info cards entrance + hover */
+  .team-info-card {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms ease, border-color 300ms ease;
+    will-change: transform, opacity;
+  }
+  .team-info-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .team-info-card:hover {
+    transform: translateY(0) scale(1.01);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: #6c9830;
+  }
+`}</style>
