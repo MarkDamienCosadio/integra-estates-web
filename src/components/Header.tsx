@@ -271,12 +271,12 @@ export default function Header() {
                   <Link to="/marketing-your-property" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.4s' }} onClick={closeNav}>
                     Marketing Your Property
                   </Link>
-                  <a href="https://integra-estates.com/360-tours" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.5s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <Link to="/360-virtual-tour" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.5s' }} onClick={closeNav}>
                     360 Virtual Tours
-                  </a>
-                  <a href="https://integra-estates.com/virtual-staging" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.6s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  </Link>
+                  <Link to="/virtual-staging" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.6s' }} onClick={closeNav}>
                     Virtual Staging
-                  </a>
+                  </Link>
                   <a href="https://integra-estates.com/probate-properties" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.7s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
                     Probate Properties
                   </a>

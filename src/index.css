@@ -158,14 +158,12 @@ button:focus-visible {
   justify-content: center;
 }
 
-.why-integra-hero__bg {
+.why-integra-hero__bgVideo {
   position: absolute;
   inset: 0;
-  background-image: url('/images/cover-image.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: 1;
   pointer-events: none;
 }
@@ -187,7 +185,7 @@ button:focus-visible {
 
 @media (max-width: 768px) {
   /* iOS Safari friendly: avoid fixed attachment */
-  .why-integra-hero__bg { background-attachment: scroll; }
+  /* Video background replaces image; no attachment control needed */
 }
 
 /* Enhance legibility: dark halo around hero H1 */

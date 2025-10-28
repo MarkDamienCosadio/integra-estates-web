@@ -196,7 +196,17 @@ export default function WhyIntegraEstates() {
   return (
     <>
       <section className="why-integra-hero hero">
-        <div className="why-integra-hero__bg" aria-hidden="true" />
+        <video
+          className="why-integra-hero__bgVideo"
+          src="/video/360-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster="/images/cover-image.jpg"
+          aria-label="Background video for Why Integra Estates"
+        />
         <div className="why-integra-hero__overlay" aria-hidden="true" />
         <AnimatedSection className="why-integra-hero__content" threshold={0}>
           <h1 className="hero-tag animate-in-up" data-animate-delay="0">Why Integra-Estates</h1>

@@ -26,6 +26,8 @@ import WhyIntegraEstates from './components/WhyIntegraEstates'
 import MortgageAdvicePage from './components/MortgageAdvicePage'
 import MarketingYourProperty from './components/MarketingYourProperty'
 import ValuationModal from './components/ValuationModal'
+import VirtualTour360Page from './components/VirtualTour360Page'
+import VirtualStagingPage from './components/VirtualStagingPage'
 
 // Temporarily disabled Framer Motion
 // import { motion as m, AnimatePresence } from 'framer-motion'
@@ -186,6 +188,8 @@ function App() {
           <Route path="/mortgage-advice" element={<MortgageAdvicePage />} />
           <Route path="/marketing-your-property" element={<MarketingYourProperty />} />
           <Route path="/meet-the-team" element={<MeetTheTeamPage />} />
+          <Route path="/360-virtual-tour" element={<VirtualTour360Page />} />
+          <Route path="/virtual-staging" element={<VirtualStagingPage />} />
         </Routes>
 
         <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
