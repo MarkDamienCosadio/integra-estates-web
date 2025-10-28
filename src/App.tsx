@@ -28,6 +28,7 @@ import MarketingYourProperty from './components/MarketingYourProperty'
 import ValuationModal from './components/ValuationModal'
 import VirtualTour360Page from './components/VirtualTour360Page'
 import VirtualStagingPage from './components/VirtualStagingPage'
+import CommunityEngagementPage from './components/CommunityEngagementPage'
 
 // Temporarily disabled Framer Motion
 // import { motion as m, AnimatePresence } from 'framer-motion'
@@ -190,6 +191,7 @@ function App() {
           <Route path="/meet-the-team" element={<MeetTheTeamPage />} />
           <Route path="/360-virtual-tour" element={<VirtualTour360Page />} />
           <Route path="/virtual-staging" element={<VirtualStagingPage />} />
+          <Route path="/community-engagement" element={<CommunityEngagementPage />} />
         </Routes>
 
         <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />

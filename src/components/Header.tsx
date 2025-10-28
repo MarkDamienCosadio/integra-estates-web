@@ -286,9 +286,9 @@ export default function Header() {
                   <Link to="/meet-the-team" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.9s' }} onClick={closeNav}>
                     Meet the Team
                   </Link>
-                  <a href="https://integra-estates.com/community-engagement" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.0s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <Link to="/community-engagement" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '1.0s' }} onClick={closeNav}>
                     Community Engagement
-                  </a>
+                  </Link>
                 </nav>
                 
                 {/* Partner Logos */}
