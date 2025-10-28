@@ -29,6 +29,7 @@ import ValuationModal from './components/ValuationModal'
 import VirtualTour360Page from './components/VirtualTour360Page'
 import VirtualStagingPage from './components/VirtualStagingPage'
 import CommunityEngagementPage from './components/CommunityEngagementPage'
+import ProbatePropertiesPage from './components/ProbatePropertiesPage'
 
 // Temporarily disabled Framer Motion
 // import { motion as m, AnimatePresence } from 'framer-motion'
@@ -192,6 +193,7 @@ function App() {
           <Route path="/360-virtual-tour" element={<VirtualTour360Page />} />
           <Route path="/virtual-staging" element={<VirtualStagingPage />} />
           <Route path="/community-engagement" element={<CommunityEngagementPage />} />
+          <Route path="/probate-properties" element={<ProbatePropertiesPage />} />
         </Routes>
 
         <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />

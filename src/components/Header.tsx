@@ -277,9 +277,9 @@ export default function Header() {
                   <Link to="/virtual-staging" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.6s' }} onClick={closeNav}>
                     Virtual Staging
                   </Link>
-                  <a href="https://integra-estates.com/probate-properties" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.7s' }} target="_blank" rel="noopener noreferrer" onClick={closeNav}>
+                  <Link to="/probate-properties" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.7s' }} onClick={closeNav}>
                     Probate Properties
-                  </a>
+                  </Link>
                   <Link to="/why-integra-estates" className={`nav-link ${navLinksVisible ? 'nav-link--animate' : 'nav-link--hidden'}`} style={{ animationDelay: '0.8s' }} onClick={closeNav}>
                     Why Integra-Estates?
                   </Link>
