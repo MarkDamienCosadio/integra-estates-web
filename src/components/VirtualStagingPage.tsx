@@ -155,8 +155,7 @@ export default function VirtualStagingPage() {
             muted
             loop
             playsInline
-            preload="metadata"
-            poster="/images/cover-image.jpg"
+            preload="auto"
             aria-label="Background video for Virtual Staging"
             onLoadedData={() => heroVideoRef.current?.play().catch(() => {})}
           >

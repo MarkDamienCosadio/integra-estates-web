@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AnimatedSection from './AnimatedSection'
+import ScrollHint from './ScrollHint'
 import GetInTouchSection from './GetInTouchSection'
 import { Camera, Box, Palette, Video, Globe, FileText } from 'lucide-react'
 
@@ -293,7 +294,11 @@ export default function MarketingYourProperty() {
           muted
           loop
           playsInline
+          preload="auto"
+          onLoadedData={() => heroVideoRef.current?.play().catch(() => {})}
+          onCanPlay={() => heroVideoRef.current?.play().catch(() => {})}
         >
+          <source src="/video/360-video.mp4" type="video/mp4" />
           <source src="/video/advanced-marketing-cover.mp4" type="video/mp4" />
         </video>
         
@@ -918,6 +923,8 @@ export default function MarketingYourProperty() {
       <AnimatedSection>
         <GetInTouchSection />
       </AnimatedSection>
+      {/* ScrollHint widget for marketing page */}
+      <ScrollHint />
     </>
   )
 }

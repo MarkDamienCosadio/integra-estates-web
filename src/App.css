@@ -1102,6 +1102,8 @@ html, body { height: 100%; }
   inset: 0;
   display: flex;
   flex-direction: column;
+  /* Ensure the nav menu stretches to the bottom of the viewport */
+  min-height: 100vh;
 }
 
 .nav-close-btn {
@@ -1170,7 +1172,8 @@ html, body { height: 100%; }
 .nav-menu-content {
   display: flex;
   flex: 1;
-  height: calc(100vh - 120px);
+  /* Extend content to the bottom without subtracting space */
+  min-height: 100vh;
 }
 
 .nav-left-column {
@@ -5533,7 +5536,7 @@ section#re-mortgage.mortgage-advice-section {
 
 .marketing-your-property-hero {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   overflow: hidden;
   background: #000;
@@ -5542,27 +5545,21 @@ section#re-mortgage.mortgage-advice-section {
 }
 
 .marketing-your-property-video {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  pointer-events: none;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  contain: paint;
-  clip-path: inset(0);
   z-index: 1;
 }
 
 .marketing-your-property-overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.60) 100%),
-              linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.08) 100%);
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.35) 100%),
+              linear-gradient(180deg, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.05) 100%);
 }
 
 .marketing-your-property-hero-content {

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import AnimatedSection from './AnimatedSection'
 import GetInTouchSection from './GetInTouchSection'
+import ScrollHint from './ScrollHint'
 
 export default function VirtualTour360Page() {
   const heroVideoRef = useRef<HTMLVideoElement>(null)
@@ -24,12 +25,12 @@ export default function VirtualTour360Page() {
             muted
             loop
             playsInline
-            preload="metadata"
-            poster="/images/cover-image.jpg"
+            preload="auto"
             onLoadedData={() => heroVideoRef.current?.play().catch(() => {})}
             onError={() => { /* gracefully fallback to poster; avoid noisy errors */ }}
           >
             <source src="/video/360-video.mp4" type="video/mp4" />
+            <source src="/video/advanced-marketing-cover.mp4" type="video/mp4" />
           </video>
 
           {/* Video Overlay */}
@@ -254,6 +255,9 @@ export default function VirtualTour360Page() {
       <AnimatedSection>
         <GetInTouchSection />
       </AnimatedSection>
+
+      {/* ScrollHint widget for 360 virtual tour page */}
+      <ScrollHint />
     </>
   )
 }

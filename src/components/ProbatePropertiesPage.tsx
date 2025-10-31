@@ -1,5 +1,6 @@
 import AnimatedSection from './AnimatedSection'
 import GetInTouchSection from './GetInTouchSection'
+import ScrollHint from './ScrollHint'
 
 export default function ProbatePropertiesPage() {
   return (
@@ -61,7 +62,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="understanding-probate"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0' }}
+          style={{ padding: '4rem 0' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -78,7 +79,7 @@ export default function ProbatePropertiesPage() {
             </p>
             <article
               className="animate-in-up"
-              style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}
+              style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}
             >
               <p style={{ marginBottom: '1rem' }}>
                 Probate is a legal process that gives someone, usually an executor or administrator, the authority to
@@ -170,7 +171,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="executor-support"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0', minHeight: '55vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+          style={{ padding: '4rem 0', minHeight: '55vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -183,15 +184,21 @@ export default function ProbatePropertiesPage() {
                {/* Top row: 4 cards */}
                <div className="probate-row top">
                  {[
-                   'The role of an executor',
-                   'Unbiased recommendations',
-                   'Free property inspections and minor maintenance',
-                   'Preparing and selling probate property'
-                 ].map((title, idx) => (
+                   { title: 'The role of an executor', target: '#executor' },
+                   { title: 'Unbiased recommendations', target: '#choose-solicitor' },
+                   { title: 'Free property inspections and minor maintenance', target: '#free-inspections' },
+                   { title: 'Preparing and selling probate property', target: '#preparing-selling' }
+                 ].map((card, idx) => (
                    <article
-                     key={title}
+                     key={card.title}
                      className="probate-card animate-in-up"
                      data-animate-delay={`${(idx + 1) * 120}`}
+                     onClick={card.target ? () => {
+                       document.querySelector(card.target)?.scrollIntoView({ 
+                         behavior: 'smooth',
+                         block: 'start'
+                       });
+                     } : undefined}
                      style={{
                        backgroundColor: '#ffffff',
                        border: '2px solid var(--accent)',
@@ -209,45 +216,51 @@ export default function ProbatePropertiesPage() {
                        color: '#333',
                        textTransform: 'none'
                      }}>
-                       {title}
+                       {card.title}
                      </h3>
                    </article>
                  ))}
                </div>
 
-               {/* Bottom row: 3 cards, evenly spaced */}
-               <div className="probate-row bottom">
-                 {[
-                   'Accurate & Compliant Probate Valuations',
-                   'Ethical house clearance services',
-                   'Personal support from start to finish'
-                 ].map((title, idx) => (
-                   <article
-                     key={title}
-                     className="probate-card animate-in-up"
-                     data-animate-delay={`${(idx + 5) * 120}`}
-                     style={{
-                       backgroundColor: '#ffffff',
-                       border: '2px solid var(--accent)',
-                       borderRadius: '12px',
-                       padding: '1rem',
-                       boxShadow: '0 6px 18px rgba(0,0,0,0.18)',
-                       color: '#111'
-                     }}
-                   >
-                     <h3 style={{
-                       margin: 0,
-                       fontSize: '1.15rem',
-                       lineHeight: 1.3,
-                       fontFamily: 'trajan-pro-3, serif',
-                       color: '#333',
-                       textTransform: 'none'
-                     }}>
-                       {title}
-                     </h3>
-                   </article>
-                 ))}
-               </div>
+              {/* Bottom row: 3 cards, evenly spaced */}
+              <div className="probate-row bottom">
+                {[
+                  { title: 'Accurate & Compliant Probate Valuations', target: '#probate-services' },
+                  { title: 'Ethical house clearance services', target: '#ethical-clearance' },
+                  { title: 'Personal support from start to finish', target: '#probate-services' }
+                ].map((card, idx) => (
+                  <article
+                    key={card.title}
+                    className="probate-card animate-in-up"
+                    data-animate-delay={`${(idx + 5) * 120}`}
+                    onClick={card.target ? () => {
+                      document.querySelector(card.target)?.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                      });
+                    } : undefined}
+                    style={{
+                      backgroundColor: '#ffffff',
+                      border: '2px solid var(--accent)',
+                      borderRadius: '12px',
+                      padding: '1rem',
+                      boxShadow: '0 6px 18px rgba(0,0,0,0.18)',
+                      color: '#111'
+                    }}
+                  >
+                    <h3 style={{
+                      margin: 0,
+                      fontSize: '1.15rem',
+                      lineHeight: 1.3,
+                      fontFamily: 'trajan-pro-3, serif',
+                      color: '#333',
+                      textTransform: 'none'
+                    }}>
+                      {card.title}
+                    </h3>
+                  </article>
+                ))}
+              </div>
              </div>
           </div>
        </section>
@@ -283,7 +296,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="executor"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0' }}
+          style={{ padding: '4rem 0' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -300,7 +313,7 @@ export default function ProbatePropertiesPage() {
             </h3>
 
             <div className="executor-grid">
-              <article className="left animate-in-up" style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8 }}>
+              <article className="left animate-in-up" style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}>
                 <img
                   src="/images/probate-exec.jpg"
                   alt="Executor reviewing probate documents"
@@ -356,7 +369,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="choose-solicitor"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0' }}
+          style={{ padding: '4rem 0' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -372,7 +385,7 @@ export default function ProbatePropertiesPage() {
               why it matters more than you think
             </h3>
 
-            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8 }}>
+            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}>
               <img
                 src="/images/good-solicitor.jpg"
                 alt="Trusted probate solicitor"
@@ -429,7 +442,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="probate-services"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0' }}
+          style={{ padding: '4rem 0' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -445,7 +458,7 @@ export default function ProbatePropertiesPage() {
               Practical support when you need it most.
             </h3>
 
-            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8 }}>
+            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}>
               <img
                 src="/images/services-valuation.jpg"
                 alt="Probate property valuation services"
@@ -484,11 +497,6 @@ export default function ProbatePropertiesPage() {
             border-radius: 12px;
             overflow: hidden;
           }
-          #free-inspections .img-stack {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-          }
           #free-inspections .inspections-media img {
             width: 100%;
             height: auto;
@@ -508,7 +516,7 @@ export default function ProbatePropertiesPage() {
         <section
           id="free-inspections"
           className="mortgage-advice-section section"
-          style={{ padding: '3rem 0' }}
+          style={{ padding: '4rem 0' }}
         >
           <div className="mortgage-advice-container">
             <h2
@@ -524,24 +532,13 @@ export default function ProbatePropertiesPage() {
               Protecting the property and your peace of mind
             </h3>
 
-            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.1rem', lineHeight: 1.8 }}>
-              <div
-                className="inspections-media text-with-image-module__ComfDq__imgContainer text-with-image-module__ComfDq__solocator text-with-image-module__ComfDq__textImgLeft"
-              >
-                <div className="img-stack">
-                  <img
-                    className="text-with-image-module__ComfDq__img2 text-with-image-module__ComfDq__imgSolocator text-with-image-module__ComfDq__solocatorImg1"
-                    alt="image of a house using the solocator app"
-                    src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/Solocator-2024-05-28%2014-11-14%20(1).jpg"
-                    loading="lazy"
-                  />
-                  <img
-                    className="text-with-image-module__ComfDq__img2 text-with-image-module__ComfDq__imgSolocator text-with-image-module__ComfDq__solocatorImg2"
-                    alt="Traditional hallway with wooden flooring and view into dining room, photographed by a Beckenham estate agent to showcase interior character and homely charm."
-                    src="https://integra-estates-cms.nw.r.appspot.com//api/media/file/Solocator-2024-05-28%2014-09-34%20(1).jpg"
-                    loading="lazy"
-                  />
-                </div>
+            <article className="animate-in-up" style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: 1.8, maxWidth: '1000px', margin: '0 auto' }}>
+              <div className="inspections-media">
+                <img
+                  src="/images/probate.png"
+                  alt="Probate property inspections"
+                  loading="lazy"
+                />
               </div>
 
               <p style={{ marginBottom: '1rem' }}>
@@ -567,10 +564,260 @@ export default function ProbatePropertiesPage() {
         </section>
       </AnimatedSection>
 
-       {/* Only include Get In Touch for now */}
-       <AnimatedSection>
-         <GetInTouchSection />
+      {/* Preparing and selling probate property (below free inspections) */}
+      <AnimatedSection>
+        <style>{`
+          #preparing-selling .columns {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+          }
+          #preparing-selling .col-text {
+            flex: 1 1 58%;
+            color: #ffffff;
+            font-size: 1.15rem;
+            line-height: 1.8;
+          }
+          #preparing-selling .col-image {
+            flex: 1 1 42%;
+          }
+          #preparing-selling .col-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            object-fit: cover;
+          }
+          @media (max-width: 900px) {
+            #preparing-selling .columns {
+              flex-direction: column;
+            }
+            #preparing-selling .col-text,
+            #preparing-selling .col-image {
+              flex: 1 1 100%;
+            }
+          }
+        `}</style>
+        <section
+          id="preparing-selling"
+          className="mortgage-advice-section section"
+          style={{ padding: '4rem 0' }}
+        >
+          <div className="mortgage-advice-container">
+            <h2
+              className="animate-in-up"
+              style={{ color: 'var(--accent)', textAlign: 'center', fontSize: '2.2rem', marginBottom: '1.5rem' }}
+            >
+              Preparing and selling probate property
+            </h2>
+            <div className="columns animate-in-up" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div className="col-text">
+                <p style={{ marginBottom: '1rem' }}>
+                  When it’s time to sell a probate property, the process can feel emotionally overwhelming and logistically complex. At Integra-Estates, we understand how sensitive this time can be. That’s why we handle every aspect of the sale with compassion, professionalism, and a focus on achieving the very best outcome for the estate and its beneficiaries.
+                </p>
+                <p>
+                  We manage the full sales journey ensuring your loved one’s home is presented with dignity while maximising its value through exceptional marketing and support.
+                </p>
+              </div>
+              <div className="col-image">
+                <img
+                  src="/images/KeyHole.jpg"
+                  alt="Keyhole close-up symbolising careful preparation and selling of probate property"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Proactive Probate Property Care (below preparing-selling) */}
+      <AnimatedSection>
+        <style>{`
+          /* Keep images in a right-side container; wrap text around the container */
+          #proactive-care .care-media {
+            float: right;
+            width: min(42%, 420px);
+            height: auto;
+            margin: 0 0 2rem 1.5rem;
+          }
+          #proactive-care .care-media .stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+          }
+          #proactive-care .care-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            object-fit: cover;
+          }
+          @media (max-width: 900px) {
+            #proactive-care .care-media {
+              float: none;
+              width: 100%;
+              margin: 0 0 1rem 0;
+            }
+          }
+        `}</style>
+        <section
+          id="proactive-care"
+          className="mortgage-advice-section section"
+          style={{ padding: '4rem 0' }}
+        >
+          <div className="mortgage-advice-container">
+            <h2
+              className="animate-in-up"
+              style={{ color: 'var(--accent)', textAlign: 'center', fontSize: '2.2rem', marginBottom: '1.5rem' }}
+            >
+              Proactive Probate Property Care
+            </h2>
+            <div className="content animate-in-up" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div className="care-media">
+                <div className="stack">
+                  <img
+                    src="/images/door-lock-407427_1280.jpg"
+                    alt="Secure door lock representing proactive property protection"
+                    loading="lazy"
+                  />
+                  <img
+                    src="/images/Gardening image.jpg"
+                    alt="Garden maintenance demonstrating care for exterior presentation"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+              <article style={{ color: '#ffffff', fontSize: '1.15rem', lineHeight: 1.8 }}>
+                <p style={{ marginBottom: '1rem' }}>
+                  An empty property can quickly show signs of neglect, which may attract unwanted attention or lead to avoidable damage. That’s why, during our routine probate property inspections, we don’t just report issues, we can, where required, take action.
+                </p>
+                <p style={{ marginBottom: '1rem' }}>
+                  Our minor maintenance services are designed to ensure vacant probate properties remain secure, well maintained, and presentable, giving families peace of mind and helping preserve the value of the estate.
+                </p>
+                <p style={{ marginBottom: '0.75rem' }}>
+                  As part of this service, we can, but not limited to:
+                </p>
+                <ul style={{ marginBottom: '1rem', paddingLeft: '1.25rem' }}>
+                  <li>Change locks or secure access points to prevent unauthorised entry</li>
+                  <li>Cut grass, clear pathways, and tidy the exterior to create the impression the property is occupied</li>
+                  <li>Install timer-controlled lighting to enhance security and deter intruders</li>
+                  <li>Turn off the mains water to prevent leaks or flooding</li>
+                  <li>Set heating to a low level in colder months to reduce the risk of damp, mould, or burst pipes</li>
+                </ul>
+                <p style={{ marginBottom: '0.75rem' }}>
+                  If additional repairs or security improvements are required, we:
+                </p>
+                <ul style={{ marginBottom: '1rem', paddingLeft: '1.25rem' }}>
+                  <li>Provide a clear and detailed quote</li>
+                  <li>Oversee the work using trusted local contractors</li>
+                  <li>Supply before and after photographs for the executor’s records</li>
+                </ul>
+                <p>
+                  Best of all, these essential preventative services are carried out free of charge (excluding contractor costs). At Integra-Estates, we treat every probate property as if it belonged to someone we truly care about, because in many ways, it does.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </AnimatedSection>
+
+      {/* Ethical house clearance (below proactive-care) */}
+      <AnimatedSection>
+        <style>{`
+          #ethical-clearance .columns {
+            display: flex;
+            gap: 1.5rem;
+            align-items: stretch;
+          }
+          #ethical-clearance .col-image {
+            flex: 1 1 42%;
+          }
+          #ethical-clearance .col-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            object-fit: cover;
+          }
+          #ethical-clearance .col-text {
+            flex: 1 1 58%;
+            color: #ffffff;
+            font-size: 1.15rem;
+            line-height: 1.8;
+          }
+          @media (max-width: 900px) {
+            #ethical-clearance .columns {
+              flex-direction: column;
+            }
+            #ethical-clearance .col-text,
+            #ethical-clearance .col-image {
+              flex: 1 1 100%;
+            }
+          }
+        `}</style>
+        <section
+          id="ethical-clearance"
+          className="mortgage-advice-section section"
+          style={{ padding: '4rem 0' }}
+        >
+          <div className="mortgage-advice-container">
+            <h2
+              className="animate-in-up"
+              style={{ color: 'var(--accent)', textAlign: 'center', fontSize: '2.2rem', marginBottom: '1.5rem' }}
+            >
+              Ethical house clearance.
+            </h2>
+            <div className="content animate-in-up" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+              <div className="columns">
+                <div className="col-image">
+                  <img
+                    src="/images/messy-room.jpg"
+                    alt="Messy room before ethical house clearance"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="col-text">
+                  <article>
+                    <p style={{ marginBottom: '1rem' }}>
+                      Clearing a loved one’s home can be one of the most emotional steps in the probate journey. It’s not just furniture and personal items, it’s memories, sentiment, and a life once lived. At Integra-Estates, we understand the weight of this task, which is why we’ve partnered with an ethical house clearance company that treats every property and its contents with dignity and compassion.
+                    </p>
+                    <p style={{ marginBottom: '1rem' }}>
+                      Our probate house clearance service ensures that useful items are redirected in a way that benefits others avoiding landfill wherever possible. The focus on rehoming items where they can make a meaningful difference:
+                    </p>
+                    <ul style={{ marginBottom: '1rem', paddingLeft: '1.25rem' }}>
+                      <li>Clothing and furniture are donated to local charity shops</li>
+                      <li>Unopened, in-date tinned food is delivered to community food banks</li>
+                      <li>Reusable household goods are assessed for donation or repurposing</li>
+                    </ul>
+                    <p style={{ marginBottom: '1rem' }}>
+                      This approach not only reduces waste but allows your loved one’s belongings to continue serving a purpose, providing support to families and charities in need.
+                    </p>
+                    <p>
+                      By choosing Integra-Estates, you’re not just arranging a house clearance—you’re making a conscious, compassionate choice that gives back to the community while handling personal possessions with the utmost care.
+                    </p>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+       </section>
+     </AnimatedSection>
+
+      {/* Get In Touch wrapped for uniform side spacing */}
+      <AnimatedSection>
+        <section className="mortgage-advice-section section" style={{ padding: '4rem 0' }}>
+          <div className="mortgage-advice-container">
+            <GetInTouchSection />
+           </div>
+         </section>
        </AnimatedSection>
+
+      {/* ScrollHint widget for probate page */}
+      <ScrollHint />
     </>
   )
 }
