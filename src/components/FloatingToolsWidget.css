@@ -1,0 +1,68 @@
+.floating-tools {
+  position: fixed;
+  left: 1rem;
+  bottom: 1rem;
+  z-index: 10000;
+}
+
+.floating-tools__button {
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #6c9830; /* brand green icon */
+  background: transparent; /* remove circular container */
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+/* Increase cog icon size without affecting layout */
+.floating-tools__button svg {
+  width: 40px;
+  height: 40px;
+  transition: transform 160ms ease;
+}
+
+/* Hover effect: slightly brighten and scale up */
+.floating-tools__button:hover {
+  color: #82b63b; /* lighter green on hover */
+}
+
+.floating-tools__button:hover svg {
+  transform: scale(1.1);
+}
+
+.floating-tools__button:hover { filter: brightness(1.05); }
+
+.floating-tools__menu {
+  position: absolute;
+  left: 0;
+  bottom: 56px;
+  display: grid;
+  gap: 0.5rem;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.floating-tools--open .floating-tools__menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-tools__item {
+  background: #1b1b1b;
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  cursor: pointer;
+  min-width: 220px;
+  text-align: left;
+}
+
+.floating-tools__item:hover { border-color: #6c9830; color: #e9f3d6; }

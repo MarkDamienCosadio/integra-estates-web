@@ -26,6 +26,7 @@ import WhyIntegraEstates from './components/WhyIntegraEstates'
 import MortgageAdvicePage from './components/MortgageAdvicePage'
 import MarketingYourProperty from './components/MarketingYourProperty'
 import ValuationModal from './components/ValuationModal'
+import FloatingToolsWidget from './components/FloatingToolsWidget'
 import VirtualTour360Page from './components/VirtualTour360Page'
 import VirtualStagingPage from './components/VirtualStagingPage'
 import CommunityEngagementPage from './components/CommunityEngagementPage'
@@ -197,6 +198,7 @@ function App() {
         </Routes>
 
         <ValuationModal isOpen={isValuationOpen} onClose={() => setIsValuationOpen(false)} />
+        <FloatingToolsWidget />
         <Footer />
       </main>
     </Router>

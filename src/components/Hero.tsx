@@ -6,7 +6,6 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
   const v0 = useRef<HTMLVideoElement | null>(null)
   const v1 = useRef<HTMLVideoElement | null>(null)
   const [animationsReady, setAnimationsReady] = useState(false)
-  const [showWelcome, setShowWelcome] = useState(false)
 
   useEffect(() => {
     const a = v0.current
@@ -71,13 +70,9 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
     }
   }, [introComplete])
 
-  // Listen for cross-component open event from Services to open the valuation modal
+  // Local valuation modal removed; global ValuationModal handles the openValuationModal event
   useEffect(() => {
-    const onOpenValuationModal = () => setShowWelcome(true)
-    window.addEventListener('openValuationModal', onOpenValuationModal as EventListener)
-    return () => {
-      window.removeEventListener('openValuationModal', onOpenValuationModal as EventListener)
-    }
+    return () => {}
   }, [])
 
   return (
@@ -143,7 +138,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
                 delay: 1.0,
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
-              onClick={(e: { preventDefault: () => void; }) => { e.preventDefault(); setShowWelcome(true) }}
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => { e.preventDefault(); window.dispatchEvent(new Event('openValuationModal')) }}
             >
               <div className="section-1-module__KWVB3q__btn">Book A Valuation</div>
             </motion.a>
@@ -165,7 +160,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
           </div>
         </div>
       </div>
-      {showWelcome && (
+      {/* Legacy valuation modal removed; global ValuationModal used
         <div
           className="modal-overlay"
           role="dialog"
@@ -630,7 +625,7 @@ export default function Hero({ onStarted, introComplete }: { onStarted?: () => v
             </button>
           </div>
         </div>
-      )}
+      */}
     </section>
   )
 }

@@ -1,0 +1,112 @@
+/* Modern sleek dark theme for valuation modal */
+
+:root {
+  --ve-bg: #121212;
+  --ve-panel: #171717;
+  --ve-border: rgba(255, 255, 255, 0.08);
+  --ve-text: #e6e6e6;
+  --ve-muted: rgba(230, 230, 230, 0.75);
+  --ve-accent: #8fd14f; /* brand-friendly green */
+  --ve-danger: #ff4d4d;
+}
+
+.valuation-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 100000;
+}
+
+.valuation-modal {
+  background: var(--ve-bg);
+  border: 1px solid var(--ve-border);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  width: min(900px, 92vw);
+  max-height: 86vh;
+  overflow: auto;
+  position: relative;
+  animation: ve-fade-in 160ms ease-out;
+}
+
+@keyframes ve-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.valuation-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  border: 1px solid var(--ve-border);
+  background: var(--ve-panel);
+  color: var(--ve-text);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, transform 120ms ease;
+}
+.valuation-close:hover { background: #1c1c1c; border-color: rgba(255,255,255,0.14); }
+.valuation-close:active { transform: scale(0.98); }
+
+.valuation-header { padding: 28px 28px 18px; border-bottom: 1px solid var(--ve-border); }
+.valuation-header h2 { margin: 0 0 8px; font-size: 28px; letter-spacing: 0.02em; color: var(--ve-accent); }
+.valuation-header p { margin: 0; color: var(--ve-muted); }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 18px 28px; }
+.contact-card {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px; background: var(--ve-panel);
+  border: 1px solid var(--ve-border); border-radius: 12px;
+  transition: border-color 160ms ease, transform 120ms ease;
+}
+.contact-card:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-1px); }
+.contact-icon { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 10px; background: #1b1b1b; color: var(--ve-accent); }
+.contact-card h3 { margin: 0; font-size: 16px; color: var(--ve-accent); }
+.contact-card p, .contact-card a { margin: 0; color: var(--ve-text); text-decoration: none; }
+.contact-card a:hover { text-decoration: underline; }
+
+.valuation-form { padding: 18px 28px 8px; }
+.form-row { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.form-row.two { grid-template-columns: 1fr 1fr; }
+
+.input-group { display: flex; flex-direction: column; gap: 8px; }
+.input-group label { font-size: 0.9rem; color: var(--ve-muted); }
+.ve-input, .ve-textarea {
+  width: 100%; color: var(--ve-text);
+  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 12px 14px; outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.ve-input::placeholder, .ve-textarea::placeholder { color: rgba(230, 230, 230, 0.55); }
+.ve-input:focus, .ve-textarea:focus { border-color: var(--ve-accent); box-shadow: 0 0 0 3px rgba(143, 209, 79, 0.25); }
+.ve-textarea { min-height: 110px; resize: vertical; }
+
+.privacy-row { display: flex; align-items: center; gap: 10px; margin-top: 6px; padding: 12px 0; border-top: 1px solid var(--ve-border); }
+.privacy-row a { color: var(--ve-text); }
+.privacy-row a:hover { text-decoration: underline; }
+
+.actions { display: flex; justify-content: flex-end; gap: 12px; padding: 0 28px 28px; }
+.btn { border: 0; border-radius: 12px; padding: 12px 18px; font-weight: 600; cursor: pointer; }
+.btn-primary { background: linear-gradient(180deg, #9ae45b, var(--ve-accent)); color: #0a0a0a; }
+.btn-primary:hover { filter: brightness(1.05); }
+.btn-secondary { background: transparent; color: var(--ve-text); border: 1px solid rgba(255,255,255,0.16); }
+.btn-secondary:hover { border-color: rgba(255,255,255,0.28); }
+
+/* Scrollbar for modal */
+.valuation-modal::-webkit-scrollbar { width: 10px; }
+.valuation-modal::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 10px; }
+.valuation-modal::-webkit-scrollbar-track { background: transparent; }
+
+@media (max-width: 700px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .form-row.two { grid-template-columns: 1fr; }
+}

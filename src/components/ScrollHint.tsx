@@ -118,23 +118,20 @@ export default function ScrollHint() {
       aria-label="Scroll"
       aria-hidden={isMobile && !scrollActive}
     >
-      {/* Left arrow: hidden and no animation when hero is in view */}
+      {/* Left icon: replaced with provided SVG, behavior unchanged */}
       <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
-        viewBox="0 0 512 512"
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        aria-hidden="true"
         className={leftIconClass}
         role="button"
         tabIndex={0}
         onClick={onLeftClick}
         aria-label="Scroll up"
-        height="1em"
-        width="1em"
         xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
       >
-        <path d="M48 256c0 114.87 93.13 208 208 208s208-93.13 208-208S370.87 48 256 48 48 141.13 48 256zm212.65-91.36a16 16 0 01.09 22.63L208.42 240H342a16 16 0 010 32H208.42l52.32 52.73A16 16 0 11238 347.27l-79.39-80a16 16 0 010-22.54l79.39-80a16 16 0 0122.65-.09z"></path>
+        <path fill="currentColor" d="M14.7 3.3l6 6-2.4 2.4-1.8-1.8-3.6 3.6.9.9-5.4 5.4H6v-2.1l5.4-5.4.9.9 3.6-3.6-1.8-1.8 2.4-2.4zM3 21h5l-5-5v5z"></path>
       </svg>
 
       {/* Left line container rendered only when not in hero view */}
@@ -150,23 +147,20 @@ export default function ScrollHint() {
         <div className={rightLineClass}></div>
       </div>
 
-      {/* Right arrow: always visible and animated */}
+      {/* Right icon: replaced with provided SVG, behavior unchanged */}
       <svg
-        stroke="currentColor"
-        fill="currentColor"
-        strokeWidth="0"
-        viewBox="0 0 512 512"
+        viewBox="0 0 24 24"
+        width="1em"
+        height="1em"
+        aria-hidden="true"
         className={rightIconClass}
         role="button"
         tabIndex={0}
         onClick={onRightClick}
         aria-label="Scroll down"
-        height="1em"
-        width="1em"
         xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
       >
-        <path d="M464 256c0-114.87-93.13-208-208-208S48 141.13 48 256s93.13 208 208 208 208-93.13 208-208zm-212.65 91.36a16 16 0 01-.09-22.63L303.58 272H170a16 16 0 010-32h133.58l-52.32-52.73A16 16 0 11274 164.73l79.39 80a16 16 0 010 22.54l-79.39 80a16 16 0 01-22.65.09z"></path>
+        <path fill="currentColor" d="M14.7 3.3l6 6-2.4 2.4-1.8-1.8-3.6 3.6.9.9-5.4 5.4H6v-2.1l5.4-5.4.9.9 3.6-3.6-1.8-1.8 2.4-2.4zM3 21h5l-5-5v5z"></path>
       </svg>
     </div>
   )
