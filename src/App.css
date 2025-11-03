@@ -6780,3 +6780,183 @@ section#re-mortgage h3 {
     display: block !important;
   }
 }
+
+/* ------------------------------
+   Why Integra hero H1: Mobile (≤440px)
+   Center text and force second line for Integra-Estates
+   ------------------------------ */
+@media (max-width: 440px) {
+  .why-integra-hero .hero-tag {
+    text-align: center !important;
+  }
+  .why-integra-hero .hero-tag .mobile-break {
+    display: block !important;
+  }
+}
+/* ===== Maximum Exposure section: single column with background image and centered article ===== */
+.maximum-exposure.section {
+  position: relative;
+  background-image: url('/images/section-4-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.maximum-exposure.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.maximum-exposure.section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override inline grid to single column and center content */
+.maximum-exposure.section .container > div[style] {
+  grid-template-columns: 1fr !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+/* Hide the inline image column since the section uses a background */
+.maximum-exposure.section .container > div > .animate-in-right {
+  display: none !important;
+}
+
+/* Center the article block and text */
+.maximum-exposure.section .container article {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===== Clear Communication section: single column with background image and centered article ===== */
+.clear-communication.section {
+  position: relative;
+  background-image: url('/images/section-5-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.clear-communication.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.clear-communication.section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override inline grid to single column and center content */
+.clear-communication.section .container > div[style] {
+  grid-template-columns: 1fr !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+/* Hide the inline image column since the section uses a background */
+.clear-communication.section .container > div > .animate-in-left {
+  display: none !important;
+}
+
+/* Center the article block and text */
+.clear-communication.section .container article {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===== No Highstreet section: single column with background image and centered article ===== */
+.no-highstreet.section {
+  position: relative;
+  background-image: url('/images/section-7-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.no-highstreet.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.no-highstreet.section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override inline grid to single column and center content */
+.no-highstreet.section .container > div[style] {
+  grid-template-columns: 1fr !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+/* Hide the inline image column since the section uses a background */
+.no-highstreet.section .container > div > .animate-in-right {
+  display: none !important;
+}
+
+/* Center the article block and text */
+.no-highstreet.section .container article {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* ===== Exceptional Service section: single column with background image and centered article ===== */
+.exceptional-service.section {
+  position: relative;
+  background-image: url('/images/section-6-img.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.exceptional-service.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.exceptional-service.section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Override inline grid to single column and center content */
+.exceptional-service.section .container > div[style] {
+  grid-template-columns: 1fr !important;
+  align-items: center !important;
+  justify-items: center !important;
+}
+
+/* Hide the inline image column since the section uses a background */
+.exceptional-service.section .container > div > .animate-in-right {
+  display: none !important;
+}
+
+/* Center the article block and text */
+.exceptional-service.section .container article {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}

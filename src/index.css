@@ -407,3 +407,36 @@ article p {
 
 /* Ensure grid children can shrink without forcing stacking */
 .values-slide__content, .values-slide__image { min-width: 0; }
+
+/* Mobile: stack each values slide as a single column with image above article */
+@media (max-width: 440px) {
+  .values-slide {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto; /* heading, image, article */
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+
+  .values-slide__heading-wrap {
+    grid-column: 1;
+    grid-row: 1;
+    text-align: center;
+  }
+
+  .values-slide__image {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .values-slide__content {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .values-slide__image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+}

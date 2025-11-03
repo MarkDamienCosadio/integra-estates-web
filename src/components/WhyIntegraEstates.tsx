@@ -209,7 +209,7 @@ export default function WhyIntegraEstates() {
         />
         <div className="why-integra-hero__overlay" aria-hidden="true" />
         <AnimatedSection className="why-integra-hero__content" threshold={0}>
-          <h1 className="hero-tag animate-in-up" data-animate-delay="0">Why Integra-Estates</h1>
+          <h1 className="hero-tag animate-in-up" data-animate-delay="0">Why <span className="mobile-break">Integra-Estates</span></h1>
         </AnimatedSection>
       </section>
       
