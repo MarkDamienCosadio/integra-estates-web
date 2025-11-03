@@ -6612,3 +6612,38 @@ section#re-mortgage h3 {
     text-align: center !important;
   }
 }
+
+/* ------------------------------
+   Compare image + text row: Mobile (≤440px) single-column override
+   Targets inline-styled flex row with compare module + marketing text
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Identify the inline-styled flex container */
+  div[style*="display: flex"][style*="gap: 2rem"][style*="align-items: flex-start"] {
+    flex-direction: column !important;
+    gap: 1rem !important;
+    align-items: center !important;
+  }
+
+  /* First column (compare images) */
+  .animate-in-up[style*="flex: 0 0 60%"],
+  .on-screen-loading-module__zxNEcq__rightAnimation,
+  .on-screen-loading-module__zxNEcq__rightAnimationActive {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .compare-image-module__4uvXQa__container {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Second column (text) */
+  .marketing-your-property-text {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+  }
+}
