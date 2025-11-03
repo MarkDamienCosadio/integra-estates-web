@@ -1,0 +1,79 @@
+/* ===== Responsive Utility Classes ===== */
+/* Mobile-first responsive utilities for consistent breakpoint usage */
+
+/* Mobile-only utilities */
+@media (max-width: 767px) {
+  .mobile-only {
+    display: block;
+  }
+  
+  .hide-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Tablet utilities */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-only {
+    display: block;
+  }
+  
+  .hide-tablet {
+    display: none;
+  }
+}
+
+@media (max-width: 767px),
+       (min-width: 1024px) {
+  .tablet-only {
+    display: none;
+  }
+}
+
+/* Desktop utilities */
+@media (min-width: 1024px) {
+  .desktop-only {
+    display: block;
+  }
+  
+  .hide-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+/* ===== Responsive Spacing Utilities ===== */
+/* Mobile-first spacing that scales appropriately */
+:root {
+  --spacing-xs: clamp(0.5rem, 1.5vw, 0.75rem);
+  --spacing-sm: clamp(0.75rem, 2vw, 1rem);
+  --spacing-md: clamp(1rem, 3vw, 1.5rem);
+  --spacing-lg: clamp(1.5rem, 4vw, 2.5rem);
+  --spacing-xl: clamp(2rem, 5vw, 4rem);
+  
+  /* Container padding that scales on mobile */
+  --container-padding-mobile: clamp(16px, 5vw, 24px);
+  --container-padding-desktop: 1rem;
+  
+  /* Section padding that scales on mobile */
+  --section-padding-mobile: clamp(24px, 7vw, 48px);
+  --section-padding-desktop: 4rem;
+}
+
+/* ===== Responsive Typography Utilities ===== */
+/* These are already defined in index.css for mobile, desktop uses default sizes */
+@media (min-width: 1024px) {
+  /* Desktop typography remains unchanged - using existing styles */
+}
+

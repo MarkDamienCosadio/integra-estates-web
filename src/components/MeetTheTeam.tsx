@@ -1,36 +1,42 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function MeetTheTeam() {
   const sectionRef = useRef<HTMLElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const imageColumnRef = useRef<HTMLDivElement | null>(null)
   const articleRef = useRef<HTMLElement | null>(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const sec = sectionRef.current
     if (!sec) return
+    const thresholds = isMobile ? [0.01] : [0.4, 0.6, 0.8]
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.4 && titleRef.current) {
+          const meets = (t: number) => (isMobile ? entry.isIntersecting : r >= t)
+
+          if (meets(0.4) && titleRef.current) {
             titleRef.current.classList.add('mt-active')
           }
-          if (r >= 0.6 && imageColumnRef.current) {
+          if (meets(0.6) && imageColumnRef.current) {
             imageColumnRef.current.classList.add('mt-active')
           }
-          if (r >= 0.8 && articleRef.current) {
+          if (meets(0.8) && articleRef.current) {
             articleRef.current.classList.add('mt-active')
             const ps = Array.from(articleRef.current.querySelectorAll('p'))
             ps.forEach((p, i) => {
-              (p as HTMLElement).style.animationDelay = `${i * 0.2}s`
+              const delay = isMobile ? 0 : i * 0.2
+              ;(p as HTMLElement).style.animationDelay = `${delay}s`
               p.classList.add('mt-active')
             })
             // Add delay for the button after the last paragraph
             const button = articleRef.current.querySelector('.animated-module__Rnzt8a__btn')
             if (button) {
-              const buttonDelay = ps.length * 0.2 + 0.3 // After last paragraph + 0.3s buffer
+              const buttonDelay = isMobile ? 0 : ps.length * 0.2 + 0.3 // After last paragraph + 0.3s buffer
               setTimeout(() => {
                 button.classList.add('mt-active')
               }, buttonDelay * 1000)
@@ -38,11 +44,11 @@ export default function MeetTheTeam() {
           }
         })
       },
-      { threshold: [0.4, 0.6, 0.8] }
+      { threshold: thresholds }
     )
     io.observe(sec)
     return () => io.disconnect()
-  }, [])
+  }, [isMobile])
   return (
     <>
       {/* Title outside the section, using same inner container for alignment */}

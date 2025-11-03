@@ -110,3 +110,57 @@
   .contact-grid { grid-template-columns: 1fr; }
   .form-row.two { grid-template-columns: 1fr; }
 }
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+  .valuation-overlay {
+    padding: 1rem;
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .valuation-modal {
+    width: 96vw;
+    max-height: 90vh;
+    border-radius: 14px;
+    overscroll-behavior: contain;
+  }
+
+  .valuation-close {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .valuation-header { padding: 20px 20px 14px; }
+  .valuation-header h2 { font-size: 24px; }
+  .valuation-header p { font-size: 0.95rem; }
+
+  .contact-grid { padding: 14px 20px; gap: 12px; }
+  .contact-card { padding: 12px 14px; }
+  .contact-icon { width: 36px; height: 36px; }
+
+  .valuation-form { padding: 14px 20px 6px; }
+  .form-row { gap: 14px; }
+  .input-group label { font-size: 0.85rem; }
+  .ve-input, .ve-textarea { padding: 12px 13px; }
+  .ve-textarea { min-height: 100px; }
+
+  .privacy-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .actions {
+    padding: 0 20px 20px;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: stretch;
+  }
+  .btn { width: 100%; }
+}
+
+/* Safe-area support for iOS sticky insets */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .valuation-overlay { padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+}

@@ -2,6 +2,7 @@ import ScrollHint from './ScrollHint'
 import GetInTouchSection from './GetInTouchSection'
 import AnimatedSection from './AnimatedSection'
 import { useState, useEffect } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 interface TeamMember {
   id: string
@@ -23,6 +24,7 @@ export default function MeetTheTeamPage() {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
   const [modalPosition, setModalPosition] = useState<ModalPosition>({ x: 0, y: 0, width: 0, height: 0 })
   const [isClosing, setIsClosing] = useState(false)
+  const isMobile = useIsMobile()
 
   // Reveal info cards smoothly with stagger
   useEffect(() => {
@@ -40,11 +42,11 @@ export default function MeetTheTeamPage() {
           }
         })
       },
-      { threshold: 0.2 }
+      { threshold: isMobile ? 0.01 : 0.2 }
     )
     cards.forEach((c) => io.observe(c))
     return () => io.disconnect()
-  }, [])
+  }, [isMobile])
 
   // Animate section title earlier, when 30% visible
   useEffect(() => {
@@ -59,11 +61,11 @@ export default function MeetTheTeamPage() {
           }
         })
       },
-      { threshold: 0.3 }
+      { threshold: isMobile ? 0.01 : 0.3 }
     )
     ioTitle.observe(titleEl)
     return () => ioTitle.disconnect()
-  }, [])
+  }, [isMobile])
 
   const teamMembers = [
     {

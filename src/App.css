@@ -7,6 +7,22 @@
   text-align: initial;
 }
 
+/* Global mobile subtitle sizing */
+@media (max-width: 440px) {
+  h3 {
+    font-size: 24px !important;
+  }
+}
+
+@media (max-width: 440px) {
+  #re-mortgage h3,
+  section#re-mortgage h3,
+  #first-time-purchase h3,
+  section#first-time-purchase h3 {
+    font-size: 24px !important;
+  }
+}
+
 /* Main background removed as requested */
 
 .logo {
@@ -161,9 +177,6 @@ h2 {
 }
 @media (max-width: 900px) {
   .home-buyers-grid { margin: 0 clamp(1rem, 4vw, 2rem); }
-}
-@media (max-width: 768px) {
-  .home-buyers-grid { grid-template-columns: 1fr; }
 }
 
 /* Remove top space from Home Buyers Guide section */
@@ -341,9 +354,6 @@ video:hover {
 
 /* Mortgage Advice description responsiveness */
 .mortgage-desc { width: 60%; }
-@media (max-width: 768px) {
-  .mortgage-desc { width: 100%; }
-}
 
 /* Mortgage Advice section mobile padding */
 .background-image-with-ani-btn-module__KzAnOq__info { padding: 80px 0; }
@@ -653,19 +663,7 @@ html, body { height: 100%; }
   }
 }
 
-/* Mobile styles for hero-tag */
-@media screen and (max-width: 768px) {
-  .hero-tag {
-    font-size: 2.5rem;
-    text-align: left;
-    line-height: 1.2;
-  }
-  
-  .hero-desc {
-    text-align: left;
-    font-size: 1rem;
-  }
-}
+/* Hero mobile styles moved to consolidated mobile section */
 .hero-desc {
   font-family: trajan-pro-3, serif;
   font-size: 1.125rem;
@@ -779,14 +777,7 @@ html, body { height: 100%; }
   letter-spacing: 0.1rem;
 }
 
-/* Smaller ScrollHint on mobile while keeping auto-hide behavior */
-@media (max-width: 768px) {
-  .scroll-module__YhOxhG__widget { right: 1rem; top: 68%; }
-  .scroll-module__YhOxhG__icon { font-size: 1.25rem; }
-  .scroll-module__YhOxhG__text { font-size: 0.9rem; margin: 0 0.5rem; letter-spacing: 0.08rem; }
-  .scroll-module__YhOxhG__widget .line-module__2PkNtW__container { width: 6rem; height: 2px; }
-  .scroll-module__YhOxhG__widget .line-module__2PkNtW__line { width: 6rem; height: 2px; }
-}
+/* ScrollHint mobile styles moved to consolidated mobile section */
 
 .line-module__2PkNtW__container {
   width: 10rem; /* wider container per spec */
@@ -1449,14 +1440,15 @@ html, body { height: 100%; }
   transition: all 0.3s ease;
 }
 
-/* Mobile styles for partner logos */
+/* ===== MOBILE STYLES - Consolidated Navigation ===== */
+/* Small mobile devices (< 430px) - Enhanced spacing for very small screens */
 @media (max-width: 430px) {
   .nav-partner-logos {
-    justify-content: flex-end !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-    align-items: flex-end !important;
-    padding-top: 7rem !important;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-end;
+    padding-top: 7rem;
   }
   
   .nav-partner-logo img {
@@ -1470,192 +1462,129 @@ html, body { height: 100%; }
   }
   
   .nav-left-column {
-    padding-top: 5rem !important;
-    padding-left: 2rem !important;
-    padding-bottom: 2rem !important;
+    padding-top: 5rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-right: none;
+  }
+  
+  .nav-left-column::after {
+    display: none;
   }
   
   .nav-logo img {
-    height: 8rem !important;
+    height: 8rem;
   }
   
   .nav-menu-overlay {
     overflow-y: auto;
   }
   
-  .nav-left-column::after {
-    display: none !important;
-  }
-  
-  .nav-left-column {
-    border-right: none !important;
-  }
-  
   .nav-link {
-    font-size: 1.4rem !important;
+    font-size: 1.4rem;
   }
   
   .nav-logo {
-    margin-bottom: 3rem !important;
+    margin-bottom: 3rem;
   }
   
   .nav-contact-section {
-    margin-bottom: 3rem !important;
+    margin-bottom: 3rem;
   }
   
   .nav-social-section {
-    margin-bottom: 1rem !important;
+    margin-bottom: 1rem;
   }
   
   .nav-right-column {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   
+  /* ===== MOBILE STYLES - Content Sections ===== */
   /* Property cards mobile spacing */
   .property-card-module__K9P0s__card {
-    margin-bottom: 2rem !important;
+    margin-bottom: 2rem;
   }
   
   .property-card-module__K9P0s__body {
-    padding: 1.5rem 1.25rem !important;
-    gap: 1rem !important;
+    padding: 1.5rem 1.25rem;
+    gap: 1rem;
   }
   
   /* Ask Us section mobile spacing */
   .content-with-video-module___A_Jma__section {
-    padding: 2rem !important;
+    padding: 2rem;
   }
   
   /* Make video appear with content in mobile view */
   .content-with-video-module___A_Jma__content {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
+    opacity: 1;
+    transform: none;
+    visibility: visible;
   }
   
-  /* Remove top padding from Recently sold properties section */
-  #recently-sold.section-4-module__K9P0s__section {
-    padding-top: 0 !important;
-  }
-  
-  /* Remove top padding from Services section */
-  #services.services-section {
-    padding-top: 0 !important;
-  }
-  
-  /* Remove top padding from Home Buyers Guide section */
-  .section-4-module__KR0FYq__inner:has(.hbg-prep) {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  /* Remove top margin from Home Buyers Guide title */
-  .section-4-module__KR0FYq__inner:has(.hbg-prep) h2 {
-    margin-top: 0 !important;
-  }
-  
-  /* Remove top margin and padding from Expert Mortgage Advice section */
-  .section-4-module__KR0FYq__inner:has(.ma-prep) {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  .section-4-module__KR0FYq__inner:has(.ma-prep) h2 {
-    margin-top: 0 !important;
-  }
-  
-  /* Remove top padding from What our clients say section */
-  .section:has(.animate-in-up) {
-    padding-top: 0 !important;
-  }
-  
-  /* Remove top margin from What our clients say title container */
-  .section-4-module__KR0FYq__titleContainer {
-    margin-top: 0 !important;
-  }
-  
-  /* Remove inline top margin from What our clients say title container */
-  .section-4-module__KR0FYq__titleContainer[style*="margin-top: 2rem"] {
-    margin-top: 0 !important;
-  }
-  
-  /* Remove top margin from What our clients say h2 title */
-  .ask-us-title.animate-in-up {
-    margin-top: 0 !important;
-  }
-  
-  /* Center all section titles except re-mortgage and moving-home */
-  .ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title) {
-    text-align: center !important;
-  }
-  
-  /* Remove all top space from Meet the team section */
-  .meet-the-team-section {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  .section-4-module__KR0FYq__inner:has(.mt-prep) {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-  }
-  
-  .section-4-module__KR0FYq__inner:has(.mt-prep) h2 {
-    margin-top: 0 !important;
-  }
-  
-  /* Remove all top space from Let's Talk section */
+  /* Section spacing adjustments for mobile */
+  #recently-sold.section-4-module__K9P0s__section,
+  #services.services-section,
+  .section:has(.home-buyers-grid),
+  .section:has(.animate-in-up),
+  .meet-the-team-section,
   .get-in-touch-module__NVY_Ga__section {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
+    padding-top: 0;
+    margin-top: 0;
   }
   
+  /* Remove top spacing from section inner containers and titles */
+  .section-4-module__KR0FYq__inner:has(.hbg-prep),
+  .section-4-module__KR0FYq__inner:has(.ma-prep),
+  .section-4-module__KR0FYq__inner:has(.mt-prep) {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  
+  .section-4-module__KR0FYq__inner:has(.hbg-prep) h2,
+  .section-4-module__KR0FYq__inner:has(.ma-prep) h2,
+  .section-4-module__KR0FYq__inner:has(.mt-prep) h2,
+  .section-4-module__KR0FYq__titleContainer,
+  .section-4-module__KR0FYq__titleContainer[style*="margin-top: 2rem"],
+  .ask-us-title.animate-in-up,
   .get-in-touch-module__NVY_Ga__section h2 {
-    margin-top: 0 !important;
+    margin-top: 0;
   }
   
-  /* Force hide marketing image in mobile view - most aggressive approach */
+  /* Center section titles on mobile (except specific sections) */
+  .ask-us-title:not(#re-mortgage .ask-us-title):not(#moving-home .ask-us-title) {
+    text-align: center;
+  }
+  
+  /* Hide image columns on mobile (use background images instead) */
   .marketing-with-us-image-column,
   .marketing-with-us-image-column.mw-active,
-  .marketing-with-us-image-column * {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
+  .meet-the-team-image-column,
+  .meet-the-team-image-column.mt-active {
+    display: none;
   }
   
-  /* Hide background images too */
+  /* Remove background image overlays on very small screens */
   .marketing-with-us-section::before {
-    display: none !important;
-    background-image: none !important;
+    display: none;
+    background-image: none;
   }
   
   .section-4-module__KR0FYq__section {
-    background: none !important;
-    background-image: none !important;
+    background: none;
+    background-image: none;
   }
-  
-  /* Hide meet the team image in mobile view */
-  .meet-the-team-image-column,
-  .meet-the-team-image-column.mt-active,
-  .meet-the-team-image-column * {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
-  }
-  
-  /* Hide meet the team background image too */
+}
+
+/* ===== MOBILE STYLES - General (max-width: 768px) ===== */
+@media (max-width: 768px) {
+  /* Hide meet the team background image on mobile */
   .meet-the-team-section::before {
-    display: none !important;
-    background-image: none !important;
+    display: none;
+    background-image: none;
   }
-  
 }
 
 .nav-partner-logo:hover img {
@@ -2820,62 +2749,7 @@ html, body { height: 100%; }
   }
 }
 
-@media (max-width: 768px) {
-  .meet-the-team-section {
-    padding: 0 0 30px 0;
-    position: relative;
-  }
-  
-  .meet-the-team-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('/images/meet-the-team.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: brightness(0.3);
-    z-index: 1;
-  }
-  
-  .meet-the-team-container {
-    position: relative;
-    z-index: 2;
-    padding: 0 0.5rem;
-    margin: 0 0.25rem;
-  }
-  
-  .meet-the-team-content {
-    grid-template-columns: 1fr;
-    gap: 0;
-    min-height: auto;
-  }
-  
-  .meet-the-team-image-column {
-    display: none; /* Hide image column on mobile since we use background */
-  }
-  
-  .meet-the-team-text-column {
-    padding: 0 0 1rem 0;
-    text-align: center;
-  }
-  
-  .meet-the-team-article {
-    background: rgba(20, 20, 20, 0.8);
-    padding: 2rem;
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
-  }
-  
-  .meet-the-team-article p {
-    font-size: 1.1rem;
-    line-height: 1.2;
-    margin-bottom: 0.8rem;
-  }
-}
+/* Meet The Team mobile styles moved to consolidated mobile section */
 
 @media (max-width: 480px) {
   .meet-the-team-section {
@@ -3003,15 +2877,7 @@ html, body { height: 100%; }
   .mortgage-advice-container { padding: 0 0.75rem; margin: 0 0.375rem; }
 }
 
-@media (max-width: 768px) {
-  .mortgage-advice-section { padding: 0 0 30px 0; position: relative; }
-  .mortgage-advice-container { position: relative; z-index: 2; padding: 0 0.5rem; margin: 0 0.25rem; }
-  .mortgage-advice-content { grid-template-columns: 1fr; gap: 0; min-height: auto; }
-  .mortgage-image-column { display: none; }
-  .mortgage-text-column { padding: 0 0 1rem 0; text-align: center; }
-  .mortgage-article { background: rgba(20, 20, 20, 0.8); padding: 2rem; border-radius: 12px; backdrop-filter: blur(10px); }
-  .mortgage-article p { font-size: 1.1rem; line-height: 1.2; margin-bottom: 0.8rem; }
-}
+/* Mortgage Advice mobile styles moved to consolidated mobile section */
 
 @media (max-width: 480px) {
   .mortgage-advice-section { padding: 0 0 20px 0; }
@@ -3067,11 +2933,11 @@ html, body { height: 100%; }
   }
   
   .marketing-with-us-image-column {
-    display: none !important; /* Hide image column on mobile since we use background */
+    display: none;
   }
   
   .marketing-with-us-image-column.mw-active {
-    display: none !important; /* Ensure active state is also hidden */
+    display: none;
   }
   
   .marketing-with-us-text-column {
@@ -3087,9 +2953,80 @@ html, body { height: 100%; }
   }
   
   .marketing-with-us-article p {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     line-height: 1.2;
     margin-bottom: 0.8rem;
+  }
+
+  /* Ensure article text shows on mobile even without intersection activation */
+  .marketing-with-us-article .mw-prep,
+  .marketing-with-us-article .mw-from-right {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* First-time purchase mobile background and centering */
+@media (max-width: 768px) {
+  /* Use the section background instead of the inline image */
+  #first-time-purchase.mortgage-advice-section {
+    position: relative;
+    padding: 0 0 30px 0; /* match other mobile sections */
+  }
+
+  #first-time-purchase.mortgage-advice-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/first-time-buyers.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.35); /* darken for text legibility */
+    z-index: 1;
+  }
+
+  #first-time-purchase > .mortgage-advice-container {
+    position: relative;
+    z-index: 2; /* ensure content sits above the background */
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  /* Collapse to a single column and hide the left image column */
+  #first-time-purchase .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+    min-height: auto !important;
+  }
+
+  #first-time-purchase .animate-in-left {
+    display: none !important;
+  }
+
+  /* Center the right column and its content for modern mobile screens */
+  #first-time-purchase .animate-in-right {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  #first-time-purchase .ask-us-title,
+  #first-time-purchase h3,
+  #first-time-purchase .mortgage-article,
+  #first-time-purchase .mortgage-article p {
+    text-align: center !important;
+  }
+
+  /* Center the CTA links row */
+  #first-time-purchase .animate-in-right > div {
+    justify-content: center !important;
   }
 }
 
@@ -4030,58 +3967,371 @@ button {
   }
 }
 
-/* Mobile-only: normalize Meet The Team article spacing to match site */
+/* ===== MOBILE STYLES - Continued (max-width: 768px) ===== */
 @media (max-width: 768px) {
-  /* Override inline container sizing/margins for consistent mobile spacing */
+  /* Meet The Team article spacing for mobile */
   #meet-the-team > .container {
-    width: 100% !important;
-    max-width: 960px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  /* Ensure article fills width and uses uniform side spacing */
   #meet-the-team > .container > article {
-    width: 100% !important;
-    margin: 0 !important;
-    text-align: justify !important;
+    width: 100%;
+    margin: 0;
+    text-align: justify;
   }
-}
-/* Mobile-only overrides: MarketingWithUs background and article typography */
-@media (max-width: 768px) {
-  /* Darken MarketingWithUs section background image by ~85% */
+
+  /* MarketingWithUs background and article typography for mobile */
   .section-4-module__KR0FYq__section {
     background:
       linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
       url('/images/marketing-with-us.jpg') center / cover no-repeat;
   }
 
-  /* Reduce article font size and line-height; justify text; add side padding */
+  /* Article typography adjustments for mobile */
   article,
   .section-4-module__KR0FYq__article,
   #meet-the-team .meet-article,
   .blogs-article {
-    font-size: 0.9rem !important;
-    line-height: 0.5 !important;
-    text-align: justify !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: justify;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
-  /* Ensure uniform left/right spacing within MarketingWithUs container on mobile */
+  /* Ensure uniform left/right spacing within containers on mobile */
   .section-4-module__KR0FYq__inner {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Paragraph line-height and alignment for mobile */
+  article p {
+    line-height: 1.3;
+    text-align: left;
+  }
+
+  /* Home Buyers Guide grid - mobile single column */
+  .home-buyers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mortgage Advice description - full width on mobile */
+  .mortgage-desc {
+    width: 100%;
+  }
+
+  /* Hero tag mobile styles */
+  .hero-tag {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    text-align: left;
+    line-height: 1.2;
+  }
+
+  .hero-desc {
+    text-align: left;
+    font-size: clamp(0.95rem, 2.5vw, 1.125rem);
+  }
+
+  /* ScrollHint mobile styles */
+  .scroll-module__YhOxhG__widget {
+    right: 1rem;
+    top: 68%;
+  }
+
+  .scroll-module__YhOxhG__icon {
+    font-size: 1.25rem;
+  }
+
+  .scroll-module__YhOxhG__text {
+    font-size: 0.9rem;
+    margin: 0 0.5rem;
+    letter-spacing: 0.08rem;
+  }
+
+  .scroll-module__YhOxhG__widget .line-module__2PkNtW__container {
+    width: 6rem;
+    height: 2px;
+  }
+
+  .scroll-module__YhOxhG__widget .line-module__2PkNtW__line {
+    width: 6rem;
+    height: 2px;
+  }
+
+  /* Mortgage card mobile adjustments */
+  .mortgage-card {
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  /* MarketingWithUs section mobile styles */
+  .marketing-with-us-section {
+    padding: 0 0 30px 0;
+    position: relative;
+  }
+
+  .marketing-with-us-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/marketing-with-us.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.3);
+    z-index: 1;
+  }
+
+  .marketing-with-us-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .marketing-with-us-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .marketing-with-us-image-column,
+  .marketing-with-us-image-column.mw-active {
+    display: none;
+  }
+
+  .marketing-with-us-text-column {
+    padding: 0 0 1rem 0;
+    text-align: center;
+  }
+
+  .marketing-with-us-article {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .marketing-with-us-article p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  .marketing-with-us-article .mw-prep,
+  .marketing-with-us-article .mw-from-right {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Mortgage Advice section mobile styles */
+  .mortgage-advice-section {
+    padding: 0 0 30px 0;
+    position: relative;
+  }
+
+  .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .mortgage-advice-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .mortgage-image-column {
+    display: none;
+  }
+
+  .mortgage-text-column {
+    padding: 0 0 1rem 0;
+    text-align: center;
+  }
+
+  .mortgage-article {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .mortgage-article p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Meet The Team section mobile styles */
+  .meet-the-team-section {
+    padding: 0 0 30px 0;
+    position: relative;
+  }
+
+  .meet-the-team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/meet-the-team.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.3);
+    z-index: 1;
+  }
+
+  .meet-the-team-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .meet-the-team-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .meet-the-team-image-column {
+    display: none;
+  }
+
+  .meet-the-team-text-column {
+    padding: 0 0 1rem 0;
+    text-align: center;
+  }
+
+  .meet-the-team-article {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .meet-the-team-article p {
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.2;
+    margin-bottom: 0.8rem;
+  }
+
+  /* Blogs grid mobile - single column */
+  .blogs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* First-time-purchase section mobile layout */
+  #first-time-purchase > .mortgage-advice-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  #first-time-purchase .mortgage-advice-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    min-height: auto;
+  }
+
+  #first-time-purchase .animate-in-left img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  #first-time-purchase .animate-in-left {
+    height: auto;
+    align-self: stretch;
+  }
+
+  #first-time-purchase .animate-in-right {
+    width: 100%;
+    padding-left: 0;
+    margin-left: 0;
+  }
+
+  #first-time-purchase .ask-us-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  #first-time-purchase h3 {
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    margin: 0.5rem 0 1.5rem 0;
+  }
+
+  #first-time-purchase .mortgage-article p {
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    margin-bottom: 1rem;
+  }
+
+  #first-time-purchase .cta {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    padding: 0.75rem 1.25rem;
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin-bottom: 0.75rem;
   }
 }
 
-/* Mobile-only: enforce paragraph line-height and left alignment inside articles */
-@media (max-width: 768px) {
-  article p {
-    line-height: 1.3 !important;
-    text-align: left !important;
+/* Mobile: center First Time Purchase content at very small widths */
+@media (max-width: 440px) {
+  /* Remove large side paddings and center the container */
+  #first-time-purchase > .mortgage-advice-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Single column layout and tighter gap */
+  #first-time-purchase .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    min-height: auto !important;
+  }
+
+  /* Center the right column block and its children */
+  #first-time-purchase .animate-in-right {
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  /* Center headings and article text */
+  #first-time-purchase .ask-us-title,
+  #first-time-purchase h3,
+  #first-time-purchase .mortgage-article,
+  #first-time-purchase .mortgage-article p {
+    text-align: center !important;
+  }
+
+  /* Center the CTA links row inside the right column */
+  #first-time-purchase .animate-in-right > div {
+    justify-content: center !important;
   }
 }
 
@@ -4273,6 +4523,55 @@ section#first-time-purchase.mortgage-advice-section {
   font-weight: 500;
   transition: all 0.3s ease;
   margin-bottom: 0.5rem;
+}
+
+/* Mobile-only: force First-time purchase article text to 16px at ≤440px */
+@media (max-width: 440px) {
+  #first-time-purchase .mortgage-article,
+  #first-time-purchase .mortgage-article p {
+    font-size: 16px !important;
+  }
+}
+
+/* Center First Time Purchase content on mobile (wins over global left-align) */
+@media (max-width: 768px) {
+  /* Center heading and subtitle */
+  #first-time-purchase .ask-us-title,
+  #first-time-purchase h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Center article block and its paragraphs */
+  #first-time-purchase .mortgage-article {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  #first-time-purchase .mortgage-article p {
+    text-align: center !important;
+  }
+
+  /* Center the right column wrapper and CTA row */
+  #first-time-purchase .animate-in-right {
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  #first-time-purchase .animate-in-right > div {
+    justify-content: center !important;
+  }
+
+  /* Reduce excessive side padding applied globally for this section */
+  #first-time-purchase > .mortgage-advice-container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 #first-time-purchase .cta:hover {
@@ -5772,5 +6071,544 @@ section#re-mortgage.mortgage-advice-section {
   
   .marketing-your-property-text {
     font-size: 1.1rem;
+  }
+}
+
+/* ------------------------------
+   Re-Mortgage: Mobile overrides
+   Mirrors First-time purchase mobile treatment
+   ------------------------------ */
+@media (max-width: 768px) {
+  /* Use the existing image as a section background */
+  #re-mortgage,
+  #re-mortgage.section,
+  #re-mortgage.mortgage-advice-section,
+  section#re-mortgage,
+  section#re-mortgage.section,
+  section#re-mortgage.mortgage-advice-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1.25rem 2.5rem 1.25rem !important;
+  }
+
+  #re-mortgage.mortgage-advice-section::before,
+  section#re-mortgage.mortgage-advice-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/remortgage.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35);
+    z-index: 1;
+  }
+
+  /* Ensure content layers above background */
+  #re-mortgage .mortgage-advice-container,
+  section#re-mortgage .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Force single column layout and hide the image column */
+  #re-mortgage .mortgage-advice-content,
+  section#re-mortgage .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+  }
+
+  #re-mortgage .animate-in-right,
+  section#re-mortgage .animate-in-right {
+    display: none !important;
+  }
+
+  /* Center the left/content column and text */
+  #re-mortgage .animate-in-left,
+  section#re-mortgage .animate-in-left {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  #re-mortgage .ask-us-title,
+  #re-mortgage h3,
+  #re-mortgage .mortgage-article,
+  #re-mortgage .mortgage-article p,
+  section#re-mortgage .ask-us-title,
+  section#re-mortgage h3,
+  section#re-mortgage .mortgage-article,
+  section#re-mortgage .mortgage-article p {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Center CTA row inside the article */
+  #re-mortgage .mortgage-article > div,
+  section#re-mortgage .mortgage-article > div {
+    justify-content: center !important;
+  }
+}
+
+/* Extra-small mobile: normalize paragraph size */
+@media (max-width: 440px) {
+  #re-mortgage .mortgage-article,
+  #re-mortgage .mortgage-article p,
+  section#re-mortgage .mortgage-article,
+  section#re-mortgage .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+}
+
+/* Re-mortgage: center title and subtitle */
+#re-mortgage h2.remortgage-title,
+section#re-mortgage h2.remortgage-title {
+  text-align: center !important;
+  width: fit-content !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  display: block !important;
+}
+
+#re-mortgage h3,
+section#re-mortgage h3 {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Ensure mobile h3 centers even if parent forces right-align */
+@media (max-width: 440px) {
+  #re-mortgage .animate-in-left h3,
+  section#re-mortgage .animate-in-left h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
+
+/* ------------------------------
+   Moving Home: Mobile overrides (≤440px)
+   Mirrors Re-mortgage / First-time purchase mobile treatment
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Use the existing image as a section background */
+  #moving-home,
+  #moving-home.section,
+  #moving-home.mortgage-advice-section,
+  section#moving-home,
+  section#moving-home.section,
+  section#moving-home.mortgage-advice-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1.25rem 2.5rem 1.25rem !important;
+  }
+
+  #moving-home.mortgage-advice-section::before,
+  section#moving-home.mortgage-advice-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/moving-home.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35);
+    z-index: 1;
+  }
+
+  /* Ensure content layers above background */
+  #moving-home .mortgage-advice-container,
+  section#moving-home .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Force single column layout and hide the image column */
+  #moving-home .mortgage-advice-content,
+  section#moving-home .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+  }
+
+  /* Hide the left image column on mobile */
+  #moving-home .animate-in-left,
+  section#moving-home .animate-in-left {
+    display: none !important;
+  }
+
+  /* Center the right/content column and text */
+  #moving-home .animate-in-right,
+  section#moving-home .animate-in-right {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Center h2 and h3 */
+  #moving-home .moving-home-title,
+  section#moving-home .moving-home-title,
+  #moving-home h3,
+  section#moving-home h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Font sizes: h2 40px, h3 24px */
+  #moving-home .moving-home-title,
+  section#moving-home .moving-home-title {
+    font-size: 40px !important;
+  }
+
+  #moving-home h3,
+  section#moving-home h3 {
+    font-size: 24px !important;
+  }
+
+  /* Center CTA row inside the article */
+  #moving-home .mortgage-article > div,
+  section#moving-home .mortgage-article > div {
+    justify-content: center !important;
+  }
+
+  /* Normalize paragraph size on extra-small screens */
+  #moving-home .mortgage-article,
+  #moving-home .mortgage-article p,
+  section#moving-home .mortgage-article,
+  section#moving-home .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   Ready to Find a Mortgage: Mobile overrides (≤440px)
+   Mirrors Moving Home / Buy To Let / New Build Homes mobile treatment
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Compact section padding */
+  #ready-to-find-mortgage,
+  #ready-to-find-mortgage.section,
+  #ready-to-find-mortgage.mortgage-advice-section,
+  section#ready-to-find-mortgage,
+  section#ready-to-find-mortgage.section,
+  section#ready-to-find-mortgage.mortgage-advice-section {
+    padding: 0 1.25rem 2.5rem 1.25rem !important;
+  }
+
+  /* Ensure single-column grid and centered alignment */
+  #ready-to-find-mortgage .mortgage-advice-content,
+  section#ready-to-find-mortgage .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+    text-align: center !important;
+  }
+
+  /* Center the content column and text */
+  #ready-to-find-mortgage .animate-in-up,
+  section#ready-to-find-mortgage .animate-in-up {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Center h2 and optional h3, and set sizes */
+  #ready-to-find-mortgage .ready-to-find-mortgage-title,
+  section#ready-to-find-mortgage .ready-to-find-mortgage-title,
+  #ready-to-find-mortgage h3,
+  section#ready-to-find-mortgage h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  #ready-to-find-mortgage .ready-to-find-mortgage-title,
+  section#ready-to-find-mortgage .ready-to-find-mortgage-title {
+    font-size: 40px !important;
+  }
+
+  #ready-to-find-mortgage h3,
+  section#ready-to-find-mortgage h3 {
+    font-size: 24px !important;
+  }
+
+  /* Center CTA rows inside the article */
+  #ready-to-find-mortgage .mortgage-article > div,
+  section#ready-to-find-mortgage .mortgage-article > div {
+    justify-content: center !important;
+  }
+
+  /* Normalize paragraph size on extra-small screens */
+  #ready-to-find-mortgage .mortgage-article,
+  #ready-to-find-mortgage .mortgage-article p,
+  section#ready-to-find-mortgage .mortgage-article,
+  section#ready-to-find-mortgage .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   Buy To Let: Mobile overrides (≤440px)
+   Mirrors Moving Home mobile treatment
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Use the existing image as a section background */
+  #buy-to-let,
+  #buy-to-let.section,
+  #buy-to-let.mortgage-advice-section,
+  section#buy-to-let,
+  section#buy-to-let.section,
+  section#buy-to-let.mortgage-advice-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1.25rem 2.5rem 1.25rem !important;
+  }
+
+  #buy-to-let.mortgage-advice-section::before,
+  section#buy-to-let.mortgage-advice-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/buy-to-let.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35);
+    z-index: 1;
+  }
+
+  /* Ensure content layers above background */
+  #buy-to-let .mortgage-advice-container,
+  section#buy-to-let .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Force single column layout and hide the image column */
+  #buy-to-let .mortgage-advice-content,
+  section#buy-to-let .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+  }
+
+  /* Hide the right image column on mobile */
+  #buy-to-let .animate-in-right,
+  section#buy-to-let .animate-in-right {
+    display: none !important;
+  }
+
+  /* Center the left/content column and text */
+  #buy-to-let .animate-in-left,
+  section#buy-to-let .animate-in-left {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Center h2 and h3 */
+  #buy-to-let .buy-to-let-title,
+  section#buy-to-let .buy-to-let-title,
+  #buy-to-let h3,
+  section#buy-to-let h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Font sizes: h2 40px, h3 24px */
+  #buy-to-let .buy-to-let-title,
+  section#buy-to-let .buy-to-let-title {
+    font-size: 40px !important;
+  }
+
+  #buy-to-let h3,
+  section#buy-to-let h3 {
+    font-size: 24px !important;
+  }
+
+  /* Center CTA row inside the article */
+  #buy-to-let .mortgage-article > div,
+  section#buy-to-let .mortgage-article > div {
+    justify-content: center !important;
+  }
+
+  /* Normalize paragraph size on extra-small screens */
+  #buy-to-let .mortgage-article,
+  #buy-to-let .mortgage-article p,
+  section#buy-to-let .mortgage-article,
+  section#buy-to-let .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   New Build Homes: Mobile overrides (≤440px)
+   Mirrors Moving Home / Buy To Let mobile treatment
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Use the existing image as a section background */
+  #new-build-homes,
+  #new-build-homes.section,
+  #new-build-homes.mortgage-advice-section,
+  section#new-build-homes,
+  section#new-build-homes.section,
+  section#new-build-homes.mortgage-advice-section {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1.25rem 2.5rem 1.25rem !important;
+  }
+
+  #new-build-homes.mortgage-advice-section::before,
+  section#new-build-homes.mortgage-advice-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/new-home.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.35);
+    z-index: 1;
+  }
+
+  /* Ensure content layers above background */
+  #new-build-homes .mortgage-advice-container,
+  section#new-build-homes .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Force single column layout and hide the image column */
+  #new-build-homes .mortgage-advice-content,
+  section#new-build-homes .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+  }
+
+  /* Hide the left image column on mobile */
+  #new-build-homes .animate-in-left,
+  section#new-build-homes .animate-in-left {
+    display: none !important;
+  }
+
+  /* Center the right/content column and text */
+  #new-build-homes .animate-in-right,
+  section#new-build-homes .animate-in-right {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Center h2 and h3 */
+  #new-build-homes .new-build-homes-title,
+  section#new-build-homes .new-build-homes-title,
+  #new-build-homes h3,
+  section#new-build-homes h3 {
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Font sizes: h2 40px, h3 24px */
+  #new-build-homes .new-build-homes-title,
+  section#new-build-homes .new-build-homes-title {
+    font-size: 40px !important;
+  }
+
+  #new-build-homes h3,
+  section#new-build-homes h3 {
+    font-size: 24px !important;
+  }
+
+  /* Center CTA row inside the article */
+  #new-build-homes .mortgage-article > div,
+  section#new-build-homes .mortgage-article > div {
+    justify-content: center !important;
+  }
+
+  /* Normalize paragraph size on extra-small screens */
+  #new-build-homes .mortgage-article,
+  #new-build-homes .mortgage-article p,
+  section#new-build-homes .mortgage-article,
+  section#new-build-homes .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   LC Mortgage: Mobile overrides (≤440px)
+   Mirrors Ready to Find / Moving Home / Buy To Let mobile treatment
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Compact section padding */
+  #lc-mortgage,
+  #lc-mortgage.section,
+  #lc-mortgage.mortgage-advice-section,
+  section#lc-mortgage,
+  section#lc-mortgage.section,
+  section#lc-mortgage.mortgage-advice-section {
+    padding: 0 1.25rem 2.5rem !important;
+  }
+
+  /* Ensure single-column grid and centered alignment */
+  #lc-mortgage .mortgage-advice-content,
+  section#lc-mortgage .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    align-items: center !important;
+    min-height: 300px !important;
+    text-align: center !important;
+  }
+
+  /* Center the content column and text */
+  #lc-mortgage .animate-in-up,
+  section#lc-mortgage .animate-in-up {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Center CTA rows inside the article */
+  #lc-mortgage .mortgage-article > div,
+  section#lc-mortgage .mortgage-article > div {
+    justify-content: center !important;
+  }
+
+  /* Normalize paragraph size on extra-small screens */
+  #lc-mortgage .mortgage-article,
+  #lc-mortgage .mortgage-article p,
+  section#lc-mortgage .mortgage-article,
+  section#lc-mortgage .mortgage-article p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+    text-align: center !important;
   }
 }

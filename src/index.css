@@ -1,3 +1,6 @@
+/* Responsive utilities - import first for breakpoint variables */
+@import './styles/responsive.css';
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -13,6 +16,14 @@
   -moz-osx-font-smoothing: grayscale;
   --article-font-size: 1.25rem;
   --article-line-height: 1.8;
+
+  /* ===== Centralized Breakpoint System ===== */
+  /* Mobile-first approach: base styles for mobile, then tablet/desktop overrides */
+  --bp-mobile-max: 767px;      /* Mobile: up to 767px */
+  --bp-tablet-min: 768px;      /* Tablet: 768px and above */
+  --bp-tablet-max: 1023px;     /* Tablet: up to 1023px */
+  --bp-desktop-min: 1024px;    /* Desktop: 1024px and above */
+  --bp-large-desktop: 1200px;  /* Large desktop: 1200px and above (for content max-widths only) */
 }
 
 a {
@@ -248,6 +259,48 @@ button:focus-visible {
 
 .values-slide { flex: 0 0 100%; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; gap: 2rem; align-items: start; padding: 1rem; }
 .values-slide__content article { color: rgba(255,255,255,0.9); }
+
+/* ===== Mobile foundations for modern smartphones ===== */
+/* Safe-area support for devices with notches/home indicators */
+@supports (padding: max(0px)) {
+  body {
+    padding-top: max(env(safe-area-inset-top), 0px);
+    padding-bottom: max(env(safe-area-inset-bottom), 0px);
+  }
+}
+
+/* Fluid typography and comfortable tap targets on mobile */
+@media (max-width: 768px) {
+  :root {
+    /* Base font size scales slightly with viewport width */
+    --font-size-base: clamp(15px, 1.7vw, 17px);
+  }
+
+  body {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* Fluid heading sizes */
+  h1 { font-size: clamp(28px, 6.5vw, 38px); line-height: 1.15; }
+  h2 { font-size: clamp(24px, 5.5vw, 32px); line-height: 1.2; }
+  h3 { font-size: clamp(20px, 4.8vw, 26px); line-height: 1.25; }
+
+  /* Container spacing and section rhythm */
+  .container { padding-left: clamp(16px, 5vw, 24px); padding-right: clamp(16px, 5vw, 24px); }
+  .section { padding-top: clamp(24px, 7vw, 48px); padding-bottom: clamp(24px, 7vw, 48px); }
+
+  /* Comfortable tap targets */
+  button, .nav-link { min-height: 44px; padding: 0.75rem 1rem; }
+
+  /* Media should never overflow on mobile */
+  img, video { max-width: 100%; height: auto; }
+
+  /* Intro logo scales to viewport width */
+  .intro-overlay__logo { width: clamp(140px, 60vw, 220px); }
+}
 .values-slide__heading {
   font-size: 1.5rem;
   font-weight: 600;

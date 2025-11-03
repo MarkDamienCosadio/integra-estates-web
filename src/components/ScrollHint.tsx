@@ -1,12 +1,11 @@
 import { useEffect, useState, useRef } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function ScrollHint() {
   // Detect whether the hero section is currently in the viewport
   const [inHeroView, setInHeroView] = useState(true)
-  // Mobile detection and scroll activity state for mobile-only visibility
-  const [isMobile, setIsMobile] = useState<boolean>(() =>
-    typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)').matches : false
-  )
+  // Use centralized mobile detection hook
+  const isMobile = useIsMobile()
   const [scrollActive, setScrollActive] = useState(false)
   const hideTimerRef = useRef<number | null>(null)
 
@@ -28,27 +27,6 @@ export default function ScrollHint() {
     )
     io.observe(hero)
     return () => io.disconnect()
-  }, [])
-
-  // Watch viewport width for mobile/non-mobile changes
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 768px)')
-    const updateIsMobile = () => setIsMobile(mq.matches)
-    updateIsMobile()
-    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches)
-    if (typeof mq.addEventListener === 'function') {
-      mq.addEventListener('change', onChange)
-    } else {
-      // Safari < 14 fallback
-      mq.addListener(onChange)
-    }
-    return () => {
-      if (typeof mq.removeEventListener === 'function') {
-        mq.removeEventListener('change', onChange)
-      } else {
-        mq.removeListener(onChange)
-      }
-    }
   }, [])
 
   // Mobile-only: show widget while scrolling, hide shortly after scroll stops
@@ -131,7 +109,14 @@ export default function ScrollHint() {
         aria-label="Scroll up"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path fill="currentColor" d="M14.7 3.3l6 6-2.4 2.4-1.8-1.8-3.6 3.6.9.9-5.4 5.4H6v-2.1l5.4-5.4.9.9 3.6-3.6-1.8-1.8 2.4-2.4zM3 21h5l-5-5v5z"></path>
+        <path
+          d="M15 6l-6 6 6 6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
 
       {/* Left line container rendered only when not in hero view */}
@@ -160,7 +145,14 @@ export default function ScrollHint() {
         aria-label="Scroll down"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path fill="currentColor" d="M14.7 3.3l6 6-2.4 2.4-1.8-1.8-3.6 3.6.9.9-5.4 5.4H6v-2.1l5.4-5.4.9.9 3.6-3.6-1.8-1.8 2.4-2.4zM3 21h5l-5-5v5z"></path>
+        <path
+          d="M9 6l6 6-6 6"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </svg>
     </div>
   )

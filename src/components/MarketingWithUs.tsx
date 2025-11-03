@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function MarketingWithUs() {
   const navigate = useNavigate()
+  const isMobile = useIsMobile()
   const sectionRef = useRef<HTMLElement | null>(null)
   const titleRef = useRef<HTMLHeadingElement | null>(null)
   const imageColumnRef = useRef<HTMLDivElement | null>(null)
@@ -11,27 +13,29 @@ export default function MarketingWithUs() {
   useEffect(() => {
     const sec = sectionRef.current
     if (!sec) return
+    const thresholds: number[] = isMobile ? [0.01, 0.02, 0.03] : [0.4, 0.6, 0.8];
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= 0.4 && titleRef.current) {
+          if (r >= thresholds[0] && titleRef.current) {
             titleRef.current.classList.add('mw-active')
           }
-          if (r >= 0.6 && imageColumnRef.current) {
+          if (r >= thresholds[1] && imageColumnRef.current) {
             imageColumnRef.current.classList.add('mw-active')
           }
-          if (r >= 0.8 && articleRef.current) {
+          if (r >= thresholds[2] && articleRef.current) {
             articleRef.current.classList.add('mw-active')
             const ps = Array.from(articleRef.current.querySelectorAll('p'))
             ps.forEach((p, i) => {
-              (p as HTMLElement).style.animationDelay = `${i * 0.2}s`
+              const delayS: number = isMobile ? 0 : i * 0.2;
+              (p as HTMLElement).style.animationDelay = `${delayS}s`;
               p.classList.add('mw-active')
             })
             // Add delay for the button after the last paragraph
             const button = articleRef.current.querySelector('.animated-module__Rnzt8a__btn')
             if (button) {
-              const buttonDelay = ps.length * 0.2 + 0.3 // After last paragraph + 0.3s buffer
+              const buttonDelay: number = isMobile ? 0 : ps.length * 0.2 + 0.3;
               setTimeout(() => {
                 button.classList.add('mw-active')
               }, buttonDelay * 1000)
@@ -39,11 +43,11 @@ export default function MarketingWithUs() {
           }
         })
       },
-      { threshold: [0.4, 0.6, 0.8] }
+      { threshold: thresholds }
     )
     io.observe(sec)
     return () => io.disconnect()
-  }, [])
+  }, [isMobile])
   return (
     <>
       {/* Title outside the section, using same inner container for alignment */}

@@ -66,3 +66,30 @@
 }
 
 .floating-tools__item:hover { border-color: #6c9830; color: #e9f3d6; }
+
+/* Mobile optimizations */
+@media (max-width: 600px) {
+  .floating-tools {
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Increase tap target without changing visual container */
+  .floating-tools__button {
+    padding: 6px;
+  }
+
+  .floating-tools__button svg {
+    width: 44px;
+    height: 44px;
+  }
+
+  .floating-tools__menu {
+    bottom: 52px;
+    gap: 0.6rem;
+  }
+
+  .floating-tools__item {
+    padding: 0.8rem 0.9rem;
+    min-width: 200px;
+  }
+}

@@ -1,4 +1,5 @@
 import { type ReactNode, useEffect, useRef } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 interface AnimatedSectionProps {
   children: ReactNode
@@ -47,6 +48,7 @@ export default function AnimatedSection({
   rootMargin,
 }: AnimatedSectionProps) {
   const rootRef = useRef<HTMLDivElement | null>(null)
+  const isMobile = useIsMobile()
 
   useEffect(() => {
     const root = rootRef.current
@@ -61,7 +63,11 @@ export default function AnimatedSection({
 
     if (targets.length === 0) return
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Mobile: fire animations almost instantly when in view
+    const effectiveThreshold = isMobile ? Math.min(threshold, 0.01) : threshold;
+    const effectiveStagger = isMobile ? 0 : staggerMs;
 
     const activate = () => {
       targets.forEach((el, idx) => {
@@ -69,7 +75,7 @@ export default function AnimatedSection({
         if (el.classList.contains('animate-active')) return
         const attr = el.getAttribute('data-animate-delay')
         const explicitDelay = attr ? Number(attr) : NaN
-        const delay = Number.isFinite(explicitDelay) ? explicitDelay : idx * staggerMs
+        const delay = Number.isFinite(explicitDelay) ? explicitDelay : idx * effectiveStagger
         window.setTimeout(() => {
           el.classList.add('animate-active')
         }, Math.max(0, delay))
@@ -84,21 +90,21 @@ export default function AnimatedSection({
     const io = new IntersectionObserver(
       (entries, obs) => {
         for (const entry of entries) {
-          if (entry.isIntersecting && entry.intersectionRatio >= threshold) {
-            activate()
+          if (entry.isIntersecting && entry.intersectionRatio >= effectiveThreshold) {
+            activate();
             if (once) {
-              obs.disconnect()
+              obs.disconnect();
             }
-            break
+            break;
           }
         }
       },
-      { threshold: [threshold], rootMargin }
+      { threshold: [effectiveThreshold], rootMargin }
     )
 
     io.observe(root)
     return () => io.disconnect()
-  }, [threshold, once, staggerMs, rootMargin])
+  }, [threshold, once, staggerMs, rootMargin, isMobile])
 
   return (
     <div ref={rootRef} className={className}>

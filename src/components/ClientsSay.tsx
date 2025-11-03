@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export default function ClientsSay() {
   const titleRef = useRef<HTMLHeadingElement | null>(null)
@@ -38,6 +39,8 @@ export default function ClientsSay() {
     }
   }
 
+  const isMobile = useIsMobile()
+
   useEffect(() => {
     const el = titleRef.current
     const logo = logoRef.current
@@ -54,13 +57,13 @@ export default function ClientsSay() {
           }
         })
       },
-      { threshold: 0.4 }
+      { threshold: isMobile ? 0.01 : 0.4 }
     )
     io.observe(el)
     if (logo) io.observe(logo)
     if (gridRef.current) io.observe(gridRef.current)
     return () => io.disconnect()
-  }, [])
+  }, [isMobile])
 
   return (
     <section className="section">
