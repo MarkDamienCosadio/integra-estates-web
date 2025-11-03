@@ -7,6 +7,35 @@
   text-align: initial;
 }
 
+/* ------------------------------
+   Two-col row: Mobile (≤440px) image-first stacking using :has()
+   Always places the child containing an image above the text/article
+   ------------------------------ */
+@media (max-width: 440px) {
+  .two-col {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
+  }
+
+  /* Image block first, text block second */
+  .two-col > div:has(img) { grid-row: 1 !important; }
+  .two-col > div:not(:has(img)) { grid-row: 2 !important; }
+
+  /* Ensure full-width children */
+  .two-col > div { width: 100% !important; max-width: 100% !important; }
+
+  /* Make images fluid on mobile */
+  .two-col img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    display: block !important;
+  }
+}
+
 /* Global mobile subtitle sizing */
 @media (max-width: 440px) {
   h3 {
@@ -5659,6 +5688,32 @@ section#lc-mortgage.mortgage-advice-section {
   }
 }
 
+/* ------------------------------
+   Team Grid: Mobile (≤440px) single-column override
+   Ensures inline grid styles are overridden and cards display fully
+   ------------------------------ */
+@media (max-width: 440px) {
+  .team-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .team-member {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure images scale fluidly and are fully visible */
+  .team-image {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+}
+
 #moving-home h3 {
   margin: 0.5rem 0 2rem 0 !important;
   font-size: 2rem !important;
@@ -6645,5 +6700,84 @@ section#re-mortgage h3 {
     width: 100% !important;
     max-width: 100% !important;
     text-align: center !important;
+  }
+}
+
+/* ------------------------------
+   Compare image + article grid: Mobile (≤440px) single-column override
+   Targets inline-styled grid row so media sits below the article
+   ------------------------------ */
+@media (max-width: 440px) {
+  /* Target the immediate grid container inside the article */
+  .see-in-360-grid article > div {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
+    width: 100% !important;
+  }
+
+  /* Ensure each child spans full width */
+  .see-in-360-grid article > div > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Explicitly set stacking order: text first, media second */
+  .see-in-360-grid article > div > div:nth-child(1) { grid-row: 1; }
+  .see-in-360-grid article > div > div:nth-child(2) { grid-row: 2; }
+
+  /* Make the compare image container fluid */
+  .see-in-360-grid .compare-image-module__4uvXQa__container {
+    width: 100% !important;
+  }
+
+  /* Override inline height on the inner compare container for responsiveness */
+  .see-in-360-grid .compare-image-module__4uvXQa__container [data-testid="container"] {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* ------------------------------
+   Team Modal: Mobile (≤440px) hide portrait image
+   Removes modal image to prioritize text on small screens
+   ------------------------------ */
+@media (max-width: 440px) {
+  .team-modal-image {
+    display: none !important;
+  }
+}
+
+/* ------------------------------
+   Two-col row: Mobile (≤440px) single-column override
+   Image on top, article directly below it
+   ------------------------------ */
+@media (max-width: 440px) {
+  .two-col {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
+    width: 100% !important;
+  }
+
+  /* Ensure children span full width */
+  .two-col > div {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Reorder: image first (right column), text second (left column) */
+  .two-col > div:nth-child(1) { grid-row: 2; }
+  .two-col > div:nth-child(2) { grid-row: 1; }
+
+  /* Make the image responsive on mobile */
+  .two-col img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    display: block !important;
   }
 }
