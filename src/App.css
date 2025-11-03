@@ -6723,19 +6723,18 @@ section#re-mortgage h3 {
     max-width: 100% !important;
   }
 
-  /* Explicitly set stacking order: text first, media second */
-  .see-in-360-grid article > div > div:nth-child(1) { grid-row: 1; }
-  .see-in-360-grid article > div > div:nth-child(2) { grid-row: 2; }
+  /* Explicitly set stacking order: media first (image container), text second */
+  .see-in-360-grid article > div > .half-and-half-module__vLAi-a__imageContainer { grid-row: 1 !important; }
+  .see-in-360-grid article > div > div:not(.half-and-half-module__vLAi-a__imageContainer) { grid-row: 2 !important; }
 
   /* Make the compare image container fluid */
   .see-in-360-grid .compare-image-module__4uvXQa__container {
     width: 100% !important;
   }
 
-  /* Override inline height on the inner compare container for responsiveness */
+  /* Keep slider height defined by component; do not force auto height */
   .see-in-360-grid .compare-image-module__4uvXQa__container [data-testid="container"] {
     width: 100% !important;
-    height: auto !important;
   }
 }
 

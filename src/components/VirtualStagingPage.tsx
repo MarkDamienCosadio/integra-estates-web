@@ -168,7 +168,7 @@ export default function VirtualStagingPage() {
           {/* Hero Content */}
           <div className="marketing-your-property-hero-content">
             <AnimatedSection threshold={0.5}>
-              <h1 className="marketing-your-property-title animate-in-up">Virtula Staging</h1>
+              <h1 className="marketing-your-property-title animate-in-up">Virtual Staging</h1>
             </AnimatedSection>
           </div>
         </div>

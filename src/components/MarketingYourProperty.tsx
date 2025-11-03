@@ -146,6 +146,27 @@ export default function MarketingYourProperty() {
     setIsDragging(false)
   }
 
+  // Touch support for the compare slider
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true)
+    e.preventDefault()
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !sliderRef.current) return
+
+    const rect = sliderRef.current.getBoundingClientRect()
+    const clientX = e.touches[0]?.clientX ?? 0
+    const x = clientX - rect.left
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+    setSliderPosition(percentage)
+    e.preventDefault()
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
+  }
+
   const handleVideoPlay = () => {
     setIsVideoPlaying(true)
     setShowPlayOverlay(false)
@@ -540,6 +561,9 @@ export default function MarketingYourProperty() {
                         onMouseMove={handleMouseMove}
                         onMouseUp={handleMouseUp}
                         onMouseLeave={handleMouseLeave}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                        onTouchCancel={handleTouchEnd}
                       >
                         <img 
                           alt="staging after" 
@@ -582,6 +606,7 @@ export default function MarketingYourProperty() {
                             transform: 'translateX(-50%)'
                           }}
                           onMouseDown={handleMouseDown}
+                          onTouchStart={handleTouchStart}
                         >
                           <div style={{ background: '#ffffff', boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)', flex: '0 1 auto', height: '100%', width: '2px' }}></div>
                           <div style={{ alignItems: 'center', border: '2px solid #ffffff', borderRadius: '100%', boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)', boxSizing: 'border-box', display: 'flex', flex: '1 0 auto', height: '40px', justifyContent: 'center', width: '40px', transform: 'none' }}>
