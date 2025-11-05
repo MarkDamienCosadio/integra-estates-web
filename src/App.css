@@ -2291,9 +2291,23 @@ html, body { height: 100%; }
   color: #fff;
   border-color: transparent;
   border-radius: 12px;
-  padding: 0.9rem 1.4rem;
+  padding: 0.75rem 1.25rem; /* match global btn sizing */
   font-weight: 600;
   letter-spacing: 0.02em;
+  font-size: 1rem; /* consistent text size */
+  line-height: 1.2; /* stable vertical metrics */
+  min-height: 44px; /* accessible, consistent height */
+  display: inline-flex; align-items: center; /* ensure height consistency */
+}
+
+/* Mobile layout: center CTA and set width to 40% */
+@media (max-width: 440px) {
+  .exceptional-service .es-article .btn.btn--accent {
+    width: 40%;
+    display: block; /* allow margin auto centering */
+    margin: 0.75rem auto 0;
+    text-align: center;
+  }
 }
 .exceptional-service .es-article .btn.btn--accent:hover {
   filter: brightness(1.05);

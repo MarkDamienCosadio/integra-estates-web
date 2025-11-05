@@ -282,7 +282,7 @@ export default function ProbatePropertiesPage() {
             height: auto;
             margin: 0 0 1rem 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px, rgba(108, 152, 48, 0.92) 12px 12px 3px -12px, rgba(108, 152, 48, 0.90) 12px 12px 4px -12px, rgba(108, 152, 48, 0.88) 12px 12px 5px -12px, rgba(108, 152, 48, 0.85) 12px 12px 4px -13px, rgba(108, 152, 48, 0.80) 12px 12px 6px -11px, rgba(108, 152, 48, 0.75) 12px 12px 8px -11px, rgba(108, 152, 48, 0.70) 12px 12px 10px -11px, rgba(108, 152, 48, 0.65) 12px 12px 12px -11px, rgba(108, 152, 48, 0.60) 12px 12px 14px -11px; /* green glow (stacked) */
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -355,7 +355,7 @@ export default function ProbatePropertiesPage() {
             height: auto;
             margin: 0 1.5rem 1rem 0;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px, rgba(108, 152, 48, 0.92) 12px 12px 3px -12px, rgba(108, 152, 48, 0.90) 12px 12px 4px -12px, rgba(108, 152, 48, 0.88) 12px 12px 5px -12px, rgba(108, 152, 48, 0.85) 12px 12px 4px -13px, rgba(108, 152, 48, 0.80) 12px 12px 6px -11px, rgba(108, 152, 48, 0.75) 12px 12px 8px -11px, rgba(108, 152, 48, 0.70) 12px 12px 10px -11px, rgba(108, 152, 48, 0.65) 12px 12px 12px -11px, rgba(108, 152, 48, 0.60) 12px 12px 14px -11px; /* green glow (stacked) */
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -428,7 +428,7 @@ export default function ProbatePropertiesPage() {
             height: auto;
             margin: 0 1.5rem 1rem 0;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px, rgba(108, 152, 48, 0.92) 12px 12px 3px -12px, rgba(108, 152, 48, 0.90) 12px 12px 4px -12px, rgba(108, 152, 48, 0.88) 12px 12px 5px -12px, rgba(108, 152, 48, 0.85) 12px 12px 4px -13px, rgba(108, 152, 48, 0.80) 12px 12px 6px -11px, rgba(108, 152, 48, 0.75) 12px 12px 8px -11px, rgba(108, 152, 48, 0.70) 12px 12px 10px -11px, rgba(108, 152, 48, 0.65) 12px 12px 12px -11px, rgba(108, 152, 48, 0.60) 12px 12px 14px -11px; /* green glow (stacked) */
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -502,7 +502,16 @@ export default function ProbatePropertiesPage() {
             height: auto;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+                        rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+                        rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+                        rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+                        rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+                        rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+                        rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+                        rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+                        rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+                        rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -538,6 +547,7 @@ export default function ProbatePropertiesPage() {
                   src="/images/probate.png"
                   alt="Probate property inspections"
                   loading="lazy"
+                  style={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 10px 30px, rgba(108, 152, 48, 0.92) 12px 12px 3px -12px, rgba(108, 152, 48, 0.90) 12px 12px 4px -12px, rgba(108, 152, 48, 0.88) 12px 12px 5px -12px, rgba(108, 152, 48, 0.85) 12px 12px 4px -13px, rgba(108, 152, 48, 0.80) 12px 12px 6px -11px, rgba(108, 152, 48, 0.75) 12px 12px 8px -11px, rgba(108, 152, 48, 0.70) 12px 12px 10px -11px, rgba(108, 152, 48, 0.65) 12px 12px 12px -11px, rgba(108, 152, 48, 0.60) 12px 12px 14px -11px' }}
                 />
               </div>
 
@@ -586,7 +596,16 @@ export default function ProbatePropertiesPage() {
             height: auto;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+                        rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+                        rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+                        rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+                        rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+                        rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+                        rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+                        rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+                        rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+                        rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -652,7 +671,16 @@ export default function ProbatePropertiesPage() {
             height: auto;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+                        rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+                        rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+                        rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+                        rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+                        rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+                        rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+                        rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+                        rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+                        rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
             object-fit: cover;
           }
           @media (max-width: 900px) {
@@ -740,7 +768,7 @@ export default function ProbatePropertiesPage() {
             height: 100%;
             display: block;
             border-radius: 12px;
-            box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px, rgba(108, 152, 48, 0.92) 12px 12px 3px -12px, rgba(108, 152, 48, 0.90) 12px 12px 4px -12px, rgba(108, 152, 48, 0.88) 12px 12px 5px -12px, rgba(108, 152, 48, 0.85) 12px 12px 4px -13px, rgba(108, 152, 48, 0.80) 12px 12px 6px -11px, rgba(108, 152, 48, 0.75) 12px 12px 8px -11px, rgba(108, 152, 48, 0.70) 12px 12px 10px -11px, rgba(108, 152, 48, 0.65) 12px 12px 12px -11px, rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
             object-fit: cover;
           }
           #ethical-clearance .col-text {
