@@ -195,18 +195,15 @@ export default function WhyIntegraEstates() {
 
   return (
     <>
-      <section className="why-integra-hero hero">
-        <video
-          className="why-integra-hero__bgVideo"
-          src="/video/360-video.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster="/images/cover-image.jpg"
-          aria-label="Background video for Why Integra Estates"
-        />
+      <section
+        className="why-integra-hero hero"
+        style={{
+          backgroundImage: "url('/images/cover-image.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <div className="why-integra-hero__overlay" aria-hidden="true" />
         <AnimatedSection className="why-integra-hero__content" threshold={0}>
           <h1 className="hero-tag animate-in-up" data-animate-delay="0">Why <span className="mobile-break">Integra-Estates</span></h1>
@@ -298,8 +295,8 @@ export default function WhyIntegraEstates() {
         <section className="maximum-exposure section">
           <div className="container">
             <h2 className="ask-us-title animate-in-up" data-animate-delay="0">Maximum Exposure, Minimum Hassle</h2>
-                <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem', alignItems: 'stretch', minHeight: '300px' }}>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%' }}>
+            <div className="me-grid">
+              <div className="me-article animate-in-left" data-animate-delay="120">
                 <article>
                   <p>
                     The emergence of the internet has fundamentally transformed how property marketing is conducted, not just in the UK but worldwide. According to rightmove.co.uk, over 96% of people begin their property search online, with a growing number utilising smartphones and tablets. Despite this trend, some traditional estate agents have largely failed to adapt their online strategies with an approach of advertising on property platforms and hoping for the best.
@@ -309,8 +306,8 @@ export default function WhyIntegraEstates() {
                   </p>
                 </article>
               </div>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%' }}>
-                <img src="/images/section-4-img.jpg" alt="Maximum Exposure, Minimum Hassle" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+              <div className="me-image animate-in-right" data-animate-delay="240">
+                <img src="/images/section-4-img.jpg" alt="Maximum Exposure, Minimum Hassle" className="me-image__img" />
               </div>
             </div>
           </div>
@@ -322,12 +319,12 @@ export default function WhyIntegraEstates() {
         <section className="clear-communication section">
           <div className="container">
             <h2 className="ask-us-title animate-in-up" data-animate-delay="0">Clear Communication for a Stress-Free Sale</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '2rem', alignItems: 'stretch', minHeight: '300px' }}>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/section-5-img.jpg" alt="Clear Communication for a Stress-Free Sale" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+            <div className="cc-grid">
+              <div className="cc-image animate-in-left" data-animate-delay="120">
+                <img src="/images/section-5-img.jpg" alt="Clear Communication for a Stress-Free Sale" className="cc-image__img" />
               </div>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <article style={{ height: '100%' }}>
+              <div className="cc-article animate-in-right" data-animate-delay="240">
+                <article>
                   <p>
                     One of the most important aspects of the selling process is deal progression. This refers to the various stages that a sale goes through, from initial negotiations right down to exchange and completion. At Integra-Estates, we recognise the importance of keeping all parties informed at each stage of the process.
                   </p>
@@ -346,9 +343,9 @@ export default function WhyIntegraEstates() {
         <section className="no-highstreet section">
           <div className="container">
             <h2 className="ask-us-title animate-in-up" data-animate-delay="0">No Highstreet offices.</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem', alignItems: 'stretch', minHeight: '300px' }}>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <article style={{ height: '100%' }}>
+            <div className="nh-grid">
+              <div className="nh-article animate-in-left" data-animate-delay="120">
+                <article>
                   <p>
                     The solution to modern estate agency is clear. High street offices are no longer a necessity in today's digital age, as 96% of people now search online for properties, according to Rightmove. It's impossible to imagine someone searching for a property to buy or rent without utilising one of the major UK portals, such as Rightmove, Zoopla, or PrimeLocation.
                   </p>
@@ -358,11 +355,10 @@ export default function WhyIntegraEstates() {
                   <p>
                     Our streamlined, efficient operations allow us to pass on the savings to our customers with highly competitive rates. In today's market, we believe this approach is the future of estate agency.
                   </p>
-                <a className="btn btn--accent" href="#" aria-label="Advanced Marketing Techniques">Advanced Marketing Techniques</a>
                 </article>
               </div>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/section-7-img.jpg" alt="No Highstreet offices." style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+              <div className="nh-image animate-in-right" data-animate-delay="240">
+                <img src="/images/section-7-img.jpg" alt="No Highstreet offices." className="nh-image__img" />
               </div>
             </div>
           </div>
@@ -374,8 +370,15 @@ export default function WhyIntegraEstates() {
         <section className="exceptional-service section">
           <div className="container">
             <h2 className="ask-us-title animate-in-up" data-animate-delay="0">Exceptional Service from Exceptional People</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem', alignItems: 'stretch', minHeight: '300px' }}>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%' }}>
+            <div className="es-grid">
+              <div className="es-image animate-in-left" data-animate-delay="120">
+                <img
+                  src="/images/section-6-img.jpg"
+                  alt="Exceptional Service from Exceptional People"
+                  className="es-image__img"
+                />
+              </div>
+              <div className="es-article animate-in-right" data-animate-delay="240">
                 <article>
                   <p>
                     The backbone of any successful business lies in its people. At our agency, we have carefully curated an exceptional team of property professionals who are masters in their respective fields. Each member possesses an unrivalled attention to detail and work ethic that surpasses the standard level of estate agency services. Our team undergoes extensive training and operates under a strict code of practice in accordance with professional bodies.
@@ -385,9 +388,6 @@ export default function WhyIntegraEstates() {
                   </p>
                 </article>
                 <a className="btn btn--accent" href="/meet-the-team" aria-label="Meet The Team">Meet The Team</a>
-              </div>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%' }}>
-                <img src="/images/section-6-img.jpg" alt="Exceptional Service from Exceptional People" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
               </div>
             </div>
           </div>

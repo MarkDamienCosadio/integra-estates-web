@@ -167,6 +167,10 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url('/images/cover-image.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .why-integra-hero__bgVideo {
@@ -182,7 +186,7 @@ button:focus-visible {
 .why-integra-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: none;
   z-index: 2;
   pointer-events: none;
 }

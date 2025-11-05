@@ -1,9 +1,11 @@
 import ScrollHint from './ScrollHint'
 import AnimatedSection from './AnimatedSection'
+import { useIsMobile } from '../hooks/useIsMobile'
 import GetInTouchSection from './GetInTouchSection'
 import { useState } from 'react'
 
 export default function MortgageAdvicePage() {
+  const isMobile = useIsMobile()
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isFirstTimeBuyerModalOpen, setIsFirstTimeBuyerModalOpen] = useState(false)
   const [isRemortgageProcessModalOpen, setIsRemortgageProcessModalOpen] = useState(false)
@@ -191,11 +193,13 @@ export default function MortgageAdvicePage() {
         <div className="mortgage-advice-container">
           <div className="mortgage-advice-content" style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '3rem', alignItems: 'stretch', minHeight: '300px' }}>
             {/* Left column: image */}
-            <AnimatedSection>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/first-time-buyers.jpg" alt="First-time buyers" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
-              </div>
-            </AnimatedSection>
+            {!isMobile && (
+              <AnimatedSection>
+                <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
+                  <img src="/images/first-time-buyers.jpg" alt="First-time buyers" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                </div>
+              </AnimatedSection>
+            )}
             {/* Right column: title, subtitle, article and buttons */}
             <AnimatedSection>
               <div className="animate-in-right" data-animate-delay="240" style={{ 
@@ -213,7 +217,14 @@ export default function MortgageAdvicePage() {
                 <h2 className="ask-us-title ma-prep">
                   First time purchase
                 </h2>
-                <h3>
+                {isMobile && (
+                  <img
+                    src="/images/first-time-buyers.jpg"
+                    alt="First-time buyers"
+                    style={{ width: '92vw', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '12px' }}
+                  />
+                )}
+                <h3 style={{ paddingTop: '25px' }}>
                   Buying Your First Home? You're Not Alone
                 </h3>
                 <article className="mortgage-article ma-prep" aria-label="First time purchase guidance for buyers">
@@ -260,7 +271,14 @@ export default function MortgageAdvicePage() {
                 width: '100%'
               }}>
                 <h2 className="remortgage-title" style={{ textAlign: 'right', width: '100%', display: 'block' }}>Re-mortgage</h2>
-                <h3>Time to Re-Mortgage? Let's Make It Work for You</h3>
+                {isMobile && (
+                  <img
+                    src="/images/remortgage.jpg"
+                    alt="Re-mortgage"
+                    style={{ width: '92vw', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '12px' }}
+                  />
+                )}
+                <h3 style={{ paddingTop: '20px' }}>Time to Re-Mortgage? Let's Make It Work for You</h3>
                 <article className="mortgage-article ma-prep" aria-label="Re-mortgage guidance for homeowners">
                   <p>Your mortgage should work around your life, not the other way round. Whether your fixed rate is coming to an end, you're looking to release equity, or simply want a better deal, remortgaging can be a powerful way to take control of your finances.</p>
                   <p>L&C's expert advisers can help you find the remortgage product that best suits your personal circumstances. And because their advice is completely fee-free, you'll never pay a penny for their support.</p>
@@ -276,11 +294,13 @@ export default function MortgageAdvicePage() {
               </div>
             </AnimatedSection>
             {/* Right column: image */}
-            <AnimatedSection>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/remortgage.jpg" alt="Re-mortgage" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
-              </div>
-            </AnimatedSection>
+            {!isMobile && (
+              <AnimatedSection>
+                <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
+                  <img src="/images/remortgage.jpg" alt="Re-mortgage" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
+                </div>
+              </AnimatedSection>
+            )}
           </div>
         </div>
       </section>
@@ -290,11 +310,19 @@ export default function MortgageAdvicePage() {
         <div className="mortgage-advice-container">
           <div className="mortgage-advice-content" style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '3rem', alignItems: 'stretch', minHeight: '300px' }}>
             {/* Left column: image */}
-            <AnimatedSection>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/moving-home.jpg" alt="Moving Home" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
-              </div>
-            </AnimatedSection>
+            {!isMobile && (
+              <AnimatedSection>
+                <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
+                  <img src="/images/moving-home.jpg" alt="Moving Home" style={{ 
+                    width: '35vw', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    borderRadius: '12px', 
+                    boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                  }} />
+                </div>
+              </AnimatedSection>
+            )}
             {/* Right column: title, subtitle, article and buttons */}
             <AnimatedSection>
               <div className="animate-in-right" data-animate-delay="240" style={{ 
@@ -310,7 +338,14 @@ export default function MortgageAdvicePage() {
                 width: '100%'
               }}>
                 <h2 className="moving-home-title ma-prep" style={{ textAlign: 'left' }}>Moving Home</h2>
-                <h3>Your Moving Mortgage</h3>
+                {isMobile && (
+                  <img
+                    src="/images/moving-home.jpg"
+                    alt="Moving Home"
+                    style={{ width: '92vw', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '12px' }}
+                  />
+                )}
+                <h3 style={{ paddingTop: '20px' }}>Your Moving Mortgage</h3>
                 <article className="mortgage-article ma-prep" aria-label="Moving home mortgage guidance">
                   <p>When moving home, one option you might consider is porting your existing mortgage, which means transferring your current mortgage deal to your new property. This can seem like a convenient choice, especially if you're on a favourable rate or hoping to avoid early repayment charges. However, while porting can work well for some, it's not always the most cost-effective or flexible solution.</p>
                   <p>For example, if you're moving to a larger property and need to borrow more, your existing lender might not offer competitive terms on the additional borrowing. Or you may be planning improvements to your new home and require a mortgage that supports this level of flexibility. Even small changes in your circumstances, such as income or credit status, could impact your ability to port the mortgage at all.</p>
@@ -346,7 +381,14 @@ export default function MortgageAdvicePage() {
                 width: '100%'
               }}>
                 <h2 className="buy-to-let-title ma-prep" style={{ textAlign: 'right' }}>Buy To Let</h2>
-                <h3>A Landlord's Guide to Smart Financing</h3>
+                {isMobile && (
+                  <img
+                    src="/images/buy-to-let.jpg"
+                    alt="Buy To Let"
+                    style={{ width: '92vw', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '12px' }}
+                  />
+                )}
+                <h3 style={{ paddingTop: '20px' }}>A Landlord's Guide to Smart Financing</h3>
                 <article className="mortgage-article ma-prep" aria-label="Buy to let mortgage guidance">
                   <p>Whether you're an experienced landlord expanding your portfolio or taking your first step into the rental market, securing the right buy to let mortgage is key to maximising your investment returns.</p>
                   <p>At Integra Estates, the agent you can trust, we know your in good hands with L&C's dedicated experts who have supported thousands of landlords across the UK. They know the market inside out and can guide you through every stage, from understanding lender criteria and affordability assessments to choosing between interest only and repayment options.</p>
@@ -361,11 +403,19 @@ export default function MortgageAdvicePage() {
               </div>
             </AnimatedSection>
             {/* Right column: image */}
-            <AnimatedSection>
-              <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/buy-to-let.jpg" alt="Buy To Let" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
-              </div>
-            </AnimatedSection>
+            {!isMobile && (
+              <AnimatedSection>
+                <div className="animate-in-right" data-animate-delay="240" style={{ height: '100%', alignSelf: 'stretch' }}>
+                  <img src="/images/buy-to-let.jpg" alt="Buy To Let" style={{ 
+                    width: '35vw', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    borderRadius: '12px', 
+                    boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                  }} />
+                </div>
+              </AnimatedSection>
+            )}
           </div>
         </div>
       </section>
@@ -375,11 +425,19 @@ export default function MortgageAdvicePage() {
         <div className="mortgage-advice-container">
           <div className="mortgage-advice-content" style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: '3rem', alignItems: 'stretch', minHeight: '300px' }}>
             {/* Left column: image */}
-            <AnimatedSection>
-              <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
-                <img src="/images/new-home.jpg" alt="New Build Homes" style={{ width: '35vw', height: '100%', objectFit: 'cover', borderRadius: '12px', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.35)' }} />
-              </div>
-            </AnimatedSection>
+            {!isMobile && (
+              <AnimatedSection>
+                <div className="animate-in-left" data-animate-delay="120" style={{ height: '100%', alignSelf: 'stretch' }}>
+                  <img src="/images/new-home.jpg" alt="New Build Homes" style={{ 
+                    width: '35vw', 
+                    height: '100%', 
+                    objectFit: 'cover', 
+                    borderRadius: '12px', 
+                    boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                  }} />
+                </div>
+              </AnimatedSection>
+            )}
             {/* Right column: title, subtitle, article and buttons */}
             <AnimatedSection>
               <div className="animate-in-right" data-animate-delay="240" style={{ 
@@ -395,7 +453,14 @@ export default function MortgageAdvicePage() {
                 width: '100%'
               }}>
                 <h2 className="new-build-homes-title ma-prep" style={{ textAlign: 'left' }}>New Build Homes</h2>
-                <h3>From New Build Dream to Reality</h3>
+                {isMobile && (
+                  <img
+                    src="/images/new-home.jpg"
+                    alt="New Build Homes"
+                    style={{ width: '92vw', height: 'auto', aspectRatio: '1 / 1', objectFit: 'cover', borderRadius: '12px' }}
+                  />
+                )}
+                <h3 style={{ paddingTop: '20px' }}>From New Build Dream to Reality</h3>
                 <article className="mortgage-article ma-prep" aria-label="New build homes mortgage guidance">
                   <p>Whether you're an experienced landlord expanding your portfolio or taking your first step into the rental market, securing the right buy to let mortgage is key to maximising your investment returns.</p>
                   <p>At Integra Estates, the agent you can trust, we know your in good hands with L&C's dedicated experts who have supported thousands of landlords across the UK. They know the market inside out and can guide you through every stage, from understanding lender criteria and affordability assessments to choosing between interest only and repayment options.</p>

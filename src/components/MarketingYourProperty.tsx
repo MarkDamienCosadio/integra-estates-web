@@ -319,7 +319,6 @@ export default function MarketingYourProperty() {
           onLoadedData={() => heroVideoRef.current?.play().catch(() => {})}
           onCanPlay={() => heroVideoRef.current?.play().catch(() => {})}
         >
-          <source src="/video/360-video.mp4" type="video/mp4" />
           <source src="/video/advanced-marketing-cover.mp4" type="video/mp4" />
         </video>
         
@@ -529,7 +528,8 @@ export default function MarketingYourProperty() {
                     height: '374.625px',
                     width: '100%',
                     border: 'none',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
                   }}
                   title="360 Virtual Tour"
                 />
@@ -554,8 +554,9 @@ export default function MarketingYourProperty() {
                           width: '100%', 
                           height: '420.479px', 
                           overflow: 'hidden', 
-                          display: 'block',
-                          cursor: isDragging ? 'ew-resize' : 'default'
+                          display: 'block', 
+                          cursor: isDragging ? 'ew-resize' : 'default',
+                          boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
                         }} 
                         data-testid="container"
                         onMouseMove={handleMouseMove}
@@ -699,7 +700,7 @@ export default function MarketingYourProperty() {
                     width: '100%',
                     height: 'auto',
                     borderRadius: '8px',
-                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                    boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)',
                     display: 'block'
                   }}
                   onPlay={handleVideoPlay}
@@ -879,7 +880,16 @@ export default function MarketingYourProperty() {
                 
                 {/* Right Column - Floor Plan Image (50%) */}
                 <div className="animate-in-up" style={{ flex: '0 0 50%' }}>
-                  <img alt="floorplan 1" src="https://storage.googleapis.com/integra-estates-website/imagesv2/marketing/floorplan-1.jpg" style={{ width: '100%', height: '100%', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }} />
+                  <img 
+                    alt="floorplan 1" 
+                    src="https://storage.googleapis.com/integra-estates-website/imagesv2/marketing/floorplan-1.jpg" 
+                    style={{ 
+                      width: '100%', 
+                      height: '100%', 
+                      borderRadius: '8px', 
+                      boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                    }} 
+                  />
                 </div>
               </div>
             </div>

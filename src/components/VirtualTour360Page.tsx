@@ -200,7 +200,13 @@ export default function VirtualTour360Page() {
                   <iframe
                     src="https://your3dperspective.co.uk/Integra4/"
                     className="half-and-half-module__vLAi-a__iframe half-and-half-module__vLAi-a__leftAnimation half-and-half-module__vLAi-a__leftAnimationActive"
-                    style={{ width: '100%', aspectRatio: '16 / 9', height: 'auto' }}
+                    style={{ 
+                      width: '100%', 
+                      aspectRatio: '16 / 9', 
+                      height: 'auto', 
+                      borderRadius: '8px',
+                      boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                    }}
                     loading="lazy"
                     allowFullScreen
                     title="See The Difference in 360°"
@@ -212,12 +218,18 @@ export default function VirtualTour360Page() {
               </div>
 
               {/* Additional two-column row: left iframe, right article */}
-              <div className="see-in-360-grid">
+                <div className="see-in-360-grid">
                 <div className="animate-in-up animate-active">
                   <iframe
                     src="https://your3dperspective.co.uk/Integra2/"
                     className="half-and-half-module__vLAi-a__iframe half-and-half-module__vLAi-a__rightAnimation half-and-half-module__vLAi-a__rightAnimationActive"
-                    style={{ width: '100%', aspectRatio: '16 / 9', height: 'auto' }}
+                    style={{ 
+                      width: '100%', 
+                      aspectRatio: '16 / 9', 
+                      height: 'auto', 
+                      borderRadius: '8px',
+                      boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                    }}
                     loading="lazy"
                     allowFullScreen
                     title="360° Tour - Additional"
@@ -234,7 +246,13 @@ export default function VirtualTour360Page() {
                    <iframe
                      src="https://your3dperspective.co.uk/Integra3/"
                      className="half-and-half-module__vLAi-a__iframe half-and-half-module__vLAi-a__leftAnimation half-and-half-module__vLAi-a__leftAnimationActive"
-                     style={{ width: '100%', aspectRatio: '16 / 9', height: 'auto' }}
+                     style={{ 
+                       width: '100%', 
+                       aspectRatio: '16 / 9', 
+                       height: 'auto', 
+                       borderRadius: '8px',
+                       boxShadow: '10px 10px 3px -6px rgba(108, 152, 48, 1), 12px 12px 12px -14px rgba(108, 152, 48, 0.92), 14px 14px 18px -18px rgba(108, 152, 48, 0.65), 0 6px 12px rgba(0, 0, 0, 0.16)'
+                     }}
                      loading="lazy"
                      allowFullScreen
                      title="360° Tour - Revisit"

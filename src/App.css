@@ -542,6 +542,17 @@ html, body { height: 100%; }
     linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.12) 100%);
 }
 
+/* Remove dark overlay on Meet The Team page */
+.meet-the-team-hero .hero__overlay {
+  background: none;
+}
+
+/* Increase brightness on Meet The Team hero video */
+.meet-the-team-hero .hero__video {
+  filter: brightness(1.2);
+  -webkit-filter: brightness(1.2);
+}
+
 /* Stronger overlay for Mortgage Advice hero to improve legibility */
 .mortgage-advice-hero .hero__overlay {
   background: none;
@@ -1248,14 +1259,7 @@ html, body { height: 100%; }
 }
 
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #6c9830;
-  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  content: none;
 }
 
 .nav-link:hover {
@@ -1265,7 +1269,7 @@ html, body { height: 100%; }
 }
 
 .nav-link:hover::after {
-  width: 100%;
+  width: 0;
 }
 
 /* Nav Link Animation States */
@@ -1322,10 +1326,11 @@ html, body { height: 100%; }
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, rgba(108, 152, 48, 0.1) 0%, rgba(91, 129, 41, 0.15) 100%);
+  background: none;
 }
 
 .nav-logo {
+  margin-top: 4rem;
   margin-bottom: 3rem;
   transform: translateX(-10vw);
   opacity: 0;
@@ -1342,14 +1347,18 @@ html, body { height: 100%; }
   transform: translateX(-10vw);
   opacity: 0;
   visibility: hidden;
+  margin-top: auto;
+  text-align: left;
 }
 
 .nav-contact-title {
   font-family: trajan-pro-3, serif;
-  font-size: 1.5rem;
-  color: #6c9830;
+  font-size: 32px;
+  color: #fff;
+  font-weight: 300;
   margin-bottom: 2rem;
   letter-spacing: 0.1rem;
+  text-align: left;
 }
 
 .nav-contact-info {
@@ -1357,6 +1366,33 @@ html, body { height: 100%; }
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 3rem;
+}
+
+/* Contact Info (new module classes) */
+.contact-info-module__q5qnla__contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.contact-info-module__q5qnla__info {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+  font-size: 1.3rem;
+  text-decoration: none;
+}
+
+.contact-info-module__q5qnla__info:hover {
+  color: #6c9830;
+}
+
+.contact-info-module__q5qnla__infoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-contact-item {
@@ -1393,14 +1429,15 @@ html, body { height: 100%; }
 .nav-social-title {
   font-family: trajan-pro-3, serif;
   font-size: 1.2rem;
-  color: #6c9830;
+  color: #fff;
+  text-align: left;
   margin-bottom: 1.5rem;
   letter-spacing: 0.1rem;
 }
 
 .nav-social-icons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
 }
 
@@ -2247,6 +2284,25 @@ html, body { height: 100%; }
 .btn { display: inline-block; padding: 0.75rem 1.25rem; border-radius: 6px; border: 1px solid #666; color: var(--text); text-decoration: none; transition: all .2s ease-in-out; }
 .btn:hover { border-color: var(--accent); color: var(--accent); }
 .btn--accent { border-color: var(--accent); }
+
+/* Exceptional Service: upgrade Meet The Team CTA styling */
+.exceptional-service .es-article .btn.btn--accent {
+  background: linear-gradient(180deg, #9ae45b, var(--accent));
+  color: #fff;
+  border-color: transparent;
+  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.exceptional-service .es-article .btn.btn--accent:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+.exceptional-service .es-article .btn.btn--accent:focus {
+  outline: 2px solid #1a1a1a;
+  outline-offset: 2px;
+}
 /* Grid breakpoints removed in favor of Swiper slider */
 
 /* Image overlay (status + icons) */
@@ -6347,6 +6403,71 @@ section#re-mortgage.mortgage-advice-section {
   }
 }
 
+/* Mobile-only (≤440px): show real images above articles in mortgage-advice sections */
+@media (max-width: 440px) {
+  /* Disable background image overlays to avoid duplication */
+  #first-time-purchase.mortgage-advice-section::before,
+  section#first-time-purchase.mortgage-advice-section::before,
+  #moving-home.mortgage-advice-section::before,
+  section#moving-home.mortgage-advice-section::before,
+  #buy-to-let.mortgage-advice-section::before,
+  section#buy-to-let.mortgage-advice-section::before,
+  #new-build-homes.mortgage-advice-section::before,
+  section#new-build-homes.mortgage-advice-section::before {
+    content: none !important;
+    background: none !important;
+    display: none !important;
+  }
+
+  /* Force single-column stack with image first */
+  #first-time-purchase .mortgage-advice-content,
+  section#first-time-purchase .mortgage-advice-content,
+  #moving-home .mortgage-advice-content,
+  section#moving-home .mortgage-advice-content,
+  #buy-to-let .mortgage-advice-content,
+  section#buy-to-let .mortgage-advice-content,
+  #new-build-homes .mortgage-advice-content,
+  section#new-build-homes .mortgage-advice-content,
+  #re-mortgage .mortgage-advice-content,
+  section#re-mortgage .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    align-items: start !important;
+  }
+
+  /* Unhide image columns and place them on top */
+  #first-time-purchase .animate-in-left,
+  section#first-time-purchase .animate-in-left,
+  #moving-home .animate-in-left,
+  section#moving-home .animate-in-left,
+  #buy-to-let .animate-in-right,
+  section#buy-to-let .animate-in-right,
+  #new-build-homes .animate-in-left,
+  section#new-build-homes .animate-in-left,
+  #re-mortgage .animate-in-right,
+  section#re-mortgage .animate-in-right {
+    display: block !important;
+    visibility: visible !important;
+    grid-row: 1 !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  /* Ensure text column follows */
+  #first-time-purchase .animate-in-right,
+  section#first-time-purchase .animate-in-right,
+  #moving-home .animate-in-right,
+  section#moving-home .animate-in-right,
+  #buy-to-let .animate-in-left,
+  section#buy-to-let .animate-in-left,
+  #new-build-homes .animate-in-right,
+  section#new-build-homes .animate-in-right,
+  #re-mortgage .animate-in-left,
+  section#re-mortgage .animate-in-left {
+    grid-row: 2 !important;
+  }
+}
+
 /* Re-mortgage: center title and subtitle */
 #re-mortgage h2.remortgage-title,
 section#re-mortgage h2.remortgage-title {
@@ -6371,6 +6492,11 @@ section#re-mortgage h3 {
     text-align: center !important;
     margin-left: auto !important;
     margin-right: auto !important;
+  }
+  /* Add space below the green underline for the Re-mortgage title */
+  #re-mortgage h2.remortgage-title,
+  section#re-mortgage h2.remortgage-title {
+    margin-bottom: 60px !important;
   }
 }
 
@@ -6449,6 +6575,12 @@ section#re-mortgage h3 {
   #moving-home .moving-home-title,
   section#moving-home .moving-home-title {
     font-size: 40px !important;
+  }
+
+  /* Space below the green underline for Moving Home title */
+  #moving-home h2.moving-home-title,
+  section#moving-home h2.moving-home-title {
+    margin-bottom: 60px !important;
   }
 
   #moving-home h3,
@@ -6622,6 +6754,12 @@ section#re-mortgage h3 {
     font-size: 40px !important;
   }
 
+  /* Space below the green underline for Buy To Let title */
+  #buy-to-let h2.buy-to-let-title,
+  section#buy-to-let h2.buy-to-let-title {
+    margin-bottom: 60px !important;
+  }
+
   #buy-to-let h3,
   section#buy-to-let h3 {
     font-size: 24px !important;
@@ -6719,6 +6857,12 @@ section#re-mortgage h3 {
   #new-build-homes .new-build-homes-title,
   section#new-build-homes .new-build-homes-title {
     font-size: 40px !important;
+  }
+
+  /* Space below the green underline for New Build Homes title */
+  #new-build-homes h2.new-build-homes-title,
+  section#new-build-homes h2.new-build-homes-title {
+    margin-bottom: 60px !important;
   }
 
   #new-build-homes h3,
@@ -6920,172 +7064,242 @@ section#re-mortgage h3 {
     display: block !important;
   }
 }
-/* ===== Maximum Exposure section: single column with background image and centered article ===== */
+/* ===== Maximum Exposure section: two-column layout, article left, image right ===== */
 .maximum-exposure.section {
   position: relative;
-  background-image: url('/images/section-4-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.maximum-exposure.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-  pointer-events: none;
+  background: none;
 }
 
 .maximum-exposure.section .container {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-/* Override inline grid to single column and center content */
-.maximum-exposure.section .container > div[style] {
-  grid-template-columns: 1fr !important;
-  align-items: center !important;
-  justify-items: center !important;
+.maximum-exposure .me-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 300px;
 }
 
-/* Hide the inline image column since the section uses a background */
-.maximum-exposure.section .container > div > .animate-in-right {
-  display: none !important;
+.maximum-exposure .me-article {
+  height: 100%;
 }
 
-/* Center the article block and text */
-.maximum-exposure.section .container article {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+.maximum-exposure .me-image {
+  height: 100%;
 }
 
-/* ===== Clear Communication section: single column with background image and centered article ===== */
+.maximum-exposure .me-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Neutral depth shadow + brighter, tighter green glow at 45° (bottom-right) */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+              /* Ultra-bright tight stack to significantly increase perceived brightness */
+              rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+              rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+              rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+              /* Existing tight edge retained for depth and intensity */
+              rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+              /* Layered glow maintaining tightness with reduced spread */
+              rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+              rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+              rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+              rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+              rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
+}
+
+@media (max-width: 768px) {
+  .maximum-exposure .me-grid {
+    grid-template-columns: 1fr;
+  }
+  .maximum-exposure .me-article {
+    order: 1;
+  }
+  .maximum-exposure .me-image {
+    order: 2;
+  }
+}
+
+/* ===== Clear Communication section: two-column layout, article left, image right ===== */
 .clear-communication.section {
   position: relative;
-  background-image: url('/images/section-5-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.clear-communication.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-  pointer-events: none;
+  background: none;
 }
 
 .clear-communication.section .container {
   position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
-/* Override inline grid to single column and center content */
-.clear-communication.section .container > div[style] {
-  grid-template-columns: 1fr !important;
-  align-items: center !important;
-  justify-items: center !important;
+.clear-communication .cc-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 300px;
 }
 
-/* Hide the inline image column since the section uses a background */
-.clear-communication.section .container > div > .animate-in-left {
-  display: none !important;
+.clear-communication .cc-article {
+  height: 100%;
 }
 
-/* Center the article block and text */
-.clear-communication.section .container article {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+.clear-communication .cc-image {
+  height: 100%;
 }
 
-/* ===== No Highstreet section: single column with background image and centered article ===== */
+.clear-communication .cc-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Neutral depth shadow + ultra-bright, tight 45° green glow (matches Maximum Exposure) */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+              rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+              rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+              rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+              rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+              rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+              rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+              rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+              rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+              rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
+}
+
+@media (max-width: 768px) {
+  .clear-communication .cc-grid {
+    grid-template-columns: 1fr;
+  }
+  .clear-communication .cc-article {
+    order: 1;
+  }
+  .clear-communication .cc-image {
+    order: 2;
+  }
+}
+
+/* ===== No Highstreet section: two-column layout, article left, image right ===== */
 .no-highstreet.section {
   position: relative;
-  background-image: url('/images/section-7-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.no-highstreet.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 1;
-  pointer-events: none;
+  background: none;
 }
 
 .no-highstreet.section .container {
   position: relative;
-  z-index: 2;
-}
-
-/* Override inline grid to single column and center content */
-.no-highstreet.section .container > div[style] {
-  grid-template-columns: 1fr !important;
-  align-items: center !important;
-  justify-items: center !important;
-}
-
-/* Hide the inline image column since the section uses a background */
-.no-highstreet.section .container > div > .animate-in-right {
-  display: none !important;
-}
-
-/* Center the article block and text */
-.no-highstreet.section .container article {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* ===== Exceptional Service section: single column with background image and centered article ===== */
-.exceptional-service.section {
-  position: relative;
-  background-image: url('/images/section-6-img.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.exceptional-service.section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.8);
   z-index: 1;
-  pointer-events: none;
 }
 
-.exceptional-service.section .container {
-  position: relative;
-  z-index: 2;
+.no-highstreet .nh-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 300px;
 }
 
-/* Override inline grid to single column and center content */
-.exceptional-service.section .container > div[style] {
-  grid-template-columns: 1fr !important;
-  align-items: center !important;
-  justify-items: center !important;
+.no-highstreet .nh-article {
+  height: 100%;
 }
 
-/* Hide the inline image column since the section uses a background */
-.exceptional-service.section .container > div > .animate-in-right {
-  display: none !important;
+.no-highstreet .nh-image {
+  height: 100%;
 }
 
-/* Center the article block and text */
-.exceptional-service.section .container article {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
+.no-highstreet .nh-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Neutral depth shadow + ultra-bright, tight 45° green glow (matches other sections) */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+              rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+              rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+              rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+              rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+              rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+              rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+              rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+              rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+              rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
+}
+
+@media (max-width: 768px) {
+  .no-highstreet .nh-grid {
+    grid-template-columns: 1fr;
+  }
+  .no-highstreet .nh-article {
+    order: 1;
+  }
+  .no-highstreet .nh-image {
+    order: 2;
+  }
+}
+
+/* ===== Exceptional Service: two-column grid (image left, article right) ===== */
+.exceptional-service .es-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: stretch;
+  min-height: 300px;
+}
+.exceptional-service .es-image { height: 100%; }
+.exceptional-service .es-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  /* Neutral depth shadow + ultra-bright, tight 45° green glow (matches other sections) */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 30px,
+              rgba(108, 152, 48, 0.92) 12px 12px 3px -12px,
+              rgba(108, 152, 48, 0.90) 12px 12px 4px -12px,
+              rgba(108, 152, 48, 0.88) 12px 12px 5px -12px,
+              rgba(108, 152, 48, 0.85) 12px 12px 4px -13px,
+              rgba(108, 152, 48, 0.80) 12px 12px 6px -11px,
+              rgba(108, 152, 48, 0.75) 12px 12px 8px -11px,
+              rgba(108, 152, 48, 0.70) 12px 12px 10px -11px,
+              rgba(108, 152, 48, 0.65) 12px 12px 12px -11px,
+              rgba(108, 152, 48, 0.60) 12px 12px 14px -11px;
+}
+.exceptional-service .es-article { height: 100%; }
+
+@media (max-width: 900px) {
+  .exceptional-service .es-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile-only: ensure section images sit below their titles (≤440px) */
+@media (max-width: 440px) {
+  /* Maximum Exposure */
+  .maximum-exposure .me-grid { grid-template-columns: 1fr; }
+  .maximum-exposure .me-image { order: 1; }
+  .maximum-exposure .me-article { order: 2; }
+
+  /* Clear Communication */
+  .clear-communication .cc-grid { grid-template-columns: 1fr; }
+  .clear-communication .cc-image { order: 1; }
+  .clear-communication .cc-article { order: 2; }
+  /* Enforce 6:4 image container and cover fit on mobile */
+  .clear-communication .cc-image { aspect-ratio: 6 / 4; width: 92vw; margin: 0 auto; }
+  .clear-communication .cc-image__img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* No Highstreet Fees */
+  .no-highstreet .nh-grid { grid-template-columns: 1fr; }
+  .no-highstreet .nh-image { order: 1; }
+  .no-highstreet .nh-article { order: 2; }
+  /* Enforce 6:4 image container and cover fit on mobile */
+  .no-highstreet .nh-image { aspect-ratio: 6 / 4; width: 92vw; margin: 0 auto; }
+  .no-highstreet .nh-image__img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Exceptional Service */
+  .exceptional-service .es-grid { grid-template-columns: 1fr; }
+  .exceptional-service .es-image { order: 1; }
+  .exceptional-service .es-article { order: 2; }
+  /* Enforce 6:4 image container and cover fit on mobile */
+  .exceptional-service .es-image { aspect-ratio: 6 / 4; width: 92vw; margin: 0 auto; }
+  .exceptional-service .es-image__img { width: 100%; height: 100%; object-fit: cover; }
 }
 
 /* Mobile-only: Marketing With Us full-section background at ≤440px */
@@ -7333,4 +7547,103 @@ section#re-mortgage h3 {
                 linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.35) 100%);
   }
   #mortgage-advice .mortgage-advice-container { position: relative !important; z-index: 2 !important; }
+}
+/* First-time buyers image — green outline and 45° glow */
+img[alt="First-time buyers"] {
+  /* Tighter neon edge + compact layered 45° glow (down-right) */
+  box-shadow:
+    10px 10px 3px -6px rgba(108, 152, 48, 1),      /* ultra-crisp core */
+    12px 12px 12px -14px rgba(108, 152, 48, 0.92), /* tighter bright halo */
+    14px 14px 18px -18px rgba(108, 152, 48, 0.65), /* compact secondary glow */
+    0 6px 12px rgba(0, 0, 0, 0.16)                 /* subtle depth */
+    !important;
+}
+
+/* Mobile-only: tighten mortgage-advice image glow and override inline drop shadows */
+@media (max-width: 440px) {
+  /* Scope to mortgage-advice sections by ID and alt fallbacks */
+  #first-time-buyers img,
+  #moving-home img,
+  #buy-to-let img,
+  #new-build-homes img,
+  #re-mortgage img,
+  img[alt="First-time buyers"],
+  img[alt="Moving Home"],
+  img[alt="Buy To Let"],
+  img[alt="New Build Homes"],
+  img[alt="Re-mortgage"] {
+    width: 92vw !important;
+    height: auto !important;
+    object-fit: cover !important;
+    border-radius: 12px !important;
+    /* Tight neon stack along a 45° down-right angle */
+    box-shadow:
+      10px 10px 3px -6px rgba(108, 152, 48, 1),      /* ultra-crisp core */
+      12px 12px 12px -14px rgba(108, 152, 48, 0.92), /* tighter bright halo */
+      14px 14px 18px -18px rgba(108, 152, 48, 0.65), /* compact secondary glow */
+      0 6px 12px rgba(0, 0, 0, 0.16)                 /* subtle depth */
+      !important;
+  }
+}
+/* Apply tight neon glow to Re-mortgage image */
+img[alt="Re-mortgage"] {
+  /* Tighter neon edge + compact layered 45° glow (down-right) */
+  box-shadow:
+    10px 10px 3px -6px rgba(108, 152, 48, 1),      /* ultra-crisp core */
+    12px 12px 12px -14px rgba(108, 152, 48, 0.92), /* tighter bright halo */
+    14px 14px 18px -18px rgba(108, 152, 48, 0.65), /* compact secondary glow */
+    0 6px 12px rgba(0, 0, 0, 0.16)                 /* subtle depth */
+    !important;
+}
+/* Apply tight neon glow to Moving Home image */
+img[alt="Moving Home"] {
+  /* Tighter neon edge + compact layered 45° glow (down-right) */
+  box-shadow:
+    10px 10px 3px -6px rgba(108, 152, 48, 1),      /* ultra-crisp core */
+    12px 12px 12px -14px rgba(108, 152, 48, 0.92), /* tighter bright halo */
+    14px 14px 18px -18px rgba(108, 152, 48, 0.65), /* compact secondary glow */
+    0 6px 12px rgba(0, 0, 0, 0.16)                 /* subtle depth */
+    !important;
+}
+
+/* Photography images — apply the same tight green glow */
+img[alt="Photography Image 1"],
+img[alt="Photography Image 2"],
+img[alt="Photography Image 3"],
+img[alt="Photography Image 5"],
+img[alt="Photography Image 6"],
+img[alt="Photography Image 8"],
+img[alt="Photography Image 9"] {
+  box-shadow:
+    10px 10px 3px -6px rgba(108, 152, 48, 1),
+    12px 12px 12px -14px rgba(108, 152, 48, 0.92),
+    14px 14px 18px -18px rgba(108, 152, 48, 0.65),
+    0 6px 12px rgba(0, 0, 0, 0.16)
+    !important;
+  border-radius: 8px; /* match image rounding where applicable */
+}
+/* Mobile-only: remove section background images; use inline images below titles (≤440px) */
+@media (max-width: 440px) {
+  #first-time-purchase,
+  #moving-home,
+  #buy-to-let,
+  #new-build-homes,
+  #re-mortgage,
+  #ready-to-find-mortgage,
+  #lc-mortgage {
+    background-image: none !important;
+    background-color: rgba(20, 20, 20, 1) !important; /* #141414 */
+  }
+
+  #first-time-purchase::before,
+  #moving-home::before,
+  #buy-to-let::before,
+  #new-build-homes::before,
+  #re-mortgage::before,
+  #ready-to-find-mortgage::before,
+  #lc-mortgage::before {
+    content: none !important;
+    background: none !important;
+    display: none !important;
+  }
 }
