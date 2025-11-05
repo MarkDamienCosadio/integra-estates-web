@@ -2791,6 +2791,8 @@ html, body { height: 100%; }
   }
   
   .meet-the-team-article {
+    background: transparent !important;
+    backdrop-filter: none !important;
     padding: 1.5rem;
   }
   
@@ -2912,7 +2914,7 @@ html, body { height: 100%; }
   .mortgage-advice-section { padding: 0 0 20px 0; }
   .mortgage-advice-container { padding: 0 0.25rem; margin: 0 0.125rem; }
   .mortgage-article { padding: 1.5rem; }
-  .mortgage-article p { font-size: 1rem; line-height: 1.2; margin-bottom: 0.6rem; }
+  .mortgage-article p { font-size: 1rem; line-height: 1.2 !important; margin-bottom: 0.6rem !important; }
 }
 
 /* Mobile responsive design */
@@ -2983,15 +2985,95 @@ html, body { height: 100%; }
   
   .marketing-with-us-article p {
     font-size: clamp(1rem, 2.5vw, 1.1rem);
-    line-height: 1.2;
-    margin-bottom: 0.8rem;
+    line-height: 1.2 !important; /* tighten paragraph line spacing on mobile */
+    margin-bottom: 0.6rem !important; /* reduce inter-paragraph spacing on mobile */
+  }
+
+  /* Mobile-friendly initial state: allow per-paragraph reveal on view */
+  .marketing-with-us-article .mw-prep,
+  .marketing-with-us-article .mw-from-right {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.6s ease-out;
+  }
+  .marketing-with-us-article .mw-prep.mw-active,
+  .marketing-with-us-article .mw-from-right.mw-active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Meet The Team mobile background and spacing */
+@media (max-width: 768px) {
+  .meet-the-team-section {
+    padding: 0 0 30px 0;
+    position: relative;
+  }
+
+  .meet-the-team-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/meet-the-team.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.3);
+    display: block !important; /* override earlier mobile hide rule */
+    z-index: 1;
+  }
+
+  .meet-the-team-container {
+    position: relative;
+    z-index: 2;
+    padding: 0 0.5rem;
+    margin: 0 0.25rem;
+  }
+
+  .meet-the-team-content {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+  }
+
+  .meet-the-team-image-column {
+    display: none !important; /* hide inline image; use background */
+  }
+
+  .meet-the-team-text-column {
+    padding: 0 0 1rem 0;
+    text-align: center;
+  }
+
+  .meet-the-team-article {
+    background: transparent !important;
+    padding: 2rem;
+    border-radius: 12px;
+    backdrop-filter: none !important;
+  }
+
+  .meet-the-team-article p {
+    font-size: 1.1rem;
+    line-height: 1.2 !important; /* tighten spacing */
+    margin-bottom: 0.6rem !important; /* reduce spacing */
   }
 
   /* Ensure article text shows on mobile even without intersection activation */
-  .marketing-with-us-article .mw-prep,
-  .marketing-with-us-article .mw-from-right {
+  .meet-the-team-article .mt-prep,
+  .meet-the-team-article .mt-from-right {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Meet The Team mobile paragraph overrides on very small screens */
+@media (max-width: 480px) {
+  .meet-the-team-article p {
+    line-height: 1.2 !important;
+    margin-bottom: 0.6rem !important;
   }
 }
 
@@ -3258,6 +3340,33 @@ html, body { height: 100%; }
   font-size: 1rem;
   line-height: 1.75;
   opacity: 0.95;
+}
+
+/* Mobile: ensure 'Expert Mortgage Advice' title sits above mortgage section overlays */
+@media (max-width: 440px) {
+  /* Lower the mortgage section stacking so preceding title container can sit above */
+  #mortgage-advice.mortgage-advice-section { position: relative; z-index: 0 !important; }
+  #mortgage-advice.mortgage-advice-section::before { z-index: -1 !important; pointer-events: none; }
+
+  /* Explicitly raise the title container above the mortgage section */
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section) {
+    position: relative !important;
+    z-index: 1000 !important;
+  }
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section) .section-4-module__KR0FYq__titleContainer {
+    position: relative !important;
+    z-index: 1001 !important;
+  }
+
+  /* Force the h2 to be visible in case animations are interfering */
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section) h2.ask-us-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  }
 }
 
 .service-card-img {
@@ -3980,14 +4089,30 @@ button {
 
 /* Mobile optimizations */
 @media screen and (max-width: 768px) {
+  /* Preserve directional intent on mobile for clearer motion */
   .animate-in,
-  .animate-in-up,
-  .animate-in-left,
-  .animate-in-right {
+  .animate-in-up {
     transform: translateY(20px);
     transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
-  
+  .animate-in-left {
+    transform: translateX(-20px);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .animate-in-right {
+    transform: translateX(20px);
+    transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  /* Ensure active state overrides directional transforms on mobile */
+  .animate-in.animate-active,
+  .animate-in-up.animate-active,
+  .animate-in-left.animate-active,
+  .animate-in-right.animate-active {
+    transform: translate(0);
+    opacity: 1;
+  }
+
   .google-review-card:hover,
   .blogs-home-card:hover,
   .service-card:hover,
@@ -4248,10 +4373,10 @@ button {
   }
 
   .meet-the-team-article {
-    background: rgba(20, 20, 20, 0.8);
+    background: transparent !important;
     padding: 2rem;
     border-radius: 12px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: none !important;
   }
 
   .meet-the-team-article p {
@@ -4408,6 +4533,8 @@ button {
 /* Override centering for MortgageAdvice component - force right alignment */
 #mortgage-advice .mortgage-article {
   text-align: right !important;
+  background: transparent !important; /* remove any dark article overlay */
+  backdrop-filter: none !important;
 }
 #mortgage-advice .mortgage-article p {
   text-align: right !important;
@@ -6959,4 +7086,251 @@ section#re-mortgage h3 {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
+}
+
+/* Mobile-only: Marketing With Us full-section background at ≤440px */
+@media (max-width: 440px) {
+  /* Apply background image to the entire section */
+  #marketing-with-us.marketing-with-us-section {
+    background-image: url('/images/marketing-with-us.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* Hide inline image column/image to avoid duplication */
+  #marketing-with-us .marketing-with-us-image-column,
+  #marketing-with-us .marketing-with-us-image {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Force single column and center article */
+  #marketing-with-us .marketing-with-us-content {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+    min-height: auto;
+  }
+
+  #marketing-with-us .marketing-with-us-text-column {
+    text-align: center;
+  }
+}
+
+/* Mobile-only: extend background behind the title container using an overlay (≤440px) */
+@media (max-width: 440px) {
+  /* Ensure the section is a positioning context */
+  #marketing-with-us.marketing-with-us-section {
+    position: relative;
+  }
+
+  /* Re-enable and extend the overlay background above the section to cover the title area */
+  #marketing-with-us.marketing-with-us-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -160px; /* extend upwards to cover the title container area */
+    bottom: 0;
+    background-image: url('/images/marketing-with-us.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block !important; /* override any earlier mobile hide */
+    z-index: 1;
+  }
+
+  /* Lift the title container and section content above the overlay */
+  .section-4-module__KR0FYq__inner.container:has(+ #marketing-with-us.marketing-with-us-section),
+  #marketing-with-us .marketing-with-us-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Remove solid background from the title container so the image shows through */
+  .section-4-module__KR0FYq__inner.container:has(+ #marketing-with-us.marketing-with-us-section) {
+    background: transparent !important;
+  }
+}
+
+/* Mobile: remove article background overlay for Marketing With Us (≤768px) */
+@media (max-width: 768px) {
+  #marketing-with-us .marketing-with-us-article {
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Mobile-only: Mortgage Advice full-section background at ≤440px */
+@media (max-width: 440px) {
+  /* Apply background image to the entire section */
+  #mortgage-advice.mortgage-advice-section {
+    background-image: url('/images/mortgage-advice.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  /* Hide inline image column/image to avoid duplication */
+  #mortgage-advice .mortgage-image-column,
+  #mortgage-advice .mortgage-image {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Force single column and center article */
+  #mortgage-advice .mortgage-advice-content {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+    min-height: auto;
+  }
+
+  #mortgage-advice .mortgage-text-column {
+    text-align: center;
+  }
+}
+
+/* Mobile-only: extend Mortgage Advice background behind the title container (≤440px) */
+@media (max-width: 440px) {
+  #mortgage-advice.mortgage-advice-section::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -160px; /* extend upwards to cover the title container area */
+    bottom: 0;
+    background-image: url('/images/mortgage-advice.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: block !important;
+    z-index: 1;
+  }
+
+  /* Lift the title container and section content above the overlay */
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section),
+  #mortgage-advice .mortgage-advice-container {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Remove solid background from the title container so the image shows through */
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section) {
+    background: transparent !important;
+  }
+}
+
+/* Mobile: remove article background overlay for Mortgage Advice (≤768px) */
+@media (max-width: 768px) {
+  #mortgage-advice .mortgage-article {
+    background: transparent !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Mobile-only: darken Mortgage Advice background and ensure title visibility (≤440px) */
+@media (max-width: 440px) {
+  /* Add a semi-transparent overlay above the background image (and its upward extension) */
+  #mortgage-advice.mortgage-advice-section::after {
+    content: none !important;
+    background: none !important;
+    display: none !important;
+    position: static !important;
+    left: auto; right: auto; top: auto; bottom: auto;
+    z-index: auto;
+    pointer-events: none;
+  }
+
+  /* Lift title container and section content above the dark overlay */
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice.mortgage-advice-section),
+  #mortgage-advice .mortgage-advice-container {
+    position: relative;
+    z-index: 3;
+  }
+}
+
+/* Mobile-only: ensure ask-us-title is visible and readable (≤440px) */
+@media (max-width: 440px) {
+  .section-4-module__KR0FYq__titleContainer h2.ask-us-title {
+    color: #ffffff !important;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
+    position: relative;
+    z-index: 3;
+  }
+}
+
+/* Mobile-only: explicitly unhide and lift the Expert Mortgage Advice h2 (≤440px) */
+@media (max-width: 440px) {
+  .section-4-module__KR0FYq__inner.container:has(+ #mortgage-advice) h2.ask-us-title,
+  #mortgage-advice h2.ask-us-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+    z-index: 3 !important;
+    margin: 0 0 0.5rem 0 !important;
+  }
+}
+
+/* Mobile-only: global visibility fix for all mortgage-advice section titles (≤440px) */
+@media (max-width: 440px) {
+  .mortgage-advice-section .mortgage-advice-container { position: relative; z-index: 3; }
+  .mortgage-advice-section h2.ask-us-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+    z-index: 4 !important; /* above dark overlay */
+    margin: 0 auto 0.75rem auto !important;
+    width: fit-content !important;
+    border-bottom: 2px solid var(--accent) !important;
+    padding-bottom: 0.25rem !important;
+  }
+}
+
+/* Mobile-only: explicit visibility fix for Mortgage Services h2 (≤440px) */
+@media (max-width: 440px) {
+  #mortgage-services.mortgage-advice-section { position: relative; z-index: 4; }
+  #mortgage-services .mortgage-advice-container { position: relative; z-index: 5; }
+  #mortgage-services h2.ask-us-title {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative !important;
+    z-index: 6 !important;
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+    margin: 0 auto 0.75rem auto !important;
+  }
+}
+
+/* Mobile-only: darken Mortgage Advice image (≤440px) */
+@media (max-width: 440px) {
+  #mortgage-advice .mortgage-image {
+    filter: brightness(0.3) !important;
+  }
+}
+
+/* Mobile-only: darken Mortgage Advice section background via overlay (≤440px) */
+@media (max-width: 440px) {
+  #mortgage-advice.mortgage-advice-section { position: relative !important; }
+  #mortgage-advice.mortgage-advice-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    display: block !important;
+    pointer-events: none;
+    z-index: 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.65) 100%),
+                linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.35) 100%);
+  }
+  #mortgage-advice .mortgage-advice-container { position: relative !important; z-index: 2 !important; }
 }

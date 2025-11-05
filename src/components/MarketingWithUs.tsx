@@ -13,40 +13,66 @@ export default function MarketingWithUs() {
   useEffect(() => {
     const sec = sectionRef.current
     if (!sec) return
-    const thresholds: number[] = isMobile ? [0.01, 0.02, 0.03] : [0.4, 0.6, 0.8];
-    const io = new IntersectionObserver(
+
+    // Section-level observer for title and image column
+    const sectionThresholds: number[] = isMobile ? [0.01, 0.02] : [0.4, 0.6]
+    const ioSection = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           const r = entry.intersectionRatio
-          if (r >= thresholds[0] && titleRef.current) {
+          if (r >= sectionThresholds[0] && titleRef.current) {
             titleRef.current.classList.add('mw-active')
           }
-          if (r >= thresholds[1] && imageColumnRef.current) {
+          if (r >= sectionThresholds[1] && imageColumnRef.current) {
             imageColumnRef.current.classList.add('mw-active')
-          }
-          if (r >= thresholds[2] && articleRef.current) {
-            articleRef.current.classList.add('mw-active')
-            const ps = Array.from(articleRef.current.querySelectorAll('p'))
-            ps.forEach((p, i) => {
-              const delayS: number = isMobile ? 0 : i * 0.2;
-              (p as HTMLElement).style.animationDelay = `${delayS}s`;
-              p.classList.add('mw-active')
-            })
-            // Add delay for the button after the last paragraph
-            const button = articleRef.current.querySelector('.animated-module__Rnzt8a__btn')
-            if (button) {
-              const buttonDelay: number = isMobile ? 0 : ps.length * 0.2 + 0.3;
-              setTimeout(() => {
-                button.classList.add('mw-active')
-              }, buttonDelay * 1000)
-            }
           }
         })
       },
-      { threshold: thresholds }
+      { threshold: sectionThresholds }
     )
-    io.observe(sec)
-    return () => io.disconnect()
+    ioSection.observe(sec)
+
+    // Per-paragraph observer: animate each <p> when it comes into view
+    const paraThreshold = isMobile ? 0.05 : 0.4
+    const ioParas = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= paraThreshold) {
+            const el = entry.target as HTMLElement
+            el.classList.add('mw-active')
+            obs.unobserve(el)
+          }
+        })
+      },
+      { threshold: [paraThreshold] }
+    )
+
+    const ps = Array.from(articleRef.current?.querySelectorAll('p') ?? [])
+    ps.forEach((p) => ioParas.observe(p))
+
+    // Observe the CTA button to animate when it becomes visible
+    const button = articleRef.current?.querySelector('.animated-module__Rnzt8a__btn')
+    let ioBtn: IntersectionObserver | null = null
+    if (button) {
+      ioBtn = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio >= paraThreshold) {
+              (entry.target as HTMLElement).classList.add('mw-active')
+              obs.unobserve(entry.target)
+            }
+          })
+        },
+        { threshold: [paraThreshold] }
+      )
+      ioBtn.observe(button)
+    }
+
+    return () => {
+      ioSection.disconnect()
+      ioParas.disconnect()
+      if (ioBtn) ioBtn.disconnect()
+    }
   }, [isMobile])
   return (
     <>
