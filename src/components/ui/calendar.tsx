@@ -42,8 +42,22 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }: C
         ...classNames,
       }}
       components={{
-        IconLeft: ({ ..._props }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ ..._props }) => <ChevronRight className="h-4 w-4" />,
+        Chevron: ({ orientation, className, size = 24, disabled }) => {
+          const common = cn("h-4 w-4", className);
+          const style = { width: size, height: size, opacity: disabled ? 0.5 : undefined } as React.CSSProperties;
+          switch (orientation) {
+            case "left":
+              return <ChevronLeft className={common} style={style} />;
+            case "right":
+              return <ChevronRight className={common} style={style} />;
+            case "up":
+              return <ChevronLeft className={common} style={{ ...style, transform: "rotate(90deg)" }} />;
+            case "down":
+              return <ChevronRight className={common} style={{ ...style, transform: "rotate(90deg)" }} />;
+            default:
+              return <ChevronRight className={common} style={style} />;
+          }
+        },
       }}
       {...props}
     />
